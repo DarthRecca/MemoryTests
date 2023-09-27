@@ -8,7 +8,7 @@
 
 <script>
 
-import useTestStore from '@/store/tests'
+import { useTestStore } from '@/store/tests'
 
 export default {
 	name: "EndView",
