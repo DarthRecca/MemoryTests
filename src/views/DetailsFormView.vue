@@ -1,5 +1,5 @@
 <template>
-    <DetailsForm />
+	<DetailsForm />
 </template>
 
 <script setup>

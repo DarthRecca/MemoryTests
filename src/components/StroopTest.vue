@@ -17,32 +17,21 @@
 			<p>Test Completed</p>
 			<br />
 			<v-table class="perfromance-table">
-				<caption>Your Performance</caption>
+				<caption>
+					Your Performance
+				</caption>
 				<thead>
 					<tr>
-						<th>
-							Parameter
-						</th>
-						<th>
-							Quantity
-						</th>
-						<th>
-							No. of correct tasks
-						</th>
-						<th>
-							No. of incorrect tasks
-						</th>
-						<th>
-							Time Taken for task(ms)
-						</th>
+						<th>Parameter</th>
+						<th>Quantity</th>
+						<th>No. of correct tasks</th>
+						<th>No. of incorrect tasks</th>
+						<th>Time Taken for task(ms)</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td>
-							Congruent Trials (Trials that had same colour
-							as the words e.g RED printed in red colour)
-						</td>
+						<td>Congruent Trials (Trials that had same colour as the words e.g RED printed in red colour)</td>
 						<td>
 							{{ this.performanceParameters.congruentTotal }}
 						</td>
@@ -57,10 +46,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td>
-							In-congruent Trials (Trials that had different colour
-							as the words e.g RED printed in green colour)
-						</td>
+						<td>In-congruent Trials (Trials that had different colour as the words e.g RED printed in green colour)</td>
 						<td>
 							{{ this.performanceParameters.incongruentTotal }}
 						</td>
@@ -75,9 +61,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td>
-							Total
-						</td>
+						<td>Total</td>
 						<td>
 							{{ this.totalTasks }}
 						</td>
@@ -94,9 +78,7 @@
 				</tbody>
 			</v-table>
 			<br />
-			<p>
-				Your Stroop Score(Absolute of Congruent - Incongruent Avg Time): {{ this.stroopScore }}
-			</p>
+			<p>Your Stroop Score(Absolute of Congruent - Incongruent Avg Time): {{ this.stroopScore }}</p>
 			<br />
 			<v-btn value="NBackLink" to="/nbacktest" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
 		</div>
@@ -153,12 +135,11 @@ export default {
 			this.correctAnswer = this.textColor.toLowerCase();
 			this.promptStartTime = Date.now();
 			if (this.textColor == this.colorName.toLowerCase()) {
-				this.performanceParameters.congruentTotal += 1
-				this.isCongruent = true
-			}
-			else {
-				this.performanceParameters.incongruentTotal += 1
-				this.isCongruent = false
+				this.performanceParameters.congruentTotal += 1;
+				this.isCongruent = true;
+			} else {
+				this.performanceParameters.incongruentTotal += 1;
+				this.isCongruent = false;
 			}
 			this.hideResult();
 			setTimeout(() => {
@@ -171,27 +152,24 @@ export default {
 			if (answer.toLowerCase() === this.correctAnswer) {
 				this.result = 'Correct';
 				if (this.isCongruent) {
-					this.performanceParameters.congruentCorrect += 1
-				}
-				else {
-					this.performanceParameters.incongruentCorrect += 1
+					this.performanceParameters.congruentCorrect += 1;
+				} else {
+					this.performanceParameters.incongruentCorrect += 1;
 				}
 			} else {
 				this.result = 'Incorrect';
 				if (this.isCongruent) {
-					this.performanceParameters.congruentIncorrect += 1
-				}
-				else {
-					this.performanceParameters.incongruentIncorrect += 1
+					this.performanceParameters.congruentIncorrect += 1;
+				} else {
+					this.performanceParameters.incongruentIncorrect += 1;
 				}
 			}
 			this.displayResult();
 			const promptTimeTaken = this.promptEndTime - this.promptStartTime;
 			if (this.isCongruent) {
-				this.performanceParameters.congruentAvgTime += promptTimeTaken
-			}
-			else {
-				this.performanceParameters.incongruentAvgTime += promptTimeTaken
+				this.performanceParameters.congruentAvgTime += promptTimeTaken;
+			} else {
+				this.performanceParameters.incongruentAvgTime += promptTimeTaken;
 			}
 			const score = this.result === 'Correct' ? 1 : 0;
 			this.totalTestTime += promptTimeTaken;
@@ -230,13 +208,13 @@ export default {
 				individualPromptData: this.individualPromptData,
 				totalTimeTaken: this.totalTestTime
 			});
-			this.performanceParameters.congruentAvgTime = Math.floor(this.performanceParameters.congruentAvgTime / this.performanceParameters.congruentTotal)
+			this.performanceParameters.congruentAvgTime = Math.floor(this.performanceParameters.congruentAvgTime / this.performanceParameters.congruentTotal);
 			if (isNaN(this.performanceParameters.congruentAvgTime)) {
-				this.performanceParameters.congruentAvgTime = 9999
+				this.performanceParameters.congruentAvgTime = 9999;
 			}
-			this.performanceParameters.incongruentAvgTime = Math.floor(this.performanceParameters.incongruentAvgTime / this.performanceParameters.incongruentTotal)
+			this.performanceParameters.incongruentAvgTime = Math.floor(this.performanceParameters.incongruentAvgTime / this.performanceParameters.incongruentTotal);
 			if (isNaN(this.performanceParameters.incongruentAvgTime)) {
-				this.performanceParameters.congruentAvgTime = 9999
+				this.performanceParameters.congruentAvgTime = 9999;
 			}
 			this.hideResult();
 		}
@@ -246,20 +224,20 @@ export default {
 			return useTestStore().getStroopTestData();
 		},
 		totalTasks() {
-			return this.performanceParameters.congruentTotal + this.performanceParameters.incongruentTotal
+			return this.performanceParameters.congruentTotal + this.performanceParameters.incongruentTotal;
 		},
 		totalCorrect() {
-			return this.performanceParameters.congruentCorrect + this.performanceParameters.incongruentCorrect
+			return this.performanceParameters.congruentCorrect + this.performanceParameters.incongruentCorrect;
 		},
 		totalIncorrect() {
-			return this.performanceParameters.congruentIncorrect + this.performanceParameters.incongruentIncorrect
+			return this.performanceParameters.congruentIncorrect + this.performanceParameters.incongruentIncorrect;
 		},
 		totalAvgTime() {
-			return Math.floor(this.totalTestTime / this.totalTasks)
+			return Math.floor(this.totalTestTime / this.totalTasks);
 		},
 		stroopScore() {
-			const number = this.performanceParameters.incongruentAvgTime - this.performanceParameters.congruentAvgTime
-			return Math.abs(number)
+			const number = this.performanceParameters.incongruentAvgTime - this.performanceParameters.congruentAvgTime;
+			return Math.abs(number);
 		}
 	}
 };

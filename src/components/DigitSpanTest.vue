@@ -7,8 +7,7 @@
 				<h2 v-if="!showPrompt" class="entered-numbers">{{ enteredNumbers }}</h2>
 				<v-row class="numpad">
 					<v-col v-for="(num, idx) in numpadNumbers" :key="idx" cols="3">
-						<v-btn @click="onNumpadClick(num)" :disabled="numpadDisabled[num]" class="numpad-button"
-							size="large">
+						<v-btn @click="onNumpadClick(num)" :disabled="numpadDisabled[num]" class="numpad-button" size="large">
 							{{ num }}
 						</v-btn>
 					</v-col>
@@ -18,14 +17,14 @@
 				</v-row>
 				<br />
 			</div>
-			<v-btn @click="checkAnswer" v-if="!showPrompt" size="x-large" color="red-lighten-3" rounded="lg"
-				cols="12">Enter</v-btn>
+			<v-btn @click="checkAnswer" v-if="!showPrompt" size="x-large" color="red-lighten-3" rounded="lg" cols="12">Enter</v-btn>
 		</div>
 		<div v-if="this.testCompleted">
-			<h2>Test Completed</h2><br /><br />
+			<h2>Test Completed</h2>
+			<br /><br />
 			<div>
-				<h3>Your best sequence that is maximum length of digits that you can remember (Digit Span) is:
-					{{ this.digitSpanTestData.highestDigitSpan }}</h3><br />
+				<h3>Your best sequence that is maximum length of digits that you can remember (Digit Span) is: {{ this.digitSpanTestData.highestDigitSpan }}</h3>
+				<br />
 			</div>
 			<br />
 			<v-btn value="StroopLink" to="/strooptest" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>

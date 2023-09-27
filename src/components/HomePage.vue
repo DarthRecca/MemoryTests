@@ -22,19 +22,14 @@
 </template>
 
 <script>
-
 export default {
 	name: 'HomePage',
 	data() {
-		return {
-
-		};
+		return {};
 	},
 	computed: {},
 	methods: {},
-	mounted() {
-
-	}
+	mounted() {}
 };
 </script>
 
@@ -47,7 +42,6 @@ export default {
 .start-button {
 	text-align: center;
 	align-items: center;
-
 }
 
 .button-label {

@@ -8,12 +8,11 @@
 	</div>
 	<div v-if="this.completed" class="completed">
 		<p>Trial Completed</p>
-		<v-btn @click='$emit("trialCompleted")' size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
+		<v-btn @click="$emit('trialCompleted')" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
 	</div>
 </template>
 
 <script>
-
 export default {
 	data() {
 		return {
@@ -37,10 +36,10 @@ export default {
 			this.checkMiss();
 
 			if (this.turnsTillRepeat == 0) {
-				if (this.sequence.length - (this.n) >= 0) {
-					this.prompt = this.sequence[(this.sequence.length - 1) - (this.n - 1)];
+				if (this.sequence.length - this.n >= 0) {
+					this.prompt = this.sequence[this.sequence.length - 1 - (this.n - 1)];
 					this.sequence.push(this.prompt);
-					this.repeatFlag = true
+					this.repeatFlag = true;
 				} else {
 					this.prompt = String.fromCharCode(65 + Math.floor(Math.random() * 26));
 					this.sequence.push(this.prompt);
@@ -52,18 +51,18 @@ export default {
 				this.turnsTillRepeat = this.turnsTillRepeat - 1;
 			}
 			setTimeout(() => {
-				this.showPrompt = true
-			}, 2500)
+				this.showPrompt = true;
+			}, 2500);
 			setTimeout(() => {
-				this.showPrompt = false
-			}, 1000)
+				this.showPrompt = false;
+			}, 1000);
 			if (this.sequence.length > 7) {
 				this.sequence.shift();
 			}
-			this.currentIteration += 1
+			this.currentIteration += 1;
 
 			if (this.currentIteration == this.maxIterations) {
-				this.testCompleted()
+				this.testCompleted();
 			} else {
 				setTimeout(() => {
 					this.generatePrompt();
@@ -71,12 +70,12 @@ export default {
 			}
 		},
 		checkMiss() {
-			this.repeatFlag = false
-			this.inputReceived = false
+			this.repeatFlag = false;
+			this.inputReceived = false;
 		},
 		checkAnswer() {
-			const targetStimulus = this.sequence[(this.sequence.length - 1) - (this.n)];
-			this.inputReceived = true
+			const targetStimulus = this.sequence[this.sequence.length - 1 - this.n];
+			this.inputReceived = true;
 
 			if (this.prompt === targetStimulus.toString()) {
 				this.result = 'Correct';
@@ -87,7 +86,7 @@ export default {
 			this.showResult = true;
 		},
 		testCompleted() {
-			this.completed = true
+			this.completed = true;
 		}
 	},
 	mounted() {

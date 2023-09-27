@@ -7,8 +7,7 @@
 				<h2>Entered Numbers</h2>
 				<v-row class="numpad">
 					<v-col v-for="(num, idx) in numpadNumbers" :key="idx" cols="3">
-						<v-btn @click="onNumpadClick(num)" :disabled="numpadDisabled[num]" class="numpad-button"
-							size="large">
+						<v-btn @click="onNumpadClick(num)" :disabled="numpadDisabled[num]" class="numpad-button" size="large">
 							{{ num }}
 						</v-btn>
 					</v-col>
@@ -18,19 +17,17 @@
 				</v-row>
 				<br />
 			</div>
-			<v-btn @click="checkAnswer" v-if="!showPrompt" size="x-large" color="red-lighten-3" rounded="lg"
-				cols="12">Enter</v-btn>
+			<v-btn @click="checkAnswer" v-if="!showPrompt" size="x-large" color="red-lighten-3" rounded="lg" cols="12">Enter</v-btn>
 		</div>
 		<div v-if="this.testCompleted">
 			<p>Trial Completed</p>
 			<br />
-			<v-btn @click='$emit("trial-completed")' size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
+			<v-btn @click="$emit('trial-completed')" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
 		</div>
 	</v-container>
 </template>
 
 <script>
-
 function generateRandomPrompt(length) {
 	const digits = Array.from({ length: 10 }, (_, i) => i);
 	let prompt = '';

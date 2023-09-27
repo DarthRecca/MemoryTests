@@ -15,13 +15,12 @@
 		</div>
 		<div v-if="this.completed">
 			<p>Trial Completed</p>
-			<v-btn @click='$emit("trialCompleted")' size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
+			<v-btn @click="$emit('trialCompleted')" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
 		</div>
 	</v-container>
 </template>
 
 <script>
-
 export default {
 	name: 'StroopTest',
 	props: {},
@@ -37,7 +36,7 @@ export default {
 			result: '',
 			showResult: false,
 			showPrompt: true,
-			completed: false,
+			completed: false
 		};
 	},
 	mounted() {
@@ -88,9 +87,7 @@ export default {
 			this.hideResult();
 		}
 	},
-	computed: {
-
-	}
+	computed: {}
 };
 </script>
 
@@ -98,7 +95,7 @@ export default {
 .stroop-test-container {
 	text-align: center;
 	padding: 10px;
-	margin: 10px
+	margin: 10px;
 }
 
 .stroop-test {
@@ -109,7 +106,7 @@ export default {
 	justify-content: center;
 	height: 100vh;
 	padding: 10px;
-	margin: 10px
+	margin: 10px;
 }
 
 .stroop-prompt {

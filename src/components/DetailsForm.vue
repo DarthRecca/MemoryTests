@@ -2,19 +2,19 @@
     <v-container>
         <v-sheet color="teal-lighten-3" class="detail-form">
             <div>
-                <h2> Test of Intelligence - Memory Function<br /></h2><br />
+                <h2>Test of Intelligence - Memory Function<br /></h2>
+                <br />
             </div>
             <div>
                 <p>
-                    This module is a battery of tests that assess different aspects of memory, such as
-                    short-term memory, long-term memory, attention Span, inhibition Control, working
-                    memory, Processing Speed etc.<br /> The test is developed and validated especially for
-                    Indian culture.<br /> The test is conducted online and is a fully automated computerised
-                    solution to test the memory.<br /> No manual intervention in conducting the test nor in
-                    analysing the results is involved.<br />
-                    Please provide your details so that we can inform your results in terms of where do
-                    you stand with respect to individuals of similar age and education.<br /> You will also have
-                    to provide a consent to taking the test.<br />
+                    This module is a battery of tests that assess different aspects of memory, such as short-term memory,
+                    long-term memory, attention Span, inhibition Control, working memory, Processing Speed etc.<br />
+                    The test is developed and validated especially for Indian culture.<br />
+                    The test is conducted online and is a fully automated computerised solution to test the memory.<br />
+                    No manual intervention in conducting the test nor in analysing the results is involved.<br />
+                    Please provide your details so that we can inform your results in terms of where do you stand with
+                    respect to individuals of similar age and education.<br />
+                    You will also have to provide a consent to taking the test.<br />
                 </p>
             </div>
             <v-form>
@@ -42,29 +42,22 @@
                     <v-radio label="English/Marathi" value="marathi" disabled></v-radio>
                     <v-radio label="English/Hindi" value="hindi" disabled></v-radio>
                 </v-radio-group>
-                <p>
-                    Please read carefully and give your consent to following:<br />
+                Please read carefully and give your consent to following:<br />
                 <ol type="a">
-                    <li>I understand this is a psychological test to test the memory and
-                        intelligence related functions and I am voluntarily participating in this
-                        assessment.</li>
-                    <li>I fully understand that this is an online test and the results are NOT an
-                        expert opinion or a medical diagnosis. I understand the results will be
-                        produced by the computerized analysis of my own responses and there
-                        is no human involved in analysing / preparing the outcome.</li>
-                    <li>I have been assured that my answers and results will remain
-                        confidential and my individual results will NOT be shared with my
-                        institute (school / college), employer or my parents.</li>
-                    <li>I understand the results will be used for researchers or Psychology
-                        experts without my Name, identity or other personal details. If I give
-                        consent, they may give me the counselling service on how to improve
-                        my memory function or intelligence.</li>
-                    <li>I am aware that the outcome of this exercise entirely depends on how
-                        honestly, I answer the questions and give the test. I also understand
-                        that the outcome of the test depends on my current state of mind, my
-                        freshness and my overall health.</li>
+                    <li>I understand this is a psychological test to test the memory and intelligence related functions and
+                        I am voluntarily participating in this assessment.</li>
+                    <li>I fully understand that this is an online test and the results are NOT an expert opinion or a
+                        medical diagnosis. I understand the results will be produced by the computerized analysis of my own
+                        responses and there is no human involved in analysing / preparing the outcome.</li>
+                    <li>I have been assured that my answers and results will remain confidential and my individual results
+                        will NOT be shared with my institute (school / college), employer or my parents.</li>
+                    <li>I understand the results will be used for researchers or Psychology experts without my Name,
+                        identity or other personal details. If I give consent, they may give me the counselling service on
+                        how to improve my memory function or intelligence.</li>
+                    <li>I am aware that the outcome of this exercise entirely depends on how honestly, I answer the
+                        questions and give the test. I also understand that the outcome of the test depends on my current
+                        state of mind, my freshness and my overall health.</li>
                 </ol>
-                </p>
                 <v-checkbox v-model="consent" label="I am giving my consent to this assessment by checking in this box"
                     required></v-checkbox>
             </v-form>
@@ -90,7 +83,7 @@ export default {
             edItems: ['10th Standard', '12th Standard', 'Diploma', 'First Year of any Graduation', 'Second Year of any Graduation', 'Third Year of any Graduation', 'Fourth Year of any Graduation', 'Graduation Complete', 'Post Graduate', 'PhD'],
             devItems: ['Phone', 'Tablet', 'Laptop', 'Desktop'],
             language: '',
-            consent: false,
+            consent: false
         };
     },
     computed: {},
@@ -104,12 +97,10 @@ export default {
                 education: this.education,
                 language: this.language,
                 consent: this.consent
-            })
-            this.$router.push('/longtermmemorytest/short')
+            });
+            this.$router.push('/longtermmemorytest/short');
         }
     },
-    mounted() {
-
-    }
+    mounted() { }
 };
 </script>

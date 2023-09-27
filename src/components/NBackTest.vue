@@ -10,27 +10,17 @@
 		<p class="completed">Test Completed</p>
 		<br />
 		<v-table class="performance-table">
-			<caption>Your Performance</caption>
+			<caption>
+				Your Performance
+			</caption>
 			<thead>
 				<tr>
-					<th>
-						Parameter
-					</th>
-					<th>
-						Quantity
-					</th>
-					<th>
-						No. of correct tasks
-					</th>
-					<th>
-						%age of correct tasks
-					</th>
-					<th>
-						No. of incorrect tasks
-					</th>
-					<th>
-						%age of incorrect tasks
-					</th>
+					<th>Parameter</th>
+					<th>Quantity</th>
+					<th>No. of correct tasks</th>
+					<th>%age of correct tasks</th>
+					<th>No. of incorrect tasks</th>
+					<th>%age of incorrect tasks</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -142,37 +132,37 @@ export default {
 			this.checkMiss();
 
 			if (this.turnsTillRepeat == 0) {
-				if (this.sequence.length - (this.n) >= 0) {
-					this.prompt = this.sequence[(this.sequence.length - 1) - (this.n - 1)];
+				if (this.sequence.length - this.n >= 0) {
+					this.prompt = this.sequence[this.sequence.length - 1 - (this.n - 1)];
 					this.sequence.push(this.prompt);
-					this.repeatFlag = true
-					this.performanceParameters.matchTrialsTotal += 1
+					this.repeatFlag = true;
+					this.performanceParameters.matchTrialsTotal += 1;
 				} else {
 					this.prompt = String.fromCharCode(65 + Math.floor(Math.random() * 26));
 					this.sequence.push(this.prompt);
-					this.performanceParameters.nonMatchTrialsTotal += 1
+					this.performanceParameters.nonMatchTrialsTotal += 1;
 				}
 				this.turnsTillRepeat = Math.floor(Math.random() * 8);
 			} else {
 				this.prompt = String.fromCharCode(65 + Math.floor(Math.random() * 26));
 				this.sequence.push(this.prompt);
 				this.turnsTillRepeat = this.turnsTillRepeat - 1;
-				this.performanceParameters.nonMatchTrialsTotal += 1
+				this.performanceParameters.nonMatchTrialsTotal += 1;
 			}
 			setTimeout(() => {
-				this.showPrompt = true
-			}, 2500)
+				this.showPrompt = true;
+			}, 2500);
 			setTimeout(() => {
-				this.showPrompt = false
-			}, 1000)
+				this.showPrompt = false;
+			}, 1000);
 			if (this.sequence.length > 7) {
 				this.sequence.shift();
 			}
-			this.currentIteration += 1
+			this.currentIteration += 1;
 			this.promptTime = Date.now();
 
 			if (this.currentIteration == this.maxIterations) {
-				this.testCompleted()
+				this.testCompleted();
 			} else {
 				setTimeout(() => {
 					this.generatePrompt();
@@ -182,38 +172,37 @@ export default {
 		checkMiss() {
 			if (this.inputReceived == false) {
 				if (this.repeatFlag == true) {
-					this.score = this.score - 1
+					this.score = this.score - 1;
 					const promptData = {
 						prompt: this.prompt,
 						answer: '',
-						result: "Miss",
+						result: 'Miss',
 						timeTaken: ''
 					};
 					this.nBackTestData.individualPromptData.push(promptData);
-					this.performanceParameters.matchTrialsIncorrect += 1
-				}
-				else {
-					this.performanceParameters.nonMatchTrialsCorrect += 1
-					this.score += 1
+					this.performanceParameters.matchTrialsIncorrect += 1;
+				} else {
+					this.performanceParameters.nonMatchTrialsCorrect += 1;
+					this.score += 1;
 				}
 			} else {
 				if (this.repeatFlag == false) {
-					this.performanceParameters.nonMatchTrialsIncorrect += 1
-					this.score = this.score - 1
+					this.performanceParameters.nonMatchTrialsIncorrect += 1;
+					this.score = this.score - 1;
 				} else {
-					this.performanceParameters.matchTrialsCorrect += 1
+					this.performanceParameters.matchTrialsCorrect += 1;
 				}
 			}
-			this.repeatFlag = false
-			this.inputReceived = false
+			this.repeatFlag = false;
+			this.inputReceived = false;
 		},
 		checkAnswer() {
 			this.responseTime = Date.now();
-			const targetStimulus = this.sequence[(this.sequence.length - 1) - (this.n)];
-			this.inputReceived = true
+			const targetStimulus = this.sequence[this.sequence.length - 1 - this.n];
+			this.inputReceived = true;
 
 			if (this.prompt === targetStimulus.toString()) {
-				this.score += 1
+				this.score += 1;
 				this.result = 'Correct';
 			} else {
 				this.result = 'Incorrect';
@@ -231,36 +220,36 @@ export default {
 		testCompleted() {
 			this.nBackTestData.nBackTestScore = this.score;
 			useTestStore().addNBackTestData(this.nBackTestData);
-			this.completed = true
+			this.completed = true;
 		}
 	},
 	computed: {
 		matchTrialsCorrectPercent() {
-			return (this.performanceParameters.matchTrialsCorrect / this.performanceParameters.matchTrialsTotal) * 100
+			return (this.performanceParameters.matchTrialsCorrect / this.performanceParameters.matchTrialsTotal) * 100;
 		},
 		matchTrialsIncorrectPercent() {
-			return (this.performanceParameters.matchTrialsIncorrect / this.performanceParameters.matchTrialsTotal) * 100
+			return (this.performanceParameters.matchTrialsIncorrect / this.performanceParameters.matchTrialsTotal) * 100;
 		},
 		nonMatchTrialsCorrectPercent() {
-			return (this.performanceParameters.nonMatchTrialsCorrect / this.performanceParameters.nonMatchTrialsTotal) * 100
+			return (this.performanceParameters.nonMatchTrialsCorrect / this.performanceParameters.nonMatchTrialsTotal) * 100;
 		},
 		nonMatchTrialsIncorrectPercent() {
-			return (this.performanceParameters.nonMatchTrialsIncorrect / this.performanceParameters.nonMatchTrialsTotal) * 100
+			return (this.performanceParameters.nonMatchTrialsIncorrect / this.performanceParameters.nonMatchTrialsTotal) * 100;
 		},
 		totalTasks() {
-			return this.performanceParameters.matchTrialsTotal + this.performanceParameters.nonMatchTrialsTotal
+			return this.performanceParameters.matchTrialsTotal + this.performanceParameters.nonMatchTrialsTotal;
 		},
 		totalCorrect() {
-			return this.performanceParameters.matchTrialsCorrect + this.performanceParameters.nonMatchTrialsCorrect
+			return this.performanceParameters.matchTrialsCorrect + this.performanceParameters.nonMatchTrialsCorrect;
 		},
 		totalCorrectPercent() {
-			return (this.totalCorrect / this.totalTasks) * 100
+			return (this.totalCorrect / this.totalTasks) * 100;
 		},
 		totalIncorrect() {
-			return this.performanceParameters.matchTrialsIncorrect + this.performanceParameters.nonMatchTrialsIncorrect
+			return this.performanceParameters.matchTrialsIncorrect + this.performanceParameters.nonMatchTrialsIncorrect;
 		},
 		totalIncorrectPercent() {
-			return (this.totalIncorrect / this.totalTasks) * 100
+			return (this.totalIncorrect / this.totalTasks) * 100;
 		}
 	},
 	mounted() {

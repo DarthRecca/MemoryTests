@@ -20,6 +20,6 @@
 	font-size: larger;
 	border-width: 50;
 	padding: auto;
-	margin: auto
+	margin: auto;
 }
 </style>

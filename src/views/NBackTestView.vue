@@ -7,13 +7,10 @@
 		<p>
 			In this task, you will see letters displayed on the screen one at a time.<br />
 			Each letter will be displayed for a few seconds, and then the next letter will be displayed.<br />
-			You need to remember the last two letters that were displayed, and compare the current letter
-			to the letter that was displayed two letters ago.<br />
-			If the current letter is the same as the letter that was displayed two letters ago, press
-			the MATCHES button.<br /> If the current letter is different from the letter that was
-			displayed two letters ago, do not press anything.<br />
-			This is called the N=2 back test, because you are comparing the current letter to the
-			letter that was displayed two letters ago.<br />
+			You need to remember the last two letters that were displayed, and compare the current letter to the letter that was displayed two letters ago.<br />
+			If the current letter is the same as the letter that was displayed two letters ago, press the MATCHES button.<br />
+			If the current letter is different from the letter that was displayed two letters ago, do not press anything.<br />
+			This is called the N=2 back test, because you are comparing the current letter to the letter that was displayed two letters ago.<br />
 		</p>
 		<br />
 	</div>
@@ -23,8 +20,7 @@
 		</h2>
 		<br />
 		<div v-if="!this.testStartFlag && this.trialCompleted" class="start-button">
-			<v-btn @click="this.startTest()" size="x-large" block color="red-lighten-3" rounded="lg">Click Here to Start
-				Test</v-btn>
+			<v-btn @click="this.startTest()" size="x-large" block color="red-lighten-3" rounded="lg">Click Here to Start Test</v-btn>
 		</div>
 	</div>
 	<div v-if="!this.testStartFlag && !this.trialStartFlag" class="start-button">
@@ -60,7 +56,7 @@ export default {
 			this.testStartFlag = true;
 		},
 		startTrial() {
-			this.trialStartFlag = true
+			this.trialStartFlag = true;
 		},
 		completedTrial() {
 			this.trialCompleted = true;
@@ -92,7 +88,6 @@ export default {
 	align-items: center;
 	text-align: center;
 }
-
 
 .start-button {
 	text-align: center;
