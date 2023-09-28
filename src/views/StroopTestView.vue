@@ -7,10 +7,12 @@
 		<p>
 			In this task, you will see color names (RED, GREEN, BLUE, and YELLOW) printed in different colors.<br />
 			You need to respond to the color of the print, not the word itself.<br />
-			For example, if you see the word "RED" printed in green ink, you should press the Green button.<br />
+			For example, if you see the word "RED" printed in green ink(eg. <span class="example">RED</span>), you should
+			press the Green button.<br />
 		</p>
 		<br />
-		<p>Note - In this test your response time is measured. It is important therefore that you need to respond to the given tasks as early as possible but without making the mistakes.<br /></p>
+		<p>Note - In this test your response time is measured. It is important therefore that you need to respond to the
+			given tasks as early as possible but without making the mistakes.<br /></p>
 		<br />
 	</div>
 	<div class="real-test-indicator" v-if="this.trialCompleted && !this.testStartFlag">
@@ -18,7 +20,8 @@
 			<p>Your Real Test Starts Now!</p>
 		</h2>
 		<div v-if="!this.testStartFlag && this.trialCompleted" class="start-button">
-			<v-btn @click="this.startTest()" size="x-large" block color="red-lighten-3" rounded="lg">Click Here to Start Test</v-btn>
+			<v-btn @click="this.startTest()" size="x-large" block color="red-lighten-3" rounded="lg">Click Here to Start
+				Test</v-btn>
 		</div>
 	</div>
 	<div v-if="!this.testStartFlag && !this.trialStartFlag" class="start-button">
@@ -85,5 +88,9 @@ export default {
 .start-button {
 	text-align: center;
 	align-items: center;
+}
+
+.example {
+	color: green;
 }
 </style>

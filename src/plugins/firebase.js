@@ -6,8 +6,9 @@ const FirebasePlugin = {
 		const firebaseConfig = {
 			apiKey: 'AIzaSyDaiNAm8P2kssBmqHQrYbZXfmAvZPjF6iQ',
 			authDomain: 'memorytests-2788d.firebaseapp.com',
+			databaseURL: 'https://memorytests-2788d-default-rtdb.firebaseio.com',
 			projectId: 'memorytests-2788d',
-			storageBucket: 'memorytests-2788d.appspot.com',
+			storageBucket: 'buckets/memorytests-2788d.appspot.com',
 			messagingSenderId: '843804225888',
 			appId: '1:843804225888:web:5d755d447c43a782edae05',
 			measurementId: 'G-8KK4E4E1RE'

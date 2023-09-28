@@ -1,6 +1,11 @@
 <template>
 	<div class="n-back-container" v-if="!this.completed">
-		<h1 class="n-back-prompt" v-if="this.showPrompt">{{ prompt }}</h1>
+		<div class="n-back-prompt" v-if="this.showPrompt">
+			<p>{{ prompt }}</p>
+		</div>
+		<div v-else class="n-back-prompt">
+		</div>
+		<br />
 		<div class="n-back-input-container">
 			<v-btn @click="checkAnswer" color="green" block size="large">Matches</v-btn>
 		</div>
@@ -89,6 +94,7 @@ export default {
 			this.completed = true;
 		}
 	},
+	emits: ["trialCompleted"],
 	mounted() {
 		this.generatePrompt();
 	}
@@ -106,7 +112,10 @@ export default {
 }
 
 .n-back-prompt {
+	margin: 10px;
 	font-size: 80px;
+	height: 150px;
+	font-weight: bold;
 }
 
 .n-back-input-container {

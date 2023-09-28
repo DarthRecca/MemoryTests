@@ -1,6 +1,11 @@
 <template>
 	<div class="n-back-container" v-if="!this.completed">
-		<h1 class="n-back-prompt" v-if="this.showPrompt">{{ prompt }}</h1>
+		<div class="n-back-prompt" v-if="this.showPrompt">
+			<p>{{ prompt }}</p>
+		</div>
+		<div class="n-back-prompt" v-else>
+		</div>
+		<br />
 		<div class="n-back-input-container">
 			<v-btn @click="this.checkAnswer()" color="green" size="large">Matches</v-btn>
 		</div>
@@ -177,7 +182,6 @@ export default {
 						prompt: this.prompt,
 						answer: '',
 						result: 'Miss',
-						timeTaken: ''
 					};
 					this.nBackTestData.individualPromptData.push(promptData);
 					this.nBackTestData.performanceParameters.matchTrialsIncorrect += 1;
@@ -269,7 +273,10 @@ export default {
 }
 
 .n-back-prompt {
+	margin: 10px;
 	font-size: 80px;
+	height: 150px;
+	font-weight: bold;
 }
 
 .n-back-input-container {

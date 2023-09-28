@@ -19,18 +19,20 @@ export default {
 			const data = useTestStore().getData();
 			try {
 				const firebaseApp = this.$firebaseApp;
-				const db = firebaseApp.database();
-				const messagesRef = db.ref('/TestData');
+				const fStore = firebaseApp.firestore();
+				const messagesRef = fStore.ref('/testData');
 				const dataPacket = {
 					userDetails: data.userDetailsData,
-					longTermMemoryTest: data.longTermMemoryTestData,
-					shortTermMemoryTest: data.shortTermMemoryTestData,
-					digitSpanTest: data.digitSpanTestData,
-					stroopTest: data.stroopTestData,
-					nBackTest: data.nBackTestData,
+					testData: {
+						longTermMemoryTestData: data.longTermMemoryTestData,
+						shortTermMemoryTestData: data.shortTermMemoryTestData,
+						digitSpanTestData: data.digitSpanTestData,
+						stroopTestData: data.stroopTestData,
+						nBackTestData: data.nBackTestData,
+					},
 					timestamp: new Date().toString()
 				}
-				messagesRef.push(dataPacket);
+				messagesRef.add(dataPacket);
 
 			} catch (error) {
 				console.error('Error saving message:', error);

@@ -1,22 +1,32 @@
 <template>
 	<v-container class="stroop-test-container">
-		<div v-if="!this.completed" class="stroop-test">
-			<div class="stroop-prompt" v-if="this.showPrompt">
-				<p :style="{ color: textColor }">{{ colorName }}</p>
+		<v-sheet class="stroop-test" color="teal-lighten-3">
+			<div v-if="!this.completed">
+				<div class="stroop-prompt" v-if="this.showPrompt">
+					<p :style="{ color: textColor }">{{ colorName }}</p>
+				</div>
+				<div class="stroop-prompt" v-else>
+				</div>
+				<br />
+				<div class="answer-choices">
+					<v-btn @click="checkAnswer('red')" class="answer-choice" color="black">Red</v-btn>
+					<v-btn @click="checkAnswer('green')" class="answer-choice" color="black">Green</v-btn>
+					<v-btn @click="checkAnswer('blue')" class="answer-choice" color="black">Blue</v-btn>
+					<v-btn @click="checkAnswer('yellow')" class="answer-choice" color="black">Yellow</v-btn>
+				</div>
+				<br />
+				<div v-if="this.showResult" class="result">
+					<p>Your answer is {{ result }}!</p>
+				</div>
+				<div v-else class="result">
+				</div>
 				<br />
 			</div>
-			<div class="answer-choices">
-				<v-btn @click="checkAnswer('red')" class="answer-choice" color="red">Red</v-btn>
-				<v-btn @click="checkAnswer('green')" class="answer-choice" color="green">Green</v-btn>
-				<v-btn @click="checkAnswer('blue')" class="answer-choice" color="blue">Blue</v-btn>
-				<v-btn @click="checkAnswer('yellow')" class="answer-choice" color="yellow">Yellow</v-btn>
+			<div v-if="this.completed">
+				<p>Trial Completed</p>
+				<v-btn @click="$emit('trialCompleted')" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
 			</div>
-			<p v-if="this.showResult" class="result">Your answer is {{ result }}!</p>
-		</div>
-		<div v-if="this.completed">
-			<p>Trial Completed</p>
-			<v-btn @click="$emit('trialCompleted')" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
-		</div>
+		</v-sheet>
 	</v-container>
 </template>
 
@@ -87,15 +97,19 @@ export default {
 			this.hideResult();
 		}
 	},
+	emits: ["trialCompleted"],
 	computed: {}
 };
 </script>
 
 <style scoped>
 .stroop-test-container {
+	justify-content: center;
 	text-align: center;
+	align-items: center;
 	padding: 10px;
-	margin: 10px;
+	height: 100vh;
+	width: 100%;
 }
 
 .stroop-test {
@@ -104,19 +118,21 @@ export default {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	height: 100vh;
-	padding: 10px;
-	margin: 10px;
+	border: solid black
 }
 
 .stroop-prompt {
+	margin: 10px;
 	font-size: 52px;
+	font-weight: bold;
+	height: 150px;
 	align-items: center;
 	text-align: center;
 }
 
 .answer-choices {
 	margin-top: 20px;
+	height: 50px;
 }
 
 .answer-choice {
@@ -127,5 +143,6 @@ export default {
 .result {
 	font-size: 18px;
 	margin-top: 10px;
+	height: 15px
 }
 </style>

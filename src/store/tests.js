@@ -34,11 +34,7 @@ export const useTestStore = defineStore('tests', {
 				congruentIncorrect: 0,
 				incongruentIncorrect: 0,
 				congruentAvgTime: 0,
-				incongruentAvgTime: 0,
-				totalTasks: 0,
-				totalCorrect: 0,
-				totalIncorrect: 0,
-				totalAvgTime: 0
+				incongruentAvgTime: 0
 			},
 			totalTimeTaken: 0
 		},
@@ -77,6 +73,12 @@ export const useTestStore = defineStore('tests', {
 		addFormData(data) {
 			this.userDetailsData = data;
 		},
+		addLongTermMemoryTestData(data) {
+			this.longTermMemoryTestData = data;
+		},
+		addShortTermMemoryTestData(data) {
+			this.shortTermMemoryTestData = data;
+		},
 		getStroopTestData() {
 			return this.stroopTestData;
 		},
@@ -85,6 +87,15 @@ export const useTestStore = defineStore('tests', {
 		},
 		getNBackTestData() {
 			return this.nBackTestData;
+		},
+		getUserDetailsData() {
+			return this.userDetailsData;
+		},
+		getLongTermMemoryTestData() {
+			return this.longTermMemoryTestData;
+		},
+		getShortTermMemoryTestData() {
+			return this.shortTermMemoryTestData;
 		},
 		getData() {
 			return {

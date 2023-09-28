@@ -1,87 +1,100 @@
 <template>
 	<v-container class="stroop-test-container">
-		<div v-if="!this.completed" class="stroop-test">
-			<div class="stroop-prompt" v-if="this.showPrompt">
-				<p :style="{ color: textColor }">{{ colorName }}</p>
+		<v-sheet class="stroop-test" color="teal-lighten-3">
+			<div v-if="!this.completed">
+				<div class="stroop-prompt" v-if="this.showPrompt">
+					<p :style="{ color: textColor }">{{ colorName }}</p>
+				</div>
+				<div class="stroop-prompt" v-else>
+				</div>
+				<br />
+				<div class="answer-choices">
+					<v-btn @click="checkAnswer('red')" class="answer-choice" color="black">Red</v-btn>
+					<v-btn @click="checkAnswer('green')" class="answer-choice" color="black">Green</v-btn>
+					<v-btn @click="checkAnswer('blue')" class="answer-choice" color="black">Blue</v-btn>
+					<v-btn @click="checkAnswer('yellow')" class="answer-choice" color="black">Yellow</v-btn>
+				</div>
+				<br />
+				<div v-if="this.showResult" class="result">
+					<p>Your answer is {{ result }}!</p>
+				</div>
+				<div v-else class="result">
+				</div>
 				<br />
 			</div>
-			<div class="answer-choices">
-				<v-btn @click="checkAnswer('red')" class="answer-choice" color="red">Red</v-btn>
-				<v-btn @click="checkAnswer('green')" class="answer-choice" color="green">Green</v-btn>
-				<v-btn @click="checkAnswer('blue')" class="answer-choice" color="blue">Blue</v-btn>
-				<v-btn @click="checkAnswer('yellow')" class="answer-choice" color="yellow">Yellow</v-btn>
+			<div v-if="this.completed">
+				<p>Test Completed</p>
+				<br />
+				<v-table class="perfromance-table">
+					<caption>
+						Your Performance
+					</caption>
+					<thead>
+						<tr>
+							<th>Parameter</th>
+							<th>Quantity</th>
+							<th>No. of correct tasks</th>
+							<th>No. of incorrect tasks</th>
+							<th>Time Taken for task(ms)</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Congruent Trials (Trials that had same colour as the words e.g RED printed in red colour)
+							</td>
+							<td>
+								{{ this.performanceParameters.congruentTotal }}
+							</td>
+							<td>
+								{{ this.performanceParameters.congruentCorrect }}
+							</td>
+							<td>
+								{{ this.performanceParameters.congruentIncorrect }}
+							</td>
+							<td>
+								{{ this.performanceParameters.congruentAvgTime }}
+							</td>
+						</tr>
+						<tr>
+							<td>In-congruent Trials (Trials that had different colour as the words e.g RED printed in green
+								colour)</td>
+							<td>
+								{{ this.performanceParameters.incongruentTotal }}
+							</td>
+							<td>
+								{{ this.performanceParameters.incongruentCorrect }}
+							</td>
+							<td>
+								{{ this.performanceParameters.incongruentIncorrect }}
+							</td>
+							<td>
+								{{ this.performanceParameters.incongruentAvgTime }}
+							</td>
+						</tr>
+						<tr>
+							<td>Total</td>
+							<td>
+								{{ this.totalTasks }}
+							</td>
+							<td>
+								{{ this.totalCorrect }}
+							</td>
+							<td>
+								{{ this.totalIncorrect }}
+							</td>
+							<td>
+								{{ this.totalAvgTime }}
+							</td>
+						</tr>
+					</tbody>
+				</v-table>
+				<br />
+				<p>Your Stroop Score(Absolute of Congruent - Incongruent Avg Time): {{ this.stroopScore }}ms</p>
+				<br />
+				<v-btn value="NBackLink" to="/nbacktest" size="x-large" block color="red-lighten-3"
+					rounded="lg">Next</v-btn>
 			</div>
-			<p v-if="this.showResult" class="result">Your answer is {{ result }}!</p>
-		</div>
-		<div v-if="this.completed">
-			<p>Test Completed</p>
-			<br />
-			<v-table class="perfromance-table">
-				<caption>
-					Your Performance
-				</caption>
-				<thead>
-					<tr>
-						<th>Parameter</th>
-						<th>Quantity</th>
-						<th>No. of correct tasks</th>
-						<th>No. of incorrect tasks</th>
-						<th>Time Taken for task(ms)</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>Congruent Trials (Trials that had same colour as the words e.g RED printed in red colour)</td>
-						<td>
-							{{ this.performanceParameters.congruentTotal }}
-						</td>
-						<td>
-							{{ this.performanceParameters.congruentCorrect }}
-						</td>
-						<td>
-							{{ this.performanceParameters.congruentIncorrect }}
-						</td>
-						<td>
-							{{ this.performanceParameters.congruentAvgTime }}
-						</td>
-					</tr>
-					<tr>
-						<td>In-congruent Trials (Trials that had different colour as the words e.g RED printed in green colour)</td>
-						<td>
-							{{ this.performanceParameters.incongruentTotal }}
-						</td>
-						<td>
-							{{ this.performanceParameters.incongruentCorrect }}
-						</td>
-						<td>
-							{{ this.performanceParameters.incongruentIncorrect }}
-						</td>
-						<td>
-							{{ this.performanceParameters.incongruentAvgTime }}
-						</td>
-					</tr>
-					<tr>
-						<td>Total</td>
-						<td>
-							{{ this.totalTasks }}
-						</td>
-						<td>
-							{{ this.totalCorrect }}
-						</td>
-						<td>
-							{{ this.totalIncorrect }}
-						</td>
-						<td>
-							{{ this.totalAvgTime }}
-						</td>
-					</tr>
-				</tbody>
-			</v-table>
-			<br />
-			<p>Your Stroop Score(Absolute of Congruent - Incongruent Avg Time): {{ this.stroopScore }}</p>
-			<br />
-			<v-btn value="NBackLink" to="/nbacktest" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
-		</div>
+		</v-sheet>
 	</v-container>
 </template>
 
@@ -101,25 +114,28 @@ export default {
 			textColor: '',
 			correctAnswer: '',
 			result: '',
-			testScore: 0,
 			showResult: false,
 			showPrompt: true,
 			completed: false,
 			promptStartTime: '',
 			promptEndTime: '',
-			individualPromptData: [],
-			totalTestTime: 0,
 			isCongruent: false,
-			performanceParameters: {
-				congruentTotal: 0,
-				incongruentTotal: 0,
-				congruentCorrect: 0,
-				incongruentCorrect: 0,
-				congruentIncorrect: 0,
-				incongruentIncorrect: 0,
-				congruentAvgTime: 0,
-				incongruentAvgTime: 0
+			stroopTestData: {
+				testScore: 0,
+				individualPromptData: [],
+				performanceParameters: {
+					congruentTotal: 0,
+					incongruentTotal: 0,
+					congruentCorrect: 0,
+					incongruentCorrect: 0,
+					congruentIncorrect: 0,
+					incongruentIncorrect: 0,
+					congruentAvgTime: 0,
+					incongruentAvgTime: 0
+				},
+				totalTestTime: 0,
 			}
+
 		};
 	},
 	mounted() {
@@ -135,10 +151,10 @@ export default {
 			this.correctAnswer = this.textColor.toLowerCase();
 			this.promptStartTime = Date.now();
 			if (this.textColor == this.colorName.toLowerCase()) {
-				this.performanceParameters.congruentTotal += 1;
+				this.stroopTestData.performanceParameters.congruentTotal += 1;
 				this.isCongruent = true;
 			} else {
-				this.performanceParameters.incongruentTotal += 1;
+				this.stroopTestData.performanceParameters.incongruentTotal += 1;
 				this.isCongruent = false;
 			}
 			this.hideResult();
@@ -152,30 +168,28 @@ export default {
 			if (answer.toLowerCase() === this.correctAnswer) {
 				this.result = 'Correct';
 				if (this.isCongruent) {
-					this.performanceParameters.congruentCorrect += 1;
+					this.stroopTestData.performanceParameters.congruentCorrect += 1;
 				} else {
-					this.performanceParameters.incongruentCorrect += 1;
+					this.stroopTestData.performanceParameters.incongruentCorrect += 1;
 				}
 			} else {
 				this.result = 'Incorrect';
 				if (this.isCongruent) {
-					this.performanceParameters.congruentIncorrect += 1;
+					this.stroopTestData.performanceParameters.congruentIncorrect += 1;
 				} else {
-					this.performanceParameters.incongruentIncorrect += 1;
+					this.stroopTestData.performanceParameters.incongruentIncorrect += 1;
 				}
 			}
 			this.displayResult();
 			const promptTimeTaken = this.promptEndTime - this.promptStartTime;
 			if (this.isCongruent) {
-				this.performanceParameters.congruentAvgTime += promptTimeTaken;
+				this.stroopTestData.performanceParameters.congruentAvgTime += promptTimeTaken;
 			} else {
-				this.performanceParameters.incongruentAvgTime += promptTimeTaken;
+				this.stroopTestData.performanceParameters.incongruentAvgTime += promptTimeTaken;
 			}
-			const score = this.result === 'Correct' ? 1 : 0;
-			this.totalTestTime += promptTimeTaken;
-			this.testScore += score;
+			this.stroopTestData.totalTestTime += promptTimeTaken;
 
-			this.individualPromptData.push({
+			this.stroopTestData.individualPromptData.push({
 				promptText: this.colorName,
 				promptColor: this.textColor,
 				answerChosen: answer,
@@ -203,19 +217,20 @@ export default {
 		},
 		testCompleted() {
 			this.completed = true;
+			this.testScore = this.stroopScore
 			useTestStore().addStroopTestData({
-				score: this.testScore,
-				individualPromptData: this.individualPromptData,
-				totalTimeTaken: this.totalTestTime,
-				performanceParameters: this.performanceParameters
+				score: this.stroopTestData.testScore,
+				individualPromptData: this.stroopTestData.individualPromptData,
+				totalTimeTaken: this.stroopTestData.totalTestTime,
+				performanceParameters: this.stroopTestData.performanceParameters
 			});
-			this.performanceParameters.congruentAvgTime = Math.floor(this.performanceParameters.congruentAvgTime / this.performanceParameters.congruentTotal);
-			if (isNaN(this.performanceParameters.congruentAvgTime)) {
-				this.performanceParameters.congruentAvgTime = 9999;
+			this.stroopTestData.performanceParameters.congruentAvgTime = Math.floor(this.stroopTestData.performanceParameters.congruentAvgTime / this.stroopTestData.performanceParameters.congruentTotal);
+			if (isNaN(this.stroopTestData.performanceParameters.congruentAvgTime)) {
+				this.stroopTestData.performanceParameters.congruentAvgTime = 9999;
 			}
-			this.performanceParameters.incongruentAvgTime = Math.floor(this.performanceParameters.incongruentAvgTime / this.performanceParameters.incongruentTotal);
-			if (isNaN(this.performanceParameters.incongruentAvgTime)) {
-				this.performanceParameters.congruentAvgTime = 9999;
+			this.stroopTestData.performanceParameters.incongruentAvgTime = Math.floor(this.stroopTestData.performanceParameters.incongruentAvgTime / this.stroopTestData.performanceParameters.incongruentTotal);
+			if (isNaN(this.stroopTestData.performanceParameters.incongruentAvgTime)) {
+				this.stroopTestData.performanceParameters.congruentAvgTime = 9999;
 			}
 			this.hideResult();
 		}
@@ -225,19 +240,19 @@ export default {
 			return useTestStore().getStroopTestData();
 		},
 		totalTasks() {
-			return this.performanceParameters.congruentTotal + this.performanceParameters.incongruentTotal;
+			return this.stroopTestData.performanceParameters.congruentTotal + this.stroopTestData.performanceParameters.incongruentTotal;
 		},
 		totalCorrect() {
-			return this.performanceParameters.congruentCorrect + this.performanceParameters.incongruentCorrect;
+			return this.stroopTestData.performanceParameters.congruentCorrect + this.stroopTestData.performanceParameters.incongruentCorrect;
 		},
 		totalIncorrect() {
-			return this.performanceParameters.congruentIncorrect + this.performanceParameters.incongruentIncorrect;
+			return this.stroopTestData.performanceParameters.congruentIncorrect + this.stroopTestData.performanceParameters.incongruentIncorrect;
 		},
 		totalAvgTime() {
-			return Math.floor(this.totalTestTime / this.totalTasks);
+			return Math.floor(this.stroopTestData.totalTestTime / this.totalTasks);
 		},
 		stroopScore() {
-			const number = this.performanceParameters.incongruentAvgTime - this.performanceParameters.congruentAvgTime;
+			const number = this.stroopTestData.performanceParameters.incongruentAvgTime - this.stroopTestData.performanceParameters.congruentAvgTime;
 			return Math.abs(number);
 		}
 	}
@@ -246,7 +261,12 @@ export default {
 
 <style scoped>
 .stroop-test-container {
+	justify-content: center;
 	text-align: center;
+	align-items: center;
+	padding: 10px;
+	height: 100vh;
+	width: 100%;
 }
 
 .stroop-test {
@@ -255,18 +275,23 @@ export default {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	height: 100vh;
+	border: solid black
 }
 
 .stroop-prompt {
+	margin: 10px;
 	font-size: 52px;
+	font-weight: bold;
+	height: 150px;
 	align-items: center;
 	text-align: center;
 }
 
 .answer-choices {
 	margin-top: 20px;
+	height: 50px;
 }
+
 
 .answer-choice {
 	font-size: 24px;
@@ -276,6 +301,7 @@ export default {
 .result {
 	font-size: 18px;
 	margin-top: 10px;
+	height: 5px
 }
 
 .perfromance-table {
