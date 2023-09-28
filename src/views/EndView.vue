@@ -1,7 +1,8 @@
 <template>
 	<div class="thanks">
 		<p>Thank YOU!</p>
-		<p>If you want to take full Interlligence Tests go to <a href="https://www.psychologytestingforall.com/use-our-free-resources">Our Site</a></p>
+		<p>If you want to take full Interlligence Tests go to <a
+				href="https://www.psychologytestingforall.com/use-our-free-resources">Our Site</a></p>
 	</div>
 </template>
 
@@ -19,9 +20,8 @@ export default {
 			try {
 				const firebaseApp = this.$firebaseApp;
 				const db = firebaseApp.database();
-				const messagesRef = db.ref('TestData');
-				const newMessageRef = messagesRef.push();
-				await newMessageRef.set({
+				const messagesRef = db.ref('/TestData');
+				const dataPacket = {
 					userDetails: data.userDetailsData,
 					longTermMemoryTest: data.longTermMemoryTestData,
 					shortTermMemoryTest: data.shortTermMemoryTestData,
@@ -29,7 +29,9 @@ export default {
 					stroopTest: data.stroopTestData,
 					nBackTest: data.nBackTestData,
 					timestamp: new Date().toString()
-				});
+				}
+				messagesRef.push(dataPacket);
+
 			} catch (error) {
 				console.error('Error saving message:', error);
 			}
