@@ -26,7 +26,7 @@ export const useTestStore = defineStore('tests', {
 		stroopTestData: {
 			score: 0,
 			individualPromptData: [],
-			performance: {
+			performanceParameters: {
 				congruentTotal: 0,
 				incongruentTotal: 0,
 				congruentCorrect: 0,
@@ -43,7 +43,7 @@ export const useTestStore = defineStore('tests', {
 			totalTimeTaken: 0
 		},
 		nBackTestData: {
-			performance: {
+			performanceParameters: {
 				matchTrialsTotal: 0,
 				matchTrialsCorrect: 0,
 				matchTrialsIncorrect: 0,

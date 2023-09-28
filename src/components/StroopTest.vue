@@ -206,7 +206,8 @@ export default {
 			useTestStore().addStroopTestData({
 				score: this.testScore,
 				individualPromptData: this.individualPromptData,
-				totalTimeTaken: this.totalTestTime
+				totalTimeTaken: this.totalTestTime,
+				performanceParameters: this.performanceParameters
 			});
 			this.performanceParameters.congruentAvgTime = Math.floor(this.performanceParameters.congruentAvgTime / this.performanceParameters.congruentTotal);
 			if (isNaN(this.performanceParameters.congruentAvgTime)) {

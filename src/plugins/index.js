@@ -5,8 +5,9 @@ import pinia from '../store';
 import router from '../router';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
+import FirebasePlugin from './firebase';
 
 export function registerPlugins(app) {
 	loadFonts();
-	app.use(vuetify).use(pinia).use(router).use(VueAxios, axios);
+	app.use(vuetify).use(pinia).use(router).use(VueAxios, axios).use(FirebasePlugin);
 }

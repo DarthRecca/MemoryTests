@@ -29,16 +29,16 @@
 						<b>Trials that had match</b>
 					</td>
 					<td>
-						{{ this.performanceParameters.matchTrialsTotal }}
+						{{ this.nBackTestData.performanceParameters.matchTrialsTotal }}
 					</td>
 					<td>
-						{{ this.performanceParameters.matchTrialsCorrect }}
+						{{ this.nBackTestData.performanceParameters.matchTrialsCorrect }}
 					</td>
 					<td>
 						{{ this.matchTrialsCorrectPercent }}
 					</td>
 					<td>
-						{{ this.performanceParameters.matchTrialsIncorrect }}
+						{{ this.nBackTestData.performanceParameters.matchTrialsIncorrect }}
 					</td>
 					<td>
 						{{ this.matchTrialsIncorrectPercent }}
@@ -49,16 +49,16 @@
 						<b>Trials that had no match</b>
 					</td>
 					<td>
-						{{ this.performanceParameters.nonMatchTrialsTotal }}
+						{{ this.nBackTestData.performanceParameters.nonMatchTrialsTotal }}
 					</td>
 					<td>
-						{{ this.performanceParameters.nonMatchTrialsCorrect }}
+						{{ this.nBackTestData.performanceParameters.nonMatchTrialsCorrect }}
 					</td>
 					<td>
 						{{ this.nonMatchTrialsCorrectPercent }}
 					</td>
 					<td>
-						{{ this.performanceParameters.nonMatchTrialsIncorrect }}
+						{{ this.nBackTestData.performanceParameters.nonMatchTrialsIncorrect }}
 					</td>
 					<td>
 						{{ this.nonMatchTrialsIncorrectPercent }}
@@ -110,20 +110,20 @@ export default {
 			resposeTime: '',
 			nBackTestData: {
 				individualPromptData: [],
-				nBackTestScore: 0
+				nBackTestScore: 0,
+				performanceParameters: {
+					matchTrialsTotal: 0,
+					matchTrialsCorrect: 0,
+					matchTrialsIncorrect: 0,
+					nonMatchTrialsTotal: 0,
+					nonMatchTrialsCorrect: 0,
+					nonMatchTrialsIncorrect: 0
+				}
 			},
 			score: 0,
 			inputReceived: false,
 			repeatFlag: false,
-			completed: false,
-			performanceParameters: {
-				matchTrialsTotal: 0,
-				matchTrialsCorrect: 0,
-				matchTrialsIncorrect: 0,
-				nonMatchTrialsTotal: 0,
-				nonMatchTrialsCorrect: 0,
-				nonMatchTrialsIncorrect: 0
-			}
+			completed: false
 		};
 	},
 	methods: {
@@ -136,18 +136,18 @@ export default {
 					this.prompt = this.sequence[this.sequence.length - 1 - (this.n - 1)];
 					this.sequence.push(this.prompt);
 					this.repeatFlag = true;
-					this.performanceParameters.matchTrialsTotal += 1;
+					this.nBackTestData.performanceParameters.matchTrialsTotal += 1;
 				} else {
 					this.prompt = String.fromCharCode(65 + Math.floor(Math.random() * 26));
 					this.sequence.push(this.prompt);
-					this.performanceParameters.nonMatchTrialsTotal += 1;
+					this.nBackTestData.performanceParameters.nonMatchTrialsTotal += 1;
 				}
 				this.turnsTillRepeat = Math.floor(Math.random() * 8);
 			} else {
 				this.prompt = String.fromCharCode(65 + Math.floor(Math.random() * 26));
 				this.sequence.push(this.prompt);
 				this.turnsTillRepeat = this.turnsTillRepeat - 1;
-				this.performanceParameters.nonMatchTrialsTotal += 1;
+				this.nBackTestData.performanceParameters.nonMatchTrialsTotal += 1;
 			}
 			setTimeout(() => {
 				this.showPrompt = true;
@@ -180,17 +180,17 @@ export default {
 						timeTaken: ''
 					};
 					this.nBackTestData.individualPromptData.push(promptData);
-					this.performanceParameters.matchTrialsIncorrect += 1;
+					this.nBackTestData.performanceParameters.matchTrialsIncorrect += 1;
 				} else {
-					this.performanceParameters.nonMatchTrialsCorrect += 1;
+					this.nBackTestData.performanceParameters.nonMatchTrialsCorrect += 1;
 					this.score += 1;
 				}
 			} else {
 				if (this.repeatFlag == false) {
-					this.performanceParameters.nonMatchTrialsIncorrect += 1;
+					this.nBackTestData.performanceParameters.nonMatchTrialsIncorrect += 1;
 					this.score = this.score - 1;
 				} else {
-					this.performanceParameters.matchTrialsCorrect += 1;
+					this.nBackTestData.performanceParameters.matchTrialsCorrect += 1;
 				}
 			}
 			this.repeatFlag = false;
@@ -225,31 +225,31 @@ export default {
 	},
 	computed: {
 		matchTrialsCorrectPercent() {
-			return (this.performanceParameters.matchTrialsCorrect / this.performanceParameters.matchTrialsTotal) * 100;
+			return Math.floor((this.nBackTestData.performanceParameters.matchTrialsCorrect / this.nBackTestData.performanceParameters.matchTrialsTotal) * 100);
 		},
 		matchTrialsIncorrectPercent() {
-			return (this.performanceParameters.matchTrialsIncorrect / this.performanceParameters.matchTrialsTotal) * 100;
+			return Math.floor((this.nBackTestData.performanceParameters.matchTrialsIncorrect / this.nBackTestData.performanceParameters.matchTrialsTotal) * 100);
 		},
 		nonMatchTrialsCorrectPercent() {
-			return (this.performanceParameters.nonMatchTrialsCorrect / this.performanceParameters.nonMatchTrialsTotal) * 100;
+			return Math.floor((this.nBackTestData.performanceParameters.nonMatchTrialsCorrect / this.nBackTestData.performanceParameters.nonMatchTrialsTotal) * 100);
 		},
 		nonMatchTrialsIncorrectPercent() {
-			return (this.performanceParameters.nonMatchTrialsIncorrect / this.performanceParameters.nonMatchTrialsTotal) * 100;
+			return Math.floor((this.nBackTestData.performanceParameters.nonMatchTrialsIncorrect / this.nBackTestData.performanceParameters.nonMatchTrialsTotal) * 100);
 		},
 		totalTasks() {
-			return this.performanceParameters.matchTrialsTotal + this.performanceParameters.nonMatchTrialsTotal;
+			return this.nBackTestData.performanceParameters.matchTrialsTotal + this.nBackTestData.performanceParameters.nonMatchTrialsTotal;
 		},
 		totalCorrect() {
-			return this.performanceParameters.matchTrialsCorrect + this.performanceParameters.nonMatchTrialsCorrect;
+			return this.nBackTestData.performanceParameters.matchTrialsCorrect + this.nBackTestData.performanceParameters.nonMatchTrialsCorrect;
 		},
 		totalCorrectPercent() {
-			return (this.totalCorrect / this.totalTasks) * 100;
+			return Math.floor((this.totalCorrect / this.totalTasks) * 100);
 		},
 		totalIncorrect() {
-			return this.performanceParameters.matchTrialsIncorrect + this.performanceParameters.nonMatchTrialsIncorrect;
+			return this.nBackTestData.performanceParameters.matchTrialsIncorrect + this.nBackTestData.performanceParameters.nonMatchTrialsIncorrect;
 		},
 		totalIncorrectPercent() {
-			return (this.totalIncorrect / this.totalTasks) * 100;
+			return Math.floor((this.totalIncorrect / this.totalTasks) * 100);
 		}
 	},
 	mounted() {
