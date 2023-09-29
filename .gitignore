@@ -1,6 +1,5 @@
 .DS_Store
 node_modules
-dist
 
 # local env files
 .env.local
@@ -20,22 +19,3 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
-dist/index.html
-dist/assets/DetailsFormView-ca3a732e.js
-dist/assets/DigitSpanTestView-0e0ead97.css
-dist/assets/DigitSpanTestView-603f652a.js
-dist/assets/EndView-26a925c1.js
-dist/assets/HomeView-069c303c.js
-dist/assets/index-4660cc02.js
-dist/assets/LongTermMemoryTestView-76c490ff.js
-dist/assets/NBackTestView-4ea64bc0.js
-dist/assets/NBackTestView-312bb965.css
-dist/assets/StroopTestView-9af75227.css
-dist/assets/StroopTestView-635d28b9.js
-dist/assets/tests-7fa75cfb.js
-dist/assets/VBtn-07ada711.js
-dist/assets/VContainer-ab152aa5.js
-dist/assets/VResponsive-a671715b.js
-dist/assets/VRow-33868326.js
-dist/assets/VTable-80d1b801.js
-dist/assets/VTextField-9fba9cba.js

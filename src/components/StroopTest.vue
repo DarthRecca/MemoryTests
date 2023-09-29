@@ -5,8 +5,7 @@
 				<div class="stroop-prompt" v-if="this.showPrompt">
 					<p :style="{ color: textColor }">{{ colorName }}</p>
 				</div>
-				<div class="stroop-prompt" v-else>
-				</div>
+				<div class="stroop-prompt" v-else></div>
 				<br />
 				<div class="answer-choices">
 					<v-btn @click="checkAnswer('red')" class="answer-choice" color="black">Red</v-btn>
@@ -18,8 +17,7 @@
 				<div v-if="this.showResult" class="result">
 					<p>Your answer is {{ result }}!</p>
 				</div>
-				<div v-else class="result">
-				</div>
+				<div v-else class="result"></div>
 				<br />
 			</div>
 			<div v-if="this.completed">
@@ -40,8 +38,7 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td>Congruent Trials (Trials that had same colour as the words e.g RED printed in red colour)
-							</td>
+							<td>Congruent Trials (Trials that had same colour as the words e.g RED printed in red colour)</td>
 							<td>
 								{{ this.stroopTestData.performanceParameters.congruentTotal }}
 							</td>
@@ -56,8 +53,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td>In-congruent Trials (Trials that had different colour as the words e.g RED printed in green
-								colour)</td>
+							<td>In-congruent Trials (Trials that had different colour as the words e.g RED printed in green colour)</td>
 							<td>
 								{{ this.stroopTestData.performanceParameters.incongruentTotal }}
 							</td>
@@ -89,11 +85,9 @@
 					</tbody>
 				</v-table>
 				<br />
-				<p>Your Stroop Score(Absolute of Congruent - Incongruent Avg Time): {{ this.stroopTestData.testScore }}ms
-				</p>
+				<p>Your Stroop Score(Absolute of Congruent - Incongruent Avg Time): {{ this.stroopTestData.testScore }}ms</p>
 				<br />
-				<v-btn value="NBackLink" to="/nbacktest" size="x-large" block color="red-lighten-3"
-					rounded="lg">Next</v-btn>
+				<v-btn value="NBackLink" to="/nbacktest" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
 			</div>
 		</v-sheet>
 	</v-container>
@@ -134,9 +128,8 @@ export default {
 					congruentAvgTime: 0,
 					incongruentAvgTime: 0
 				},
-				totalTestTime: 0,
+				totalTestTime: 0
 			}
-
 		};
 	},
 	mounted() {
@@ -218,7 +211,7 @@ export default {
 		},
 		testCompleted() {
 			this.completed = true;
-			this.stroopTestData.testScore = this.stroopScore
+			this.stroopTestData.testScore = this.stroopScore;
 			useTestStore().addStroopTestData({
 				score: this.stroopTestData.testScore,
 				individualPromptData: this.stroopTestData.individualPromptData,
@@ -276,7 +269,7 @@ export default {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	border: solid black
+	border: solid black;
 }
 
 .stroop-prompt {
@@ -293,7 +286,6 @@ export default {
 	height: 50px;
 }
 
-
 .answer-choice {
 	font-size: 24px;
 	margin: 5px;
@@ -302,7 +294,7 @@ export default {
 .result {
 	font-size: 18px;
 	margin-top: 10px;
-	height: 5px
+	height: 5px;
 }
 
 .perfromance-table {

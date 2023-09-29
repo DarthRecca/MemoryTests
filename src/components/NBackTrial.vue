@@ -3,8 +3,7 @@
 		<div class="n-back-prompt" v-if="this.showPrompt">
 			<p>{{ prompt }}</p>
 		</div>
-		<div v-else class="n-back-prompt">
-		</div>
+		<div v-else class="n-back-prompt"></div>
 		<br />
 		<div class="n-back-input-container">
 			<v-btn @click="checkAnswer" color="green" block size="large">Matches</v-btn>
@@ -13,16 +12,14 @@
 		<div v-if="showResult" class="result">
 			<p>Your answer is {{ result }}!</p>
 		</div>
-		<div v-else class="result">
-		</div>
+		<div v-else class="result"></div>
 	</div>
 	<div v-if="this.completed">
 		<br />
 		<div v-if="showResult" class="result">
 			<p>Your answer is {{ result }}!</p>
 		</div>
-		<div v-else class="result">
-		</div>
+		<div v-else class="result"></div>
 		<v-btn @click="$emit('trialCompleted')" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
 	</div>
 </template>
@@ -104,7 +101,7 @@ export default {
 			this.completed = true;
 		}
 	},
-	emits: ["trialCompleted"],
+	emits: ['trialCompleted'],
 	mounted() {
 		this.generatePrompt();
 	}

@@ -5,8 +5,7 @@
 				<div class="stroop-prompt" v-if="this.showPrompt">
 					<p :style="{ color: textColor }">{{ colorName }}</p>
 				</div>
-				<div class="stroop-prompt" v-else>
-				</div>
+				<div class="stroop-prompt" v-else></div>
 				<br />
 				<div class="answer-choices">
 					<v-btn @click="checkAnswer('red')" class="answer-choice" color="black">Red</v-btn>
@@ -18,8 +17,7 @@
 				<div v-if="this.showResult" class="result">
 					<p>Your answer is {{ result }}!</p>
 				</div>
-				<div v-else class="result">
-				</div>
+				<div v-else class="result"></div>
 				<br />
 			</div>
 			<div v-if="this.completed">
@@ -97,7 +95,7 @@ export default {
 			this.hideResult();
 		}
 	},
-	emits: ["trialCompleted"],
+	emits: ['trialCompleted'],
 	computed: {}
 };
 </script>
@@ -118,7 +116,7 @@ export default {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	border: solid black
+	border: solid black;
 }
 
 .stroop-prompt {
@@ -143,6 +141,6 @@ export default {
 .result {
 	font-size: 18px;
 	margin-top: 10px;
-	height: 15px
+	height: 15px;
 }
 </style>

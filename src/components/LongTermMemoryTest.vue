@@ -47,10 +47,8 @@
 			<h3>Total Number of Words Recalled Correctly(out of 10): {{ this.keysMatched }}</h3>
 			<br />
 			<br />
-			<v-btn to="/digitspantest" v-if="this.testType == 'short'" size="x-large" block color="red-lighten-3"
-				rounded="lg">Next</v-btn>
-			<v-btn to="/endscreen" v-if="this.testType == 'long'" size="x-large" block color="red-lighten-3"
-				rounded="lg">Finish</v-btn>
+			<v-btn to="/digitspantest" v-if="this.testType == 'short'" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
+			<v-btn to="/endscreen" v-if="this.testType == 'long'" size="x-large" block color="red-lighten-3" rounded="lg">Finish</v-btn>
 		</div>
 	</v-container>
 </template>
@@ -86,26 +84,26 @@ export default {
 	methods: {
 		checkKeys() {
 			let inputKeyList = [];
-			const answers = this.answerKeys.map(word => word.toLowerCase())
+			const answers = this.answerKeys.map((word) => word.toLowerCase());
 			inputKeyList.push(this.keys.first, this.keys.second, this.keys.third, this.keys.fourth, this.keys.fifth, this.keys.sixth, this.keys.seventh, this.keys.eighth, this.keys.ninth, this.keys.tenth);
 			for (let i = 0; i < inputKeyList.length; i++) {
-				const inp = inputKeyList[i].toLowerCase()
+				const inp = inputKeyList[i].toLowerCase();
 				if (answers.includes(inp)) {
 					this.keysMatched += 1;
 				}
 			}
 			this.completed = true;
-			if (this.testType == "short") {
+			if (this.testType == 'short') {
 				useTestStore().addShortTermMemoryTestData({
 					score: this.keysMatched
-				})
-			} else if (this.testType == "long") {
+				});
+			} else if (this.testType == 'long') {
 				useTestStore().addLongTermMemoryTestData({
 					score: this.keysMatched
-				})
+				});
 			}
 		}
 	},
-	mounted() { }
+	mounted() {}
 };
 </script>

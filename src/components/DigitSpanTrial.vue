@@ -2,23 +2,19 @@
 	<v-container class="digit-span-test-container">
 		<div class="digit-span-test" v-if="!this.testCompleted">
 			<div v-if="showPrompt" class="digit-span-prompt">
-				<p>{{ this.digit }}
-				</p>
+				<p>{{ this.digit }}</p>
 			</div>
-			<div v-else class="digit-span-prompt">
-			</div>
+			<div v-else class="digit-span-prompt"></div>
 			<br />
 			<div v-if="!showPrompt">
 				<h2>Entered Numbers</h2>
 				<div class="entered-numbers" v-if="this.enteredNumbers">
 					<p>{{ enteredNumbers }}</p>
 				</div>
-				<div class="entered-numbers" v-else>
-				</div>
+				<div class="entered-numbers" v-else></div>
 				<v-row class="numpad">
 					<v-col v-for="(num, idx) in numpadNumbers" :key="idx" cols="3">
-						<v-btn @click="onNumpadClick(num)" :disabled="numpadDisabled[num]" class="numpad-button"
-							size="large">
+						<v-btn @click="onNumpadClick(num)" :disabled="numpadDisabled[num]" class="numpad-button" size="large">
 							{{ num }}
 						</v-btn>
 					</v-col>
@@ -28,8 +24,7 @@
 				</v-row>
 				<br />
 			</div>
-			<v-btn @click="checkAnswer" v-if="!showPrompt" size="x-large" color="red-lighten-3" rounded="lg"
-				cols="12">Enter</v-btn>
+			<v-btn @click="checkAnswer" v-if="!showPrompt" size="x-large" color="red-lighten-3" rounded="lg" cols="12">Enter</v-btn>
 		</div>
 		<div v-if="this.testCompleted">
 			<p>Trial Completed</p>

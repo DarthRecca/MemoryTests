@@ -1,7 +1,8 @@
 <template>
 	<div class="thanks">
 		<p>Thank YOU!</p>
-		<p>If you want to take full Interlligence Tests go to
+		<p>
+			If you want to take full Interlligence Tests go to
 			<a href="https://www.psychologytestingforall.com/use-our-free-resources">Our Site</a>
 		</p>
 	</div>
@@ -27,15 +28,15 @@ export default {
 					shortTermMemoryTestData: data.shortTermMemoryTestData,
 					digitSpanTestData: data.digitSpanTestData,
 					stroopTestData: data.stroopTestData,
-					nBackTestData: data.nBackTestData,
+					nBackTestData: data.nBackTestData
 				},
 				timestamp: new Date().toString()
-			}
+			};
 			try {
-				const docRef = await addDoc(collection(fireStore, "testData"), dataPacket);
-				console.log("Document written with ID: ", docRef.id);
+				const docRef = await addDoc(collection(fireStore, 'testData'), dataPacket);
+				console.log('Document written with ID: ', docRef.id);
 			} catch (e) {
-				console.error("Error adding document: ", e);
+				console.error('Error adding document: ', e);
 			}
 		}
 	},

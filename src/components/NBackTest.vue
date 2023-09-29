@@ -3,8 +3,7 @@
 		<div class="n-back-prompt" v-if="this.showPrompt">
 			<p>{{ prompt }}</p>
 		</div>
-		<div class="n-back-prompt" v-else>
-		</div>
+		<div class="n-back-prompt" v-else></div>
 		<br />
 		<div class="n-back-input-container">
 			<v-btn @click="this.checkAnswer()" color="green" size="large">Matches</v-btn>
@@ -13,8 +12,7 @@
 		<div v-if="showResult" class="result">
 			<p>Your answer is {{ result }}!</p>
 		</div>
-		<div v-else class="result">
-		</div>
+		<div v-else class="result"></div>
 	</div>
 	<div v-if="this.completed">
 		<p class="completed">Test Completed</p>
@@ -186,7 +184,7 @@ export default {
 					const promptData = {
 						prompt: this.prompt,
 						answer: '',
-						result: 'Miss',
+						result: 'Miss'
 					};
 					this.nBackTestData.individualPromptData.push(promptData);
 					this.nBackTestData.performanceParameters.matchTrialsIncorrect += 1;
@@ -295,7 +293,7 @@ export default {
 .result {
 	font-size: 32px;
 	margin-top: 10px;
-	height: 5px
+	height: 5px;
 }
 
 .completed {
