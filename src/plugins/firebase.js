@@ -1,4 +1,5 @@
 import { initializeApp } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth'; // Import other Firebase services as needed
 
 const FirebasePlugin = {
@@ -15,10 +16,12 @@ const FirebasePlugin = {
 		};
 
 		const firebaseApp = initializeApp(firebaseConfig);
+		const fireStore = getFirestore(firebaseApp);
 
 		// Add Firebase services to the Vue app instance
 		app.config.globalProperties.$firebaseApp = firebaseApp;
 		app.config.globalProperties.$auth = getAuth(firebaseApp);
+		app.config.globalProperties.$fireStore = fireStore;
 	}
 };
 

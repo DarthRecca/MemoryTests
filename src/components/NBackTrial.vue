@@ -9,10 +9,20 @@
 		<div class="n-back-input-container">
 			<v-btn @click="checkAnswer" color="green" block size="large">Matches</v-btn>
 		</div>
-		<p v-if="showResult" class="result">Your answer is {{ result }}!</p>
+		<br />
+		<div v-if="showResult" class="result">
+			<p>Your answer is {{ result }}!</p>
+		</div>
+		<div v-else class="result">
+		</div>
 	</div>
-	<div v-if="this.completed" class="completed">
-		<p>Trial Completed</p>
+	<div v-if="this.completed">
+		<br />
+		<div v-if="showResult" class="result">
+			<p>Your answer is {{ result }}!</p>
+		</div>
+		<div v-else class="result">
+		</div>
 		<v-btn @click="$emit('trialCompleted')" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
 	</div>
 </template>

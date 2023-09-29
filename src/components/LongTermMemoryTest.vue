@@ -96,7 +96,7 @@ export default {
 			}
 			this.completed = true;
 			if (this.testType == "short") {
-				useTestStore().addshortTermMemoryTestData({
+				useTestStore().addShortTermMemoryTestData({
 					score: this.keysMatched
 				})
 			} else if (this.testType == "long") {

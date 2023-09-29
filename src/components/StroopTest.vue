@@ -43,32 +43,32 @@
 							<td>Congruent Trials (Trials that had same colour as the words e.g RED printed in red colour)
 							</td>
 							<td>
-								{{ this.performanceParameters.congruentTotal }}
+								{{ this.stroopTestData.performanceParameters.congruentTotal }}
 							</td>
 							<td>
-								{{ this.performanceParameters.congruentCorrect }}
+								{{ this.stroopTestData.performanceParameters.congruentCorrect }}
 							</td>
 							<td>
-								{{ this.performanceParameters.congruentIncorrect }}
+								{{ this.stroopTestData.performanceParameters.congruentIncorrect }}
 							</td>
 							<td>
-								{{ this.performanceParameters.congruentAvgTime }}
+								{{ this.stroopTestData.performanceParameters.congruentAvgTime }}
 							</td>
 						</tr>
 						<tr>
 							<td>In-congruent Trials (Trials that had different colour as the words e.g RED printed in green
 								colour)</td>
 							<td>
-								{{ this.performanceParameters.incongruentTotal }}
+								{{ this.stroopTestData.performanceParameters.incongruentTotal }}
 							</td>
 							<td>
-								{{ this.performanceParameters.incongruentCorrect }}
+								{{ this.stroopTestData.performanceParameters.incongruentCorrect }}
 							</td>
 							<td>
-								{{ this.performanceParameters.incongruentIncorrect }}
+								{{ this.stroopTestData.performanceParameters.incongruentIncorrect }}
 							</td>
 							<td>
-								{{ this.performanceParameters.incongruentAvgTime }}
+								{{ this.stroopTestData.performanceParameters.incongruentAvgTime }}
 							</td>
 						</tr>
 						<tr>
@@ -89,7 +89,8 @@
 					</tbody>
 				</v-table>
 				<br />
-				<p>Your Stroop Score(Absolute of Congruent - Incongruent Avg Time): {{ this.stroopScore }}ms</p>
+				<p>Your Stroop Score(Absolute of Congruent - Incongruent Avg Time): {{ this.stroopTestData.testScore }}ms
+				</p>
 				<br />
 				<v-btn value="NBackLink" to="/nbacktest" size="x-large" block color="red-lighten-3"
 					rounded="lg">Next</v-btn>
@@ -217,7 +218,7 @@ export default {
 		},
 		testCompleted() {
 			this.completed = true;
-			this.testScore = this.stroopScore
+			this.stroopTestData.testScore = this.stroopScore
 			useTestStore().addStroopTestData({
 				score: this.stroopTestData.testScore,
 				individualPromptData: this.stroopTestData.individualPromptData,

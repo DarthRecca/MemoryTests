@@ -9,7 +9,12 @@
 		<div class="n-back-input-container">
 			<v-btn @click="this.checkAnswer()" color="green" size="large">Matches</v-btn>
 		</div>
-		<p v-if="showResult" class="result">Your answer is {{ result }}!</p>
+		<br />
+		<div v-if="showResult" class="result">
+			<p>Your answer is {{ result }}!</p>
+		</div>
+		<div v-else class="result">
+		</div>
 	</div>
 	<div v-if="this.completed">
 		<p class="completed">Test Completed</p>
@@ -290,6 +295,7 @@ export default {
 .result {
 	font-size: 32px;
 	margin-top: 10px;
+	height: 5px
 }
 
 .completed {
