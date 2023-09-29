@@ -131,12 +131,12 @@ export default {
 			this.resetNumpad();
 
 			if (this.digitIndex < 10) {
-				if (this.correctCount === 2) {
+				if (this.correctCount >= 2) {
 					this.digitIndex++;
 					this.correctCount = 0;
 					this.incorrectCount = 0;
 				}
-				if (this.incorrectCount === 2) {
+				if (this.incorrectCount >= 2) {
 					this.correctCount = 0;
 					this.incorrectCount = 0;
 					this.completedTest();

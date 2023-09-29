@@ -41,7 +41,8 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td>Congruent Trials (Trials that had same colour as the words e.g RED printed in red colour)</td>
+							<td>Congruent Trials (Trials that had same colour as the words e.g RED printed in red colour)
+							</td>
 							<td>
 								{{ this.stroopTestData.performanceParameters.congruentTotal }}
 							</td>
@@ -56,7 +57,8 @@
 							</td>
 						</tr>
 						<tr>
-							<td>In-congruent Trials (Trials that had different colour as the words e.g RED printed in green colour)</td>
+							<td>In-congruent Trials (Trials that had different colour as the words e.g RED printed in green
+								colour)</td>
 							<td>
 								{{ this.stroopTestData.performanceParameters.incongruentTotal }}
 							</td>
@@ -90,7 +92,8 @@
 				<br />
 				<p>Your Stroop Score(Incngruent Avg Time - Congruent Avg Time): {{ this.stroopTestData.testScore }}ms</p>
 				<br />
-				<v-btn value="NBackLink" to="/nbacktest" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
+				<v-btn value="NBackLink" to="/nbacktest" size="x-large" block color="red-lighten-3"
+					rounded="lg">Next</v-btn>
 			</div>
 		</v-sheet>
 	</v-container>
@@ -291,7 +294,8 @@ export default {
 
 .answer-choice {
 	font-size: 24px;
-	margin: 5px;
+	margin: 10px;
+	padding: 10px
 }
 
 .result {
@@ -312,5 +316,4 @@ caption {
 	border-left: none;
 	border-right: none;
 	border-top: none;
-}
-</style>
+}</style>

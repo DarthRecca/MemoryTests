@@ -66,7 +66,7 @@ export default {
 			locationOfExam: '',
 			device: '',
 			education: '',
-			edItems: ['10th Standard', '12th Standard', 'Diploma', 'First Year of any Graduation', 'Second Year of any Graduation', 'Third Year of any Graduation', 'Fourth Year of any Graduation', 'Graduation Complete', 'Post Graduate', 'PhD'],
+			edItems: ['10th Standard', '12th Standard', 'Diploma Complete(Any)', 'First Year of any Graduation', 'Second Year of any Graduation', 'Third Year of any Graduation', 'Fourth Year of any Graduation', 'Graduation Complete', 'Post Graduate', 'PhD Complete(Any)'],
 			devItems: ['Phone', 'Tablet', 'Laptop', 'Desktop'],
 			months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 			language: '',
@@ -133,3 +133,9 @@ export default {
 	mounted() {}
 };
 </script>
+
+<style>
+.detail-form {
+	padding: 5px;
+}
+</style>

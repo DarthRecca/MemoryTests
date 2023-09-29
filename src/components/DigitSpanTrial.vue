@@ -136,6 +136,9 @@ export default {
 			}
 		},
 		completedTest() {
+			this.incorrectCount = 0;
+			this.correctCount = 0;
+			this.digitIndex = 2;
 			this.showResult = true;
 			this.testCompleted = true;
 		}
