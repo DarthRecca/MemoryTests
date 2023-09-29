@@ -116,6 +116,7 @@ export default {
 	align-items: center;
 	justify-content: center;
 	height: 100vh;
+	border: solid 1px black;
 }
 
 .n-back-prompt {

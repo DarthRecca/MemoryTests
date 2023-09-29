@@ -1,21 +1,19 @@
 <template>
-	<div v-if="this.testType == 'short'" class="long-term-memory-test-title">
-		<h1>Short Term Memory Test</h1>
+	<div class="long-term-memory-test-title">
+		<h1>Short Term and Long Term Memory Test</h1>
 	</div>
-	<div v-if="this.testType == 'long'" class="long-term-memory-test-title">
-		<h1>Long Term Memory Test</h1>
-	</div>
+
 	<div class="instructions" v-if="!this.testStartFlag && this.testType == 'short'">
 		<h2 class="instructions-title">Instructions</h2>
 		<br />
 		<p>
-			This test measures your long term memory.<br />
+			This test measures your short-term and long-term memory.<br />
 			You will be shown 10 words in the next screen.<br />
 			Memorise them in your mind number of times.<br />
 			If you want you can take a bit of time to remember them.<br />
-			You will be asked to recall these words shortly and after about 20 minutes.<br />
+			You will be asked to recall these words shortly(In the next screen) and after about 20 minutes(Towards the end of the test).<br />
 			Please do not save them in any manner because your real memory will not get tested.<br />
-			Testing memory in this manner from time to time is a good practice for maintain the health of the mind.<br />
+			Testing memory in this manner from time to time is a good practice to maintain the health of the mind.<br />
 		</p>
 		<div>
 			<p class="memorize-these-title">Memorise these 10 words<br /></p>

@@ -17,6 +17,8 @@
 	<div v-if="this.completed">
 		<p class="completed">Test Completed</p>
 		<br />
+		<p><b>Note: </b>This is a computerized analysis and not a medical diagnosis</p>
+		<br />
 		<v-table class="performance-table">
 			<caption>
 				Your Performance
@@ -267,6 +269,7 @@ export default {
 
 <style scoped>
 .n-back-container {
+	border: solid 5px black;
 	text-align: center;
 	display: flex;
 	flex-direction: column;

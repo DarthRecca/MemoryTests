@@ -6,7 +6,8 @@ export const useTestStore = defineStore('tests', {
 		userDetailsData: {
 			name: '',
 			emailID: '',
-			age: '',
+			yearOfBirth: '',
+			monthOfBirth: '',
 			locationOfExam: '',
 			education: '',
 			device: '',

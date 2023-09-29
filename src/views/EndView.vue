@@ -3,7 +3,7 @@
 		<p>Thank YOU!</p>
 		<p>
 			If you want to take full Interlligence Tests go to
-			<a href="https://www.psychologytestingforall.com/use-our-free-resources">Our Site</a>
+			<a href="https://www.psychologytestingforall.com/psychometric-tests">Our Site</a>
 		</p>
 	</div>
 </template>

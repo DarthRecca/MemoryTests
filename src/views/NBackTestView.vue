@@ -5,11 +5,12 @@
 	<div class="instructions" v-if="!this.trialStartFlag && !this.testStartFlag && !this.trialCompleted">
 		<h2 class="instructions-title">Instructions</h2>
 		<p>
-			In this task, you will see letters displayed on the screen one at a time.<br />
-			Each letter will be displayed for a few seconds, and then the next letter will be displayed.<br />
-			You need to remember the last two letters that were displayed, and compare the current letter to the letter that was displayed two letters ago.<br />
-			If the current letter is the same as the letter that was displayed two letters ago, press the MATCHES button.<br />
-			If the current letter is different from the letter that was displayed two letters ago, do not press anything.<br />
+			You will be presented with a sequence of letters or numbers one by one.<br />
+			Your task is to press the MATCHES button if the current letter matches the one that was presented 2 trials ago.<br />
+			If it does not match, do not press the button.<br />
+			For example, let's say the current letter is B and the last two letters were B and N. Since the letter two letters ago (B) matches the current letter (B), you should press MATCHES.<br />
+			If the next letter is P, you should not press MATCHES because the letter two letters ago (N) does not match the current letter (P).<br />
+
 			This is called the N=2 back test, because you are comparing the current letter to the letter that was displayed two letters ago.<br />
 		</p>
 		<br />

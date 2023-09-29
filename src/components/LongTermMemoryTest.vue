@@ -1,10 +1,16 @@
 <template>
 	<v-container>
+		<div v-if="this.testType == 'short'" class="long-term-memory-test-title">
+			<p>Short Term Memory</p>
+		</div>
+		<div v-if="this.testType == 'long'" class="long-term-memory-test-title">
+			<p>Long Term Memory</p>
+		</div>
 		<div v-if="!this.completed">
 			<p>
-				Recall the words you were shown in the previously and enter in following boxes one by one.<br />
+				Recall the words you were shown previously and enter in following boxes one by one.<br />
 				You can enter in any order (sequence).<br />
-				Try entering them as accurately as possible but a minor spelling mistake will be accommodated.<br />
+				Try entering them as accurately as possible.<br />
 			</p>
 			<br />
 			<v-row>
@@ -14,26 +20,32 @@
 				<v-col>
 					<v-text-field v-model="this.keys.second" label="Enter Here"></v-text-field>
 				</v-col>
+			</v-row>
+			<v-row>
 				<v-col>
 					<v-text-field v-model="this.keys.third" label="Enter Here"></v-text-field>
 				</v-col>
 				<v-col>
 					<v-text-field v-model="this.keys.fourth" label="Enter Here"></v-text-field>
 				</v-col>
-				<v-col>
-					<v-text-field v-model="this.keys.fifth" label="Enter Here"></v-text-field>
-				</v-col>
 			</v-row>
 			<v-row>
 				<v-col>
+					<v-text-field v-model="this.keys.fifth" label="Enter Here"></v-text-field>
+				</v-col>
+				<v-col>
 					<v-text-field v-model="this.keys.sixth" label="Enter Here"></v-text-field>
 				</v-col>
+			</v-row>
+			<v-row>
 				<v-col>
 					<v-text-field v-model="this.keys.seventh" label="Enter Here"></v-text-field>
 				</v-col>
 				<v-col>
 					<v-text-field v-model="this.keys.eighth" label="Enter Here"></v-text-field>
 				</v-col>
+			</v-row>
+			<v-row>
 				<v-col>
 					<v-text-field v-model="this.keys.ninth" label="Enter Here"></v-text-field>
 				</v-col>
@@ -46,6 +58,7 @@
 		<div v-if="this.completed" class="completed">
 			<h3>Total Number of Words Recalled Correctly(out of 10): {{ this.keysMatched }}</h3>
 			<br />
+			<p><b>Note: </b>This is a computerized analysis and not a medical diagnosis</p>
 			<br />
 			<v-btn to="/digitspantest" v-if="this.testType == 'short'" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
 			<v-btn to="/endscreen" v-if="this.testType == 'long'" size="x-large" block color="red-lighten-3" rounded="lg">Finish</v-btn>
@@ -73,6 +86,7 @@ export default {
 				tenth: ''
 			},
 			answerKeys: ['Key', 'Ear', 'King', 'Cake', 'Cat', 'Car', 'Red', 'Cup', 'Bat', 'River'],
+			usedKeys: [],
 			completed: false,
 			keysMatched: 0
 		};
@@ -88,8 +102,9 @@ export default {
 			inputKeyList.push(this.keys.first, this.keys.second, this.keys.third, this.keys.fourth, this.keys.fifth, this.keys.sixth, this.keys.seventh, this.keys.eighth, this.keys.ninth, this.keys.tenth);
 			for (let i = 0; i < inputKeyList.length; i++) {
 				const inp = inputKeyList[i].toLowerCase();
-				if (answers.includes(inp)) {
+				if (answers.includes(inp) && !this.usedKeys.includes(inp)) {
 					this.keysMatched += 1;
+					this.usedKeys.push(inputKeyList[i]);
 				}
 			}
 			this.completed = true;
@@ -107,3 +122,10 @@ export default {
 	mounted() {}
 };
 </script>
+
+<style>
+.long-term-memory-test-title {
+	text-align: left;
+	font-weight: bold;
+}
+</style>

@@ -18,17 +18,21 @@
 							{{ num }}
 						</v-btn>
 					</v-col>
-					<v-col cols="6">
+					<v-col cols="auto">
 						<v-btn @click="backspace" class="backspace-button" size="large"> Clear </v-btn>
+					</v-col>
+					<v-col cols="auto">
+						<v-btn @click="checkAnswer()" v-if="!showPrompt" size="large" color="red-lighten-3" class="enter-button" cols="auto">Enter</v-btn>
 					</v-col>
 				</v-row>
 				<br />
 			</div>
-			<v-btn @click="checkAnswer" v-if="!showPrompt" size="x-large" color="red-lighten-3" rounded="lg" cols="12">Enter</v-btn>
 		</div>
 		<div v-if="this.testCompleted">
 			<h2>Test Completed</h2>
-			<br /><br />
+			<br />
+			<p><b>Note: </b>This is a computerized analysis and not a medical diagnosis</p>
+			<br />
 			<div>
 				<h3>Your best sequence that is maximum length of digits that you can remember (Digit Span) is: {{ this.digitSpanTestData.highestDigitSpan }}</h3>
 				<br />
@@ -138,7 +142,9 @@ export default {
 					this.completedTest();
 				}
 				this.showPrompt = true;
-				this.nextDigitSpan();
+				setTimeout(() => {
+					this.nextDigitSpan();
+				}, 500);
 			} else {
 				this.completedTest();
 			}
@@ -156,7 +162,9 @@ export default {
 		}
 	},
 	mounted() {
-		this.nextDigitSpan();
+		setTimeout(() => {
+			this.nextDigitSpan();
+		}, 500);
 	}
 };
 </script>
@@ -203,6 +211,13 @@ export default {
 }
 
 .backspace-button {
+	width: 60px;
+	height: 60px;
+	font-size: 18px;
+	margin: 5px;
+}
+
+.enter-button {
 	width: 60px;
 	height: 60px;
 	font-size: 18px;

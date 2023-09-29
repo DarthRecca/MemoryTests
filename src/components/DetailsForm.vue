@@ -15,41 +15,38 @@
 					You will also have to provide a consent to taking the test.<br />
 				</p>
 			</div>
-			<v-form>
-				<v-text-field v-model="name" label="Name(Optional)" hide-details="auto" persistent-hint hint="You can enter a dummy name"></v-text-field>
-				<v-text-field v-model="emailId" label="Email-ID" required></v-text-field>
-				<v-radio-group v-model="gender" required>
+			<v-form validate-on="submit">
+				<v-text-field v-model="name" label="Name" hide-details="auto" persistent-hint hint="You can enter a dummy name" :rules="[rules.required]"></v-text-field>
+				<v-text-field v-model="emailId" label="Email-ID" :rules="[rules.required]" hint="This email will be used to send report of test"></v-text-field>
+				<v-radio-group v-model="gender">
 					Gender
 					<v-radio label="Male" value="male"></v-radio>
 					<v-radio label="Female" value="female"></v-radio>
 					<v-radio label="Prefer Not to Say" value="undisclosed"></v-radio>
 				</v-radio-group>
-				<v-text-field v-model="age" required>
-					<v-label>Age</v-label>
-				</v-text-field>
-				<v-text-field v-model="locationOfExam">
-					<v-label>Place from where you are giving the test</v-label>
-				</v-text-field>
-				<v-select v-model="education" label="Education Completed" :items="edItems" required></v-select>
-				<v-select v-model="device" label="Which device are you using" :items="devItems" required></v-select>
+				<v-text-field v-model="yearOfBirth" label="Year of Birth" :rules="[rules.required]"></v-text-field>
+				<v-select v-model="monthOfBirth" label="Month of Birth" :rules="[rules.required]" :items="months"> </v-select>
+				<v-text-field v-model="locationOfExam" label="Place from where you are giving the test"> </v-text-field>
+				<v-select v-model="education" label="Education Completed" :items="edItems" :rules="[rules.required]"></v-select>
+				<v-select v-model="device" label="Which device are you using" :items="devItems" :rules="[rules.required]"></v-select>
 
 				<v-radio-group v-model="language">
 					Language Preffered
 					<v-radio label="English" value="english"></v-radio>
-					<v-radio label="English/Marathi" value="marathi" disabled></v-radio>
-					<v-radio label="English/Hindi" value="hindi" disabled></v-radio>
+					<v-radio label="English/Marathi(WIP)" value="marathi" disabled></v-radio>
+					<v-radio label="English/Hindi(WIP)" value="hindi" disabled></v-radio>
 				</v-radio-group>
 				Please read carefully and give your consent to following:<br />
 				<ol type="a">
 					<li>I understand this is a psychological test to test the memory and intelligence related functions and I am voluntarily participating in this assessment.</li>
 					<li>I fully understand that this is an online test and the results are NOT an expert opinion or a medical diagnosis. I understand the results will be produced by the computerized analysis of my own responses and there is no human involved in analysing / preparing the outcome.</li>
 					<li>I have been assured that my answers and results will remain confidential and my individual results will NOT be shared with my institute (school / college), employer or my parents.</li>
-					<li>I understand the results will be used for researchers or Psychology experts without my Name, identity or other personal details. If I give consent, they may give me the counselling service on how to improve my memory function or intelligence.</li>
+					<li>I understand the results will be used by researchers or Psychology experts without my Name, identity or other personal details. If I give consent, they may give me the counselling service on how to improve my memory function or intelligence.</li>
 					<li>I am aware that the outcome of this exercise entirely depends on how honestly, I answer the questions and give the test. I also understand that the outcome of the test depends on my current state of mind, my freshness and my overall health.</li>
 				</ol>
-				<v-checkbox v-model="consent" label="I am giving my consent to this assessment by checking in this box" required></v-checkbox>
+				<v-checkbox v-model="consent" label="I am giving my consent to this assessment by checking in this box" :rules="[rules.required]"></v-checkbox>
 			</v-form>
-			<v-btn @click="formCompleted()">Next</v-btn>
+			<v-btn type="submit" size="x-large" block color="red-lighten-3" rounded="lg" @click="this.formCompleted()">Next</v-btn>
 		</v-sheet>
 	</v-container>
 </template>
@@ -64,24 +61,67 @@ export default {
 			name: '',
 			emailId: '',
 			gender: '',
-			age: '',
+			yearOfBirth: '',
+			monthOfBirth: '',
 			locationOfExam: '',
 			device: '',
 			education: '',
 			edItems: ['10th Standard', '12th Standard', 'Diploma', 'First Year of any Graduation', 'Second Year of any Graduation', 'Third Year of any Graduation', 'Fourth Year of any Graduation', 'Graduation Complete', 'Post Graduate', 'PhD'],
 			devItems: ['Phone', 'Tablet', 'Laptop', 'Desktop'],
+			months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 			language: '',
-			consent: false
+			consent: false,
+			rules: {
+				required: (value) => !!value || 'Required.'
+			}
 		};
 	},
 	computed: {},
 	methods: {
 		formCompleted() {
+			if (this.name == '') {
+				alert('Please enter a Name. A dummy name may be used.');
+				return false;
+			}
+			if (this.emailId == '') {
+				alert('Please enter an email-ID.');
+				return false;
+			}
+			if (this.gender == '') {
+				alert('Please choose a gender option');
+				return false;
+			}
+			if (this.yearOfBirth == '') {
+				alert('Please enter your Birth Year.');
+				return false;
+			}
+			if (this.monthOfBirth == '') {
+				alert('Please enter your Birth Month.');
+				return false;
+			}
+			if (this.locationOfExam == '') {
+				alert('Please enter the location where you are giving this exam from.');
+				return false;
+			}
+			if (this.device == '') {
+				alert('Please enter the type of device you are using');
+				return false;
+			}
+			if (this.education == '') {
+				alert('Please select your highest education level.');
+				return false;
+			}
+			if (this.consent == false) {
+				alert('Please give your consent to give this test.');
+				return false;
+			}
+
 			useTestStore().addFormData({
 				date: Date(),
 				name: this.name,
 				emailID: this.emailId,
-				age: this.age,
+				yearOfBirth: this.yearOfBirth,
+				monthOfBirth: this.monthOfBirth,
 				locationOfExam: this.locationOfExam,
 				education: this.education,
 				language: this.language,

@@ -1,11 +1,9 @@
 <template>
 	<v-app>
-		<v-main>
-			<div class="main-sheet">
-				<v-sheet color="teal-lighten-3" border>
-					<router-view></router-view>
-				</v-sheet>
-			</div>
+		<v-main class="main-container">
+			<v-sheet color="teal-lighten-3" border class="main-sheet">
+				<router-view></router-view>
+			</v-sheet>
 		</v-main>
 	</v-app>
 </template>
@@ -16,10 +14,10 @@
 
 <style>
 .main-sheet {
-	background-color: dimgray;
 	font-size: larger;
-	border-width: 50;
+	border-width: 15px;
 	padding: auto;
 	margin: auto;
+	height: 100%;
 }
 </style>

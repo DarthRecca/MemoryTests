@@ -23,17 +23,20 @@
 			<div v-if="this.completed">
 				<p>Test Completed</p>
 				<br />
+				<p><b>Note: </b>This is a computerized analysis and not a medical diagnosis</p>
+				<br />
 				<v-table class="perfromance-table">
 					<caption>
 						Your Performance
 					</caption>
+					<v-divider></v-divider>
 					<thead>
 						<tr>
 							<th>Parameter</th>
 							<th>Quantity</th>
 							<th>No. of correct tasks</th>
 							<th>No. of incorrect tasks</th>
-							<th>Time Taken for task(ms)</th>
+							<th>Average Time Taken for task(ms)</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -85,7 +88,7 @@
 					</tbody>
 				</v-table>
 				<br />
-				<p>Your Stroop Score(Absolute of Congruent - Incongruent Avg Time): {{ this.stroopTestData.testScore }}ms</p>
+				<p>Your Stroop Score(Incngruent Avg Time - Congruent Avg Time): {{ this.stroopTestData.testScore }}ms</p>
 				<br />
 				<v-btn value="NBackLink" to="/nbacktest" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
 			</div>
@@ -211,13 +214,6 @@ export default {
 		},
 		testCompleted() {
 			this.completed = true;
-			this.stroopTestData.testScore = this.stroopScore;
-			useTestStore().addStroopTestData({
-				score: this.stroopTestData.testScore,
-				individualPromptData: this.stroopTestData.individualPromptData,
-				totalTimeTaken: this.stroopTestData.totalTestTime,
-				performanceParameters: this.stroopTestData.performanceParameters
-			});
 			this.stroopTestData.performanceParameters.congruentAvgTime = Math.floor(this.stroopTestData.performanceParameters.congruentAvgTime / this.stroopTestData.performanceParameters.congruentTotal);
 			if (isNaN(this.stroopTestData.performanceParameters.congruentAvgTime)) {
 				this.stroopTestData.performanceParameters.congruentAvgTime = 9999;
@@ -226,6 +222,13 @@ export default {
 			if (isNaN(this.stroopTestData.performanceParameters.incongruentAvgTime)) {
 				this.stroopTestData.performanceParameters.congruentAvgTime = 9999;
 			}
+			this.stroopTestData.testScore = this.stroopScore;
+			useTestStore().addStroopTestData({
+				score: this.stroopTestData.testScore,
+				individualPromptData: this.stroopTestData.individualPromptData,
+				totalTimeTaken: this.stroopTestData.totalTestTime,
+				performanceParameters: this.stroopTestData.performanceParameters
+			});
 			this.hideResult();
 		}
 	},
@@ -301,5 +304,13 @@ export default {
 	border: 1px solid black;
 	border-collapse: collapse;
 	background-color: teal;
+}
+
+caption {
+	background: teal;
+	border: solid 1px black;
+	border-left: none;
+	border-right: none;
+	border-top: none;
 }
 </style>

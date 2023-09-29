@@ -18,13 +18,15 @@
 							{{ num }}
 						</v-btn>
 					</v-col>
-					<v-col cols="6">
+					<v-col cols="auto">
 						<v-btn @click="backspace" class="backspace-button" size="large"> Clear </v-btn>
+					</v-col>
+					<v-col cols="auto">
+						<v-btn @click="checkAnswer()" v-if="!showPrompt" color="red-lighten-3" size="large" class="enter-button" cols="auto">Enter</v-btn>
 					</v-col>
 				</v-row>
 				<br />
 			</div>
-			<v-btn @click="checkAnswer" v-if="!showPrompt" size="x-large" color="red-lighten-3" rounded="lg" cols="12">Enter</v-btn>
 		</div>
 		<div v-if="this.testCompleted">
 			<p>Trial Completed</p>
@@ -105,7 +107,6 @@ export default {
 				this.result = 'Incorrect';
 				this.incorrectCount++;
 			}
-
 			this.userInput = '';
 			this.enteredNumbers = '';
 			this.resetNumpad();
@@ -122,7 +123,9 @@ export default {
 					this.completedTest();
 				}
 				this.showPrompt = true;
-				this.nextDigitSpan();
+				setTimeout(() => {
+					this.nextDigitSpan();
+				}, 500);
 			} else {
 				this.completedTest();
 			}
@@ -138,7 +141,9 @@ export default {
 		}
 	},
 	mounted() {
-		this.nextDigitSpan();
+		setTimeout(() => {
+			this.nextDigitSpan();
+		}, 500);
 	}
 };
 </script>
@@ -185,6 +190,13 @@ export default {
 }
 
 .backspace-button {
+	width: 60px;
+	height: 60px;
+	font-size: 18px;
+	margin: 5px;
+}
+
+.enter-button {
 	width: 60px;
 	height: 60px;
 	font-size: 18px;
