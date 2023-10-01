@@ -14,7 +14,7 @@
 		</div>
 		<div v-else class="result"></div>
 	</div>
-	<div v-if="this.completed" style="overflow-x: auto">
+	<div v-if="this.completed">
 		<p class="completed">Test Completed</p>
 		<br />
 		<p><b>Note: </b>This is a computerized analysis and not a medical diagnosis</p>
@@ -319,5 +319,6 @@ export default {
 	border: 1px solid;
 	border-collapse: collapse;
 	background-color: teal;
+	overflow-x: auto;
 }
 </style>

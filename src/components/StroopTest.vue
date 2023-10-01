@@ -1,113 +1,111 @@
 <template>
 	<v-container class="stroop-test-container">
-		<v-responsive>
-			<v-sheet class="stroop-test" color="teal-lighten-3">
-				<div v-if="!this.completed">
-					<div class="stroop-prompt" v-if="this.showPrompt">
-						<p :style="{ color: textColor }">{{ colorName }}</p>
-					</div>
-					<div class="stroop-prompt" v-else></div>
-					<br />
-					<div class="answer-choices">
-						<v-btn @click="checkAnswer('red')" class="answer-choice" color="black">Red</v-btn>
-						<v-btn @click="checkAnswer('green')" class="answer-choice" color="black">Green</v-btn>
-						<v-btn @click="checkAnswer('blue')" class="answer-choice" color="black">Blue</v-btn>
-						<v-btn @click="checkAnswer('yellow')" class="answer-choice" color="black">Yellow</v-btn>
-					</div>
-					<br />
-					<div v-if="this.showResult" class="result">
-						<p>Your answer is {{ result }}!</p>
-					</div>
-					<div v-else class="result"></div>
-					<br />
+		<v-sheet class="stroop-test" color="teal-lighten-3">
+			<div v-if="!this.completed">
+				<div class="stroop-prompt" v-if="this.showPrompt">
+					<p :style="{ color: textColor }">{{ colorName }}</p>
 				</div>
-				<div v-if="this.completed" style="overflow-x: auto">
-					<p>Test Completed</p>
-					<br />
-					<p><b>Note: </b>This is a computerized analysis and not a medical diagnosis</p>
+				<div class="stroop-prompt" v-else></div>
+				<br />
+				<div class="answer-choices">
+					<v-btn @click="checkAnswer('red')" class="answer-choice" color="black">Red</v-btn>
+					<v-btn @click="checkAnswer('green')" class="answer-choice" color="black">Green</v-btn>
+					<v-btn @click="checkAnswer('blue')" class="answer-choice" color="black">Blue</v-btn>
+					<v-btn @click="checkAnswer('yellow')" class="answer-choice" color="black">Yellow</v-btn>
+				</div>
+				<br />
+				<div v-if="this.showResult" class="result">
+					<p>Your answer is {{ result }}!</p>
+				</div>
+				<div v-else class="result"></div>
+				<br />
+			</div>
+			<div v-if="this.completed">
+				<p>Test Completed</p>
+				<br />
+				<p><b>Note: </b>This is a computerized analysis and not a medical diagnosis</p>
 
+				<br />
+				<v-table class="perfromance-table">
+					<caption>
+						Your Performance
+					</caption>
+					<v-divider></v-divider>
+					<thead>
+						<tr>
+							<th>Parameter</th>
+							<th>Quantity</th>
+							<th>No. of correct tasks</th>
+							<th>No. of incorrect tasks</th>
+							<th>Average Time Taken for task(ms)</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Congruent Trials (Trials that had same colour as the words e.g RED printed in red colour)</td>
+							<td>
+								{{ this.stroopTestData.performanceParameters.congruentTotal }}
+							</td>
+							<td>
+								{{ this.stroopTestData.performanceParameters.congruentCorrect }}
+							</td>
+							<td>
+								{{ this.stroopTestData.performanceParameters.congruentIncorrect }}
+							</td>
+							<td>
+								{{ this.stroopTestData.performanceParameters.congruentAvgTime }}
+							</td>
+						</tr>
+						<tr>
+							<td>In-congruent Trials (Trials that had different colour as the words e.g RED printed in green colour)</td>
+							<td>
+								{{ this.stroopTestData.performanceParameters.incongruentTotal }}
+							</td>
+							<td>
+								{{ this.stroopTestData.performanceParameters.incongruentCorrect }}
+							</td>
+							<td>
+								{{ this.stroopTestData.performanceParameters.incongruentIncorrect }}
+							</td>
+							<td>
+								{{ this.stroopTestData.performanceParameters.incongruentAvgTime }}
+							</td>
+						</tr>
+						<tr>
+							<td>Total</td>
+							<td>
+								{{ this.totalTasks }}
+							</td>
+							<td>
+								{{ this.totalCorrect }}
+							</td>
+							<td>
+								{{ this.totalIncorrect }}
+							</td>
+							<td>
+								{{ this.totalAvgTime }}
+							</td>
+						</tr>
+					</tbody>
+				</v-table>
+				<br />
+				<p>Your Stroop Score(Incngruent Avg Time - Congruent Avg Time): {{ this.stroopTestData.testScore }}ms</p>
+				<br />
+				<div class="result-expected">
+					<p>The expected values of Stroop Test scores vary depending on the specific version of the test used and the individual's age, education level and the device used (that is whether you have used cell phone, laptop of desktop). However, as a general guide, the following can be expected:<br /></p>
+					<ul>
+						<li>Children: 50-100 milliseconds</li>
+						<li>Adults: 75-150 milliseconds</li>
+						<li>Older adults: 100-200 milliseconds</li>
+					</ul>
 					<br />
-					<v-table class="perfromance-table">
-						<caption>
-							Your Performance
-						</caption>
-						<v-divider></v-divider>
-						<thead>
-							<tr>
-								<th>Parameter</th>
-								<th>Quantity</th>
-								<th>No. of correct tasks</th>
-								<th>No. of incorrect tasks</th>
-								<th>Average Time Taken for task(ms)</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Congruent Trials (Trials that had same colour as the words e.g RED printed in red colour)</td>
-								<td>
-									{{ this.stroopTestData.performanceParameters.congruentTotal }}
-								</td>
-								<td>
-									{{ this.stroopTestData.performanceParameters.congruentCorrect }}
-								</td>
-								<td>
-									{{ this.stroopTestData.performanceParameters.congruentIncorrect }}
-								</td>
-								<td>
-									{{ this.stroopTestData.performanceParameters.congruentAvgTime }}
-								</td>
-							</tr>
-							<tr>
-								<td>In-congruent Trials (Trials that had different colour as the words e.g RED printed in green colour)</td>
-								<td>
-									{{ this.stroopTestData.performanceParameters.incongruentTotal }}
-								</td>
-								<td>
-									{{ this.stroopTestData.performanceParameters.incongruentCorrect }}
-								</td>
-								<td>
-									{{ this.stroopTestData.performanceParameters.incongruentIncorrect }}
-								</td>
-								<td>
-									{{ this.stroopTestData.performanceParameters.incongruentAvgTime }}
-								</td>
-							</tr>
-							<tr>
-								<td>Total</td>
-								<td>
-									{{ this.totalTasks }}
-								</td>
-								<td>
-									{{ this.totalCorrect }}
-								</td>
-								<td>
-									{{ this.totalIncorrect }}
-								</td>
-								<td>
-									{{ this.totalAvgTime }}
-								</td>
-							</tr>
-						</tbody>
-					</v-table>
+					<p>It is important to note that these are just general guidelines and you should not panic if your score is higher than above values.<br /></p>
 					<br />
-					<p>Your Stroop Score(Incngruent Avg Time - Congruent Avg Time): {{ this.stroopTestData.testScore }}ms</p>
-					<br />
-					<div class="result-expected">
-						<p>The expected values of Stroop Test scores vary depending on the specific version of the test used and the individual's age, education level and the device used (that is whether you have used cell phone, laptop of desktop). However, as a general guide, the following can be expected:<br /></p>
-						<ul>
-							<li>Children: 50-100 milliseconds</li>
-							<li>Adults: 75-150 milliseconds</li>
-							<li>Older adults: 100-200 milliseconds</li>
-						</ul>
-						<br />
-						<p>It is important to note that these are just general guidelines and you should not panic if your score is higher than above values.<br /></p>
-						<br />
-					</div>
-					<br />
-					<v-btn value="NBackLink" to="/nbacktest" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
 				</div>
-			</v-sheet>
-		</v-responsive>
+				<br />
+				<v-btn value="NBackLink" to="/nbacktest" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
+			</div>
+		</v-sheet>
 	</v-container>
 </template>
 
@@ -324,6 +322,7 @@ export default {
 	border: 1px solid black;
 	border-collapse: collapse;
 	background-color: teal;
+	overflow-x: auto;
 }
 
 caption {

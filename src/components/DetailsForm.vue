@@ -125,6 +125,7 @@ export default {
 				locationOfExam: this.locationOfExam,
 				education: this.education,
 				language: this.language,
+				device: this.device,
 				consent: this.consent
 			});
 			this.$router.push('/longtermmemorytest/short');
