@@ -26,69 +26,6 @@
 					<br />
 					<p><b>Note: </b>This is a computerized analysis and not a medical diagnosis</p>
 					<br />
-					<div>
-						<v-table class="perfromance-table">
-							<thead>
-								<tr>
-									<th>Parameter</th>
-									<th>Quantity</th>
-									<th>No. of correct tasks</th>
-									<th>No. of incorrect tasks</th>
-									<th>Average Time Taken for task(ms)</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>Congruent Trials (Trials that had same colour as the words e.g RED printed in red
-										colour)</td>
-									<td>
-										{{ this.stroopTestData.performanceParameters.congruentTotal }}
-									</td>
-									<td>
-										{{ this.stroopTestData.performanceParameters.congruentCorrect }}
-									</td>
-									<td>
-										{{ this.stroopTestData.performanceParameters.congruentIncorrect }}
-									</td>
-									<td>
-										{{ this.stroopTestData.performanceParameters.congruentAvgTime }}
-									</td>
-								</tr>
-								<tr>
-									<td>In-congruent Trials (Trials that had different colour as the words e.g RED printed
-										in
-										green colour)</td>
-									<td>
-										{{ this.stroopTestData.performanceParameters.incongruentTotal }}
-									</td>
-									<td>
-										{{ this.stroopTestData.performanceParameters.incongruentCorrect }}
-									</td>
-									<td>
-										{{ this.stroopTestData.performanceParameters.incongruentIncorrect }}
-									</td>
-									<td>
-										{{ this.stroopTestData.performanceParameters.incongruentAvgTime }}
-									</td>
-								</tr>
-								<tr>
-									<td>Total</td>
-									<td>
-										{{ this.totalTasks }}
-									</td>
-									<td>
-										{{ this.totalCorrect }}
-									</td>
-									<td>
-										{{ this.totalIncorrect }}
-									</td>
-									<td>
-										{{ this.totalAvgTime }}
-									</td>
-								</tr>
-							</tbody>
-						</v-table>
-					</div>
 					<p>Your Stroop Score(Incngruent Avg Time - Congruent Avg Time): {{ this.stroopTestData.testScore }}ms
 					</p>
 					<br />
