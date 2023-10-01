@@ -72,6 +72,9 @@ export const useTestStore = defineStore('tests', {
 		addDigitSpanTestData(data) {
 			this.digitSpanTestData = data;
 		},
+		addReverseDigitSpanTestData(data) {
+			this.reverseDigitSpanTestData = data;
+		},
 		addStroopTestData(data) {
 			this.stroopTestData = data;
 		},
@@ -90,6 +93,9 @@ export const useTestStore = defineStore('tests', {
 		getDigitSpanTestData() {
 			return this.digitSpanTestData;
 		},
+		getReverseDigitSpanTestData() {
+			return this.reverseDigitSpanTestData;
+		},
 		getNBackTestData() {
 			return this.nBackTestData;
 		},
@@ -106,6 +112,7 @@ export const useTestStore = defineStore('tests', {
 			return {
 				userDetailsData: this.userDetailsData,
 				digitSpanTestData: this.digitSpanTestData,
+				reverseDigitSpanTestData: this.reverseDigitSpanTestData,
 				stroopTestData: this.stroopTestData,
 				nBackTestData: this.nBackTestData,
 				shortTermMemoryTestData: this.shortTermMemoryTestData,

@@ -14,7 +14,8 @@
 				<div class="entered-numbers" v-else></div>
 				<v-row class="numpad">
 					<v-col v-for="(num, idx) in numpadNumbers" :key="idx" cols="3">
-						<v-btn @click="onNumpadClick(num)" :disabled="numpadDisabled[num]" class="numpad-button" size="large">
+						<v-btn @click="onNumpadClick(num)" :disabled="numpadDisabled[num]" class="numpad-button"
+							size="large">
 							{{ num }}
 						</v-btn>
 					</v-col>
@@ -22,7 +23,8 @@
 						<v-btn @click="backspace()" class="backspace-button" size="large"> Clear </v-btn>
 					</v-col>
 					<v-col cols="auto">
-						<v-btn @click="checkAnswer()" v-if="!showPrompt" size="large" color="red-lighten-3" class="enter-button" cols="auto">Enter</v-btn>
+						<v-btn @click="checkAnswer()" v-if="!showPrompt" size="large" color="red-lighten-3"
+							class="enter-button" cols="auto">Enter</v-btn>
 					</v-col>
 				</v-row>
 				<br />
@@ -33,13 +35,16 @@
 			<br />
 			<p><b>Note: </b>This is a computerized analysis and not a medical diagnosis</p>
 			<div>
-				<h3>Maximum length of digits that you can remember in REVERSE order (REVERSE Digit Span) is = {{ this.digitSpanTestData.highestDigitSpan }}</h3>
+				<h3>Maximum length of digits that you can remember in REVERSE order (REVERSE Digit Span) is = {{
+					this.digitSpanTestData.highestDigitSpan }}</h3>
 				<br />
 				<div class="expected-outcome">
 					<p><b>Expected Results for Reverse Digit-Span Test:</b><br /></p>
 					<ul>
 						<li>5 to 9, depending on your age and educational background.</li>
-						<li>If your results are less than 5, don't panic. The results can be affected by many factors, such as your attention level, health, and anxiety. Please repeat the test after a few days. If your results are consistently below 5, please consult with a doctor or psychiatrist.</li>
+						<li>If your results are less than 5, don't panic. The results can be affected by many factors, such
+							as your attention level, health, and anxiety. Please repeat the test after a few days. If your
+							results are consistently below 5, please consult with a doctor or psychiatrist.</li>
 					</ul>
 					<br />
 				</div>
@@ -170,7 +175,7 @@ export default {
 		completedTest() {
 			this.showResult = true;
 			this.digitSpanTestData.highestDigitSpan = this.digitIndex - 1;
-			useTestStore().addDigitSpanTestData(this.digitSpanTestData);
+			useTestStore().addReverseDigitSpanTestData(this.digitSpanTestData);
 			this.testCompleted = true;
 		}
 	},
@@ -255,5 +260,4 @@ export default {
 .expected-outcome {
 	text-align: left;
 	padding-left: 25px;
-}
-</style>
+}</style>
