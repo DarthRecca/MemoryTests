@@ -24,6 +24,10 @@ export const useTestStore = defineStore('tests', {
 			individualPromptData: [],
 			highestDigitSpan: 0
 		},
+		reverseDigitSpanTestData: {
+			individualPromptData: [],
+			highestDigitSpan: 0
+		},
 		stroopTestData: {
 			score: 0,
 			individualPromptData: [],

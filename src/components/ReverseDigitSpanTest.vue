@@ -1,10 +1,10 @@
 <template>
-	<v-container class="digit-span-test-container">
-		<div class="digit-span-test" v-if="!this.testCompleted">
-			<div v-if="showPrompt" class="digit-span-prompt">
+	<v-container class="r-digit-span-test-container">
+		<div class="r-digit-span-test" v-if="!this.testCompleted">
+			<div v-if="showPrompt" class="r-digit-span-prompt">
 				<p>{{ this.digit }}</p>
 			</div>
-			<div v-else class="digit-span-prompt"></div>
+			<div v-else class="r-digit-span-prompt"></div>
 			<br />
 			<div v-if="!showPrompt">
 				<h2>Entered Numbers</h2>
@@ -19,24 +19,40 @@
 						</v-btn>
 					</v-col>
 					<v-col cols="auto">
-						<v-btn @click="backspace" class="backspace-button" size="large"> Clear </v-btn>
+						<v-btn @click="backspace()" class="backspace-button" size="large"> Clear </v-btn>
 					</v-col>
 					<v-col cols="auto">
-						<v-btn @click="checkAnswer()" v-if="!showPrompt" color="red-lighten-3" size="large" class="enter-button" cols="auto">Enter</v-btn>
+						<v-btn @click="checkAnswer()" v-if="!showPrompt" size="large" color="red-lighten-3" class="enter-button" cols="auto">Enter</v-btn>
 					</v-col>
 				</v-row>
 				<br />
 			</div>
 		</div>
-		<div v-if="this.testCompleted">
-			<p>Trial Completed</p>
+		<div v-if="this.testCompleted" class="result">
+			<h2>Test Completed</h2>
 			<br />
-			<v-btn @click="$emit('trial-completed')" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
+			<p><b>Note: </b>This is a computerized analysis and not a medical diagnosis</p>
+			<div>
+				<h3>Maximum length of digits that you can remember in REVERSE order (REVERSE Digit Span) is = {{ this.digitSpanTestData.highestDigitSpan }}</h3>
+				<br />
+				<div class="expected-outcome">
+					<p><b>Expected Results for Reverse Digit-Span Test:</b><br /></p>
+					<ul>
+						<li>5 to 9, depending on your age and educational background.</li>
+						<li>If your results are less than 5, don't panic. The results can be affected by many factors, such as your attention level, health, and anxiety. Please repeat the test after a few days. If your results are consistently below 5, please consult with a doctor or psychiatrist.</li>
+					</ul>
+					<br />
+				</div>
+			</div>
+			<br />
+			<v-btn value="StroopLink" to="/strooptest" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
 		</div>
 	</v-container>
 </template>
 
 <script>
+import { useTestStore } from '@/store/tests';
+
 function generateRandomPrompt(length) {
 	const digits = Array.from({ length: 10 }, (_, i) => i);
 	let prompt = '';
@@ -51,7 +67,7 @@ function generateRandomPrompt(length) {
 }
 
 export default {
-	name: 'DigitSpanTrial',
+	name: 'ReverseDigitSpanTest',
 	data() {
 		return {
 			showPrompt: true,
@@ -59,10 +75,15 @@ export default {
 			prompt: '',
 			digit: '',
 			userInput: '',
+			reverseInput: '',
 			digitIndex: 2,
 			result: '',
 			correctCount: 0,
 			incorrectCount: 0,
+			digitSpanTestData: {
+				individualPromptData: [],
+				highestDigitSpan: 0
+			},
 			numpadDisabled: Array(10).fill(false),
 			numpadNumbers: [7, 8, 9, 4, 5, 6, 1, 2, 3, 0],
 			enteredNumbers: '',
@@ -74,23 +95,23 @@ export default {
 			if (num === 'Backspace') {
 				return;
 			}
-			this.userInput += num;
+			this.reverseInput += num;
 			this.numpadDisabled[num] = true;
 			this.enteredNumbers += num;
 		},
 		backspace() {
-			const lastDigit = this.userInput.slice(-1);
+			const lastDigit = this.reverseInput.slice(-1);
 			this.numpadDisabled[lastDigit] = false;
-			this.userInput = this.userInput.slice(0, -1);
+			this.reverseInput = this.reverseInput.slice(0, -1);
 			this.enteredNumbers = this.enteredNumbers.slice(0, -1);
 		},
-		nextDigitSpan() {
+		async nextDigitSpan() {
 			this.prompt = generateRandomPrompt(this.digitIndex);
 			if (this.digitIndex < 10) {
 				this.digitDisplay(this.prompt, 0);
 			}
 		},
-		digitDisplay(prompt, index) {
+		async digitDisplay(prompt, index) {
 			if (index < this.digitIndex) {
 				this.digit = prompt.charAt(index);
 				setTimeout(() => {
@@ -100,25 +121,35 @@ export default {
 				this.showPrompt = false;
 			}
 		},
-		checkAnswer() {
+		async checkAnswer() {
+			this.userInput = this.reverseInput.split('').reverse().join('');
 			if (this.userInput === this.prompt) {
-				this.result = 'Correct';
+				this.result = 'correct';
 				this.correctCount++;
 			} else {
-				this.result = 'Incorrect';
+				this.result = 'incorrect';
 				this.incorrectCount++;
 			}
+			const promptData = {
+				prompt: this.prompt,
+				input: this.reverseInput,
+				reverseInput: this.userInput,
+				result: this.result
+			};
+			this.digitSpanTestData.individualPromptData.push(promptData);
 			this.userInput = '';
+			this.reverseInput = '';
 			this.enteredNumbers = '';
 			this.resetNumpad();
-
-			if (this.digitIndex <= 3) {
-				if (this.correctCount === 2) {
+			this.prompt = '';
+			this.digit = '';
+			if (this.digitIndex < 10) {
+				if (this.correctCount >= 2) {
 					this.digitIndex++;
 					this.correctCount = 0;
 					this.incorrectCount = 0;
 				}
-				if (this.incorrectCount === 2) {
+				if (this.incorrectCount >= 2) {
 					this.correctCount = 0;
 					this.incorrectCount = 0;
 					this.completedTest();
@@ -137,29 +168,28 @@ export default {
 			}
 		},
 		completedTest() {
-			this.incorrectCount = 0;
-			this.correctCount = 0;
-			this.digitIndex = 2;
 			this.showResult = true;
+			this.digitSpanTestData.highestDigitSpan = this.digitIndex - 1;
+			useTestStore().addDigitSpanTestData(this.digitSpanTestData);
 			this.testCompleted = true;
 		}
 	},
 	mounted() {
 		setTimeout(() => {
 			this.nextDigitSpan();
-		}, 500);
+		}, 1000);
 	}
 };
 </script>
 
 <style scoped>
-.digit-span-test-container {
+.r-digit-span-test-container {
 	text-align: center;
 	border: solid black;
 	border-width: 15px;
 }
 
-.digit-span-test {
+.r-digit-span-test {
 	text-align: center;
 	display: flex;
 	flex-direction: column;
@@ -167,7 +197,7 @@ export default {
 	height: 100vh;
 }
 
-.digit-span-prompt {
+.r-digit-span-prompt {
 	font-size: 100px;
 	margin: 10px;
 	font-weight: bold;
@@ -220,5 +250,10 @@ export default {
 .result {
 	font-size: 18px;
 	margin-top: 10px;
+}
+
+.expected-outcome {
+	text-align: left;
+	padding-left: 25px;
 }
 </style>

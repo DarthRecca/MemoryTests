@@ -8,8 +8,8 @@
 			You will be presented with a sequence of letters or numbers one by one.<br />
 			Your task is to press the MATCHES button if the current letter matches the one that was presented 2 trials ago.<br />
 			If it does not match, do not press the button.<br />
-			For example, let's say the current letter is B and the last two letters were B and N. Since the letter two letters ago (B) matches the current letter (B), you should press MATCHES.<br />
-			If the next letter is P, you should not press MATCHES because the letter two letters ago (N) does not match the current letter (P).<br />
+			For example, let's say the current letter is B and the last two letters were B and T. Since the letter two letters ago (B) matches the current letter (B), you should press MATCHES.<br />
+			If the next letter is P, you should not press MATCHES because the letter two letters ago (T) does not match the current letter (P).<br />
 
 			This is called the N=2 back test, because you are comparing the current letter to the letter that was displayed two letters ago.<br />
 		</p>

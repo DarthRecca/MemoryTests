@@ -27,6 +27,7 @@ export default {
 					longTermMemoryTestData: data.longTermMemoryTestData,
 					shortTermMemoryTestData: data.shortTermMemoryTestData,
 					digitSpanTestData: data.digitSpanTestData,
+					reverseDigitSpanTestData: data.reverseDigitSpanTestData,
 					stroopTestData: data.stroopTestData,
 					nBackTestData: data.nBackTestData
 				},

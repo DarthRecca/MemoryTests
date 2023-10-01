@@ -8,7 +8,7 @@
 		<br />
 		<p>
 			This test measures your short-term and long-term memory.<br />
-			You will be shown 10 words in the next screen.<br />
+			You will be shown 10 words below.<br />
 			Memorise them in your mind number of times.<br />
 			If you want you can take a bit of time to remember them.<br />
 			You will be asked to recall these words shortly(In the next screen) and after about 20 minutes(Towards the end of the test).<br />

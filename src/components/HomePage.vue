@@ -9,7 +9,7 @@
 
 				<div class="start-button">
 					<v-btn to="/detailsform" size="x-large" block color="red-lighten-3" rounded="lg">
-						<h1>Click here to Start Test</h1>
+						<h1>Start the Test</h1>
 					</v-btn>
 				</div>
 			</div>

@@ -28,17 +28,26 @@
 				<br />
 			</div>
 		</div>
-		<div v-if="this.testCompleted">
+		<div v-if="this.testCompleted" class="result">
 			<h2>Test Completed</h2>
 			<br />
 			<p><b>Note: </b>This is a computerized analysis and not a medical diagnosis</p>
-			<br />
 			<div>
-				<h3>Your best sequence that is maximum length of digits that you can remember (Digit Span) is: {{ this.digitSpanTestData.highestDigitSpan }}</h3>
+				<h3>Maximum length of digits that you can remember (Digit Span) is: {{ this.digitSpanTestData.highestDigitSpan }}</h3>
 				<br />
+				<div class="expected-outcome">
+					<p>
+						<b>Expected Results for Digit-Span Test:</b>
+					</p>
+					<ul>
+						<li>5 to 9, depending on your age and educational background.</li>
+						<li>If your results are less than 5, don't panic. The results can be affected by many factors, such as your attention level, health, and anxiety. Please repeat the test after a few days. If your results are consistently below 5, please consult with a doctor or psychiatrist.</li>
+					</ul>
+					<br />
+				</div>
 			</div>
 			<br />
-			<v-btn value="StroopLink" to="/strooptest" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
+			<v-btn value="ReverseDigitSpanLink" to="/reversedigitspantest" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
 		</div>
 	</v-container>
 </template>
@@ -60,6 +69,7 @@ function generateRandomPrompt(length) {
 }
 
 export default {
+	name: 'DigitSpanTest',
 	data() {
 		return {
 			showPrompt: true,
@@ -96,13 +106,13 @@ export default {
 			this.userInput = this.userInput.slice(0, -1);
 			this.enteredNumbers = this.enteredNumbers.slice(0, -1);
 		},
-		nextDigitSpan() {
+		async nextDigitSpan() {
 			this.prompt = generateRandomPrompt(this.digitIndex);
 			if (this.digitIndex < 10) {
 				this.digitDisplay(this.prompt, 0);
 			}
 		},
-		digitDisplay(prompt, index) {
+		async digitDisplay(prompt, index) {
 			if (index < this.digitIndex) {
 				this.digit = prompt.charAt(index);
 				setTimeout(() => {
@@ -112,7 +122,7 @@ export default {
 				this.showPrompt = false;
 			}
 		},
-		checkAnswer() {
+		async checkAnswer() {
 			if (this.userInput === this.prompt) {
 				this.result = 'correct';
 				this.correctCount++;
@@ -129,7 +139,8 @@ export default {
 			this.userInput = '';
 			this.enteredNumbers = '';
 			this.resetNumpad();
-
+			this.prompt = '';
+			this.digit = '';
 			if (this.digitIndex < 10) {
 				if (this.correctCount >= 2) {
 					this.digitIndex++;
@@ -164,7 +175,7 @@ export default {
 	mounted() {
 		setTimeout(() => {
 			this.nextDigitSpan();
-		}, 500);
+		}, 1000);
 	}
 };
 </script>
@@ -237,5 +248,10 @@ export default {
 .result {
 	font-size: 18px;
 	margin-top: 10px;
+}
+
+.expected-outcome {
+	text-align: left;
+	padding-left: 25px;
 }
 </style>
