@@ -67,7 +67,7 @@ export default {
 			}, 2500);
 			setTimeout(() => {
 				this.showPrompt = false;
-			}, 1000);
+			}, 500);
 			if (this.sequence.length > 7) {
 				this.sequence.shift();
 			}
@@ -78,7 +78,7 @@ export default {
 			} else {
 				setTimeout(() => {
 					this.generatePrompt();
-				}, 2000);
+				}, 2500);
 			}
 		},
 		checkMiss() {

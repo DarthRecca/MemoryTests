@@ -1,23 +1,30 @@
 <template>
 	<div class="s-digit-span-test-title">
-		<h1>Digit Span Test</h1>
+		<h1>Sequential Digit Span Test(Ascending Order)</h1>
 	</div>
 	<div class="instructions" v-if="!this.testStartFlag">
+		<div class="information">
+			<h3>This test measures short term memory and working memory</h3>
+		</div>
 		<h2 class="instructions-title">Instructions</h2>
 		<p>
-			In this experiment, you will be shown a sequence of numbers on the screen. These numbers are called digits.<br />
-			You need to remember the sequence and enter it into the space provided on the screen when prompted.<br />
-			If you make mistakes while entering the sequence, you can correct the last mistake using the Clear button.<br />
-			Once you have entered all of the digits, press the ENTER button.<br />
-			The length of the digit sequence will start from 2 and will increase until you are no longer able to remember it.<br />
-			You will be given three trials for each length.<br />
-			If you successfully complete two of the three trials for a given length, you will move on to the next length. Otherwise, the test will end.<br />
+			You will be shown a sequence of digits on the screen, one at a time similar to previous test. <br />
+			Remember the digits in the order that they are shown. <br />
+			When prompted, enter the digits in ASCENDING ORDER in the space provided. <br />
+		</p>
+		<p>
+			Example:<br />
+			If you are shown the following digits: <br />
+			<b>8 3 5 0 9 </b><br />
+			You would enter the following digits in the space provided: <br />
+			<b>0 3 5 8 9 </b><br />
 		</p>
 		<br />
 	</div>
 	<div class="real-test-indicator" v-if="!this.testStartFlag">
 		<div v-if="!this.testStartFlag" class="start-button">
-			<v-btn @click="this.startTest()" size="x-large" block color="red-lighten-3" rounded="lg">Click Here to Start Test</v-btn>
+			<v-btn @click="this.startTest()" size="x-large" block color="red-lighten-3" rounded="lg">Click Here to Start
+				Test</v-btn>
 		</div>
 	</div>
 	<div v-if="this.testStartFlag">
@@ -56,6 +63,10 @@ export default {
 .start-button {
 	text-align: center;
 	align-items: center;
+}
+
+.information {
+	text-align: center;
 }
 
 .instructions {

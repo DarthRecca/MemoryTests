@@ -97,14 +97,20 @@
 			</tbody>
 		</v-table>
 		<div class="expected-results">
-			<p>The expected scores of N=2 back test of working memory vary depending on the age and education level of the individual. However, as a general guide, the following can be expected:<br /></p>
+			<p>The expected scores of N=2 back test of working memory vary depending on the age and education level of the
+				individual. However, as a general guide, the following can be expected:<br /></p>
 			<ul>
 				<li>Children: 60-80% accuracy</li>
 				<li>Adults: 80-90% accuracy</li>
 				<li>Older adults: 70-80% accuracy</li>
 			</ul>
 			<br />
-			<p>It is important to note that these are just general guidelines, and there is a wide range of normal scores. If your score is less than above numbers, please do not panic. Your score could be lower than expected values if you are not well, have anxiety or are not in a sound state of mind. You may take the test again after a few days. If you consistently find your score much lower than above values and experience difficulties in concentrating on the task or processing the information mentally then you may consult the experts.</p>
+			<p>It is important to note that these are just general guidelines, and there is a wide range of normal scores.
+				If your score is less than above numbers, please do not panic. Your score could be lower than expected
+				values if you are not well, have anxiety or are not in a sound state of mind. You may take the test again
+				after a few days. If you consistently find your score much lower than above values and experience
+				difficulties in concentrating on the task or processing the information mentally then you may consult the
+				experts.</p>
 		</div>
 		<br />
 		<v-btn to="/longtermmemorytest/long" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
@@ -185,7 +191,7 @@ export default {
 			}, 2500);
 			setTimeout(() => {
 				this.showPrompt = false;
-			}, 1000);
+			}, 500);
 			if (this.sequence.length > 7) {
 				this.sequence.shift();
 			}
@@ -196,7 +202,7 @@ export default {
 			} else {
 				setTimeout(() => {
 					this.generatePrompt();
-				}, 2000);
+				}, 2500);
 			}
 		},
 		checkAnswer() {
@@ -342,5 +348,4 @@ export default {
 	border-collapse: collapse;
 	background-color: teal;
 	overflow-x: auto;
-}
-</style>
+}</style>

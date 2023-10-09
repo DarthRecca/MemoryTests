@@ -61,7 +61,7 @@ export default {
 			this.hideResult();
 			setTimeout(() => {
 				this.togglePrompt();
-			}, 1000);
+			}, 1500);
 		},
 		checkAnswer(answer) {
 			this.currentIteration += 1;
@@ -76,7 +76,7 @@ export default {
 				setTimeout(() => {
 					this.togglePrompt();
 					this.nextStroop();
-				}, 1000);
+				}, 1500);
 			} else {
 				this.testCompleted();
 			}

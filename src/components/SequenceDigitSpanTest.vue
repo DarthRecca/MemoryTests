@@ -35,14 +35,14 @@
 			<br />
 			<p><b>Note: </b>This is a computerized analysis and not a medical diagnosis</p>
 			<div>
-				<h3>Maximum length of digits that you can remember (Digit Span) is: {{
-					this.sequenceDigitSpanTestData.highestSequenceDigitSpan }}</h3>
+				<h3>Maximum length of digits that you can remember in Sequence(Ascending Order)(Sequential Digit Span) is:
+					{{ this.sequenceDigitSpanTestData.highestSequenceDigitSpan }}</h3>
 				<br />
 				<p>Average Prompt Response Time(in ms): {{
 					this.sequenceDigitSpanTestData.performanceParameters.averagePromptResponseTime }}ms</p>
 				<div class="expected-outcome">
 					<p>
-						<b>Expected Results for Digit-Span Test:</b>
+						<b>Expected Results for Sequence Digit-Span Test:</b>
 					</p>
 					<ul>
 						<li>5 to 9, depending on your age and educational background.</li>
@@ -83,7 +83,8 @@ export default {
 			showResult: false,
 			prompt: '',
 			digit: '',
-			userInput: '',
+			expectedInput: '',
+			sequenceInput: '',
 			digitIndex: 2,
 			result: '',
 			correctCount: 0,
@@ -108,14 +109,14 @@ export default {
 			if (num === 'Backspace') {
 				return;
 			}
-			this.userInput += num;
+			this.sequenceInput += num;
 			this.numpadDisabled[num] = true;
 			this.enteredNumbers += num;
 		},
 		backspace() {
-			const lastDigit = this.userInput.slice(-1);
+			const lastDigit = this.sequenceInput.slice(-1);
 			this.numpadDisabled[lastDigit] = false;
-			this.userInput = this.userInput.slice(0, -1);
+			this.sequenceInput = this.sequenceInput.slice(0, -1);
 			this.enteredNumbers = this.enteredNumbers.slice(0, -1);
 		},
 		async nextDigitSpan() {
@@ -136,7 +137,11 @@ export default {
 			}
 		},
 		async checkAnswer() {
-			if (this.userInput === this.prompt) {
+			this.expectedInput = this.prompt
+				.split('')
+				.sort((a, b) => a.localeCompare(b))
+				.join('');
+			if (this.sequenceInput === this.expectedInput) {
 				this.result = 'correct';
 				this.correctCount++;
 			} else {
@@ -148,11 +153,12 @@ export default {
 			this.sequenceDigitSpanTestData.performanceParameters.averagePromptResponseTime += timeTaken;
 			const promptData = {
 				prompt: this.prompt,
-				answer: this.userInput,
+				expectedInput: this.expectedInput,
+				sequenceInput: this.sequenceInput,
 				result: this.result
 			};
 			this.sequenceDigitSpanTestData.individualPromptData.push(promptData);
-			this.userInput = '';
+			this.expectedInput = '';
 			this.enteredNumbers = '';
 			this.resetNumpad();
 			this.prompt = '';
@@ -185,7 +191,7 @@ export default {
 			this.showResult = true;
 			this.sequenceDigitSpanTestData.highestSequenceDigitSpan = this.digitIndex - 1;
 			this.sequenceDigitSpanTestData.performanceParameters.averagePromptResponseTime = Math.floor(this.sequenceDigitSpanTestData.performanceParameters.averagePromptResponseTime / this.sequenceDigitSpanTestData.individualPromptData.length);
-			useTestStore().addDigitSpanTestData(this.sequenceDigitSpanTestData);
+			useTestStore().addSequenceDigitSpanTestData(this.sequenceDigitSpanTestData);
 			this.testCompleted = true;
 		}
 	},
@@ -270,5 +276,4 @@ export default {
 .expected-outcome {
 	text-align: left;
 	padding-left: 25px;
-}
-</style>
+}</style>
