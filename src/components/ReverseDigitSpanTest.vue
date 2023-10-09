@@ -35,7 +35,7 @@
 			<div>
 				<h3>Maximum length of digits that you can remember in REVERSE order (REVERSE Digit Span) is = {{ this.reverseDigitSpanTestData.highestReverseDigitSpan }}</h3>
 				<br />
-				<p>Average Prompt Response Time(in ms): {{ this.reverseDigitSpanTestData.performanceParameters.averagePromptResponseTime }}ms</p>
+				<p>Average Prompt Response Time(in ms): {{ this.averagePromptResponseTime }}ms</p>
 				<div class="expected-outcome">
 					<p><b>Expected Results for Reverse Digit-Span Test:</b><br /></p>
 					<ul>
@@ -81,6 +81,7 @@ export default {
 			result: '',
 			correctCount: 0,
 			incorrectCount: 0,
+			totalResponseTime: 0,
 			reverseDigitSpanTestData: {
 				individualPromptData: [],
 				highestReverseDigitSpan: 0,
@@ -139,7 +140,7 @@ export default {
 			}
 			this.answerEndTime = Date.now();
 			const timeTaken = this.answerEndTime - this.promptEndTime;
-			this.reverseDigitSpanTestData.performanceParameters.averagePromptResponseTime += timeTaken;
+			this.totalResponseTime += timeTaken;
 			const promptData = {
 				prompt: this.prompt,
 				input: this.reverseInput,
@@ -178,11 +179,16 @@ export default {
 			}
 		},
 		completedTest() {
-			this.showResult = true;
 			this.reverseDigitSpanTestData.highestReverseDigitSpan = this.digitIndex - 1;
-			this.reverseDigitSpanTestData.performanceParameters.averagePromptResponseTime = Math.floor(this.reverseDigitSpanTestData.performanceParameters.averagePromptResponseTime / this.reverseDigitSpanTestData.individualPromptData.length);
+			this.reverseDigitSpanTestData.performanceParameters.averagePromptResponseTime = this.averagePromptResponseTime;
 			useTestStore().addReverseDigitSpanTestData(this.reverseDigitSpanTestData);
+			this.showResult = true;
 			this.testCompleted = true;
+		}
+	},
+	computed: {
+		averagePromptResponseTime() {
+			return Math.floor(this.totalResponseTime / this.reverseDigitSpanTestData.individualPromptData.length);
 		}
 	},
 	mounted() {
@@ -196,8 +202,7 @@ export default {
 <style scoped>
 .r-digit-span-test-container {
 	text-align: center;
-	border: solid black;
-	border-width: 15px;
+	border: solid 5px black;
 }
 
 .r-digit-span-test {

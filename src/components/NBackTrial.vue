@@ -3,13 +3,13 @@
 		<div class="n-back-prompt" v-if="this.showPrompt">
 			<p>{{ prompt }}</p>
 		</div>
-		<div v-else class="n-back-prompt"></div>
+		<div class="n-back-prompt" v-else></div>
 		<br />
 		<div class="n-back-input-container">
-			<v-btn @click="checkAnswer" color="green" block size="large">Matches</v-btn>
+			<v-btn @click="this.setInputReceived()" color="green" block size="large">Matches</v-btn>
 		</div>
 		<br />
-		<div v-if="showResult" class="result">
+		<div v-if="this.showResult" class="result">
 			<p>Your answer is {{ result }}!</p>
 		</div>
 		<div v-else class="result"></div>
@@ -29,6 +29,7 @@ export default {
 	data() {
 		return {
 			maxIterations: 20,
+			iterationCheck: false,
 			currentIteration: 0,
 			prompt: '',
 			sequence: [],
@@ -43,10 +44,13 @@ export default {
 		};
 	},
 	methods: {
-		generatePrompt() {
-			this.showResult = false;
-			this.checkMiss();
-
+		async generatePrompt() {
+			if (this.iterationCheck == false) {
+				this.checkAnswer();
+			} else {
+				this.iterationCheck = false;
+			}
+			this.resetShowResultToggle();
 			if (this.turnsTillRepeat == 0) {
 				if (this.sequence.length - this.n >= 0) {
 					this.prompt = this.sequence[this.sequence.length - 1 - (this.n - 1)];
@@ -81,21 +85,34 @@ export default {
 				}, 2500);
 			}
 		},
-		checkMiss() {
+		async checkAnswer() {
+			if (this.inputReceived == false) {
+				if (this.repeatFlag == true) {
+					this.result = 'Incorrect';
+				} else {
+					this.result = 'Correct';
+				}
+			} else {
+				if (this.repeatFlag == false) {
+					this.result = 'Incorrect';
+				} else {
+					this.result = 'Correct';
+				}
+			}
 			this.repeatFlag = false;
 			this.inputReceived = false;
 		},
-		checkAnswer() {
-			const targetStimulus = this.sequence[this.sequence.length - 1 - this.n];
-			this.inputReceived = true;
-
-			if (this.prompt === targetStimulus.toString()) {
-				this.result = 'Correct';
-			} else {
-				this.result = 'Incorrect';
-			}
-
+		async setShowResultToggle() {
 			this.showResult = true;
+		},
+		async resetShowResultToggle() {
+			this.showResult = false;
+		},
+		setInputReceived() {
+			this.inputReceived = true;
+			this.setShowResultToggle();
+			this.checkAnswer();
+			this.iterationCheck = true;
 		},
 		testCompleted() {
 			this.completed = true;
@@ -116,7 +133,7 @@ export default {
 	align-items: center;
 	justify-content: center;
 	height: 100vh;
-	border: solid 1px black;
+	border: solid 5px black;
 }
 
 .n-back-prompt {

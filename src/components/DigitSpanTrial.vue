@@ -155,8 +155,7 @@ export default {
 <style scoped>
 .digit-span-test-container {
 	text-align: center;
-	border: solid black;
-	border-width: 15px;
+	border: solid 5px black;
 }
 
 .digit-span-test {

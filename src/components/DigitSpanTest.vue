@@ -35,7 +35,7 @@
 			<div>
 				<h3>Maximum length of digits that you can remember (Digit Span) is: {{ this.digitSpanTestData.highestDigitSpan }}</h3>
 				<br />
-				<p>Average Prompt Response Time(in ms): {{ this.digitSpanTestData.performanceParameters.averagePromptResponseTime }}ms</p>
+				<p>Average Prompt Response Time(in ms): {{ this.averagePromptResponseTime }}ms</p>
 				<div class="expected-outcome">
 					<p>
 						<b>Expected Results for Digit-Span Test:</b>
@@ -82,6 +82,7 @@ export default {
 			result: '',
 			correctCount: 0,
 			incorrectCount: 0,
+			totalResponseTime: 0,
 			digitSpanTestData: {
 				individualPromptData: [],
 				highestDigitSpan: 0,
@@ -139,7 +140,7 @@ export default {
 			}
 			this.answerEndTime = Date.now();
 			const timeTaken = this.answerEndTime - this.promptEndTime;
-			this.digitSpanTestData.performanceParameters.averagePromptResponseTime += timeTaken;
+			this.totalResponseTime += timeTaken;
 			const promptData = {
 				prompt: this.prompt,
 				answer: this.userInput,
@@ -177,11 +178,16 @@ export default {
 			}
 		},
 		completedTest() {
-			this.showResult = true;
 			this.digitSpanTestData.highestDigitSpan = this.digitIndex - 1;
-			this.digitSpanTestData.performanceParameters.averagePromptResponseTime = Math.floor(this.digitSpanTestData.performanceParameters.averagePromptResponseTime / this.digitSpanTestData.individualPromptData.length);
+			this.digitSpanTestData.performanceParameters.averagePromptResponseTime = this.averagePromptResponseTime;
 			useTestStore().addDigitSpanTestData(this.digitSpanTestData);
+			this.showResult = true;
 			this.testCompleted = true;
+		}
+	},
+	computed: {
+		averagePromptResponseTime() {
+			return Math.floor(this.totalResponseTime / this.digitSpanTestData.individualPromptData.length);
 		}
 	},
 	mounted() {
@@ -195,8 +201,7 @@ export default {
 <style scoped>
 .digit-span-test-container {
 	text-align: center;
-	border: solid black;
-	border-width: 15px;
+	border: solid 5px black;
 }
 
 .digit-span-test {

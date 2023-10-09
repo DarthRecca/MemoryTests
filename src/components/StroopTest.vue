@@ -26,7 +26,7 @@
 					<br />
 					<p><b>Note: </b>This is a computerized analysis and not a medical diagnosis</p>
 					<br />
-					<p>Your Stroop Score(Incngruent Avg Time - Congruent Avg Time): {{ this.stroopTestData.testScore }}ms</p>
+					<p>Your Stroop Score (Incongruent Avg Time - Congruent Avg Time): {{ this.stroopTestData.testScore }}ms</p>
 					<br />
 					<div class="result-expected">
 						<p>The expected values of Stroop Test scores vary depending on the specific version of the test used and the individual's age, education level and the device used (that is whether you have used cell phone, laptop of desktop). However, as a general guide, the following can be expected:<br /></p>
@@ -164,7 +164,6 @@ export default {
 			this.showResult = false;
 		},
 		testCompleted() {
-			this.completed = true;
 			this.stroopTestData.performanceParameters.congruentAvgTime = Math.floor(this.stroopTestData.performanceParameters.congruentAvgTime / this.stroopTestData.performanceParameters.congruentTotal);
 			if (isNaN(this.stroopTestData.performanceParameters.congruentAvgTime)) {
 				this.stroopTestData.performanceParameters.congruentAvgTime = 9999;
@@ -180,6 +179,7 @@ export default {
 				totalTimeTaken: this.stroopTestData.totalTestTime,
 				performanceParameters: this.stroopTestData.performanceParameters
 			});
+			this.completed = true;
 			this.hideResult();
 		}
 	},
@@ -223,7 +223,7 @@ export default {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	border: solid black;
+	border: solid 5px black;
 }
 
 .stroop-prompt {

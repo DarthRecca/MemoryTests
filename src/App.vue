@@ -2,7 +2,9 @@
 	<v-app>
 		<v-main class="main-container">
 			<v-sheet color="teal-lighten-3" border class="main-sheet">
-				<router-view></router-view>
+				<v-responsive>
+					<router-view></router-view>
+				</v-responsive>
 			</v-sheet>
 		</v-main>
 	</v-app>

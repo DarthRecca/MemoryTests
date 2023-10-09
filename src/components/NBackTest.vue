@@ -6,10 +6,10 @@
 		<div class="n-back-prompt" v-else></div>
 		<br />
 		<div class="n-back-input-container">
-			<v-btn @click="this.toggleInputReceived()" color="green" size="large">Matches</v-btn>
+			<v-btn @click="this.setInputReceived()" color="green" size="large">Matches</v-btn>
 		</div>
 		<br />
-		<div v-if="showResult" class="result">
+		<div v-if="this.showResult" class="result">
 			<p>Your answer is {{ result }}!</p>
 		</div>
 		<div v-else class="result"></div>
@@ -97,20 +97,14 @@
 			</tbody>
 		</v-table>
 		<div class="expected-results">
-			<p>The expected scores of N=2 back test of working memory vary depending on the age and education level of the
-				individual. However, as a general guide, the following can be expected:<br /></p>
+			<p>The expected scores of N=2 back test of working memory vary depending on the age and education level of the individual. However, as a general guide, the following can be expected:<br /></p>
 			<ul>
 				<li>Children: 60-80% accuracy</li>
 				<li>Adults: 80-90% accuracy</li>
 				<li>Older adults: 70-80% accuracy</li>
 			</ul>
 			<br />
-			<p>It is important to note that these are just general guidelines, and there is a wide range of normal scores.
-				If your score is less than above numbers, please do not panic. Your score could be lower than expected
-				values if you are not well, have anxiety or are not in a sound state of mind. You may take the test again
-				after a few days. If you consistently find your score much lower than above values and experience
-				difficulties in concentrating on the task or processing the information mentally then you may consult the
-				experts.</p>
+			<p>It is important to note that these are just general guidelines, and there is a wide range of normal scores. If your score is less than above numbers, please do not panic. Your score could be lower than expected values if you are not well, have anxiety or are not in a sound state of mind. You may take the test again after a few days. If you consistently find your score much lower than above values and experience difficulties in concentrating on the task or processing the information mentally then you may consult the experts.</p>
 		</div>
 		<br />
 		<v-btn to="/longtermmemorytest/long" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
@@ -124,6 +118,7 @@ export default {
 	data() {
 		return {
 			maxIterations: 50,
+			iterationCheck: false,
 			currentIteration: 0,
 			prompt: '',
 			sequence: [],
@@ -165,8 +160,13 @@ export default {
 		};
 	},
 	methods: {
-		generatePrompt() {
-			this.showResult = false;
+		async generatePrompt() {
+			if (this.iterationCheck == false) {
+				this.checkAnswer();
+			} else {
+				this.iterationCheck = false;
+			}
+			this.resetShowResultToggle();
 			if (this.turnsTillRepeat == 0) {
 				if (this.sequence.length - this.n >= 0) {
 					this.prompt = this.sequence[this.sequence.length - 1 - (this.n - 1)];
@@ -196,7 +196,7 @@ export default {
 				this.sequence.shift();
 			}
 			this.currentIteration += 1;
-			this.checkAnswer();
+
 			if (this.currentIteration == this.maxIterations) {
 				this.testCompleted();
 			} else {
@@ -205,7 +205,7 @@ export default {
 				}, 2500);
 			}
 		},
-		checkAnswer() {
+		async checkAnswer() {
 			this.responseTime = Date.now();
 			const targetStimulus = this.sequence[this.sequence.length - 1 - this.n];
 			let answer = '';
@@ -213,7 +213,7 @@ export default {
 			if (this.inputReceived == false) {
 				if (this.repeatFlag == true) {
 					this.score = this.score - 1;
-					this.result = 'Miss';
+					this.result = 'Incorrect';
 					this.nBackTestData.performanceParameters.matchTrialsAvgTime += timeTaken;
 					this.nBackTestData.performanceParameters.matchTrialsIncorrect += 1;
 				} else {
@@ -247,10 +247,18 @@ export default {
 			this.nBackTestData.individualPromptData.push(promptData);
 			this.repeatFlag = false;
 			this.inputReceived = false;
-			this.showResult();
 		},
-		toggleInputReceived() {
-			this.inputReceived = !this.inputReceived;
+		async setShowResultToggle() {
+			this.showResult = true;
+		},
+		async resetShowResultToggle() {
+			this.showResult = false;
+		},
+		setInputReceived() {
+			this.inputReceived = true;
+			this.setShowResultToggle();
+			this.checkAnswer();
+			this.iterationCheck = true;
 		},
 		testCompleted() {
 			this.nBackTestData.performanceParameters.matchTrialsCorrectPercent = this.matchTrialsCorrectPercent;
@@ -348,4 +356,5 @@ export default {
 	border-collapse: collapse;
 	background-color: teal;
 	overflow-x: auto;
-}</style>
+}
+</style>

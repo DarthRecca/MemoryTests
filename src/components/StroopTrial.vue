@@ -116,7 +116,7 @@ export default {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	border: solid black;
+	border: solid 5px black;
 }
 
 .stroop-prompt {
