@@ -33,8 +33,9 @@
 			<br />
 			<p><b>Note: </b>This is a computerized analysis and not a medical diagnosis</p>
 			<div>
-				<h3>Maximum length of digits that you can remember in REVERSE order (REVERSE Digit Span) is = {{ this.digitSpanTestData.highestDigitSpan }}</h3>
+				<h3>Maximum length of digits that you can remember in REVERSE order (REVERSE Digit Span) is = {{ this.reverseDigitSpanTestData.highestReverseDigitSpan }}</h3>
 				<br />
+				<p>Average Prompt Response Time(in ms): {{ this.reverseDigitSpanTestData.performanceParameters.averagePromptResponseTime }}ms</p>
 				<div class="expected-outcome">
 					<p><b>Expected Results for Reverse Digit-Span Test:</b><br /></p>
 					<ul>
@@ -45,7 +46,7 @@
 				</div>
 			</div>
 			<br />
-			<v-btn value="StroopLink" to="/strooptest" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
+			<v-btn value="SequenceDigitSpanLink" to="/sequencedigitspantest" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
 		</div>
 	</v-container>
 </template>
@@ -80,10 +81,15 @@ export default {
 			result: '',
 			correctCount: 0,
 			incorrectCount: 0,
-			digitSpanTestData: {
+			reverseDigitSpanTestData: {
 				individualPromptData: [],
-				highestDigitSpan: 0
+				highestReverseDigitSpan: 0,
+				performanceParameters: {
+					averagePromptResponseTime: 0
+				}
 			},
+			promptEndTime: '',
+			answerEndTime: '',
 			numpadDisabled: Array(10).fill(false),
 			numpadNumbers: [7, 8, 9, 4, 5, 6, 1, 2, 3, 0],
 			enteredNumbers: '',
@@ -118,6 +124,7 @@ export default {
 					this.digitDisplay(prompt, index + 1);
 				}, 1000);
 			} else {
+				this.promptEndTime = Date.now();
 				this.showPrompt = false;
 			}
 		},
@@ -130,13 +137,16 @@ export default {
 				this.result = 'incorrect';
 				this.incorrectCount++;
 			}
+			this.answerEndTime = Date.now();
+			const timeTaken = this.answerEndTime - this.promptEndTime;
+			this.reverseDigitSpanTestData.performanceParameters.averagePromptResponseTime += timeTaken;
 			const promptData = {
 				prompt: this.prompt,
 				input: this.reverseInput,
 				reverseInput: this.userInput,
 				result: this.result
 			};
-			this.digitSpanTestData.individualPromptData.push(promptData);
+			this.reverseDigitSpanTestData.individualPromptData.push(promptData);
 			this.userInput = '';
 			this.reverseInput = '';
 			this.enteredNumbers = '';
@@ -169,8 +179,9 @@ export default {
 		},
 		completedTest() {
 			this.showResult = true;
-			this.digitSpanTestData.highestDigitSpan = this.digitIndex - 1;
-			useTestStore().addReverseDigitSpanTestData(this.digitSpanTestData);
+			this.reverseDigitSpanTestData.highestReverseDigitSpan = this.digitIndex - 1;
+			this.reverseDigitSpanTestData.performanceParameters.averagePromptResponseTime = Math.floor(this.reverseDigitSpanTestData.performanceParameters.averagePromptResponseTime / this.reverseDigitSpanTestData.individualPromptData.length);
+			useTestStore().addReverseDigitSpanTestData(this.reverseDigitSpanTestData);
 			this.testCompleted = true;
 		}
 	},

@@ -28,6 +28,11 @@ const routes = [
 		component: () => import('@/views/ReverseDigitSpanTestView.vue')
 	},
 	{
+		path: '/sequencedigitspantest',
+		name: 'SequenceDigitSpanTestView',
+		component: () => import('@/views/SequenceDigitSpanTestView.vue')
+	},
+	{
 		path: '/strooptest',
 		name: 'StroopTestView',
 		component: () => import('@/views/StroopTestView.vue')

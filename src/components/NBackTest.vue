@@ -6,7 +6,7 @@
 		<div class="n-back-prompt" v-else></div>
 		<br />
 		<div class="n-back-input-container">
-			<v-btn @click="this.checkAnswer()" color="green" size="large">Matches</v-btn>
+			<v-btn @click="this.toggleInputReceived()" color="green" size="large">Matches</v-btn>
 		</div>
 		<br />
 		<div v-if="showResult" class="result">
@@ -135,9 +135,21 @@ export default {
 					matchTrialsTotal: 0,
 					matchTrialsCorrect: 0,
 					matchTrialsIncorrect: 0,
+					matchTrialsCorrectPercent: 0,
+					matchTrialsIncorrectPercent: 0,
+					matchTrialsAvgTime: 0,
 					nonMatchTrialsTotal: 0,
 					nonMatchTrialsCorrect: 0,
-					nonMatchTrialsIncorrect: 0
+					nonMatchTrialsIncorrect: 0,
+					nonMatchTrialsCorrectPercent: 0,
+					nonMatchTrialsIncorrectPercent: 0,
+					nonMatchTrialsAvgTime: 0,
+					totalTasks: 0,
+					totalCorrect: 0,
+					totalIncorrect: 0,
+					totalCorrectPercent: 0,
+					totalIncorrectPercent: 0,
+					totalAvgTime: 0
 				}
 			},
 			score: 0,
@@ -149,8 +161,6 @@ export default {
 	methods: {
 		generatePrompt() {
 			this.showResult = false;
-			this.checkMiss();
-
 			if (this.turnsTillRepeat == 0) {
 				if (this.sequence.length - this.n >= 0) {
 					this.prompt = this.sequence[this.sequence.length - 1 - (this.n - 1)];
@@ -170,6 +180,7 @@ export default {
 				this.nBackTestData.performanceParameters.nonMatchTrialsTotal += 1;
 			}
 			setTimeout(() => {
+				this.promptTime = Date.now();
 				this.showPrompt = true;
 			}, 2500);
 			setTimeout(() => {
@@ -179,8 +190,7 @@ export default {
 				this.sequence.shift();
 			}
 			this.currentIteration += 1;
-			this.promptTime = Date.now();
-
+			this.checkAnswer();
 			if (this.currentIteration == this.maxIterations) {
 				this.testCompleted();
 			} else {
@@ -189,54 +199,66 @@ export default {
 				}, 2000);
 			}
 		},
-		checkMiss() {
-			if (this.inputReceived == false) {
-				if (this.repeatFlag == true) {
-					this.score = this.score - 1;
-					const promptData = {
-						prompt: this.prompt,
-						answer: '',
-						result: 'Miss'
-					};
-					this.nBackTestData.individualPromptData.push(promptData);
-					this.nBackTestData.performanceParameters.matchTrialsIncorrect += 1;
-				} else {
-					this.nBackTestData.performanceParameters.nonMatchTrialsCorrect += 1;
-					this.score += 1;
-				}
-			} else {
-				if (this.repeatFlag == false) {
-					this.nBackTestData.performanceParameters.nonMatchTrialsIncorrect += 1;
-					this.score = this.score - 1;
-				} else {
-					this.nBackTestData.performanceParameters.matchTrialsCorrect += 1;
-				}
-			}
-			this.repeatFlag = false;
-			this.inputReceived = false;
-		},
 		checkAnswer() {
 			this.responseTime = Date.now();
 			const targetStimulus = this.sequence[this.sequence.length - 1 - this.n];
-			this.inputReceived = true;
-
-			if (this.prompt === targetStimulus.toString()) {
-				this.score += 1;
-				this.result = 'Correct';
-			} else {
-				this.result = 'Incorrect';
-			}
+			let answer = '';
 			const timeTaken = this.responseTime - this.promptTime;
+			if (this.inputReceived == false) {
+				if (this.repeatFlag == true) {
+					this.score = this.score - 1;
+					this.result = 'Miss';
+					this.nBackTestData.performanceParameters.matchTrialsAvgTime += timeTaken;
+					this.nBackTestData.performanceParameters.matchTrialsIncorrect += 1;
+				} else {
+					this.result = 'Correct';
+					this.nBackTestData.performanceParameters.nonMatchTrialsCorrect += 1;
+					this.nBackTestData.performanceParameters.nonMatchTrialsAvgTime += timeTaken;
+					this.score += 1;
+					answer = targetStimulus.toString();
+				}
+			} else {
+				if (this.repeatFlag == false) {
+					this.result = 'Incorrect';
+					answer = targetStimulus.toString();
+					this.nBackTestData.performanceParameters.nonMatchTrialsAvgTime += timeTaken;
+					this.nBackTestData.performanceParameters.nonMatchTrialsIncorrect += 1;
+					this.score = this.score - 1;
+				} else {
+					this.result = 'Correct';
+					answer = targetStimulus.toString();
+					this.nBackTestData.performanceParameters.matchTrialsAvgTime += timeTaken;
+					this.nBackTestData.performanceParameters.matchTrialsCorrect += 1;
+					this.score += 1;
+				}
+			}
 			const promptData = {
 				prompt: this.prompt,
-				answer: targetStimulus.toString(),
+				answer: answer,
 				result: this.result,
 				timeTaken: timeTaken
 			};
 			this.nBackTestData.individualPromptData.push(promptData);
-			this.showResult = true;
+			this.repeatFlag = false;
+			this.inputReceived = false;
+			this.showResult();
+		},
+		toggleInputReceived() {
+			this.inputReceived = !this.inputReceived;
 		},
 		testCompleted() {
+			this.nBackTestData.performanceParameters.matchTrialsCorrectPercent = this.matchTrialsCorrectPercent;
+			this.nBackTestData.performanceParameters.nonMatchTrialsCorrectPercent = this.nonMatchTrialsCorrectPercent;
+			this.nBackTestData.performanceParameters.matchTrialsIncorrectPercent = this.matchTrialsIncorrectPercent;
+			this.nBackTestData.performanceParameters.nonMatchTrialsIncorrectPercent = this.nonMatchTrialsIncorrectPercent;
+			this.nBackTestData.performanceParameters.totalTasks = this.totalTasks;
+			this.nBackTestData.performanceParameters.totalCorrect = this.totalCorrect;
+			this.nBackTestData.performanceParameters.totalCorrectPercent = this.totalCorrectPercent;
+			this.nBackTestData.performanceParameters.totalIncorrect = this.totalIncorrect;
+			this.nBackTestData.performanceParameters.totalIncorrectPercent = this.totalIncorrectPercent;
+			this.nBackTestData.performanceParameters.totalAvgTime = Math.floor((this.nBackTestData.performanceParameters.matchTrialsAvgTime + this.nBackTestData.performanceParameters.nonMatchTrialsAvgTime) / this.totalTasks);
+			this.nBackTestData.performanceParameters.matchTrialsAvgTime = Math.floor(this.nBackTestData.performanceParameters.matchTrialsAvgTime / this.nBackTestData.performanceParameters.matchTrialsTotal);
+			this.nBackTestData.performanceParameters.nonMatchTrialsAvgTime = Math.floor(this.nBackTestData.performanceParameters.nonMatchTrialsAvgTime / this.nBackTestData.performanceParameters.nonMatchTrialsTotal);
 			this.nBackTestData.nBackTestScore = this.score;
 			useTestStore().addNBackTestData(this.nBackTestData);
 			this.completed = true;

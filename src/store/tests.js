@@ -4,6 +4,7 @@ import { defineStore } from 'pinia';
 export const useTestStore = defineStore('tests', {
 	state: () => ({
 		userDetailsData: {
+			date: '',
 			name: '',
 			emailID: '',
 			yearOfBirth: '',
@@ -22,11 +23,24 @@ export const useTestStore = defineStore('tests', {
 		},
 		digitSpanTestData: {
 			individualPromptData: [],
-			highestDigitSpan: 0
+			highestDigitSpan: 0,
+			performanceParameters: {
+				averagePromptResponseTime: 0
+			}
 		},
 		reverseDigitSpanTestData: {
 			individualPromptData: [],
-			highestDigitSpan: 0
+			highestReverseDigitSpan: 0,
+			performanceParameters: {
+				averagePromptResponseTime: 0
+			}
+		},
+		sequenceDigitSpanTestData: {
+			individualPromptData: [],
+			highestSequenceDigitSpan: 0,
+			performanceParameters: {
+				averagePromptResponseTime: 0
+			}
 		},
 		stroopTestData: {
 			score: 0,
@@ -50,16 +64,19 @@ export const useTestStore = defineStore('tests', {
 				matchTrialsIncorrect: 0,
 				matchTrialsCorrectPercent: 0,
 				matchTrialsIncorrectPercent: 0,
+				matchTrialsAvgTime: 0,
 				nonMatchTrialsTotal: 0,
 				nonMatchTrialsCorrect: 0,
 				nonMatchTrialsIncorrect: 0,
 				nonMatchTrialsCorrectPercent: 0,
 				nonMatchTrialsIncorrectPercent: 0,
+				nonMatchTrialsAvgTime: 0,
 				totalTasks: 0,
 				totalCorrect: 0,
 				totalIncorrect: 0,
 				totalCorrectPercent: 0,
-				totalIncorrectPercent: 0
+				totalIncorrectPercent: 0,
+				totalAvgTime: 0
 			},
 			individualPromptData: [],
 			score: 0
@@ -74,6 +91,9 @@ export const useTestStore = defineStore('tests', {
 		},
 		addReverseDigitSpanTestData(data) {
 			this.reverseDigitSpanTestData = data;
+		},
+		addSequenceDigitSpanTestData(data) {
+			this.sequenceDigitSpanTestData = data;
 		},
 		addStroopTestData(data) {
 			this.stroopTestData = data;
@@ -96,6 +116,9 @@ export const useTestStore = defineStore('tests', {
 		getReverseDigitSpanTestData() {
 			return this.reverseDigitSpanTestData;
 		},
+		getSequenceDigitSpanTestData() {
+			return this.sequenceDigitSpanTestData;
+		},
 		getNBackTestData() {
 			return this.nBackTestData;
 		},
@@ -113,6 +136,7 @@ export const useTestStore = defineStore('tests', {
 				userDetailsData: this.userDetailsData,
 				digitSpanTestData: this.digitSpanTestData,
 				reverseDigitSpanTestData: this.reverseDigitSpanTestData,
+				sequenceDigitSpanTestData: this.sequenceDigitSpanTestData,
 				stroopTestData: this.stroopTestData,
 				nBackTestData: this.nBackTestData,
 				shortTermMemoryTestData: this.shortTermMemoryTestData,

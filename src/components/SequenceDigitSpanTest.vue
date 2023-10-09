@@ -1,10 +1,10 @@
 <template>
-	<v-container class="digit-span-test-container">
-		<div class="digit-span-test" v-if="!this.testCompleted">
-			<div v-if="showPrompt" class="digit-span-prompt">
+	<v-container class="s-digit-span-test-container">
+		<div class="s-digit-span-test" v-if="!this.testCompleted">
+			<div v-if="showPrompt" class="s-digit-span-prompt">
 				<p>{{ this.digit }}</p>
 			</div>
-			<div v-else class="digit-span-prompt"></div>
+			<div v-else class="s-digit-span-prompt"></div>
 			<br />
 			<div v-if="!showPrompt">
 				<h2>Entered Numbers</h2>
@@ -33,9 +33,9 @@
 			<br />
 			<p><b>Note: </b>This is a computerized analysis and not a medical diagnosis</p>
 			<div>
-				<h3>Maximum length of digits that you can remember (Digit Span) is: {{ this.digitSpanTestData.highestDigitSpan }}</h3>
+				<h3>Maximum length of digits that you can remember (Digit Span) is: {{ this.sequenceDigitSpanTestData.highestSequenceDigitSpan }}</h3>
 				<br />
-				<p>Average Prompt Response Time(in ms): {{ this.digitSpanTestData.performanceParameters.averagePromptResponseTime }}ms</p>
+				<p>Average Prompt Response Time(in ms): {{ this.sequenceDigitSpanTestData.performanceParameters.averagePromptResponseTime }}ms</p>
 				<div class="expected-outcome">
 					<p>
 						<b>Expected Results for Digit-Span Test:</b>
@@ -48,7 +48,7 @@
 				</div>
 			</div>
 			<br />
-			<v-btn value="ReverseDigitSpanLink" to="/reversedigitspantest" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
+			<v-btn value="StroopLink" to="/strooptest" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
 		</div>
 	</v-container>
 </template>
@@ -82,18 +82,18 @@ export default {
 			result: '',
 			correctCount: 0,
 			incorrectCount: 0,
-			digitSpanTestData: {
+			sequenceDigitSpanTestData: {
 				individualPromptData: [],
-				highestDigitSpan: 0,
+				highestSequenceDigitSpan: 0,
 				performanceParameters: {
 					averagePromptResponseTime: 0
 				}
 			},
+			promptEndTime: '',
+			answerEndTime: '',
 			numpadDisabled: Array(10).fill(false),
 			numpadNumbers: [7, 8, 9, 4, 5, 6, 1, 2, 3, 0],
 			enteredNumbers: '',
-			promptEndTime: '',
-			answerEndTime: '',
 			testCompleted: false
 		};
 	},
@@ -139,14 +139,13 @@ export default {
 			}
 			this.answerEndTime = Date.now();
 			const timeTaken = this.answerEndTime - this.promptEndTime;
-			this.digitSpanTestData.performanceParameters.averagePromptResponseTime += timeTaken;
+			this.sequenceDigitSpanTestData.performanceParameters.averagePromptResponseTime += timeTaken;
 			const promptData = {
 				prompt: this.prompt,
 				answer: this.userInput,
-				result: this.result,
-				timeTaken: timeTaken
+				result: this.result
 			};
-			this.digitSpanTestData.individualPromptData.push(promptData);
+			this.sequenceDigitSpanTestData.individualPromptData.push(promptData);
 			this.userInput = '';
 			this.enteredNumbers = '';
 			this.resetNumpad();
@@ -178,9 +177,9 @@ export default {
 		},
 		completedTest() {
 			this.showResult = true;
-			this.digitSpanTestData.highestDigitSpan = this.digitIndex - 1;
-			this.digitSpanTestData.performanceParameters.averagePromptResponseTime = Math.floor(this.digitSpanTestData.performanceParameters.averagePromptResponseTime / this.digitSpanTestData.individualPromptData.length);
-			useTestStore().addDigitSpanTestData(this.digitSpanTestData);
+			this.sequenceDigitSpanTestData.highestSequenceDigitSpan = this.digitIndex - 1;
+			this.sequenceDigitSpanTestData.performanceParameters.averagePromptResponseTime = Math.floor(this.sequenceDigitSpanTestData.performanceParameters.averagePromptResponseTime / this.sequenceDigitSpanTestData.individualPromptData.length);
+			useTestStore().addDigitSpanTestData(this.sequenceDigitSpanTestData);
 			this.testCompleted = true;
 		}
 	},
@@ -193,13 +192,13 @@ export default {
 </script>
 
 <style scoped>
-.digit-span-test-container {
+.s-digit-span-test-container {
 	text-align: center;
 	border: solid black;
 	border-width: 15px;
 }
 
-.digit-span-test {
+.s-digit-span-test {
 	text-align: center;
 	display: flex;
 	flex-direction: column;
@@ -207,7 +206,7 @@ export default {
 	height: 100vh;
 }
 
-.digit-span-prompt {
+.s-digit-span-prompt {
 	font-size: 100px;
 	margin: 10px;
 	font-weight: bold;

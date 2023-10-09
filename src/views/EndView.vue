@@ -28,10 +28,11 @@ export default {
 					shortTermMemoryTestData: data.shortTermMemoryTestData,
 					digitSpanTestData: data.digitSpanTestData,
 					reverseDigitSpanTestData: data.reverseDigitSpanTestData,
+					sequenceDigitSpanTestData: data.sequenceDigitSpanTestData,
 					stroopTestData: data.stroopTestData,
 					nBackTestData: data.nBackTestData
 				},
-				timestamp: new Date().toString()
+				timestamp: data.userDetailsData.date
 			};
 			try {
 				const docRef = await addDoc(collection(fireStore, 'testData'), dataPacket);
