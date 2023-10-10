@@ -8,7 +8,7 @@
 		</div>
 		<div v-if="!this.completed">
 			<p>
-				Recall the words you were shown previously and enter in following boxes one by one.<br />
+				Recall the 10 words you were shown previously and enter in following boxes one by one.<br />
 				You can enter in any order (sequence).<br />
 				Try entering them as accurately as possible.<br />
 			</p>
@@ -60,8 +60,10 @@
 			<br />
 			<p><b>Note: </b>This is a computerized analysis and not a medical diagnosis</p>
 			<br />
-			<v-btn to="/digitspantest" v-if="this.testType == 'short'" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
-			<v-btn to="/endscreen" v-if="this.testType == 'long'" size="x-large" block color="red-lighten-3" rounded="lg">Finish</v-btn>
+			<v-btn to="/digitspantest" v-if="this.testType == 'short'" size="x-large" block color="red-lighten-3"
+				rounded="lg">Next</v-btn>
+			<v-btn to="/endscreen" v-if="this.testType == 'long'" size="x-large" block color="red-lighten-3"
+				rounded="lg">Finish</v-btn>
 		</div>
 	</v-container>
 </template>
@@ -119,7 +121,7 @@ export default {
 			}
 		}
 	},
-	mounted() {}
+	mounted() { }
 };
 </script>
 

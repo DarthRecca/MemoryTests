@@ -97,14 +97,20 @@
 			</tbody>
 		</v-table>
 		<div class="expected-results">
-			<p>The expected scores of N=2 back test of working memory vary depending on the age and education level of the individual. However, as a general guide, the following can be expected:<br /></p>
+			<p>The expected scores of N=2 back test of working memory vary depending on the age and education level of the
+				individual. However, as a general guide, the following can be expected:<br /></p>
 			<ul>
 				<li>Children: 60-80% accuracy</li>
 				<li>Adults: 80-90% accuracy</li>
 				<li>Older adults: 70-80% accuracy</li>
 			</ul>
 			<br />
-			<p>It is important to note that these are just general guidelines, and there is a wide range of normal scores. If your score is less than above numbers, please do not panic. Your score could be lower than expected values if you are not well, have anxiety or are not in a sound state of mind. You may take the test again after a few days. If you consistently find your score much lower than above values and experience difficulties in concentrating on the task or processing the information mentally then you may consult the experts.</p>
+			<p>It is important to note that these are just general guidelines, and there is a wide range of normal scores.
+				If your score is less than above numbers, please do not panic. Your score could be lower than expected
+				values if you are not well, have anxiety or are not in a sound state of mind. You may take the test again
+				after a few days. If you consistently find your score much lower than above values and experience
+				difficulties in concentrating on the task or processing the information mentally then you may consult the
+				experts.</p>
 		</div>
 		<br />
 		<v-btn to="/longtermmemorytest/long" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
@@ -270,9 +276,9 @@ export default {
 			this.nBackTestData.performanceParameters.totalCorrectPercent = this.totalCorrectPercent;
 			this.nBackTestData.performanceParameters.totalIncorrect = this.totalIncorrect;
 			this.nBackTestData.performanceParameters.totalIncorrectPercent = this.totalIncorrectPercent;
-			this.nBackTestData.performanceParameters.totalAvgTime = Math.floor((this.nBackTestData.performanceParameters.matchTrialsAvgTime + this.nBackTestData.performanceParameters.nonMatchTrialsAvgTime) / this.totalTasks);
-			this.nBackTestData.performanceParameters.matchTrialsAvgTime = Math.floor(this.nBackTestData.performanceParameters.matchTrialsAvgTime / this.nBackTestData.performanceParameters.matchTrialsTotal);
-			this.nBackTestData.performanceParameters.nonMatchTrialsAvgTime = Math.floor(this.nBackTestData.performanceParameters.nonMatchTrialsAvgTime / this.nBackTestData.performanceParameters.nonMatchTrialsTotal);
+			this.nBackTestData.performanceParameters.totalAvgTime = this.totalAvgTime
+			this.nBackTestData.performanceParameters.matchTrialsAvgTime = this.matchTrialsAvgTime
+			this.nBackTestData.performanceParameters.nonMatchTrialsAvgTime = this.nonMatchTrialsAvgTime
 			this.nBackTestData.nBackTestScore = this.score;
 			useTestStore().addNBackTestData(this.nBackTestData);
 			this.completed = true;
@@ -285,11 +291,17 @@ export default {
 		matchTrialsIncorrectPercent() {
 			return Math.floor((this.nBackTestData.performanceParameters.matchTrialsIncorrect / this.nBackTestData.performanceParameters.matchTrialsTotal) * 100);
 		},
+		matchTrialsAvgTime() {
+			return Math.floor(this.nBackTestData.performanceParameters.matchTrialsAvgTime / this.nBackTestData.performanceParameters.matchTrialsTotal);
+		},
 		nonMatchTrialsCorrectPercent() {
 			return Math.floor((this.nBackTestData.performanceParameters.nonMatchTrialsCorrect / this.nBackTestData.performanceParameters.nonMatchTrialsTotal) * 100);
 		},
 		nonMatchTrialsIncorrectPercent() {
 			return Math.floor((this.nBackTestData.performanceParameters.nonMatchTrialsIncorrect / this.nBackTestData.performanceParameters.nonMatchTrialsTotal) * 100);
+		},
+		nonMatchTrialsAvgTime() {
+			return Math.floor(this.nBackTestData.performanceParameters.nonMatchTrialsAvgTime / this.nBackTestData.performanceParameters.nonMatchTrialsTotal);
 		},
 		totalTasks() {
 			return this.nBackTestData.performanceParameters.matchTrialsTotal + this.nBackTestData.performanceParameters.nonMatchTrialsTotal;
@@ -305,6 +317,9 @@ export default {
 		},
 		totalIncorrectPercent() {
 			return Math.floor((this.totalIncorrect / this.totalTasks) * 100);
+		},
+		totalAvgTime() {
+			return Math.floor((this.nBackTestData.performanceParameters.matchTrialsAvgTime + this.nBackTestData.performanceParameters.nonMatchTrialsAvgTime) / this.totalTasks);
 		}
 	},
 	mounted() {
