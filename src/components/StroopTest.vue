@@ -1,49 +1,51 @@
 <template>
-	<v-container>
-		<div class="stroop-test-container">
-			<v-sheet class="stroop-test" color="teal-lighten-3">
-				<div v-if="!this.completed">
-					<div class="stroop-prompt" v-if="this.showPrompt">
-						<p :style="{ color: textColor }">{{ colorName }}</p>
-					</div>
-					<div class="stroop-prompt" v-else></div>
+	<v-container class="stroop-test-container">
+		<v-sheet class="stroop-test" color="teal-lighten-3">
+			<div v-if="!this.completed">
+				<div class="stroop-prompt" v-if="this.showPrompt">
+					<p :style="{ color: textColor }">{{ colorName }}</p>
+				</div>
+				<div class="stroop-prompt" v-else></div>
+				<br />
+				<div class="answer-choices">
+					<v-btn @click="checkAnswer('red')" class="answer-choice" color="black">Red</v-btn>
+					<v-btn @click="checkAnswer('green')" class="answer-choice" color="black">Green</v-btn>
+					<v-btn @click="checkAnswer('blue')" class="answer-choice" color="black">Blue</v-btn>
+					<v-btn @click="checkAnswer('yellow')" class="answer-choice" color="black">Yellow</v-btn>
+				</div>
+				<br />
+				<div v-if="this.showResult" class="result">
+					<p>Your answer is {{ result }}!</p>
+				</div>
+				<div v-else class="result"></div>
+				<br />
+			</div>
+			<div v-if="this.completed">
+				<p>Test Completed</p>
+				<br />
+				<p><b>Note: </b>This is a computerized analysis and not a medical diagnosis</p>
+				<br />
+				<p>Your Stroop Score (Incongruent Avg Time - Congruent Avg Time): {{ this.stroopTestData.testScore }}ms</p>
+				<br />
+				<div class="result-expected">
+					<p>The expected values of Stroop Test scores vary depending on the specific version of the test used and
+						the individual's age, education level and the device used (that is whether you have used cell phone,
+						laptop of desktop). However, as a general guide, the following can be expected:<br /></p>
+					<ul>
+						<li>Children: 50-100 milliseconds</li>
+						<li>Adults: 75-150 milliseconds</li>
+						<li>Older adults: 100-200 milliseconds</li>
+					</ul>
 					<br />
-					<div class="answer-choices">
-						<v-btn @click="checkAnswer('red')" class="answer-choice" color="black">Red</v-btn>
-						<v-btn @click="checkAnswer('green')" class="answer-choice" color="black">Green</v-btn>
-						<v-btn @click="checkAnswer('blue')" class="answer-choice" color="black">Blue</v-btn>
-						<v-btn @click="checkAnswer('yellow')" class="answer-choice" color="black">Yellow</v-btn>
-					</div>
-					<br />
-					<div v-if="this.showResult" class="result">
-						<p>Your answer is {{ result }}!</p>
-					</div>
-					<div v-else class="result"></div>
+					<p>It is important to note that these are just general guidelines and you should not panic if your score
+						is higher than above values.<br /></p>
 					<br />
 				</div>
-				<div v-if="this.completed">
-					<p>Test Completed</p>
-					<br />
-					<p><b>Note: </b>This is a computerized analysis and not a medical diagnosis</p>
-					<br />
-					<p>Your Stroop Score (Incongruent Avg Time - Congruent Avg Time): {{ this.stroopTestData.testScore }}ms</p>
-					<br />
-					<div class="result-expected">
-						<p>The expected values of Stroop Test scores vary depending on the specific version of the test used and the individual's age, education level and the device used (that is whether you have used cell phone, laptop of desktop). However, as a general guide, the following can be expected:<br /></p>
-						<ul>
-							<li>Children: 50-100 milliseconds</li>
-							<li>Adults: 75-150 milliseconds</li>
-							<li>Older adults: 100-200 milliseconds</li>
-						</ul>
-						<br />
-						<p>It is important to note that these are just general guidelines and you should not panic if your score is higher than above values.<br /></p>
-						<br />
-					</div>
-					<br />
-					<v-btn value="NBackLink" to="/nbacktest" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
-				</div>
-			</v-sheet>
-		</div>
+				<br />
+				<v-btn value="NBackLink" to="/nbacktest" size="x-large" block color="red-lighten-3"
+					rounded="lg">Next</v-btn>
+			</div>
+		</v-sheet>
 	</v-container>
 </template>
 
@@ -211,7 +213,6 @@ export default {
 .stroop-test-container {
 	justify-content: center;
 	text-align: center;
-	display: flex;
 	align-items: center;
 	padding: 10px;
 	height: 100vh;
