@@ -1,6 +1,6 @@
 <template>
 	<div class="s-digit-span-test-title">
-		<h1>Sequential Digit Span Test(Ascending Order)</h1>
+		<h1>Ordered Digit Span Test(Ascending Order)</h1>
 	</div>
 	<div class="instructions" v-if="!this.testStartFlag">
 		<div class="information">

@@ -28,22 +28,18 @@
 				<p>Your Stroop Score (Incongruent Avg Time - Congruent Avg Time): {{ this.stroopTestData.testScore }}ms</p>
 				<br />
 				<div class="result-expected">
-					<p>The expected values of Stroop Test scores vary depending on the specific version of the test used and
-						the individual's age, education level and the device used (that is whether you have used cell phone,
-						laptop of desktop). However, as a general guide, the following can be expected:<br /></p>
+					<p>The expected values of Stroop Test scores vary depending on the individual's age, education level and the device used. However, as a general guide, the following can be expected:<br /></p>
 					<ul>
 						<li>Children: 50-100 milliseconds</li>
 						<li>Adults: 75-150 milliseconds</li>
 						<li>Older adults: 100-200 milliseconds</li>
 					</ul>
 					<br />
-					<p>It is important to note that these are just general guidelines and you should not panic if your score
-						is higher than above values.<br /></p>
+					<p>It is important to note that these are just general guidelines and you should not panic if your score is higher than above values.<br /></p>
 					<br />
+					<v-btn value="NBackLink" to="/nbacktest" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
 				</div>
 				<br />
-				<v-btn value="NBackLink" to="/nbacktest" size="x-large" block color="red-lighten-3"
-					rounded="lg">Next</v-btn>
 			</div>
 		</v-sheet>
 	</v-container>

@@ -33,12 +33,12 @@
 			<br />
 			<p><b>Note: </b>This is a computerized analysis and not a medical diagnosis</p>
 			<div>
-				<h3>Maximum length of digits that you can remember in Sequence(Ascending Order)(Sequential Digit Span) is: {{ this.sequenceDigitSpanTestData.highestSequenceDigitSpan }}</h3>
+				<h3>Maximum length of digits that you can remember in Order(Ascending Order)(Ordered Digit Span) is: {{ this.sequenceDigitSpanTestData.highestSequenceDigitSpan }}</h3>
 				<br />
 				<p>Average Prompt Response Time(in ms): {{ this.averagePromptResponseTime }}ms</p>
 				<div class="expected-outcome">
 					<p>
-						<b>Expected Results for Sequence Digit-Span Test:</b>
+						<b>Expected Results for Order Digit-Span Test:</b>
 					</p>
 					<ul>
 						<li>5 to 9, depending on your age and educational background.</li>

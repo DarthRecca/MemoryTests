@@ -2,8 +2,8 @@
 	<div class="thanks">
 		<p>Thank YOU!</p>
 		<p>
-			If you want to take full Interlligence Tests go to
-			<a href="https://www.psychologytestingforall.com/psychometric-tests">Our Site</a>
+			If you want to take Intelligence Test click
+			<a href="https://forms.gle/TVUcM3dNiFLZA85B8">Here</a>
 		</p>
 	</div>
 </template>
