@@ -137,8 +137,8 @@ export default {
 			result: '',
 			showResult: false,
 			showPrompt: true,
-			promptTime: '',
-			resposeTime: '',
+			promptTime: 0,
+			resposeTime: 0,
 			nBackTestData: {
 				nBackTestScore: 0,
 				performanceParameters: {
@@ -244,7 +244,8 @@ export default {
 					this.score += 1;
 				}
 			}
-
+			this.resposeTime = 0
+			this.promptTime = 0
 			this.repeatFlag = false;
 			this.inputReceived = false;
 		},

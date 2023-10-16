@@ -61,7 +61,7 @@
                 <tbody>
                     <tr>
                         <td>Your Stroop Score (Incongruent Avg Time - Congruent Avg Time)</td>
-                        <td>{{ this.data.stroopTestData.score }}ms</td>
+                        <td>{{ this.data.stroopTestData.testScore }}ms</td>
                     </tr>
                 </tbody>
             </v-table>
@@ -171,7 +171,7 @@ export default {
                     }
                 },
                 stroopTestData: {
-                    score: 0,
+                    testScore: 0,
                     performanceParameters: {
                         congruentTotal: 0,
                         incongruentTotal: 0,
