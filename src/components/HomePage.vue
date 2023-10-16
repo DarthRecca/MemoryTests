@@ -25,7 +25,7 @@ export default {
 	},
 	computed: {},
 	methods: {},
-	mounted() {}
+	mounted() { }
 };
 </script>
 
@@ -38,6 +38,8 @@ export default {
 .start-button {
 	text-align: center;
 	align-items: center;
+	border: black 1px solid;
+	border-radius: 8px;
 }
 
 .button-label {

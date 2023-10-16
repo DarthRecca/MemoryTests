@@ -39,8 +39,10 @@
 					<p>It is important to note that these are just general guidelines and you should not panic if your score
 						is higher than above values.<br /></p>
 					<br />
-					<v-btn value="NBackLink" to="/nbacktest" size="x-large" block color="red-lighten-3"
-						rounded="lg">Next</v-btn>
+					<div class="next-button">
+						<v-btn value="NBackLink" to="/nbacktest" size="x-large" block color="red-lighten-3"
+							rounded="lg">Next</v-btn>
+					</div>
 				</div>
 				<br />
 			</div>
@@ -262,5 +264,10 @@ caption {
 	border-left: none;
 	border-right: none;
 	border-top: none;
+}
+
+.next-button {
+	border: solid black 1px;
+	border-radius: 8px;
 }
 </style>

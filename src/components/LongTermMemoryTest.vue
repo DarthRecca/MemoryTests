@@ -15,55 +15,61 @@
 			<br />
 			<v-row>
 				<v-col>
-					<v-text-field v-model="this.keys.first" label="Enter Here"></v-text-field>
+					<v-text-field v-model="this.keys.first" label="Enter Here" variant="solo"></v-text-field>
 				</v-col>
 				<v-col>
-					<v-text-field v-model="this.keys.second" label="Enter Here"></v-text-field>
+					<v-text-field v-model="this.keys.second" label="Enter Here" variant="solo"></v-text-field>
 				</v-col>
 			</v-row>
 			<v-row>
 				<v-col>
-					<v-text-field v-model="this.keys.third" label="Enter Here"></v-text-field>
+					<v-text-field v-model="this.keys.third" label="Enter Here" variant="solo"></v-text-field>
 				</v-col>
 				<v-col>
-					<v-text-field v-model="this.keys.fourth" label="Enter Here"></v-text-field>
+					<v-text-field v-model="this.keys.fourth" label="Enter Here" variant="solo"></v-text-field>
 				</v-col>
 			</v-row>
 			<v-row>
 				<v-col>
-					<v-text-field v-model="this.keys.fifth" label="Enter Here"></v-text-field>
+					<v-text-field v-model="this.keys.fifth" label="Enter Here" variant="solo"></v-text-field>
 				</v-col>
 				<v-col>
-					<v-text-field v-model="this.keys.sixth" label="Enter Here"></v-text-field>
+					<v-text-field v-model="this.keys.sixth" label="Enter Here" variant="solo"></v-text-field>
 				</v-col>
 			</v-row>
 			<v-row>
 				<v-col>
-					<v-text-field v-model="this.keys.seventh" label="Enter Here"></v-text-field>
+					<v-text-field v-model="this.keys.seventh" label="Enter Here" variant="solo"></v-text-field>
 				</v-col>
 				<v-col>
-					<v-text-field v-model="this.keys.eighth" label="Enter Here"></v-text-field>
+					<v-text-field v-model="this.keys.eighth" label="Enter Here" variant="solo"></v-text-field>
 				</v-col>
 			</v-row>
 			<v-row>
 				<v-col>
-					<v-text-field v-model="this.keys.ninth" label="Enter Here"></v-text-field>
+					<v-text-field v-model="this.keys.ninth" label="Enter Here" variant="solo"></v-text-field>
 				</v-col>
 				<v-col>
-					<v-text-field v-model="this.keys.tenth" label="Enter Here"></v-text-field>
+					<v-text-field v-model="this.keys.tenth" label="Enter Here" variant="solo"></v-text-field>
 				</v-col>
 			</v-row>
-			<v-btn @click="this.checkKeys()" size="x-large" block color="red-lighten-3" rounded="lg">Submit</v-btn>
+			<div class="next-button">
+				<v-btn @click="this.checkKeys()" size="x-large" block color="red-lighten-3" rounded="lg">Submit</v-btn>
+			</div>
 		</div>
 		<div v-if="this.completed" class="completed">
 			<h3>Total Number of Words Recalled Correctly(out of 10): {{ this.keysMatched }}</h3>
 			<br />
 			<p><b>Note: </b>This is a computerized analysis and not a medical diagnosis</p>
 			<br />
-			<v-btn to="/digitspantest" v-if="this.testType == 'short'" size="x-large" block color="red-lighten-3"
-				rounded="lg">Next</v-btn>
-			<v-btn to="/endscreen" v-if="this.testType == 'long'" size="x-large" block color="red-lighten-3"
-				rounded="lg">Finish</v-btn>
+			<div class="next-button">
+				<v-btn to="/digitspantest" v-if="this.testType == 'short'" size="x-large" block color="red-lighten-3"
+					rounded="lg">Next</v-btn>
+			</div>
+			<div class="next-button">
+				<v-btn to="/endscreen" v-if="this.testType == 'long'" size="x-large" block color="red-lighten-3"
+					rounded="lg">Finish</v-btn>
+			</div>
 		</div>
 	</v-container>
 </template>
@@ -129,5 +135,11 @@ export default {
 .long-term-memory-test-title {
 	text-align: left;
 	font-weight: bold;
+}
+
+
+.next-button {
+	border: solid black 1px;
+	border-radius: 8px;
 }
 </style>

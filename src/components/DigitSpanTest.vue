@@ -38,7 +38,6 @@
 				<h3>Maximum length of digits that you can remember (Digit Span) is: {{
 					this.digitSpanTestData.highestDigitSpan }}</h3>
 				<br />
-				<p>Average Prompt Response Time(in ms): {{ this.averagePromptResponseTime }}ms</p>
 				<div class="expected-outcome">
 					<p>
 						<b>Expected Results for Digit-Span Test:</b>
@@ -53,8 +52,10 @@
 				</div>
 			</div>
 			<br />
-			<v-btn value="ReverseDigitSpanLink" to="/reversedigitspantest" size="x-large" block color="red-lighten-3"
-				rounded="lg">Next</v-btn>
+			<div class="next-button">
+				<v-btn value="ReverseDigitSpanLink" to="/reversedigitspantest" size="x-large" block color="red-lighten-3"
+					rounded="lg">Next</v-btn>
+			</div>
 		</div>
 	</v-container>
 </template>
@@ -270,5 +271,10 @@ export default {
 .expected-outcome {
 	text-align: left;
 	padding-left: 25px;
+}
+
+.next-button {
+	border: solid black 1px;
+	border-radius: 8px;
 }
 </style>

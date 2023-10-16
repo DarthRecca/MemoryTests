@@ -43,6 +43,9 @@ const routes = [
 		component: () => import('@/views/NBackTestView.vue')
 	},
 	{
+		path: '/consolidatedreport'
+	},
+	{
 		path: '/endscreen',
 		name: 'EndView',
 		component: () => import('@/views/EndView.vue')

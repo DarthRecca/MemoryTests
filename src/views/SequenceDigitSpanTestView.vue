@@ -22,8 +22,10 @@
 		<br />
 	</div>
 	<div class="real-test-indicator" v-if="!this.testStartFlag">
+		<p>Note:There will not be a trial for this test</p>
 		<div v-if="!this.testStartFlag" class="start-button">
-			<v-btn @click="this.startTest()" size="x-large" block color="red-lighten-3" rounded="lg">Click Here to Start Test</v-btn>
+			<v-btn @click="this.startTest()" size="x-large" block color="red-lighten-3" rounded="lg">Click Here to Start
+				Test</v-btn>
 		</div>
 	</div>
 	<div v-if="this.testStartFlag">
@@ -62,6 +64,8 @@ export default {
 .start-button {
 	text-align: center;
 	align-items: center;
+	border: solid black 1px;
+	border-radius: 8px;
 }
 
 .information {

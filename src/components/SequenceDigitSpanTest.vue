@@ -35,25 +35,27 @@
 			<br />
 			<p><b>Note: </b>This is a computerized analysis and not a medical diagnosis</p>
 			<div>
-				<h3>Maximum length of digits that you can remember in Order(Ascending Order)(Ordered Digit Span) is: {{
+				<h3>Maximum length of digits that you can remember and organise in Order(Ascending Order) is: {{
 					this.sequenceDigitSpanTestData.highestSequenceDigitSpan }}</h3>
 				<br />
-				<p>Average Prompt Response Time(in ms): {{ this.averagePromptResponseTime }}ms</p>
 				<div class="expected-outcome">
 					<p>
 						<b>Expected Results for Order Digit-Span Test:</b>
 					</p>
 					<ul>
-						<li>5 to 9, depending on your age and educational background.</li>
-						<li>If your results are less than 5, don't panic. The results can be affected by many factors, such
+						<li>4 to 8, depending on your age and educational background.</li>
+						<li>If your results are less than 4, don't panic. The results can be affected by many factors, such
 							as your attention level, health, and anxiety. Please repeat the test after a few days. If your
-							results are consistently below 5, please consult with a doctor or psychiatrist.</li>
+							results are consistently below 4, please consult with a doctor or psychiatrist.</li>
 					</ul>
 					<br />
 				</div>
 			</div>
 			<br />
-			<v-btn value="StroopLink" to="/strooptest" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
+			<div class="next-button">
+				<v-btn value="StroopLink" to="/strooptest" size="x-large" block color="red-lighten-3"
+					rounded="lg">Next</v-btn>
+			</div>
 		</div>
 	</v-container>
 </template>
@@ -275,5 +277,10 @@ export default {
 .expected-outcome {
 	text-align: left;
 	padding-left: 25px;
+}
+
+.next-button {
+	border: solid black 1px;
+	border-radius: 8px;
 }
 </style>

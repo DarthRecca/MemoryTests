@@ -22,7 +22,10 @@
 			</div>
 			<div v-if="this.completed">
 				<p>Trial Completed</p>
-				<v-btn @click="$emit('trialCompleted')" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
+				<div class="next-button">
+					<v-btn @click="$emit('trialCompleted')" size="x-large" block color="red-lighten-3"
+						rounded="lg">Next</v-btn>
+				</div>
 			</div>
 		</v-sheet>
 	</v-container>
@@ -142,5 +145,10 @@ export default {
 	font-size: 18px;
 	margin-top: 10px;
 	height: 15px;
+}
+
+.next-button {
+	border: solid black 1px;
+	border-radius: 8px;
 }
 </style>

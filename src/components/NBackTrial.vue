@@ -20,7 +20,9 @@
 			<p>Your answer is {{ result }}!</p>
 		</div>
 		<div v-else class="result"></div>
-		<v-btn @click="$emit('trialCompleted')" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
+		<div class="next-button">
+			<v-btn @click="$emit('trialCompleted')" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
+		</div>
 	</div>
 </template>
 
@@ -160,5 +162,10 @@ export default {
 	align-items: center;
 	font-size: 25px;
 	text-align: center;
+}
+
+.next-button {
+	border: solid black 1px;
+	border-radius: 8px;
 }
 </style>

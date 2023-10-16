@@ -14,7 +14,8 @@
 				<div class="entered-numbers" v-else></div>
 				<v-row class="numpad">
 					<v-col v-for="(num, idx) in numpadNumbers" :key="idx" cols="3">
-						<v-btn @click="onNumpadClick(num)" :disabled="numpadDisabled[num]" class="numpad-button" size="large">
+						<v-btn @click="onNumpadClick(num)" :disabled="numpadDisabled[num]" class="numpad-button"
+							size="large">
 							{{ num }}
 						</v-btn>
 					</v-col>
@@ -22,7 +23,8 @@
 						<v-btn @click="backspace" class="backspace-button" size="large"> Clear </v-btn>
 					</v-col>
 					<v-col cols="auto">
-						<v-btn @click="checkAnswer()" v-if="!showPrompt" color="red-lighten-3" size="large" class="enter-button" cols="auto">Enter</v-btn>
+						<v-btn @click="checkAnswer()" v-if="!showPrompt" color="red-lighten-3" size="large"
+							class="enter-button" cols="auto">Enter</v-btn>
 					</v-col>
 				</v-row>
 				<br />
@@ -31,7 +33,10 @@
 		<div v-if="this.testCompleted">
 			<p>Trial Completed</p>
 			<br />
-			<v-btn @click="$emit('trial-completed')" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
+			<div class="next-button">
+				<v-btn @click="$emit('trial-completed')" size="x-large" block color="red-lighten-3"
+					rounded="lg">Next</v-btn>
+			</div>
 		</div>
 	</v-container>
 </template>
@@ -112,7 +117,7 @@ export default {
 			this.enteredNumbers = '';
 			this.resetNumpad();
 
-			if (this.digitIndex <= 3) {
+			if (this.digitIndex <= 4) {
 				if (this.correctCount === 2) {
 					this.digitIndex++;
 					this.correctCount = 0;
@@ -219,5 +224,10 @@ export default {
 .result {
 	font-size: 18px;
 	margin-top: 10px;
+}
+
+.next-button {
+	border: solid black 1px;
+	border-radius: 8px;
 }
 </style>

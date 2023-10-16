@@ -96,6 +96,8 @@
 				</tr>
 			</tbody>
 		</v-table>
+		<br />
+		<br />
 		<div class="expected-results">
 			<p>The expected scores of N=2 back test of working memory vary depending on the age and education level of the
 				individual. However, as a general guide, the following can be expected:<br /></p>
@@ -113,7 +115,9 @@
 				experts.</p>
 		</div>
 		<br />
-		<v-btn to="/longtermmemorytest/long" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
+		<div class="next-button">
+			<v-btn to="/longtermmemorytest/long" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
+		</div>
 	</div>
 </template>
 
@@ -361,5 +365,10 @@ export default {
 	border-collapse: collapse;
 	background-color: teal;
 	overflow-x: auto;
+}
+
+.next-button {
+	border: solid black 1px;
+	border-radius: 8px;
 }
 </style>

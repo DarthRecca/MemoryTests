@@ -1,6 +1,7 @@
 <template>
 	<div class="thanks">
-		<p>Thank YOU!</p>
+		<h2><b>Thank You!</b></h2>
+		<br />
 		<p>
 			If you want to take Intelligence Test click
 			<a href="https://forms.gle/TVUcM3dNiFLZA85B8">Here</a>
