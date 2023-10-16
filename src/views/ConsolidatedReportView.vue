@@ -122,8 +122,7 @@
     </div>
     <br />
     <div class="next-button">
-        <v-btn to="/endscreen" size="x-large" block color="red-lighten-3" rounded="lg">End
-            Screen</v-btn>
+        <v-btn to="/endscreen" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
     </div>
 </template>
 
@@ -232,7 +231,7 @@ export default {
     font-size: 50px;
 }
 
-#v-table {
+table {
     border: 1px solid;
     border-collapse: collapse;
     text-align: center;
