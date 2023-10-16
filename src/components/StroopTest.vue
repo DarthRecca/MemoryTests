@@ -160,15 +160,9 @@ export default {
 		hideResult() {
 			this.showResult = false;
 		},
-		testCompleted() {
+		async testCompleted() {
 			this.stroopTestData.performanceParameters.congruentAvgTime = Math.floor(this.congruentTotalTime / this.stroopTestData.performanceParameters.congruentTotal);
-			if (isNaN(this.stroopTestData.performanceParameters.congruentAvgTime)) {
-				this.stroopTestData.performanceParameters.congruentAvgTime = 9999;
-			}
 			this.stroopTestData.performanceParameters.incongruentAvgTime = Math.floor(this.incongruentTotalTime / this.stroopTestData.performanceParameters.incongruentTotal);
-			if (isNaN(this.stroopTestData.performanceParameters.incongruentAvgTime)) {
-				this.stroopTestData.performanceParameters.congruentAvgTime = 9999;
-			}
 			this.stroopTestData.testScore = this.stroopScore;
 			useTestStore().addStroopTestData({
 				score: this.stroopTestData.testScore,

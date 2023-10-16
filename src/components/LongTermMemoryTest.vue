@@ -67,7 +67,7 @@
 					rounded="lg">Next</v-btn>
 			</div>
 			<div class="next-button">
-				<v-btn to="/endscreen" v-if="this.testType == 'long'" size="x-large" block color="red-lighten-3"
+				<v-btn to="/consolidatedreport" v-if="this.testType == 'long'" size="x-large" block color="red-lighten-3"
 					rounded="lg">Finish</v-btn>
 			</div>
 		</div>

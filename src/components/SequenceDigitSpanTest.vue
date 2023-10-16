@@ -46,7 +46,7 @@
 						<li>4 to 8, depending on your age and educational background.</li>
 						<li>If your results are less than 4, don't panic. The results can be affected by many factors, such
 							as your attention level, health, and anxiety. Please repeat the test after a few days. If your
-							results are consistently below 4, please consult with a doctor or psychiatrist.</li>
+							results are consistently below 4, please consult with an expert.</li>
 					</ul>
 					<br />
 				</div>

@@ -43,7 +43,9 @@ const routes = [
 		component: () => import('@/views/NBackTestView.vue')
 	},
 	{
-		path: '/consolidatedreport'
+		path: '/consolidatedreport',
+		name: 'ConsolidatedReportView',
+		component: () => import('@/views/ConsolidatedReportView.vue')
 	},
 	{
 		path: '/endscreen',

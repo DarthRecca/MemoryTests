@@ -29,6 +29,8 @@
 				</v-row>
 				<br />
 			</div>
+			<div v-if="this.showResult" class="trials-result">{{ this.result }}</div>
+			<div v-else class="trials-result"></div>
 		</div>
 		<div v-if="this.testCompleted">
 			<p>Trial Completed</p>
@@ -90,6 +92,7 @@ export default {
 			this.enteredNumbers = this.enteredNumbers.slice(0, -1);
 		},
 		nextDigitSpan() {
+			this.showResult = false
 			this.prompt = generateRandomPrompt(this.digitIndex);
 			if (this.digitIndex < 10) {
 				this.digitDisplay(this.prompt, 0);
@@ -106,6 +109,8 @@ export default {
 			}
 		},
 		checkAnswer() {
+			this.showResult = true;
+
 			if (this.userInput === this.prompt) {
 				this.result = 'Correct';
 				this.correctCount++;
@@ -113,21 +118,22 @@ export default {
 				this.result = 'Incorrect';
 				this.incorrectCount++;
 			}
-			this.userInput = '';
-			this.enteredNumbers = '';
 			this.resetNumpad();
-
 			if (this.digitIndex <= 4) {
 				if (this.correctCount === 2) {
-					this.digitIndex++;
+					this.digitIndex += 1;
 					this.correctCount = 0;
 					this.incorrectCount = 0;
 				}
 				if (this.incorrectCount === 2) {
+					this.digitIndex += 1;
 					this.correctCount = 0;
 					this.incorrectCount = 0;
-					this.completedTest();
 				}
+				this.userInput = '';
+				this.enteredNumbers = '';
+				this.prompt = '';
+				this.digit = '';
 				this.showPrompt = true;
 				setTimeout(() => {
 					this.nextDigitSpan();
@@ -221,9 +227,10 @@ export default {
 	text-overflow: ellipsis;
 }
 
-.result {
-	font-size: 18px;
+.trials-result {
+	font-size: 25px;
 	margin-top: 10px;
+	height: 15px;
 }
 
 .next-button {
