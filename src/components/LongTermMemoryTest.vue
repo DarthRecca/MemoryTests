@@ -125,7 +125,7 @@ export default {
 			}
 		}
 	},
-	mounted() { }
+	mounted() {}
 };
 </script>
 
@@ -134,7 +134,6 @@ export default {
 	text-align: left;
 	font-weight: bold;
 }
-
 
 .next-button {
 	border: solid black 1px;

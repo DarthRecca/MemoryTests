@@ -14,8 +14,7 @@
 				<div class="entered-numbers" v-else></div>
 				<v-row class="numpad">
 					<v-col v-for="(num, idx) in numpadNumbers" :key="idx" cols="3">
-						<v-btn @click="onNumpadClick(num)" :disabled="numpadDisabled[num]" class="numpad-button"
-							size="large">
+						<v-btn @click="onNumpadClick(num)" :disabled="numpadDisabled[num]" class="numpad-button" size="large">
 							{{ num }}
 						</v-btn>
 					</v-col>
@@ -23,8 +22,7 @@
 						<v-btn @click="backspace" class="backspace-button" size="large"> Clear </v-btn>
 					</v-col>
 					<v-col cols="auto">
-						<v-btn @click="checkAnswer()" v-if="!showPrompt" color="red-lighten-3" size="large"
-							class="enter-button" cols="auto">Enter</v-btn>
+						<v-btn @click="checkAnswer()" v-if="!showPrompt" color="red-lighten-3" size="large" class="enter-button" cols="auto">Enter</v-btn>
 					</v-col>
 				</v-row>
 				<br />
@@ -36,8 +34,7 @@
 			<p>Trial Completed</p>
 			<br />
 			<div class="next-button">
-				<v-btn @click="$emit('trial-completed')" size="x-large" block color="red-lighten-3"
-					rounded="lg">Next</v-btn>
+				<v-btn @click="$emit('trial-completed')" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
 			</div>
 		</div>
 	</v-container>
@@ -92,7 +89,7 @@ export default {
 			this.enteredNumbers = this.enteredNumbers.slice(0, -1);
 		},
 		nextDigitSpan() {
-			this.showResult = false
+			this.showResult = false;
 			this.prompt = generateRandomPrompt(this.digitIndex);
 			if (this.digitIndex < 10) {
 				this.digitDisplay(this.prompt, 0);

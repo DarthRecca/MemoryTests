@@ -25,23 +25,20 @@
 				<br />
 				<p><b>Note: </b>This is a computerized analysis and not a medical diagnosis</p>
 				<br />
-				<p>Your Stroop Score (Incongruent Avg Time - Congruent Avg Time): {{ this.stroopTestData.testScore }}ms</p>
+				<p>Your Stroop Score (Incongruent Avg Time - Congruent Avg Time): {{ stroopScore }}ms</p>
 				<br />
 				<div class="result-expected">
-					<p>The expected values of Stroop Test scores vary depending on the individual's age, education level and
-						the device used. However, as a general guide, the following can be expected:<br /></p>
+					<p>The expected values of Stroop Test scores vary depending on the individual's age, education level and the device used. However, as a general guide, the following can be expected:<br /></p>
 					<ul>
 						<li>Children: 50-100 milliseconds</li>
 						<li>Adults: 75-150 milliseconds</li>
 						<li>Older adults: 100-200 milliseconds</li>
 					</ul>
 					<br />
-					<p>It is important to note that these are just general guidelines and you should not panic if your score
-						is higher than above values.<br /></p>
+					<p>It is important to note that these are just general guidelines and you should not panic if your score is higher than above values.<br /></p>
 					<br />
 					<div class="next-button">
-						<v-btn value="NBackLink" to="/nbacktest" size="x-large" block color="red-lighten-3"
-							rounded="lg">Next</v-btn>
+						<v-btn value="NBackLink" to="/nbacktest" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
 					</div>
 				</div>
 				<br />
@@ -88,10 +85,10 @@ export default {
 					congruentAvgTime: 0,
 					incongruentAvgTime: 0
 				},
-				totalTestTime: 0,
-				congruentTotalTime: 0,
-				incongruentTotalTime: 0,
-			}
+				totalTestTime: 0
+			},
+			congruentTotalTime: 0,
+			incongruentTotalTime: 0
 		};
 	},
 	mounted() {
@@ -145,7 +142,6 @@ export default {
 			}
 			this.stroopTestData.totalTestTime += promptTimeTaken;
 
-
 			if (this.currentIteration < this.totalIterations) {
 				setTimeout(() => {
 					this.togglePrompt();
@@ -165,18 +161,14 @@ export default {
 			this.showResult = false;
 		},
 		async testCompleted() {
-			this.stroopTestData.performanceParameters.congruentAvgTime = Math.floor(this.congruentTotalTime / this.stroopTestData.performanceParameters.congruentTotal);
-			this.stroopTestData.performanceParameters.incongruentAvgTime = Math.floor(this.incongruentTotalTime / this.stroopTestData.performanceParameters.incongruentTotal);
-			this.stroopTestData.performanceParameters.congruentCorrectPercent = this.congruentCorrectPct
-			this.stroopTestData.performanceParameters.congruentIncorrectPercent = this.congruentIncorrectPct
-			this.stroopTestData.performanceParameters.incongruentCorrectPercent = this.incongruentCorrectPct
-			this.stroopTestData.performanceParameters.incongruentIncorrectPercent = this.incongruentIncorrectPct
+			this.stroopTestData.performanceParameters.congruentAvgTime = this.congruentAvgTime;
+			this.stroopTestData.performanceParameters.incongruentAvgTime = this.incongruentAvgTime;
+			this.stroopTestData.performanceParameters.congruentCorrectPercent = this.congruentCorrectPct;
+			this.stroopTestData.performanceParameters.congruentIncorrectPercent = this.congruentIncorrectPct;
+			this.stroopTestData.performanceParameters.incongruentCorrectPercent = this.incongruentCorrectPct;
+			this.stroopTestData.performanceParameters.incongruentIncorrectPercent = this.incongruentIncorrectPct;
 			this.stroopTestData.testScore = this.stroopScore;
-			useTestStore().addStroopTestData({
-				score: this.stroopTestData.testScore,
-				totalTimeTaken: this.stroopTestData.totalTestTime,
-				performanceParameters: this.stroopTestData.performanceParameters
-			});
+			useTestStore().addStroopTestData(this.stroopTestData);
 			this.completed = true;
 			this.hideResult();
 		}
@@ -195,27 +187,33 @@ export default {
 			return this.stroopTestData.performanceParameters.congruentIncorrect + this.stroopTestData.performanceParameters.incongruentIncorrect;
 		},
 		totalAvgTime() {
-			return Math.floor(this.stroopTestData.totalTestTime / this.totalTasks);
+			return Math.floor((this.congruentTotalTime + this.incongruentTotalTime) / this.totalTasks);
 		},
 		stroopScore() {
-			const number = this.stroopTestData.performanceParameters.incongruentAvgTime - this.stroopTestData.performanceParameters.congruentAvgTime;
+			const number = this.congruentAvgTime - this.incongruentAvgTime;
 			return Math.abs(number);
 		},
+		congruentAvgTime() {
+			return this.congruentTotalTime / this.stroopTestData.performanceParameters.congruentTotal;
+		},
 		congruentCorrectPct() {
-			const cPect = this.stroopTestData.performanceParameters.congruentCorrect / this.stroopTestData.performanceParameters.congruentTotal
-			return cPect
+			const cPect = this.stroopTestData.performanceParameters.congruentCorrect / this.stroopTestData.performanceParameters.congruentTotal;
+			return cPect;
 		},
 		congruentIncorrectPct() {
-			const incPect = this.stroopTestData.performanceParameters.congruentIncorrect / this.stroopTestData.performanceParameters.congruentTotal
-			return incPect
+			const incPect = this.stroopTestData.performanceParameters.congruentIncorrect / this.stroopTestData.performanceParameters.congruentTotal;
+			return incPect;
+		},
+		incongruentAvgTime() {
+			return this.incongruentTotalTime / this.stroopTestData.performanceParameters.incongruentTotal;
 		},
 		incongruentCorrectPct() {
-			const cPect = this.stroopTestData.performanceParameters.incongruentCorrect / this.stroopTestData.performanceParameters.incongruentTotal
-			return cPect
+			const cPect = this.stroopTestData.performanceParameters.incongruentCorrect / this.stroopTestData.performanceParameters.incongruentTotal;
+			return cPect;
 		},
 		incongruentIncorrectPct() {
-			const incPect = this.stroopTestData.performanceParameters.incongruentIncorrect / this.stroopTestData.performanceParameters.incongruentTotal
-			return incPect
+			const incPect = this.stroopTestData.performanceParameters.incongruentIncorrect / this.stroopTestData.performanceParameters.incongruentTotal;
+			return incPect;
 		}
 	}
 };

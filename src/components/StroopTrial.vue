@@ -23,8 +23,7 @@
 			<div v-if="this.completed">
 				<p>Trial Completed</p>
 				<div class="next-button">
-					<v-btn @click="$emit('trialCompleted')" size="x-large" block color="red-lighten-3"
-						rounded="lg">Next</v-btn>
+					<v-btn @click="$emit('trialCompleted')" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
 				</div>
 			</div>
 		</v-sheet>
