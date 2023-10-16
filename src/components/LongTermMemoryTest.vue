@@ -62,13 +62,11 @@
 			<br />
 			<p><b>Note: </b>This is a computerized analysis and not a medical diagnosis</p>
 			<br />
-			<div class="next-button">
-				<v-btn to="/digitspantest" v-if="this.testType == 'short'" size="x-large" block color="red-lighten-3"
-					rounded="lg">Next</v-btn>
+			<div class="next-button" v-if="this.testType == 'short'">
+				<v-btn to="/digitspantest" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
 			</div>
-			<div class="next-button">
-				<v-btn to="/consolidatedreport" v-if="this.testType == 'long'" size="x-large" block color="red-lighten-3"
-					rounded="lg">Finish</v-btn>
+			<div class="next-button" v-if="this.testType == 'long'">
+				<v-btn to="/consolidatedreport" size="x-large" block color="red-lighten-3" rounded="lg">Finish</v-btn>
 			</div>
 		</div>
 	</v-container>

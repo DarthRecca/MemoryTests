@@ -81,6 +81,10 @@ export default {
 					incongruentCorrect: 0,
 					congruentIncorrect: 0,
 					incongruentIncorrect: 0,
+					congruentCorrectPercent: 0,
+					incongruentCorrectPercent: 0,
+					congruentIncorrectPercent: 0,
+					incongruentIncorrectPercent: 0,
 					congruentAvgTime: 0,
 					incongruentAvgTime: 0
 				},
@@ -163,6 +167,10 @@ export default {
 		async testCompleted() {
 			this.stroopTestData.performanceParameters.congruentAvgTime = Math.floor(this.congruentTotalTime / this.stroopTestData.performanceParameters.congruentTotal);
 			this.stroopTestData.performanceParameters.incongruentAvgTime = Math.floor(this.incongruentTotalTime / this.stroopTestData.performanceParameters.incongruentTotal);
+			this.stroopTestData.performanceParameters.congruentCorrectPercent = this.congruentCorrectPct
+			this.stroopTestData.performanceParameters.congruentIncorrectPercent = this.congruentIncorrectPct
+			this.stroopTestData.performanceParameters.incongruentCorrectPercent = this.incongruentCorrectPct
+			this.stroopTestData.performanceParameters.incongruentIncorrectPercent = this.incongruentIncorrectPct
 			this.stroopTestData.testScore = this.stroopScore;
 			useTestStore().addStroopTestData({
 				score: this.stroopTestData.testScore,
@@ -192,6 +200,22 @@ export default {
 		stroopScore() {
 			const number = this.stroopTestData.performanceParameters.incongruentAvgTime - this.stroopTestData.performanceParameters.congruentAvgTime;
 			return Math.abs(number);
+		},
+		congruentCorrectPct() {
+			const cPect = this.stroopTestData.performanceParameters.congruentCorrect / this.stroopTestData.performanceParameters.congruentTotal
+			return cPect
+		},
+		congruentIncorrectPct() {
+			const incPect = this.stroopTestData.performanceParameters.congruentIncorrect / this.stroopTestData.performanceParameters.congruentTotal
+			return incPect
+		},
+		incongruentCorrectPct() {
+			const cPect = this.stroopTestData.performanceParameters.incongruentCorrect / this.stroopTestData.performanceParameters.incongruentTotal
+			return cPect
+		},
+		incongruentIncorrectPct() {
+			const incPect = this.stroopTestData.performanceParameters.incongruentIncorrect / this.stroopTestData.performanceParameters.incongruentTotal
+			return incPect
 		}
 	}
 };

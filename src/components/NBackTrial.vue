@@ -16,10 +16,9 @@
 	</div>
 	<div v-if="this.completed">
 		<br />
-		<div v-if="showResult" class="result">
-			<p>Your answer is {{ result }}!</p>
+		<div class="completed">
+			<p>Trial Completed</p>
 		</div>
-		<div v-else class="result"></div>
 		<div class="next-button">
 			<v-btn @click="$emit('trialCompleted')" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
 		</div>

@@ -9,7 +9,7 @@
                 <tbody>
                     <tr>
                         <td>Total Number of Words Recalled Correctly(out of 10)</td>
-                        <td>{{ this.data.shortTermMemoryTestData.performanceParameters.score }}</td>
+                        <td>{{ this.data.shortTermMemoryTestData.score }}</td>
                     </tr>
                 </tbody>
             </v-table>
@@ -58,19 +58,10 @@
             <p>Stroop Test</p>
             <br />
             <v-table>
-                <thead>
-                    <tr>
-                        <th>Parameter</th>
-                        <th>Quantity</th>
-                        <th>No. of correct tasks</th>
-                        <th>No. of incorrect tasks</th>
-                        <th>Average Time Taken for task(ms)</th>
-                    </tr>
-                </thead>
                 <tbody>
                     <tr>
                         <td>Your Stroop Score (Incongruent Avg Time - Congruent Avg Time)</td>
-                        <td>{{ this.stroopTestData.testScore }}ms</td>
+                        <td>{{ this.data.stroopTestData.score }}ms</td>
                     </tr>
                 </tbody>
             </v-table>
@@ -82,8 +73,8 @@
             <v-table>
                 <thead>
                     <tr>
-                        <th>Parameter</th>
-                        <th>%age of correct tasks</th>
+                        <th></th>
+                        <th style="text-align: center;">%age of correct tasks</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -122,7 +113,7 @@
                 <tbody>
                     <tr>
                         <td>Total Number of Words Recalled Correctly(out of 10)</td>
-                        <td>{{ this.data.longTermMemoryTestData.performanceParameters.score }}</td>
+                        <td>{{ this.data.longTermMemoryTestData.score }}</td>
                     </tr>
                 </tbody>
             </v-table>
@@ -189,6 +180,10 @@ export default {
                         incongruentCorrect: 0,
                         congruentIncorrect: 0,
                         incongruentIncorrect: 0,
+                        congruentCorrectPercent: 0,
+                        incongruentCorrectPercent: 0,
+                        congruentIncorrectPercent: 0,
+                        incongruentIncorrectPercent: 0,
                         congruentAvgTime: 0,
                         incongruentAvgTime: 0
                     },
@@ -235,6 +230,14 @@ export default {
     align-items: center;
     text-align: center;
     font-size: 50px;
+}
+
+#v-table {
+    border: 1px solid;
+    border-collapse: collapse;
+    text-align: center;
+    background-color: teal;
+    overflow-x: auto;
 }
 
 .short-term-report {
