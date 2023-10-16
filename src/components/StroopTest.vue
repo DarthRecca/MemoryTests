@@ -28,16 +28,19 @@
 				<p>Your Stroop Score (Incongruent Avg Time - Congruent Avg Time): {{ this.stroopTestData.testScore }}ms</p>
 				<br />
 				<div class="result-expected">
-					<p>The expected values of Stroop Test scores vary depending on the individual's age, education level and the device used. However, as a general guide, the following can be expected:<br /></p>
+					<p>The expected values of Stroop Test scores vary depending on the individual's age, education level and
+						the device used. However, as a general guide, the following can be expected:<br /></p>
 					<ul>
 						<li>Children: 50-100 milliseconds</li>
 						<li>Adults: 75-150 milliseconds</li>
 						<li>Older adults: 100-200 milliseconds</li>
 					</ul>
 					<br />
-					<p>It is important to note that these are just general guidelines and you should not panic if your score is higher than above values.<br /></p>
+					<p>It is important to note that these are just general guidelines and you should not panic if your score
+						is higher than above values.<br /></p>
 					<br />
-					<v-btn value="NBackLink" to="/nbacktest" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
+					<v-btn value="NBackLink" to="/nbacktest" size="x-large" block color="red-lighten-3"
+						rounded="lg">Next</v-btn>
 				</div>
 				<br />
 			</div>
@@ -69,7 +72,6 @@ export default {
 			isCongruent: false,
 			stroopTestData: {
 				testScore: 0,
-				individualPromptData: [],
 				performanceParameters: {
 					congruentTotal: 0,
 					incongruentTotal: 0,
@@ -80,7 +82,9 @@ export default {
 					congruentAvgTime: 0,
 					incongruentAvgTime: 0
 				},
-				totalTestTime: 0
+				totalTestTime: 0,
+				congruentTotalTime: 0,
+				incongruentTotalTime: 0,
 			}
 		};
 	},
@@ -129,19 +133,12 @@ export default {
 			this.displayResult();
 			const promptTimeTaken = this.promptEndTime - this.promptStartTime;
 			if (this.isCongruent) {
-				this.stroopTestData.performanceParameters.congruentAvgTime += promptTimeTaken;
+				this.congruentTotalTime += promptTimeTaken;
 			} else {
-				this.stroopTestData.performanceParameters.incongruentAvgTime += promptTimeTaken;
+				this.incongruentTotalTime += promptTimeTaken;
 			}
 			this.stroopTestData.totalTestTime += promptTimeTaken;
 
-			this.stroopTestData.individualPromptData.push({
-				promptText: this.colorName,
-				promptColor: this.textColor,
-				answerChosen: answer,
-				result: this.result,
-				timeTaken: promptTimeTaken
-			});
 
 			if (this.currentIteration < this.totalIterations) {
 				setTimeout(() => {
@@ -162,18 +159,17 @@ export default {
 			this.showResult = false;
 		},
 		testCompleted() {
-			this.stroopTestData.performanceParameters.congruentAvgTime = Math.floor(this.stroopTestData.performanceParameters.congruentAvgTime / this.stroopTestData.performanceParameters.congruentTotal);
+			this.stroopTestData.performanceParameters.congruentAvgTime = Math.floor(this.congruentTotalTime / this.stroopTestData.performanceParameters.congruentTotal);
 			if (isNaN(this.stroopTestData.performanceParameters.congruentAvgTime)) {
 				this.stroopTestData.performanceParameters.congruentAvgTime = 9999;
 			}
-			this.stroopTestData.performanceParameters.incongruentAvgTime = Math.floor(this.stroopTestData.performanceParameters.incongruentAvgTime / this.stroopTestData.performanceParameters.incongruentTotal);
+			this.stroopTestData.performanceParameters.incongruentAvgTime = Math.floor(this.incongruentTotalTime / this.stroopTestData.performanceParameters.incongruentTotal);
 			if (isNaN(this.stroopTestData.performanceParameters.incongruentAvgTime)) {
 				this.stroopTestData.performanceParameters.congruentAvgTime = 9999;
 			}
 			this.stroopTestData.testScore = this.stroopScore;
 			useTestStore().addStroopTestData({
 				score: this.stroopTestData.testScore,
-				individualPromptData: this.stroopTestData.individualPromptData,
 				totalTimeTaken: this.stroopTestData.totalTestTime,
 				performanceParameters: this.stroopTestData.performanceParameters
 			});

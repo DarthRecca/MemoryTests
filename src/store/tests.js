@@ -22,21 +22,18 @@ export const useTestStore = defineStore('tests', {
 			score: 0
 		},
 		digitSpanTestData: {
-			individualPromptData: [],
 			highestDigitSpan: 0,
 			performanceParameters: {
 				averagePromptResponseTime: 0
 			}
 		},
 		reverseDigitSpanTestData: {
-			individualPromptData: [],
 			highestReverseDigitSpan: 0,
 			performanceParameters: {
 				averagePromptResponseTime: 0
 			}
 		},
 		sequenceDigitSpanTestData: {
-			individualPromptData: [],
 			highestSequenceDigitSpan: 0,
 			performanceParameters: {
 				averagePromptResponseTime: 0
@@ -44,7 +41,6 @@ export const useTestStore = defineStore('tests', {
 		},
 		stroopTestData: {
 			score: 0,
-			individualPromptData: [],
 			performanceParameters: {
 				congruentTotal: 0,
 				incongruentTotal: 0,
@@ -78,7 +74,6 @@ export const useTestStore = defineStore('tests', {
 				totalIncorrectPercent: 0,
 				totalAvgTime: 0
 			},
-			individualPromptData: [],
 			score: 0
 		}
 	}),

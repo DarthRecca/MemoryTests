@@ -136,7 +136,6 @@ export default {
 			promptTime: '',
 			resposeTime: '',
 			nBackTestData: {
-				individualPromptData: [],
 				nBackTestScore: 0,
 				performanceParameters: {
 					matchTrialsTotal: 0,
@@ -162,7 +161,9 @@ export default {
 			score: 0,
 			inputReceived: false,
 			repeatFlag: false,
-			completed: false
+			completed: false,
+			matchTotalTime: 0,
+			nonMatchTotalTime: 0
 		};
 	},
 	methods: {
@@ -213,44 +214,33 @@ export default {
 		},
 		async checkAnswer() {
 			this.responseTime = Date.now();
-			const targetStimulus = this.sequence[this.sequence.length - 1 - this.n];
-			let answer = '';
 			const timeTaken = this.responseTime - this.promptTime;
 			if (this.inputReceived == false) {
 				if (this.repeatFlag == true) {
 					this.score = this.score - 1;
 					this.result = 'Incorrect';
-					this.nBackTestData.performanceParameters.matchTrialsAvgTime += timeTaken;
+					this.matchTotalTime += timeTaken;
 					this.nBackTestData.performanceParameters.matchTrialsIncorrect += 1;
 				} else {
 					this.result = 'Correct';
 					this.nBackTestData.performanceParameters.nonMatchTrialsCorrect += 1;
-					this.nBackTestData.performanceParameters.nonMatchTrialsAvgTime += timeTaken;
+					this.nonMatchTotalTime += timeTaken;
 					this.score += 1;
-					answer = targetStimulus.toString();
 				}
 			} else {
 				if (this.repeatFlag == false) {
 					this.result = 'Incorrect';
-					answer = targetStimulus.toString();
-					this.nBackTestData.performanceParameters.nonMatchTrialsAvgTime += timeTaken;
+					this.nonMatchTotalTime += timeTaken;
 					this.nBackTestData.performanceParameters.nonMatchTrialsIncorrect += 1;
 					this.score = this.score - 1;
 				} else {
 					this.result = 'Correct';
-					answer = targetStimulus.toString();
-					this.nBackTestData.performanceParameters.matchTrialsAvgTime += timeTaken;
+					this.matchTotalTime += timeTaken;
 					this.nBackTestData.performanceParameters.matchTrialsCorrect += 1;
 					this.score += 1;
 				}
 			}
-			const promptData = {
-				prompt: this.prompt,
-				answer: answer,
-				result: this.result,
-				timeTaken: timeTaken
-			};
-			this.nBackTestData.individualPromptData.push(promptData);
+
 			this.repeatFlag = false;
 			this.inputReceived = false;
 		},
@@ -292,7 +282,7 @@ export default {
 			return Math.floor((this.nBackTestData.performanceParameters.matchTrialsIncorrect / this.nBackTestData.performanceParameters.matchTrialsTotal) * 100);
 		},
 		matchTrialsAvgTime() {
-			return Math.floor(this.nBackTestData.performanceParameters.matchTrialsAvgTime / this.nBackTestData.performanceParameters.matchTrialsTotal);
+			return Math.floor(this.matchTotalTime / this.nBackTestData.performanceParameters.matchTrialsTotal);
 		},
 		nonMatchTrialsCorrectPercent() {
 			return Math.floor((this.nBackTestData.performanceParameters.nonMatchTrialsCorrect / this.nBackTestData.performanceParameters.nonMatchTrialsTotal) * 100);
@@ -301,7 +291,7 @@ export default {
 			return Math.floor((this.nBackTestData.performanceParameters.nonMatchTrialsIncorrect / this.nBackTestData.performanceParameters.nonMatchTrialsTotal) * 100);
 		},
 		nonMatchTrialsAvgTime() {
-			return Math.floor(this.nBackTestData.performanceParameters.nonMatchTrialsAvgTime / this.nBackTestData.performanceParameters.nonMatchTrialsTotal);
+			return Math.floor(this.nonMatchTotalTime / this.nBackTestData.performanceParameters.nonMatchTrialsTotal);
 		},
 		totalTasks() {
 			return this.nBackTestData.performanceParameters.matchTrialsTotal + this.nBackTestData.performanceParameters.nonMatchTrialsTotal;
@@ -319,7 +309,7 @@ export default {
 			return Math.floor((this.totalIncorrect / this.totalTasks) * 100);
 		},
 		totalAvgTime() {
-			return Math.floor((this.nBackTestData.performanceParameters.matchTrialsAvgTime + this.nBackTestData.performanceParameters.nonMatchTrialsAvgTime) / this.totalTasks);
+			return Math.floor((this.matchTotalTime + this.nonMatchTotalTime) / this.totalTasks);
 		}
 	},
 	mounted() {
