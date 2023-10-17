@@ -98,22 +98,6 @@
 							{{ this.data.nBackTestData.performanceParameters.matchTrialsCorrectPercent }}
 						</td>
 					</tr>
-					<tr>
-						<td>
-							<b>Trials that had no match</b>
-						</td>
-						<td>
-							{{ this.data.nBackTestData.performanceParameters.nonMatchTrialsCorrectPercent }}
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<b>Total of trials</b>
-						</td>
-						<td>
-							{{ this.data.nBackTestData.performanceParameters.totalCorrectPercent }}
-						</td>
-					</tr>
 				</tbody>
 			</v-table>
 		</div>
