@@ -14,11 +14,10 @@
 		</div>
 		<div v-else class="result"></div>
 	</div>
-	<div v-if="this.completed">
+	<div v-if="this.completed" class="completed">
 		<br />
-		<div class="completed">
-			<p>Trial Completed</p>
-		</div>
+		<p>Trial Completed</p>
+		<br />
 		<div class="next-button">
 			<v-btn @click="$emit('trialCompleted')" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
 		</div>

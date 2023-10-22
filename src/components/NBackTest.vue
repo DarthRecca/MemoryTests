@@ -82,7 +82,7 @@ export default {
 			showResult: false,
 			showPrompt: true,
 			promptTime: 0,
-			resposeTime: 0,
+			responseTime: 0,
 			nBackTestData: {
 				nBackTestScore: 0,
 				performanceParameters: {
@@ -141,8 +141,8 @@ export default {
 				this.nBackTestData.performanceParameters.nonMatchTrialsTotal += 1;
 			}
 			setTimeout(() => {
-				this.promptTime = Date.now();
 				this.showPrompt = true;
+				this.promptTime = Date.now();
 			}, 2500);
 			setTimeout(() => {
 				this.showPrompt = false;
@@ -188,8 +188,6 @@ export default {
 					this.score += 1;
 				}
 			}
-			this.resposeTime = 0;
-			this.promptTime = 0;
 			this.repeatFlag = false;
 			this.inputReceived = false;
 		},
@@ -262,6 +260,8 @@ export default {
 		}
 	},
 	mounted() {
+		this.responseTime = Date.now()
+		this.promptTime = Date.now()
 		this.generatePrompt();
 	}
 };
