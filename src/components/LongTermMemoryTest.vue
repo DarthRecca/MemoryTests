@@ -74,6 +74,7 @@
 
 <script>
 import { useTestStore } from '@/store/tests';
+import { collection, addDoc } from 'firebase/firestore';
 
 export default {
 	name: 'LongTermMemoryTest',
@@ -122,10 +123,34 @@ export default {
 				useTestStore().addLongTermMemoryTestData({
 					score: this.keysMatched
 				});
+				this.pushDataToDB();
+			}
+		},
+		async pushDataToDB() {
+			const data = useTestStore().getData();
+			const fireStore = this.$fireStore;
+			const dataPacket = {
+				userDetails: data.userDetailsData,
+				testData: {
+					longTermMemoryTestData: data.longTermMemoryTestData,
+					shortTermMemoryTestData: data.shortTermMemoryTestData,
+					digitSpanTestData: data.digitSpanTestData,
+					reverseDigitSpanTestData: data.reverseDigitSpanTestData,
+					sequenceDigitSpanTestData: data.sequenceDigitSpanTestData,
+					stroopTestData: data.stroopTestData,
+					nBackTestData: data.nBackTestData
+				},
+				timestamp: data.userDetailsData.date
+			};
+			try {
+				const docRef = await addDoc(collection(fireStore, 'testData'), dataPacket);
+				console.log('Document written with ID: ', docRef.id);
+			} catch (e) {
+				console.error('Error adding document: ', e);
 			}
 		}
 	},
-	mounted() {}
+	mounted() { }
 };
 </script>
 
