@@ -204,6 +204,7 @@ export default {
 			this.iterationCheck = true;
 		},
 		testCompleted() {
+			this.nBackTestData.performanceParameters.nonMatchTrialsCorrect = this.nBackTestData.performanceParameters.nonMatchTrialsCorrect - 2
 			this.nBackTestData.performanceParameters.matchTrialsCorrectPercent = this.matchTrialsCorrectPercent;
 			this.nBackTestData.performanceParameters.nonMatchTrialsCorrectPercent = this.nonMatchTrialsCorrectPercent;
 			this.nBackTestData.performanceParameters.matchTrialsIncorrectPercent = this.matchTrialsIncorrectPercent;
