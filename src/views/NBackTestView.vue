@@ -21,17 +21,6 @@
 			two letters ago.<br />
 		</p>
 		<br />
-		<div class="demo-video">
-			<center>
-				<h3>
-					Here is a demo video of the test below<br />
-				</h3>
-				<video controls preload="metadata">
-					<source src="/src/assets/nbackdemo.mp4" type="video/mp4">
-				</video>
-			</center>
-		</div>
-		<br />
 	</div>
 	<div class="real-test-indicator" v-if="this.trialCompleted && !this.testStartFlag">
 		<h2>
