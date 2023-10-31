@@ -133,7 +133,7 @@ export default {
 					this.sequence.push(this.prompt);
 					this.nBackTestData.performanceParameters.nonMatchTrialsTotal += 1;
 				}
-				this.turnsTillRepeat = Math.floor(Math.random() * 8);
+				this.turnsTillRepeat = Math.floor(Math.random() * 5);
 			} else {
 				this.prompt = String.fromCharCode(65 + Math.floor(Math.random() * 26));
 				this.sequence.push(this.prompt);
