@@ -34,7 +34,7 @@ export default {
 				windowFeatures: {},
 				shareOptions: {
 					number: '',
-					text: 'Hello! Check out this Memory Test Online: https://www.psychologytestingforall.com/memory-test',
+					text: "Here is a free online MEMORY TEST that I found to be useful. It measures your memory function in a scientific way and can help you learn more about your learning ability. Please take the test in a quiet place where you won't be disturbed for 15 minutes.You can take the test as many times as you like. Link - https://www.psychologytestingforall.com/memory-test",
 				},
 				useNativeBehavior: false,
 			},
@@ -42,7 +42,7 @@ export default {
 				windowFeatures: {},
 				shareOptions: {
 					url: 'https://www.psychologytestingforall.com/memory-test',
-					text: 'Hello! Check out this Memory Test Online',
+					text: "Here is a free online MEMORY TEST that I found to be useful. It measures your memory function in a scientific way and can help you learn more about your learning ability. Please take the test in a quiet place where you won't be disturbed for 15 minutes.You can take the test as many times as you like.",
 					hashtags: [],
 					via: '',
 				},
@@ -52,7 +52,7 @@ export default {
 				windowFeatures: {},
 				shareOptions: {
 					url: 'https://www.psychologytestingforall.com/memory-test',
-					quote: 'Hello! Check out this Memory Test Online',
+					quote: "Here is a free online MEMORY TEST that I found to be useful. It measures your memory function in a scientific way and can help you learn more about your learning ability. Please take the test in a quiet place where you won't be disturbed for 15 minutes.You can take the test as many times as you like.",
 					hashtag: ""
 				},
 				useNativeBehavior: false,
