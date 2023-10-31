@@ -225,7 +225,7 @@ export default {
 }
 
 .trials-result {
-	font-size: 25px;
+	font-size: 40px;
 	margin-top: 10px;
 	height: 15px;
 }
