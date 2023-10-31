@@ -244,6 +244,7 @@ export default {
 			useTestStore().addFormData({
 				date: Date(),
 				name: this.name,
+				gender: this.gender,
 				emailID: this.emailId,
 				yearOfBirth: this.yearOfBirth,
 				monthOfBirth: this.monthOfBirth,

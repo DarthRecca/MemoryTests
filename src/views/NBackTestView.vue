@@ -21,6 +21,10 @@
 			two letters ago.<br />
 		</p>
 		<br />
+		<video>
+			<source src="/src/assets/nbackdemo.mp4" type="video/mp4">
+		</video>
+		<br />
 	</div>
 	<div class="real-test-indicator" v-if="this.trialCompleted && !this.testStartFlag">
 		<h2>
@@ -51,6 +55,8 @@ export default {
 	name: 'NBackTestView',
 	data() {
 		return {
+			localizationMarathi: false,
+			localizationHindi: false,
 			testStartFlag: false,
 			trialStartFlag: false,
 			trialCompleted: false
@@ -70,6 +76,10 @@ export default {
 		completedTrial() {
 			this.trialCompleted = true;
 		}
+	},
+	mounted() {
+		this.localizationHindi = this.$route.params.localizationHindi
+		this.localizationMarathi = this.$route.params.localizationMarathi
 	}
 };
 </script>
@@ -107,4 +117,5 @@ export default {
 	align-items: center;
 	border: solid black 1px;
 	border-radius: 8px;
-}</style>
+}
+</style>

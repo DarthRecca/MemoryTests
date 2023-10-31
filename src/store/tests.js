@@ -6,6 +6,7 @@ export const useTestStore = defineStore('tests', {
 		userDetailsData: {
 			date: '',
 			name: '',
+			gender: '',
 			emailID: '',
 			yearOfBirth: '',
 			monthOfBirth: '',
@@ -48,12 +49,17 @@ export const useTestStore = defineStore('tests', {
 				incongruentCorrect: 0,
 				congruentIncorrect: 0,
 				incongruentIncorrect: 0,
+				congruentCorrectPercent: 0,
+				incongruentCorrectPercent: 0,
+				congruentIncorrectPercent: 0,
+				incongruentIncorrectPercent: 0,
 				congruentAvgTime: 0,
 				incongruentAvgTime: 0
 			},
 			totalTestTime: 0
 		},
 		nBackTestData: {
+			nBackTestScore: 0,
 			performanceParameters: {
 				matchTrialsTotal: 0,
 				matchTrialsCorrect: 0,
@@ -73,8 +79,7 @@ export const useTestStore = defineStore('tests', {
 				totalCorrectPercent: 0,
 				totalIncorrectPercent: 0,
 				totalAvgTime: 0
-			},
-			score: 0
+			}
 		}
 	}),
 	actions: {

@@ -10,7 +10,7 @@
 		</div>
 		<br />
 		<div v-if="this.showResult" class="result">
-			<p>Your answer is {{ result }}!</p>
+			<p>{{ result }}!</p>
 		</div>
 		<div v-else class="result"></div>
 	</div>
@@ -147,12 +147,8 @@ export default {
 	margin-top: 20px;
 }
 
-.n-back-input {
-	font-size: 24px;
-}
-
 .result {
-	font-size: 32px;
+	font-size: 40px;
 	margin-top: 10px;
 }
 

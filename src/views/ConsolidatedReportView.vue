@@ -2,121 +2,46 @@
 	<div class="report-title">
 		<h3>Consolidated Report</h3>
 		<br />
-		<div class="short-term-report">
-			<div class="title">
-				<p>Short Term Memory Test</p>
-			</div>
-			<br />
-			<v-table>
-				<tbody>
-					<tr>
-						<td>Total Number of Words Recalled Correctly(out of 10)</td>
-						<td>{{ this.data.shortTermMemoryTestData.score }}</td>
-					</tr>
-				</tbody>
-			</v-table>
-		</div>
-		<br />
-		<div class="digit-span-report">
-			<div class="title">
-				<p>Digit Span Test</p>
-			</div>
-			<br />
-			<v-table>
-				<tbody>
-					<tr>
-						<td>Maximum length of digits that you can remember (Digit Span)</td>
-						<td>{{ this.data.sequenceDigitSpanTestData.highestSequenceDigitSpan }}</td>
-					</tr>
-				</tbody>
-			</v-table>
-		</div>
-		<br />
-		<div class="reverse-digit-span-report">
-			<div class="title">
-				<p>Reverse Digit Span Test</p>
-			</div>
-			<br />
-			<v-table>
-				<tbody>
-					<tr>
-						<td>Maximum length of digits that you can remember in Reverse order (Reverse Digit Span)</td>
-						<td>{{ this.data.sequenceDigitSpanTestData.highestSequenceDigitSpan }}</td>
-					</tr>
-				</tbody>
-			</v-table>
-		</div>
-		<br />
-		<div class="sequence-digit-span-report">
-			<div class="title">
-				<p>Ordered Digit Span Test</p>
-			</div>
-			<br />
-			<v-table>
-				<tbody>
-					<tr>
-						<td>Maximum length of digits that you can remember and organise in Order(Ascending Order)</td>
-						<td>{{ this.data.sequenceDigitSpanTestData.highestSequenceDigitSpan }}</td>
-					</tr>
-				</tbody>
-			</v-table>
-		</div>
-		<br />
-		<div class="stroop-report">
-			<div class="title">
-				<p>Stroop Test</p>
-			</div>
-			<br />
-			<v-table>
-				<tbody>
-					<tr>
-						<td>Your Stroop Score (Incongruent Avg Time - Congruent Avg Time)</td>
-						<td>{{ this.data.stroopTestData.testScore }}ms</td>
-					</tr>
-				</tbody>
-			</v-table>
-		</div>
-		<br />
-		<div class="nback-report">
-			<div class="title">
-				<p>N-Back Test</p>
-			</div>
-			<br />
-			<v-table>
-				<thead>
-					<tr>
-						<th></th>
-						<th style="text-align: center">%age of correct tasks</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>
-							<b>Trials that had match</b>
-						</td>
-						<td>
-							{{ this.data.nBackTestData.performanceParameters.matchTrialsCorrectPercent }}
-						</td>
-					</tr>
-				</tbody>
-			</v-table>
-		</div>
-		<br />
-		<div class="long-term-report">
-			<div class="title">
-				<p>Long Term Memory Test</p>
-			</div>
-			<br />
-			<v-table>
-				<tbody>
-					<tr>
-						<td>Total Number of Words Recalled Correctly(out of 10)</td>
-						<td>{{ this.data.longTermMemoryTestData.score }}</td>
-					</tr>
-				</tbody>
-			</v-table>
-		</div>
-		<br />
+	</div>
+	<div class="report">
+		<v-table>
+			<thead>
+				<tr>
+					<th>Test</th>
+					<th>Score</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Short Term Memory Words Recalled Correctly(out of 10)</td>
+					<td>{{ this.data.shortTermMemoryTestData.score }}</td>
+				</tr>
+				<tr>
+					<td>Maximum length of digits that you can remember (Digit Span)</td>
+					<td>{{ this.data.sequenceDigitSpanTestData.highestSequenceDigitSpan }}</td>
+				</tr>
+				<tr>
+					<td>Maximum length of digits that you can remember in Reverse order (Reverse Digit Span)</td>
+					<td>{{ this.data.sequenceDigitSpanTestData.highestSequenceDigitSpan }}</td>
+				</tr>
+				<tr>
+					<td>Maximum length of digits that you can remember and organise in Order(Ascending Order)</td>
+					<td>{{ this.data.sequenceDigitSpanTestData.highestSequenceDigitSpan }}</td>
+				</tr>
+				<tr>
+					<td>Your Stroop Score (Incongruent Avg Time - Congruent Avg Time)</td>
+					<td>{{ this.data.stroopTestData.testScore }}ms</td>
+				</tr>
+				<tr>
+					<td>NBack Test Trials Correct Percentage(for trials that had a match)</td>
+					<td>{{ this.data.nBackTestData.performanceParameters.matchTrialsCorrectPercent }}</td>
+				</tr>
+				<tr>
+					<td>Long Term Memory Test Words Recalled Correctly(out of 10)</td>
+					<td>{{ this.data.longTermMemoryTestData.score }}</td>
+				</tr>
+			</tbody>
+		</v-table>
 	</div>
 	<br />
 	<div class="next-button">
@@ -135,6 +60,7 @@ export default {
 				userDetailsData: {
 					date: '',
 					name: '',
+					gender: '',
 					emailID: '',
 					yearOfBirth: '',
 					monthOfBirth: '',
@@ -177,14 +103,14 @@ export default {
 						incongruentCorrect: 0,
 						congruentIncorrect: 0,
 						incongruentIncorrect: 0,
+						congruentAvgTime: 0,
+						incongruentAvgTime: 0,
 						congruentCorrectPercent: 0,
 						incongruentCorrectPercent: 0,
 						congruentIncorrectPercent: 0,
 						incongruentIncorrectPercent: 0,
-						congruentAvgTime: 0,
-						incongruentAvgTime: 0
 					},
-					totalTimeTaken: 0
+					totalTestTime: 0
 				},
 				nBackTestData: {
 					performanceParameters: {
@@ -207,10 +133,10 @@ export default {
 						totalIncorrectPercent: 0,
 						totalAvgTime: 0
 					},
-					score: 0
+					nBackTestScore: 0
 				}
-			}
-		};
+			},
+		}
 	},
 	methods: {
 		getData() {
@@ -236,52 +162,28 @@ export default {
 }
 
 table {
-	border: 1px solid;
-	border-collapse: collapse;
-	text-align: center;
+	border: 3px solid black;
 	background-color: teal;
 	overflow-x: auto;
 }
 
-.short-term-report {
-	align-items: center;
-	text-align: center;
-	font-size: 20px;
+tr {
+	padding: 0px;
 }
 
-.digit-span-report {
-	align-items: center;
-	text-align: center;
-	font-size: 20px;
+th {
+	border: 1px solid black;
+	font-weight: bold;
+	padding: 0px;
 }
 
-.reverse-digit-span-report {
-	align-items: center;
-	text-align: center;
-	font-size: 20px;
+td {
+	border: 1px solid black;
+	padding: 0px;
 }
 
-.sequence-digit-span-report {
+.report {
 	align-items: center;
-	text-align: center;
-	font-size: 20px;
-}
-
-.stroop-report {
-	align-items: center;
-	text-align: center;
-	font-size: 20px;
-}
-
-.nback-report {
-	align-items: center;
-	text-align: center;
-	font-size: 20px;
-}
-
-.long-term-report {
-	align-items: center;
-	text-align: center;
 	font-size: 20px;
 }
 
