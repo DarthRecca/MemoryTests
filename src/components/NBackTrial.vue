@@ -150,6 +150,7 @@ export default {
 .result {
 	font-size: 40px;
 	margin-top: 10px;
+	height: 5px;
 }
 
 .completed {

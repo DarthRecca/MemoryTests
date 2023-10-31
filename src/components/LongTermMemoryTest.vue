@@ -66,7 +66,7 @@
 				<v-btn to="/digitspantest" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
 			</div>
 			<div class="next-button" v-if="this.testType == 'long'">
-				<v-btn to="/consolidatedreport" size="x-large" block color="red-lighten-3" rounded="lg">Finish</v-btn>
+				<v-btn to="/consolidatedreport" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
 			</div>
 		</div>
 	</v-container>
