@@ -1,24 +1,16 @@
 <template>
 	<div class="n-back-container" v-if="!this.completed">
-		<h3>
-			Note: This demo is slowed down and the letters are always displayed. This is only for purpose of this demo.
-		</h3>
+		<h3>Note: This demo is slowed down and the letters are always displayed. This is only for purpose of this demo.</h3>
 		<v-container>
 			<v-row>
 				<v-col cols="2">
-					<h3>
-						N-2
-					</h3>
+					<h3>N-2</h3>
 				</v-col>
 				<v-col cols="2">
-					<h3>
-						N-1
-					</h3>
+					<h3>N-1</h3>
 				</v-col>
 				<v-col cols="6">
-					<h3>
-						N
-					</h3>
+					<h3>N</h3>
 				</v-col>
 			</v-row>
 			<v-row>
@@ -40,20 +32,12 @@
 			</v-row>
 			<v-row>
 				<v-col cols="2">
-					<div v-if="this.prompt == this.n_2" class="match-indicator">
-						{{ n_2 }} equals {{ prompt }}.
-					</div>
-					<div v-else class="match-indicator">
-						{{ n_2 }} not equals {{ prompt }}.
-					</div>
+					<div v-if="this.prompt == this.n_2" class="match-indicator">{{ n_2 }} equals {{ prompt }}.</div>
+					<div v-else class="match-indicator">{{ n_2 }} not equals {{ prompt }}.</div>
 				</v-col>
 				<v-col cols="2">
-					<div v-if="this.prompt == this.n_2" class="match-indicator">
-						Press Matches button
-					</div>
-					<div v-else class="match-indicator">
-						Do not Press Matches button
-					</div>
+					<div v-if="this.prompt == this.n_2" class="match-indicator">Press Matches button</div>
+					<div v-else class="match-indicator">Do not Press Matches button</div>
 				</v-col>
 				<v-col cols="6">
 					<div class="n-back-input-container">
@@ -62,10 +46,8 @@
 				</v-col>
 			</v-row>
 			<v-row>
-				<v-col cols="2">
-				</v-col>
-				<v-col cols="2">
-				</v-col>
+				<v-col cols="2"> </v-col>
+				<v-col cols="2"> </v-col>
 				<v-col cols="6">
 					<div v-if="this.showResult" class="result">
 						<p>{{ result }}!</p>

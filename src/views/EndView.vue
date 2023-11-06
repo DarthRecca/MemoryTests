@@ -8,24 +8,19 @@
 		</p>
 		<br />
 		<p>Please Share this test with your friends and family!</p>
-		<s-whats-app :window-features="whatsappShareOptions.windowFeatures"
-			:share-options="whatsappShareOptions.shareOptions"
-			:use-native-behavior="whatsappShareOptions.useNativeBehavior">
+		<s-whats-app :window-features="whatsappShareOptions.windowFeatures" :share-options="whatsappShareOptions.shareOptions" :use-native-behavior="whatsappShareOptions.useNativeBehavior">
 			<v-icon icon="mdi-whatsapp" color="green"></v-icon>
 		</s-whats-app>
-		<s-twitter :window-features="twitterShareOptions.windowFeatures" :share-options="twitterShareOptions.shareOptions"
-			:use-native-behavior="twitterShareOptions.useNativeBehavior">
+		<s-twitter :window-features="twitterShareOptions.windowFeatures" :share-options="twitterShareOptions.shareOptions" :use-native-behavior="twitterShareOptions.useNativeBehavior">
 			<v-icon icon="mdi-twitter" color="blue-lighten-1"></v-icon>
 		</s-twitter>
-		<s-facebook :window-features="windowFeatures" :share-options="shareOptions"
-			:use-native-behavior="useNativeBehavior">
+		<s-facebook :window-features="windowFeatures" :share-options="shareOptions" :use-native-behavior="useNativeBehavior">
 			<v-icon icon="mdi-facebook" color="blue-darken-1"></v-icon>
 		</s-facebook>
 	</div>
 </template>
 
 <script>
-
 export default {
 	name: 'EndView',
 	data() {
@@ -34,9 +29,9 @@ export default {
 				windowFeatures: {},
 				shareOptions: {
 					number: '',
-					text: "Here is a free online MEMORY TEST that I found to be useful. It measures your memory function in a scientific way and can help you learn more about your learning ability. Please take the test in a quiet place where you won't be disturbed for 15 minutes.You can take the test as many times as you like. Link - https://www.psychologytestingforall.com/memory-test",
+					text: "Here is a free online MEMORY TEST that I found to be useful. It measures your memory function in a scientific way and can help you learn more about your learning ability. Please take the test in a quiet place where you won't be disturbed for 15 minutes.You can take the test as many times as you like. Link - https://www.psychologytestingforall.com/memory-test"
 				},
-				useNativeBehavior: false,
+				useNativeBehavior: false
 			},
 			twitterShareOptions: {
 				windowFeatures: {},
@@ -44,26 +39,23 @@ export default {
 					url: 'https://www.psychologytestingforall.com/memory-test',
 					text: "Here is a free online MEMORY TEST that I found to be useful. It measures your memory function in a scientific way and can help you learn more about your learning ability. Please take the test in a quiet place where you won't be disturbed for 15 minutes.You can take the test as many times as you like.",
 					hashtags: [],
-					via: '',
+					via: ''
 				},
-				useNativeBehavior: false,
+				useNativeBehavior: false
 			},
 			facebookShareOptions: {
 				windowFeatures: {},
 				shareOptions: {
 					url: 'https://www.psychologytestingforall.com/memory-test',
 					quote: "Here is a free online MEMORY TEST that I found to be useful. It measures your memory function in a scientific way and can help you learn more about your learning ability. Please take the test in a quiet place where you won't be disturbed for 15 minutes.You can take the test as many times as you like.",
-					hashtag: ""
+					hashtag: ''
 				},
-				useNativeBehavior: false,
+				useNativeBehavior: false
 			}
-		}
+		};
 	},
-	methods: {
-
-	},
-	mounted() {
-	}
+	methods: {},
+	mounted() {}
 };
 </script>
 <style>

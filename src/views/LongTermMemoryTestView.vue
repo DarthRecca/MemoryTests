@@ -12,8 +12,7 @@
 			You will be shown 10 words below.<br />
 			Memorise them in your mind number of times.<br />
 			If you want you can take a bit of time to remember them.<br />
-			You will be asked to recall these words shortly(In the next screen) and after about 20 minutes(Towards the end
-			of the test).<br />
+			You will be asked to recall these words shortly(In the next screen) and after about 20 minutes(Towards the end of the test).<br />
 			Please do not save them in any manner because your real memory will not get tested.<br />
 			Testing memory in this manner from time to time is a good practice to maintain the health of the mind.<br />
 		</p>

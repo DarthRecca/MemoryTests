@@ -108,7 +108,7 @@ export default {
 						congruentCorrectPercent: 0,
 						incongruentCorrectPercent: 0,
 						congruentIncorrectPercent: 0,
-						incongruentIncorrectPercent: 0,
+						incongruentIncorrectPercent: 0
 					},
 					totalTestTime: 0
 				},
@@ -135,8 +135,8 @@ export default {
 					},
 					nBackTestScore: 0
 				}
-			},
-		}
+			}
+		};
 	},
 	methods: {
 		getData() {

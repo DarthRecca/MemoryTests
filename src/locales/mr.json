@@ -1,3 +1,11 @@
 {
-	"message": "hello i18n !!"
+	"message": "hello i18n !!",
+	"shorttermmemory": {},
+	"digitspan": {},
+	"reversedigitspan": {},
+	"sequencedigitspan": {},
+	"stroop": {},
+	"nback": {},
+	"longtermmemory": {},
+	"consolidatedreport": {}
 }
