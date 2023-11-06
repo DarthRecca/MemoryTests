@@ -2,7 +2,8 @@
 	<div class="nback-title">
 		<h1>N-Back Test</h1>
 	</div>
-	<div class="instructions" v-if="!this.trialStartFlag && !this.testStartFlag && !this.trialCompleted">
+	<div class="instructions"
+		v-if="!this.trialStartFlag && !this.testStartFlag && !this.trialCompleted && (!this.demoStartFlag || !this.demoCompleted)">
 		<div class="information">
 			<h3>This test measures the working memory and processing speed</h3>
 		</div>
@@ -22,24 +23,17 @@
 		</p>
 		<br />
 	</div>
-	<div class="real-test-indicator" v-if="this.trialCompleted && !this.testStartFlag">
-		<h2>
-			Your Real Test Starts Now!
-		</h2>
-		<br />
-		<div v-if="!this.testStartFlag && this.trialCompleted" class="start-button">
-			<v-btn @click="this.startTest()" size="x-large" block color="red-lighten-3" rounded="lg">Click Here to Start
-				Test</v-btn>
-		</div>
+	<div v-if="this.demoStartFlag && !this.demoCompleted">
+		<NBackDemo @demo-completed="this.completedDemo()" />
 	</div>
-	<div v-if="!this.testStartFlag && !this.trialStartFlag" class="start-button">
-		<v-btn @click="this.startTrial()" size="x-large" block color="red-lighten-3" rounded="lg"> Start Trial </v-btn>
+	<div v-if="!this.demoStartFlag && !this.demoCompleted && !this.trialStartFlag" class="start-button">
+		<v-btn @click="this.startDemo()" size="x-large" block color="red-lighten-3" rounded="lg"> Start Demo </v-btn>
 	</div>
 	<br />
-	<div v-if="this.trialStartFlag && !this.trialCompleted">
+	<div v-if="this.trialStartFlag && !this.trialCompleted && (!this.demoStartFlag && this.demoCompleted)">
 		<NBackTrial @trial-completed="this.completedTrial()" />
 	</div>
-	<div v-if="this.trialCompleted && this.testStartFlag">
+	<div v-if="this.trialCompleted && this.testStartFlag && (!this.demoStartFlag && this.demoCompleted)">
 		<NBackTest />
 	</div>
 </template>
@@ -47,6 +41,7 @@
 <script>
 import NBackTest from '@/components/NBackTest.vue';
 import NBackTrial from '@/components/NBackTrial.vue';
+import NBackDemo from '@/components/NBackDemo.vue'
 export default {
 	name: 'NBackTestView',
 	data() {
@@ -55,12 +50,15 @@ export default {
 			localizationHindi: false,
 			testStartFlag: false,
 			trialStartFlag: false,
-			trialCompleted: false
+			trialCompleted: false,
+			demoStartFlag: false,
+			demoCompleted: false
 		};
 	},
 	components: {
 		NBackTest,
-		NBackTrial
+		NBackTrial,
+		NBackDemo
 	},
 	methods: {
 		startTest() {
@@ -69,8 +67,17 @@ export default {
 		startTrial() {
 			this.trialStartFlag = true;
 		},
+		startDemo() {
+			this.demoStartFlag = true;
+		},
 		completedTrial() {
 			this.trialCompleted = true;
+			this.startTest()
+		},
+		completedDemo() {
+			this.demoStartFlag = false;
+			this.demoCompleted = true;
+			this.startTrial();
 		}
 	},
 	mounted() {

@@ -1,34 +1,39 @@
 {
-	"name": "psychology-testing",
-	"version": "0.0.0",
-	"scripts": {
-		"dev": "vite",
-		"build": "vite build",
-		"preview": "vite preview",
-		"lint": "eslint . --fix --ignore-path .gitignore",
-		"format": "prettier --write src/"
-	},
-	"dependencies": {
-		"@mdi/font": "7.2.96",
-		"firebase": "^10.4.0",
-		"pinia": "^2.0.23",
-		"roboto-fontface": "*",
-		"vue": "^3.2.38",
-		"vue-router": "^4.0.0",
-		"vue-socials": "^2.0.4",
-		"vuetify": "^3.0.0",
-		"webfontloader": "^1.0.0"
-	},
-	"devDependencies": {
-		"@rushstack/eslint-patch": "^1.3.3",
-		"@vitejs/plugin-vue": "^4.3.4",
-		"@vue/eslint-config-prettier": "^8.0.0",
-		"eslint": "^8.49.0",
-		"eslint-config-prettier": "^9.0.0",
-		"eslint-plugin-vue": "^9.17.0",
-		"eslint-plugin-vuetify": "^2.0.5",
-		"prettier": "^3.0.3",
-		"vite": "^4.4.9",
-		"vite-plugin-vuetify": "^1.0.0-alpha.12"
-	}
+  "name": "psychology-testing",
+  "version": "0.0.0",
+  "scripts": {
+    "build": "vite build",
+    "lint": "eslint . --fix --ignore-path .gitignore",
+    "dev": "vite",
+    "format": "prettier --write src/",
+    "i18n:report": "vue-cli-service i18n:report --src \"./src/**/*.?(js|vue)\" --locales \"./src/locales/**/*.json\"",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@intlify/unplugin-vue-i18n": "^1.5.0",
+    "@mdi/font": "7.2.96",
+    "firebase": "^10.4.0",
+    "pinia": "^2.0.23",
+    "roboto-fontface": "*",
+    "vue": "^3.2.38",
+    "vue-i18n": "^9.6.5",
+    "vue-router": "^4.0.0",
+    "vue-socials": "^2.0.4",
+    "vuetify": "^3.0.0",
+    "webfontloader": "^1.0.0"
+  },
+  "devDependencies": {
+    "@intlify/vue-i18n-loader": "^3.0.0",
+    "@rushstack/eslint-patch": "^1.3.3",
+    "@vitejs/plugin-vue": "^4.3.4",
+    "@vue/eslint-config-prettier": "^8.0.0",
+    "eslint": "^8.49.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-vue": "^9.17.0",
+    "eslint-plugin-vuetify": "^2.0.5",
+    "prettier": "^3.0.3",
+    "vite": "^4.4.9",
+    "vite-plugin-vuetify": "^1.0.0-alpha.12",
+    "vue-cli-plugin-i18n": "~2.3.2"
+  }
 }

@@ -1,26 +1,88 @@
 <template>
 	<div class="n-back-container" v-if="!this.completed">
-		<div class="n-back-prompt" v-if="this.showPrompt">
-			<p>{{ prompt }}</p>
-		</div>
-		<div class="n-back-prompt" v-else></div>
+		<h3>
+			Note: This demo is slowed down and the letters are always displayed. This is only for purpose of this demo.
+		</h3>
+		<v-container>
+			<v-row>
+				<v-col cols="2">
+					<h3>
+						N-2
+					</h3>
+				</v-col>
+				<v-col cols="2">
+					<h3>
+						N-1
+					</h3>
+				</v-col>
+				<v-col cols="6">
+					<h3>
+						N
+					</h3>
+				</v-col>
+			</v-row>
+			<v-row>
+				<v-col cols="2">
+					<div class="n-back-prompt">
+						{{ n_2 }}
+					</div>
+				</v-col>
+				<v-col cols="2">
+					<div class="n-back-prompt">
+						{{ n_1 }}
+					</div>
+				</v-col>
+				<v-col cols="6">
+					<div class="n-back-prompt">
+						<p>{{ prompt }}</p>
+					</div>
+				</v-col>
+			</v-row>
+			<v-row>
+				<v-col cols="2">
+					<div v-if="this.prompt == this.n_2" class="match-indicator">
+						{{ n_2 }} equals {{ prompt }}.
+					</div>
+					<div v-else class="match-indicator">
+						{{ n_2 }} not equals {{ prompt }}.
+					</div>
+				</v-col>
+				<v-col cols="2">
+					<div v-if="this.prompt == this.n_2" class="match-indicator">
+						Press Matches button
+					</div>
+					<div v-else class="match-indicator">
+						Do not Press Matches button
+					</div>
+				</v-col>
+				<v-col cols="6">
+					<div class="n-back-input-container">
+						<v-btn @click="this.setInputReceived()" color="green" block size="large">Matches</v-btn>
+					</div>
+				</v-col>
+			</v-row>
+			<v-row>
+				<v-col cols="2">
+				</v-col>
+				<v-col cols="2">
+				</v-col>
+				<v-col cols="6">
+					<div v-if="this.showResult" class="result">
+						<p>{{ result }}!</p>
+					</div>
+					<div v-else class="result"></div>
+				</v-col>
+			</v-row>
+		</v-container>
 		<br />
-		<div class="n-back-input-container">
-			<v-btn @click="this.setInputReceived()" color="green" block size="large">Matches</v-btn>
-		</div>
-		<br />
-		<div v-if="this.showResult" class="result">
-			<p>{{ result }}!</p>
-		</div>
-		<div v-else class="result"></div>
 	</div>
 	<div v-if="this.completed" class="completed">
 		<br />
-		<p>Trial Completed</p>
-		<p>Click Next to give Real Test</p>
+		<p>Demo Completed</p>
+		<p>Click on Next to take Unassisted Trial</p>
 		<br />
 		<div class="next-button">
-			<v-btn @click="$emit('trialCompleted')" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
+			<v-btn @click="$emit('demoCompleted')" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
 		</div>
 	</div>
 </template>
@@ -36,6 +98,8 @@ export default {
 			sequence: [],
 			turnsTillRepeat: 0,
 			n: 2,
+			n_1: '',
+			n_2: '',
 			result: '',
 			showResult: false,
 			showPrompt: true,
@@ -46,6 +110,8 @@ export default {
 	},
 	methods: {
 		async generatePrompt() {
+			this.n_2 = this.n_1;
+			this.n_1 = this.prompt;
 			if (this.iterationCheck == false) {
 				this.checkAnswer();
 			} else {
@@ -67,12 +133,7 @@ export default {
 				this.sequence.push(this.prompt);
 				this.turnsTillRepeat = this.turnsTillRepeat - 1;
 			}
-			setTimeout(() => {
-				this.showPrompt = true;
-			}, 2500);
-			setTimeout(() => {
-				this.showPrompt = false;
-			}, 500);
+
 			if (this.sequence.length > 7) {
 				this.sequence.shift();
 			}
@@ -83,7 +144,7 @@ export default {
 			} else {
 				setTimeout(() => {
 					this.generatePrompt();
-				}, 2500);
+				}, 5000);
 			}
 		},
 		async checkAnswer() {
@@ -119,7 +180,7 @@ export default {
 			this.completed = true;
 		}
 	},
-	emits: ['trialCompleted'],
+	emits: ['demoCompleted'],
 	mounted() {
 		this.generatePrompt();
 	}
@@ -145,6 +206,10 @@ export default {
 }
 
 .n-back-input-container {
+	margin-top: 20px;
+}
+
+.match-indicator {
 	margin-top: 20px;
 }
 
