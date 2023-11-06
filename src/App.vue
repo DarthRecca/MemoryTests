@@ -1,7 +1,7 @@
 <template>
 	<v-app>
 		<v-main class="main-container">
-			<v-sheet color="teal-lighten-3" border class="main-sheet">
+			<v-sheet color="teal-lighten-3" class="main-sheet">
 				<v-responsive>
 					<router-view></router-view>
 				</v-responsive>
