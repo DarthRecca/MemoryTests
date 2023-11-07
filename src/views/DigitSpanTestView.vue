@@ -9,12 +9,12 @@
 		</div>
 		<h2 class="instructions-title">Instructions</h2>
 		<p>
-			{{ $t("digitspan.instructions.line1") }}<br />
-			{{ $t("digitspan.instructions.line2") }}<br />
-			{{ $t("digitspan.instructions.line3") }}<br />
-			{{ $t("digitspan.instructions.line4") }}<br />
-			{{ $t("digitspan.instructions.line5") }}<br />
-			{{ $t("digitspan.instructions.line6") }}<br />
+			{{ $t('digitspan.instructions.line1') }}<br />
+			{{ $t('digitspan.instructions.line2') }}<br />
+			{{ $t('digitspan.instructions.line3') }}<br />
+			{{ $t('digitspan.instructions.line4') }}<br />
+			{{ $t('digitspan.instructions.line5') }}<br />
+			{{ $t('digitspan.instructions.line6') }}<br />
 		</p>
 		<br />
 	</div>
@@ -24,8 +24,7 @@
 		</h2>
 		<br />
 		<div v-if="!this.testStartFlag && this.trialCompleted" class="start-button">
-			<v-btn @click="this.startTest()" size="x-large" block color="red-lighten-3" rounded="lg">Click Here to Start
-				Test</v-btn>
+			<v-btn @click="this.startTest()" size="x-large" block color="red-lighten-3" rounded="lg">Click Here to Start Test</v-btn>
 		</div>
 	</div>
 	<div v-if="!this.testStartFlag && !this.trialStartFlag" class="start-button">

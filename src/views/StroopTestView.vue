@@ -8,13 +8,12 @@
 		</div>
 		<h2 class="instructions-title">Instructions</h2>
 		<p>
-			{{ $t("stroop.instructions.line1") }}<br />
-			{{ $t("stroop.instructions.line2") }}<br />
-			{{ $t("stroop.instructions.line3a") }}(eg. <span class="example">RED</span>){{ $t("stroop.instructions.line3b")
-			}}<br />
+			{{ $t('stroop.instructions.line1') }}<br />
+			{{ $t('stroop.instructions.line2') }}<br />
+			{{ $t('stroop.instructions.line3a') }}(eg. <span class="example">RED</span>){{ $t('stroop.instructions.line3b') }}<br />
 		</p>
 		<br />
-		<p>{{ $t("stroop.instructions.note") }}<br /></p>
+		<p>{{ $t('stroop.instructions.note') }}<br /></p>
 		<br />
 	</div>
 	<div class="real-test-indicator" v-if="this.trialCompleted && !this.testStartFlag">
@@ -22,8 +21,7 @@
 			<p>Your Real Test Starts Now!</p>
 		</h2>
 		<div v-if="!this.testStartFlag && this.trialCompleted" class="start-button">
-			<v-btn @click="this.startTest()" size="x-large" block color="red-lighten-3" rounded="lg">Click Here to Start
-				Test</v-btn>
+			<v-btn @click="this.startTest()" size="x-large" block color="red-lighten-3" rounded="lg">Click Here to Start Test</v-btn>
 		</div>
 	</div>
 	<div v-if="!this.testStartFlag && !this.trialStartFlag" class="start-button">

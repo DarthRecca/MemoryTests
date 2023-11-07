@@ -1,9 +1,7 @@
 <template>
 	<div class="n-back-container" v-if="!this.completed">
 		<v-container>
-			<h3>
-				Note: This assisted trial is slowed down.
-			</h3>
+			<h3>Note: This assisted trial is slowed down.</h3>
 			<br /><br />
 			<v-row>
 				<v-col cols="2">
@@ -196,7 +194,7 @@ export default {
 
 .match-indicator {
 	margin-top: 20px;
-	font-size: 32px
+	font-size: 32px;
 }
 
 .result {

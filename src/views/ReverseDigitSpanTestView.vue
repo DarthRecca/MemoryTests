@@ -8,22 +8,21 @@
 		</div>
 		<h2 class="instructions-title">Instructions</h2>
 		<p>
-			{{ $t("reversedigitspan.instructions.line1") }}<br />
-			{{ $t("reversedigitspan.instructions.line2") }}<br />
-			{{ $t("reversedigitspan.instructions.line3") }}<br />
-			{{ $t("reversedigitspan.instructions.line4") }}<br />
-			{{ $t("reversedigitspan.instructions.line5") }}<br />
-			{{ $t("reversedigitspan.instructions.line6") }}<br />
-			{{ $t("reversedigitspan.instructions.line7") }}<br />
-			{{ $t("reversedigitspan.instructions.line8") }}<br />
+			{{ $t('reversedigitspan.instructions.line1') }}<br />
+			{{ $t('reversedigitspan.instructions.line2') }}<br />
+			{{ $t('reversedigitspan.instructions.line3') }}<br />
+			{{ $t('reversedigitspan.instructions.line4') }}<br />
+			{{ $t('reversedigitspan.instructions.line5') }}<br />
+			{{ $t('reversedigitspan.instructions.line6') }}<br />
+			{{ $t('reversedigitspan.instructions.line7') }}<br />
+			{{ $t('reversedigitspan.instructions.line8') }}<br />
 		</p>
 		<br />
 	</div>
 	<div class="real-test-indicator" v-if="!this.testStartFlag">
 		<p>Note:There will not be a trial for this test</p>
 		<div v-if="!this.testStartFlag" class="start-button">
-			<v-btn @click="this.startTest()" size="x-large" block color="red-lighten-3" rounded="lg">Click Here to Start
-				Test</v-btn>
+			<v-btn @click="this.startTest()" size="x-large" block color="red-lighten-3" rounded="lg">Click Here to Start Test</v-btn>
 		</div>
 	</div>
 	<div v-if="this.testStartFlag">

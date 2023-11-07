@@ -2,20 +2,19 @@
 	<div class="nback-title">
 		<h1>N-Back Test</h1>
 	</div>
-	<div class="instructions"
-		v-if="!this.trialStartFlag && !this.testStartFlag && !this.trialCompleted && (!this.demoStartFlag && !this.demoCompleted)">
+	<div class="instructions" v-if="!this.trialStartFlag && !this.testStartFlag && !this.trialCompleted && !this.demoStartFlag && !this.demoCompleted">
 		<div class="information">
 			<h3>This test measures the working memory and processing speed</h3>
 		</div>
 		<h2 class="instructions-title">Instructions</h2>
 		<p>
-			{{ $t("nback.instructions.line1") }}<br />
-			{{ $t("nback.instructions.line2") }}<br />
-			{{ $t("nback.instructions.line3") }}<br />
-			{{ $t("nback.instructions.line4") }}<br />
-			{{ $t("nback.instructions.line5") }}<br />
-			{{ $t("nback.instructions.line6") }}<br />
-			{{ $t("nback.instructions.note") }}<br />
+			{{ $t('nback.instructions.line1') }}<br />
+			{{ $t('nback.instructions.line2') }}<br />
+			{{ $t('nback.instructions.line3') }}<br />
+			{{ $t('nback.instructions.line4') }}<br />
+			{{ $t('nback.instructions.line5') }}<br />
+			{{ $t('nback.instructions.line6') }}<br />
+			{{ $t('nback.instructions.note') }}<br />
 		</p>
 		<br />
 	</div>
@@ -23,8 +22,7 @@
 		<NBackDemo @demo-completed="this.completedDemo()" />
 	</div>
 	<div v-if="!this.demoStartFlag && !this.demoCompleted && !this.trialStartFlag" class="start-button">
-		<v-btn @click="this.startDemo()" size="x-large" block color="red-lighten-3" rounded="lg"> Start Assisted Trial
-		</v-btn>
+		<v-btn @click="this.startDemo()" size="x-large" block color="red-lighten-3" rounded="lg"> Start Assisted Trial </v-btn>
 	</div>
 	<br />
 	<div v-if="this.trialStartFlag && !this.trialCompleted && !this.demoStartFlag && this.demoCompleted">
