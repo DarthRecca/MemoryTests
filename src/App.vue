@@ -1,21 +1,15 @@
 <template>
 	<v-app>
-		<v-main class="main-container">
-			<v-sheet color="teal-lighten-3" class="main-sheet">
-				<v-responsive>
-					<router-view></router-view>
-				</v-responsive>
-			</v-sheet>
-		</v-main>
+		<MainModule />
 	</v-app>
 </template>
 
 <script setup>
-//
+import MainModule from './components/MainModule.vue'
 </script>
 
 <style>
-.main-sheet {
+body {
 	font-size: larger;
 	border-width: 15px;
 	padding: auto;

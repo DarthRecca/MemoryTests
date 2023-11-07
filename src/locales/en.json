@@ -1,15 +1,63 @@
 {
-	"message": "hello i18n !!",
+	"welcome": {
+		"welcome-message": "Welcome to Memory Test",
+		"start-button": "Start The Test"
+	},
 	"shorttermmemory": {},
 	"digitspan": {
 		"instructions": {
-			"line1": ""
+			"line1": "In this experiment, you will be shown a sequence of numbers on the screen. These numbers are called digits.",
+			"line2": "You need to remember the sequence and enter it into the space provided on the screen when prompted.",
+			"line3": "If you make mistakes while entering the sequence, you can correct the last mistake using the Clear button.",
+			"line4": "Once you have entered all of the digits, press the ENTER button.",
+			"line5": "The length of the digit sequence will start from 2 and will increase until you are no longer able to remember it.",
+			"line6": "If you successfully complete two of the three attempts for a given length, you will move on to the next length. Otherwise, the test will end."
 		}
 	},
-	"reversedigitspan": {},
-	"sequencedigitspan": {},
-	"stroop": {},
-	"nback": {},
+	"reversedigitspan": {
+		"instructions": {
+			"line1": "In this experiment, you will be shown a sequence of numbers on the screen. These numbers are called digits.",
+			"line2": "You need to remember the sequence, REVERSE it in your memory, and enter the number into the space provided when prompted.",
+			"line3": "If you make mistakes while entering the sequence, you can correct the last mistake using the Clear button.",
+			"line4": "Once you have entered all of the digits, press the ENTER button.",
+			"line5": "For example if the numbers are shown as 2 6 8 3 then you need to enter 3 8 6 2",
+			"line6": "The length of the digit sequence will start from 2 and will increase until you are no longer able to remember it.",
+			"line7": "You will be given three trials for each length.",
+			"line8": "If you successfully complete two of the three trials for a given length, you will move on to the next length. Otherwise, the test will end."
+		}
+	},
+	"sequencedigitspan": {
+		"instructions": {
+			"line1": "You will be shown a sequence of digits on the screen, one at a time similar to previous test.",
+			"line2": "Remember the digits in the order that they are shown.",
+			"line3": "When prompted, enter the digits in ASCENDING ORDER in the space provided.",
+			"example1": "Example:",
+			"example2": "If you are shown the following digits:",
+			"example3": "8 3 5 0 9",
+			"example4": "You would enter the following digits in the space provided:",
+			"example5": "0 3 5 8 9"
+		}
+	},
+	"stroop": {
+		"instructions": {
+			"line1": "In this task, you will see color names (RED, GREEN, BLUE, and YELLOW) printed in different colors.",
+			"line2": "You need to respond to the color of the print, not the word itself.",
+			"line3a": "For example, if you see the word 'RED' printed in green ink",
+			"line3b": ", you should press the Green button.",
+			"note": "Note - In this test your response time is measured. It is important therefore that you need to respond to the given tasks as early as possible but without making the mistakes."
+		}
+	},
+	"nback": {
+		"instructions": {
+			"line1": "You will be presented with a sequence of letters or numbers one by one.",
+			"line2": "Your task is to press the MATCHES button if the current letter (let us call it N)  matches the one that was presented 2 trials ago (let us call it as (N-2)).",
+			"line3": "If it does not match, do not press the button.",
+			"line4": "For example, let's say the current letter is P and the last two letters, that is (N-2) and (N-1) were B and T respectively. Since the (N-2) letter (B) does not match with the current letter (P), you should NOT press MATCHES.",
+			"line5": "If the next letter is shown as T, then this time P becomes (N-1) and T becomes (N-2). Here you should press MATCHES button because (N-2) that is the letter that was shown two letters ago (T) matches the current letter (T).",
+			"line6": " This is called the N=2 back test, because you are comparing the current letter to the letter that was displayed two letters ago.  This test is used all over the world to test working memory.",
+			"note": "Please  click below to start the Assisted Trial. In this trial, you will be shown what N-1 and N-2 are, and how they change. You will also be shown how to compare N-2 with N in your memory and decide whether both letters MATCH. If they do, you should press the MATCHES button. After completing the guided trial, please take a short trial without assistance, followed by a final test. "
+		}
+	},
 	"longtermmemory": {},
 	"consolidatedreport": {}
 }

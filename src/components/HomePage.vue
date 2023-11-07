@@ -3,13 +3,13 @@
 		<v-responsive>
 			<div class="welcome-screen">
 				<div>
-					<h1>Welcome to Memory Test</h1>
+					<h1>{{ $t("welcome.welcome-message") }}</h1>
 				</div>
 				<br />
 
 				<div class="start-button">
 					<v-btn to="/detailsform" size="x-large" block color="red-lighten-3" rounded="lg">
-						<h1>Start the Test</h1>
+						<h1>{{ $t("welcome.start-button") }}</h1>
 					</v-btn>
 				</div>
 			</div>
@@ -25,7 +25,7 @@ export default {
 	},
 	computed: {},
 	methods: {},
-	mounted() {}
+	mounted() { }
 };
 </script>
 

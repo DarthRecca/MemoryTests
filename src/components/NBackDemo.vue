@@ -1,7 +1,10 @@
 <template>
 	<div class="n-back-container" v-if="!this.completed">
-		<h3>Note: This demo is slowed down and the letters are always displayed. This is only for purpose of this demo.</h3>
 		<v-container>
+			<h3>
+				Note: This assisted trial is slowed down.
+			</h3>
+			<br /><br />
 			<v-row>
 				<v-col cols="2">
 					<h3>N-2</h3>
@@ -36,8 +39,8 @@
 					<div v-else class="match-indicator">{{ n_2 }} not equals {{ prompt }}.</div>
 				</v-col>
 				<v-col cols="2">
-					<div v-if="this.prompt == this.n_2" class="match-indicator">Press Matches button</div>
-					<div v-else class="match-indicator">Do not Press Matches button</div>
+					<div v-if="this.prompt == this.n_2" class="match-indicator">Press MATCHES button</div>
+					<div v-else class="match-indicator">Do not Press MATCHES button</div>
 				</v-col>
 				<v-col cols="6">
 					<div class="n-back-input-container">
@@ -60,7 +63,7 @@
 	</div>
 	<div v-if="this.completed" class="completed">
 		<br />
-		<p>Demo Completed</p>
+		<p>Assisted Trial Completed</p>
 		<p>Click on Next to take Unassisted Trial</p>
 		<br />
 		<div class="next-button">
@@ -126,7 +129,7 @@ export default {
 			} else {
 				setTimeout(() => {
 					this.generatePrompt();
-				}, 5000);
+				}, 3000);
 			}
 		},
 		async checkAnswer() {
@@ -193,6 +196,7 @@ export default {
 
 .match-indicator {
 	margin-top: 20px;
+	font-size: 32px
 }
 
 .result {

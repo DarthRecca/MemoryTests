@@ -2,19 +2,20 @@
 	<div class="nback-title">
 		<h1>N-Back Test</h1>
 	</div>
-	<div class="instructions" v-if="!this.trialStartFlag && !this.testStartFlag && !this.trialCompleted && (!this.demoStartFlag || !this.demoCompleted)">
+	<div class="instructions"
+		v-if="!this.trialStartFlag && !this.testStartFlag && !this.trialCompleted && (!this.demoStartFlag && !this.demoCompleted)">
 		<div class="information">
 			<h3>This test measures the working memory and processing speed</h3>
 		</div>
 		<h2 class="instructions-title">Instructions</h2>
 		<p>
-			You will be presented with a sequence of letters or numbers one by one.<br />
-			Your task is to press the MATCHES button if the current letter matches the one that was presented 2 trials ago.<br />
-			If it does not match, do not press the button.<br />
-			For example, let's say the current letter is B and the last two letters were B and T. Since the letter two letters ago (B) matches the current letter (B), you should press MATCHES.<br />
-			If the next letter is P, you should not press MATCHES because the letter two letters ago (T) does not match the current letter (P).<br />
-
-			This is called the N=2 back test, because you are comparing the current letter to the letter that was displayed two letters ago.<br />
+			{{ $t("nback.instructions.line1") }}<br />
+			{{ $t("nback.instructions.line2") }}<br />
+			{{ $t("nback.instructions.line3") }}<br />
+			{{ $t("nback.instructions.line4") }}<br />
+			{{ $t("nback.instructions.line5") }}<br />
+			{{ $t("nback.instructions.line6") }}<br />
+			{{ $t("nback.instructions.note") }}<br />
 		</p>
 		<br />
 	</div>
@@ -22,7 +23,8 @@
 		<NBackDemo @demo-completed="this.completedDemo()" />
 	</div>
 	<div v-if="!this.demoStartFlag && !this.demoCompleted && !this.trialStartFlag" class="start-button">
-		<v-btn @click="this.startDemo()" size="x-large" block color="red-lighten-3" rounded="lg"> Start Demo </v-btn>
+		<v-btn @click="this.startDemo()" size="x-large" block color="red-lighten-3" rounded="lg"> Start Assisted Trial
+		</v-btn>
 	</div>
 	<br />
 	<div v-if="this.trialStartFlag && !this.trialCompleted && !this.demoStartFlag && this.demoCompleted">

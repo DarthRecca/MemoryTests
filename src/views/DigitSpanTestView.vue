@@ -9,12 +9,12 @@
 		</div>
 		<h2 class="instructions-title">Instructions</h2>
 		<p>
-			In this experiment, you will be shown a sequence of numbers on the screen. These numbers are called digits.<br />
-			You need to remember the sequence and enter it into the space provided on the screen when prompted.<br />
-			If you make mistakes while entering the sequence, you can correct the last mistake using the Clear button.<br />
-			Once you have entered all of the digits, press the ENTER button.<br />
-			The length of the digit sequence will start from 2 and will increase until you are no longer able to remember it.<br />
-			If you successfully complete two of the three attempts for a given length, you will move on to the next length. Otherwise, the test will end.<br />
+			{{ $t("digitspan.instructions.line1") }}<br />
+			{{ $t("digitspan.instructions.line2") }}<br />
+			{{ $t("digitspan.instructions.line3") }}<br />
+			{{ $t("digitspan.instructions.line4") }}<br />
+			{{ $t("digitspan.instructions.line5") }}<br />
+			{{ $t("digitspan.instructions.line6") }}<br />
 		</p>
 		<br />
 	</div>
@@ -24,7 +24,8 @@
 		</h2>
 		<br />
 		<div v-if="!this.testStartFlag && this.trialCompleted" class="start-button">
-			<v-btn @click="this.startTest()" size="x-large" block color="red-lighten-3" rounded="lg">Click Here to Start Test</v-btn>
+			<v-btn @click="this.startTest()" size="x-large" block color="red-lighten-3" rounded="lg">Click Here to Start
+				Test</v-btn>
 		</div>
 	</div>
 	<div v-if="!this.testStartFlag && !this.trialStartFlag" class="start-button">
@@ -66,6 +67,9 @@ export default {
 		completedTrial() {
 			this.trialCompleted = true;
 		}
+	},
+	mounted() {
+		this.$i18n.locale;
 	}
 };
 </script>

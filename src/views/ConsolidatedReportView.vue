@@ -30,11 +30,11 @@
 				</tr>
 				<tr>
 					<td>Your Stroop Score (Incongruent Avg Time - Congruent Avg Time)</td>
-					<td>{{ this.data.stroopTestData.testScore }}ms</td>
+					<td>{{ this.data.stroopTestData.testScore }} ms</td>
 				</tr>
 				<tr>
 					<td>NBack Test Trials Correct Percentage(for trials that had a match)</td>
-					<td>{{ this.data.nBackTestData.performanceParameters.matchTrialsCorrectPercent }}</td>
+					<td>{{ this.data.nBackTestData.performanceParameters.matchTrialsCorrectPercent }} %</td>
 				</tr>
 				<tr>
 					<td>Long Term Memory Test Words Recalled Correctly(out of 10)</td>
@@ -163,7 +163,7 @@ export default {
 
 table {
 	border: 3px solid black;
-	background-color: teal;
+	background-color: aquamarine;
 	overflow-x: auto;
 }
 
@@ -174,6 +174,7 @@ tr {
 th {
 	border: 1px solid black;
 	font-weight: bold;
+	background-color: aqua;
 	padding: 0px;
 }
 
