@@ -3,7 +3,12 @@
 		"welcome-message": "Welcome to Memory Test",
 		"start-button": "Start The Test"
 	},
-	"shorttermmemory": {},
+	"detailsform": {
+		"note": ""
+	},
+	"shorttermmemory": {
+		"note": ""
+	},
 	"digitspan": {
 		"instructions": {
 			"line1": "In this experiment, you will be shown a sequence of numbers on the screen. These numbers are called digits.",
@@ -58,6 +63,8 @@
 			"note": "Please  click below to start the Assisted Trial. In this trial, you will be shown what N-1 and N-2 are, and how they change. You will also be shown how to compare N-2 with N in your memory and decide whether both letters MATCH. If they do, you should press the MATCHES button. After completing the guided trial, please take a short trial without assistance, followed by a final test. "
 		}
 	},
-	"longtermmemory": {},
+	"longtermmemory": {
+		"note": ""
+	},
 	"consolidatedreport": {}
 }

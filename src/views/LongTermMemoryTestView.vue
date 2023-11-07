@@ -8,6 +8,8 @@
 		</div>
 		<h2 class="instructions-title">Instructions</h2>
 		<br />
+		{{ $t('longtermmemory.note') }}
+		<br />
 		<p>
 			You will be shown 10 words below.<br />
 			Memorise them in your mind number of times.<br />

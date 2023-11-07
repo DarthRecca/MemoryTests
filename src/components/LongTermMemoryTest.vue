@@ -2,9 +2,13 @@
 	<v-container>
 		<div v-if="this.testType == 'short'" class="long-term-memory-test-title">
 			<p>Short Term Memory</p>
+			{{ $t('shorttermmemory.note') }}
+			<br />
 		</div>
 		<div v-if="this.testType == 'long'" class="long-term-memory-test-title">
 			<p>Long Term Memory</p>
+			{{ $t('longtermmemory.note') }}
+			<br />
 		</div>
 		<div v-if="!this.completed">
 			<p>

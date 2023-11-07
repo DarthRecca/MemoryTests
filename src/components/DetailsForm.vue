@@ -4,6 +4,8 @@
 			<div>
 				<h2>Test of Intelligence - Memory Function<br /></h2>
 				<br />
+				{{ $t('detailsform.note') }}
+				<br />
 			</div>
 			<div>
 				<p>
