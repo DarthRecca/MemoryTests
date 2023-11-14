@@ -80,6 +80,9 @@ export const useTestStore = defineStore('tests', {
 				totalIncorrectPercent: 0,
 				totalAvgTime: 0
 			}
+		},
+		shapeDigitCodeTestData: {
+			shapeDigitCodeTestScore: 0
 		}
 	}),
 	actions: {
@@ -107,8 +110,14 @@ export const useTestStore = defineStore('tests', {
 		addShortTermMemoryTestData(data) {
 			this.shortTermMemoryTestData = data;
 		},
+		addShapeDigitCodeTestData(data) {
+			this.shapeDigitCodeTestData = data;
+		},
 		getStroopTestData() {
 			return this.stroopTestData;
+		},
+		getShapeDigitCodeTestData() {
+			return this.shapeDigitCodeTestData;
 		},
 		getDigitSpanTestData() {
 			return this.digitSpanTestData;
@@ -139,6 +148,7 @@ export const useTestStore = defineStore('tests', {
 				sequenceDigitSpanTestData: this.sequenceDigitSpanTestData,
 				stroopTestData: this.stroopTestData,
 				nBackTestData: this.nBackTestData,
+				shapeDigitCodeTestData: this.shapeDigitCodeTestData,
 				shortTermMemoryTestData: this.shortTermMemoryTestData,
 				longTermMemoryTestData: this.longTermMemoryTestData
 			};

@@ -37,6 +37,10 @@
 					<td>{{ this.data.nBackTestData.performanceParameters.matchTrialsCorrectPercent }} %</td>
 				</tr>
 				<tr>
+					<td>Shape Digit Coding Test Score</td>
+					<td>{{ this.data.shapeDigitCodeTestData.shapeDigitCodeTestScore }}</td>
+				</tr>
+				<tr>
 					<td>Long Term Memory Test Words Recalled Correctly(out of 10)</td>
 					<td>{{ this.data.longTermMemoryTestData.score }}</td>
 				</tr>
@@ -134,6 +138,9 @@ export default {
 						totalAvgTime: 0
 					},
 					nBackTestScore: 0
+				},
+				shapeDigitCodeTestData: {
+					shapeDigitCodeTestScore: 0,
 				}
 			}
 		};

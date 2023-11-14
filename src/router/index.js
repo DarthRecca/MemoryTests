@@ -49,6 +49,12 @@ const routes = [
 		props: true
 	},
 	{
+		path: '/shapedigitcodetest',
+		name: 'ShapeDigitCodeTestView',
+		component: () => import('@/views/ShapeDigitCodeTestView.vue'),
+		props: true
+	},
+	{
 		path: '/consolidatedreport',
 		name: 'ConsolidatedReportView',
 		component: () => import('@/views/ConsolidatedReportView.vue'),
