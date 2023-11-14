@@ -140,7 +140,7 @@ export default {
 					nBackTestScore: 0
 				},
 				shapeDigitCodeTestData: {
-					shapeDigitCodeTestScore: 0,
+					shapeDigitCodeTestScore: 0
 				}
 			}
 		};

@@ -142,7 +142,8 @@ export default {
 					reverseDigitSpanTestData: data.reverseDigitSpanTestData,
 					sequenceDigitSpanTestData: data.sequenceDigitSpanTestData,
 					stroopTestData: data.stroopTestData,
-					nBackTestData: data.nBackTestData
+					nBackTestData: data.nBackTestData,
+					shapeDigitCodeTestData: data.shapeDigitCodeTestData
 				},
 				timestamp: data.userDetailsData.date
 			};
