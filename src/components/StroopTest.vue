@@ -224,14 +224,12 @@ export default {
 	justify-content: center;
 	text-align: center;
 	align-items: center;
-	padding: 10px;
-	height: 100vh;
+	height: 100%;
 	width: 100%;
 }
 
 .stroop-test {
 	text-align: center;
-	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	border: solid 5px black;
