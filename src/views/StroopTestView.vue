@@ -2,6 +2,7 @@
 	<div class="stroop-title">
 		<h1>Stroop Test</h1>
 	</div>
+	<br />
 	<div class="instructions" v-if="!this.trialStartFlag && !this.testStartFlag && !this.trialCompleted">
 		<div class="information">
 			<h3>This test measures the selective attention and inhibitory control</h3>

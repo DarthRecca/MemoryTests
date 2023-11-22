@@ -4,21 +4,22 @@
 	</div>
 	<div class="instructions" v-if="!this.testStartFlag && this.testType == 'short'">
 		<div class="information">
-			<h3>This Test measures both long term and short term memory</h3>
+			<p>This Test measures both long term and short term memory</p>
 		</div>
-		<h2 class="instructions-title">Instructions</h2>
 		<br />
+		<h2 class="instructions-title">Instructions</h2>
 		{{ $t('longtermmemory.note') }}
 		<br />
 		<p>
-			You will be shown 10 words below.<br />
-			Memorise them in your mind number of times.<br />
-			If you want you can take a bit of time to remember them.<br />
-			You will be asked to recall these words shortly(In the next screen) and after about 20 minutes(Towards the end of the test).<br />
-			Please do not save them in any manner because your real memory will not get tested.<br />
-			Testing memory in this manner from time to time is a good practice to maintain the health of the mind.<br />
+			{{ $t('shorttermmemory.instructions.line1') }}<br />
+			{{ $t('shorttermmemory.instructions.line2') }}<br />
+			{{ $t('shorttermmemory.instructions.line3') }}<br />
+			{{ $t('shorttermmemory.instructions.line4') }}<br />
+			{{ $t('shorttermmemory.instructions.line5') }}<br />
+			{{ $t('shorttermmemory.instructions.line6') }}<br />
 		</p>
 		<div>
+			<br />
 			<p class="memorize-these-title">Memorise these 10 words<br /></p>
 			<p class="memorize-these-items">
 				Key<br />
@@ -32,7 +33,6 @@
 				Bat<br />
 				River<br />
 			</p>
-			<br />
 		</div>
 	</div>
 	<div v-if="!this.testStartFlag && this.testType == 'short'" class="start-button">
@@ -79,12 +79,14 @@ export default {
 
 .information {
 	text-align: center;
+	font-size: 10;
 }
 
 .instructions {
 	align-items: center;
 	font-size: larger;
 	padding: 25px;
+	margin: 5px;
 }
 
 .instructions-title {
@@ -104,5 +106,6 @@ export default {
 .start-button {
 	border: solid black 1px;
 	border-radius: 8px;
+	margin: 5px;
 }
 </style>

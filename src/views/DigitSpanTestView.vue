@@ -2,7 +2,7 @@
 	<div class="digit-span-test-title">
 		<h1>Digit Span Test</h1>
 	</div>
-
+	<br />
 	<div class="instructions" v-if="!this.testStartFlag && !this.trialStartFlag && !this.trialCompleted">
 		<div class="information">
 			<h3>This test measures short term memory</h3>

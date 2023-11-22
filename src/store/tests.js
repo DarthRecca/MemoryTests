@@ -82,7 +82,9 @@ export const useTestStore = defineStore('tests', {
 			}
 		},
 		shapeDigitCodeTestData: {
-			shapeDigitCodeTestScore: 0
+			shapeDigitCodeTestScore: 0,
+			shapeDigitCodeTestTotal: 0,
+			shapeDigitCodeTestCorrect: 0
 		}
 	}),
 	actions: {

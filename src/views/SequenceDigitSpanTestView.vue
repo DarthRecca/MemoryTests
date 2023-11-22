@@ -2,6 +2,7 @@
 	<div class="s-digit-span-test-title">
 		<h1>Ordered Digit Span Test(Ascending Order)</h1>
 	</div>
+	<br />
 	<div class="instructions" v-if="!this.testStartFlag">
 		<div class="information">
 			<h3>This test measures short term memory and working memory</h3>

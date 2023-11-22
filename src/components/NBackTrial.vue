@@ -155,6 +155,7 @@ export default {
 }
 
 .completed {
+	margin: 5px;
 	align-items: center;
 	font-size: 25px;
 	text-align: center;

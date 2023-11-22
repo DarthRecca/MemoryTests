@@ -2,6 +2,7 @@
 	<div class="nback-title">
 		<h1>N-Back Test</h1>
 	</div>
+	<br />
 	<div class="instructions" v-if="!this.trialStartFlag && !this.testStartFlag && !this.trialCompleted && !this.demoStartFlag && !this.demoCompleted">
 		<div class="information">
 			<h3>This test measures the working memory and processing speed</h3>
@@ -18,17 +19,17 @@
 		</p>
 		<br />
 	</div>
-	<div v-if="this.demoStartFlag && !this.demoCompleted">
+	<div v-if="this.demoStartFlag && !this.demoCompleted" class="demo">
 		<NBackDemo @demo-completed="this.completedDemo()" />
 	</div>
 	<div v-if="!this.demoStartFlag && !this.demoCompleted && !this.trialStartFlag" class="start-button">
 		<v-btn @click="this.startDemo()" size="x-large" block color="red-lighten-3" rounded="lg"> Start Assisted Trial </v-btn>
 	</div>
 	<br />
-	<div v-if="this.trialStartFlag && !this.trialCompleted && !this.demoStartFlag && this.demoCompleted">
+	<div v-if="this.trialStartFlag && !this.trialCompleted && !this.demoStartFlag && this.demoCompleted" class="trial">
 		<NBackTrial @trial-completed="this.completedTrial()" />
 	</div>
-	<div v-if="this.trialCompleted && this.testStartFlag && !this.demoStartFlag && this.demoCompleted">
+	<div v-if="this.trialCompleted && this.testStartFlag && !this.demoStartFlag && this.demoCompleted" class="test">
 		<NBackTest />
 	</div>
 </template>
@@ -103,6 +104,7 @@ export default {
 	align-items: center;
 	font-size: larger;
 	padding: 25px;
+	margin: 5px;
 }
 
 .instructions-title {
@@ -110,18 +112,20 @@ export default {
 	text-align: center;
 }
 
-.demo-video {
-	align-items: center;
-	border: 3px solid black;
+.demo {
+	margin: 5px;
 }
 
-video {
-	border: 1px solid;
-	width: 100%;
-	height: auto;
+.trial {
+	margin: 5px;
+}
+
+.test {
+	margin: 5px;
 }
 
 .start-button {
+	margin: 5px;
 	text-align: center;
 	align-items: center;
 	border: solid black 1px;

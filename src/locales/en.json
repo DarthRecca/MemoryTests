@@ -7,7 +7,15 @@
 		"note": ""
 	},
 	"shorttermmemory": {
-		"note": ""
+		"note": "",
+		"instructions": {
+			"line1": "You will be shown 10 words below.",
+			"line2": "Memorise them in your mind number of times.",
+			"line3": "If you want you can take a bit of time to remember them.",
+			"line4": "You will be asked to recall these words shortly(In the next screen) and after about 20 minutes(Towards the end of the test).",
+			"line5": "Please do not save them in any manner because your real memory will not get tested.",
+			"line6": "Testing memory in this manner from time to time is a good practice to maintain the health of the mind."
+		}
 	},
 	"digitspan": {
 		"instructions": {
@@ -67,6 +75,8 @@
 		"instructions": {
 			"line1": "A set of shapes and their corresponding digits will be displayed in a TABLE at the top of the screen. This TABLE is as shown below:",
 			"line2": "A shape will be displayed one at a time in a window. You must find the corresponding digit for this shape using the TABLE displayed at the top of the screen. You do not need to memorize the TABLE. Simply search for the shape visually and enter the corresponding digit.",
+			"line2_eg1": "eg. If the shape is ",
+			"line2_eg2": "then the code is 1. So click on 1 on the onscreen numpad.",
 			"line3": "Enter the corresponding digit in the space provided. There is no CLEAR button for this test, so if you make a mistake, you must simply move on to the next shape.",
 			"line4": "This is a processing speed test, so you must be fast and accurate.",
 			"line5": "The test will last for ONLY 2 minutes. Your score will be the NUMBER OF CORRECT DIGITS you enter. Your score and the timer will be displayed in the right corner of the screen.",
@@ -74,7 +84,12 @@
 		}
 	},
 	"longtermmemory": {
-		"note": ""
+		"note": "",
+		"instructions": {
+			"line1": "Recall the 10 words you were shown previously and enter in following boxes one by one.",
+			"line2": "You can enter in any order (sequence).",
+			"line3": "Try entering them as accurately as possible."
+		}
 	},
 	"consolidatedreport": {}
 }

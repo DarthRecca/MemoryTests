@@ -4,7 +4,7 @@
 		<br />
 	</div>
 	<div class="report">
-		<v-table>
+		<table>
 			<thead>
 				<tr>
 					<th>Test</th>
@@ -45,7 +45,7 @@
 					<td>{{ this.data.longTermMemoryTestData.score }}</td>
 				</tr>
 			</tbody>
-		</v-table>
+		</table>
 	</div>
 	<br />
 	<div class="next-button">
@@ -171,6 +171,7 @@ export default {
 table {
 	border: 3px solid black;
 	background-color: aquamarine;
+	border-collapse: collapse;
 	overflow-x: auto;
 }
 
@@ -183,11 +184,13 @@ th {
 	font-weight: bold;
 	background-color: aqua;
 	padding: 0px;
+	text-align: left;
 }
 
 td {
 	border: 1px solid black;
 	padding: 0px;
+	text-align: left;
 }
 
 .report {

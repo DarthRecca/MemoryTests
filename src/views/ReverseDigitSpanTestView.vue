@@ -2,6 +2,7 @@
 	<div class="r-digit-span-test-title">
 		<h1>Reverse Digit Span Test</h1>
 	</div>
+	<br />
 	<div class="instructions" v-if="!this.testStartFlag">
 		<div class="information">
 			<h3>This test measures short term memory and working memory</h3>

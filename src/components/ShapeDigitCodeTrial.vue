@@ -3,23 +3,21 @@
 		<div class="top-information-bar">
 			<v-container>
 				<v-row>
-					<v-col class="timer" cols="10">
-						<v-progress-linear :model-value="this.progress" color="purple" height="40"></v-progress-linear>
+					<v-col class="progress-timer" cols="10">
+						<v-progress-linear :model-value="this.progress" color="purple" height="40">{{ this.timer }}</v-progress-linear>
 					</v-col>
-					<v-col class="score-text" cols="auto"> Your Score </v-col>
-					<v-col class="score-num" cols="auto">
-						{{ this.score }}
-					</v-col>
+					<v-col class="score-text" cols="auto"> Your Progress: </v-col>
+					<v-col class="score-num" cols="auto"> {{ this.correct }} / {{ this.total }} </v-col>
 				</v-row>
 			</v-container>
 		</div>
-		<div class="shape-digit-code-key">
+		<div class="shape-digit-code-key" v-if="!this.isMobile()">
 			<center>
 				<table>
 					<tr>
 						<td>Shapes</td>
 						<td v-for="(shape, idx) in keyShapes" :key="idx">
-							<v-icon size="x-large" color="black" :icon="shape"></v-icon>
+							<v-icon size="large" color="black" :icon="shape"></v-icon>
 						</td>
 					</tr>
 					<tr>
@@ -34,31 +32,80 @@
 		<br />
 		<v-container>
 			<v-row>
-				<v-col>
-					<div class="trial-assist" v-if="this.trialAssist">
-						<h3>Trial Assistance:</h3>
-						<br />
-						<v-icon size="large" color="black" :icon="this.promptShape"></v-icon> Corresponds to {{ this.promptDigit }}<br />
-						<p>Click on {{ this.promptDigit }}</p>
-					</div>
-				</v-col>
-				<v-col>
+				<v-col cols="8">
 					<div class="shape-digit-code-prompt">
 						<p>
-							<v-icon size="x-large" color="black" :icon="this.promptShape"></v-icon>
+							<v-icon size="large" color="black" :icon="this.promptShape"></v-icon>
 						</p>
 					</div>
+					<v-container class="numpad">
+						<v-row>
+							<v-col class="numpad-button-col">
+								<v-btn @click="checkAnswer(9)" class="numpad-button" size="medium"> 9 </v-btn>
+							</v-col>
+							<v-col class="numpad-button-col">
+								<v-btn @click="checkAnswer(6)" class="numpad-button" size="medium"> 6 </v-btn>
+							</v-col>
+							<v-col class="numpad-button-col">
+								<v-btn @click="checkAnswer(3)" class="numpad-button" size="medium"> 3 </v-btn>
+							</v-col>
+						</v-row>
+						<v-row>
+							<v-col class="numpad-button-col">
+								<v-btn @click="checkAnswer(8)" class="numpad-button" size="medium"> 8 </v-btn>
+							</v-col>
+							<v-col class="numpad-button-col">
+								<v-btn @click="checkAnswer(5)" class="numpad-button" size="medium"> 5 </v-btn>
+							</v-col>
+							<v-col class="numpad-button-col">
+								<v-btn @click="checkAnswer(2)" class="numpad-button" size="medium"> 2 </v-btn>
+							</v-col>
+						</v-row>
+						<v-row>
+							<v-col class="numpad-button-col">
+								<v-btn @click="checkAnswer(7)" class="numpad-button" size="medium"> 7 </v-btn>
+							</v-col>
+							<v-col class="numpad-button-col">
+								<v-btn @click="checkAnswer(4)" class="numpad-button" size="medium"> 4 </v-btn>
+							</v-col>
+							<v-col class="numpad-button-col">
+								<v-btn @click="checkAnswer(1)" class="numpad-button" size="medium"> 1 </v-btn>
+							</v-col>
+						</v-row>
+						<v-row>
+							<v-col class="numpad-button-col" cols="12">
+								<v-btn @click="checkAnswer(0)" class="numpad-button" size="medium"> 0 </v-btn>
+							</v-col>
+						</v-row>
+					</v-container>
 				</v-col>
-				<v-col> </v-col>
+				<v-col cols="2">
+					<div class="shape-digit-code-key" v-if="this.isMobile()">
+						<table class="shape-digit-key">
+							<thead>
+								<tr>
+									<th>Shape</th>
+									<th>Digit</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr v-for="(keyObj, idx) in this.keyItems" :key="idx">
+									<td><v-icon size="large" color="black" :icon="keyObj.shape"></v-icon></td>
+									<td>{{ keyObj.digit }}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</v-col>
+			</v-row>
+			<v-row>
+				<v-col>
+					<div v-if="this.isMobile()">
+						<p v-if="this.showResult">{{ this.result }}</p>
+					</div>
+				</v-col>
 			</v-row>
 		</v-container>
-		<v-row class="numpad">
-			<v-col v-for="(num, idx) in numpadNumbers" :key="idx" cols="3">
-				<v-btn @click="checkAnswer(num)" class="numpad-button" size="large">
-					{{ num }}
-				</v-btn>
-			</v-col>
-		</v-row>
 	</div>
 	<div v-if="this.completed" class="completed">
 		<br />
@@ -78,11 +125,26 @@ export default {
 		return {
 			userInput: '',
 			numpadNumbers: [7, 8, 9, 4, 5, 6, 1, 2, 3, 0],
+			keyItems: [
+				{ shape: 'mdi-arrow-right', digit: 1 },
+				{ shape: 'mdi-clover', digit: 2 },
+				{ shape: 'mdi-rhombus', digit: 3 },
+				{ shape: 'mdi-circle', digit: 4 },
+				{ shape: 'mdi-emoticon', digit: 5 },
+				{ shape: 'mdi-square', digit: 6 },
+				{ shape: 'mdi-water', digit: 7 },
+				{ shape: 'mdi-flask-empty', digit: 8 },
+				{ shape: 'mdi-rocket', digit: 9 },
+				{ shape: 'mdi-heart', digit: 0 }
+			],
 			keyShapes: ['mdi-arrow-right', 'mdi-clover', 'mdi-rhombus', 'mdi-circle', 'mdi-emoticon', 'mdi-square', 'mdi-water', 'mdi-flask-empty', 'mdi-rocket', 'mdi-heart'],
 			keyDigits: [1, 2, 3, 4, 5, 6, 7, 8, 9, 0],
 			promptShape: '',
 			promptDigit: 0,
-			score: 0,
+			result: '',
+			showResult: false,
+			correct: 0,
+			total: 0,
 			timer: 0,
 			completed: false,
 			selectedDigit: '',
@@ -92,10 +154,29 @@ export default {
 		};
 	},
 	methods: {
+		isMobile() {
+			if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+				return true;
+			} else {
+				return false;
+			}
+		},
 		checkAnswer(num) {
+			this.total += 1;
 			this.selectedDigit = num;
 			if (this.selectedDigit == this.promptDigit) {
-				this.score += 1;
+				this.correct += 1;
+				this.result = 'Correct';
+				this.showResult = true;
+				setTimeout(() => {
+					this.showResult = false;
+				}, 1000);
+			} else {
+				this.result = 'Incorrect';
+				this.showResult = true;
+				setTimeout(() => {
+					this.showResult = false;
+				}, 1000);
 			}
 			this.generatePrompt();
 		},
@@ -154,6 +235,12 @@ export default {
 	align-items: center;
 	justify-content: center;
 	border: solid 5px black;
+	grid-template:
+		'top'
+		'prompt key'
+		'numpad key'
+		'numpad key'
+		'numpad key';
 }
 
 table {
@@ -183,23 +270,27 @@ td {
 	font-size: 80px;
 	border: 2px solid black;
 	font-weight: bold;
+	grid-area: prompt;
 }
 
 .numpad {
-	display: grid;
-	grid-template-columns: auto auto auto;
-	grid-gap: 10px;
-	flex-wrap: wrap;
-	justify-content: center;
-	margin-top: 20px;
+	grid-template:
+		'button button button'
+		'button button button'
+		'button button button'
+		'		button		  ';
+	align-items: center;
+	text-align: center;
+	grid-area: numpad;
+	flex-wrap: nowrap;
 }
 
 .numpad-button {
-	width: 60px;
-	height: 60px;
-	font-size: 24px;
-	margin: 5px;
-	padding: 5px;
+	font-size: 20px;
+}
+
+.numpad-button-col {
+	grid-area: button;
 }
 
 .completed {
@@ -217,6 +308,7 @@ td {
 	align-items: center;
 	font-size: 25px;
 	text-align: center;
+	grid-area: top;
 }
 
 .progress-timer {
@@ -239,7 +331,14 @@ td {
 
 .shape-digit-code-key {
 	align-items: center;
-	font-size: 25px;
+	font-size: 18px;
+	text-align: center;
+	grid-area: key;
+}
+
+.shape-digit-key {
+	align-items: center;
+	font-size: 18px;
 	text-align: center;
 }
 </style>

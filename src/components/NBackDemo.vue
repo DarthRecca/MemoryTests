@@ -1,13 +1,12 @@
 <template>
 	<div class="n-back-container" v-if="!this.completed">
 		<v-container>
-			<h3>Note: This assisted trial is slowed down.</h3>
 			<br /><br />
 			<v-row>
-				<v-col cols="2">
+				<v-col cols="3">
 					<h3>N-2</h3>
 				</v-col>
-				<v-col cols="2">
+				<v-col cols="3">
 					<h3>N-1</h3>
 				</v-col>
 				<v-col cols="6">
@@ -15,12 +14,12 @@
 				</v-col>
 			</v-row>
 			<v-row>
-				<v-col cols="2">
+				<v-col cols="3">
 					<div class="n-back-prompt">
 						{{ n_2 }}
 					</div>
 				</v-col>
-				<v-col cols="2">
+				<v-col cols="3">
 					<div class="n-back-prompt">
 						{{ n_1 }}
 					</div>
@@ -32,13 +31,9 @@
 				</v-col>
 			</v-row>
 			<v-row>
-				<v-col cols="2">
+				<v-col cols="6">
 					<div v-if="this.prompt == this.n_2" class="match-indicator">{{ n_2 }} equals {{ prompt }}.</div>
 					<div v-else class="match-indicator">{{ n_2 }} not equals {{ prompt }}.</div>
-				</v-col>
-				<v-col cols="2">
-					<div v-if="this.prompt == this.n_2" class="match-indicator">Press MATCHES button</div>
-					<div v-else class="match-indicator">Do not Press MATCHES button</div>
 				</v-col>
 				<v-col cols="6">
 					<div class="n-back-input-container">
@@ -47,8 +42,10 @@
 				</v-col>
 			</v-row>
 			<v-row>
-				<v-col cols="2"> </v-col>
-				<v-col cols="2"> </v-col>
+				<v-col>
+					<div v-if="this.prompt == this.n_2" class="match-indicator">Press MATCHES button</div>
+					<div v-else class="match-indicator">Do not Press MATCHES button</div>
+				</v-col>
 				<v-col cols="6">
 					<div v-if="this.showResult" class="result">
 						<p>{{ result }}!</p>
@@ -204,6 +201,7 @@ export default {
 }
 
 .completed {
+	margin: 5px;
 	align-items: center;
 	font-size: 25px;
 	text-align: center;

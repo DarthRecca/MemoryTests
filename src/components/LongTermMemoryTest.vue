@@ -12,9 +12,9 @@
 		</div>
 		<div v-if="!this.completed">
 			<p>
-				Recall the 10 words you were shown previously and enter in following boxes one by one.<br />
-				You can enter in any order (sequence).<br />
-				Try entering them as accurately as possible.<br />
+				{{ $t('longtermmemory.instructions.line1') }}<br />
+				{{ $t('longtermmemory.instructions.line2') }}<br />
+				{{ $t('longtermmemory.instructions.line3') }}<br />
 			</p>
 			<br />
 			<v-row>

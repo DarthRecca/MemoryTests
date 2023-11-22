@@ -14,8 +14,8 @@
 		</div>
 		<div v-else class="result"></div>
 	</div>
-	<div v-if="this.completed">
-		<p class="completed">Test Completed</p>
+	<div v-if="this.completed" class="completed">
+		<p>Test Completed</p>
 		<br />
 		<p><b>Note: </b>This is a computerized analysis and not a medical diagnosis</p>
 		<br />
@@ -291,6 +291,7 @@ export default {
 }
 
 .completed {
+	margin: 5px;
 	align-items: center;
 	font-size: 25px;
 	text-align: center;
@@ -301,6 +302,18 @@ export default {
 	border-collapse: collapse;
 	background-color: teal;
 	overflow-x: auto;
+}
+
+caption {
+	border-bottom: 1px black solid;
+}
+
+.expected-results {
+	margin: 5px;
+}
+
+ul {
+	margin: 10px;
 }
 
 .next-button {

@@ -19,7 +19,7 @@
     "vue-i18n": "^9.6.5",
     "vue-router": "^4.0.0",
     "vue-socials": "^2.0.4",
-    "vuetify": "^3.0.0",
+    "vuetify": "^3.4.3",
     "webfontloader": "^1.0.0"
   },
   "devDependencies": {
