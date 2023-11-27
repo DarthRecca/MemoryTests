@@ -110,42 +110,40 @@
 			"note": "This is a computerized analysis and not a medical diagnosis.",
 			"result": "Your Stroop Score (Incongruent Avg Time - Congruent Avg Time): ",
 			"line1": "The expected values of Stroop Test scores vary depending on the individual's age, education level and the device used. However, as a general guide, the following can be expected:",
-			"line2": "Children: 50-100 milliseconds",
-			"line3": "Adults: 75-150 milliseconds",
-			"line4": "Older adults: 100-200 milliseconds",
+			"line2": "Age group 12 to 20: 50-100 milliseconds",
+			"line3": "Age group 20 to 60: 75-150 milliseconds",
+			"line4": "Age group 60+: 100-200 milliseconds",
 			"line5": "It is important to note that these are just general guidelines and you should not panic if your score is higher than above values."
 		}
 	},
 	"nback": {
 		"instructions": {
-			"line1": "You will be presented with a sequence of letters or numbers one by one.",
-			"line2": "Your task is to press the MATCHES button if the current letter (let us call it N)  matches the one that was presented 2 trials ago (let us call it as (N-2)).",
-			"line3": "If it does not match, do not press the button.",
-			"line4": "For example, let's say the current letter is P and the last two letters, that is (N-2) and (N-1) were B and T respectively. Since the (N-2) letter (B) does not match with the current letter (P), you should NOT press MATCHES.",
-			"line5": "If the next letter is shown as T, then this time P becomes (N-1) and T becomes (N-2). Here you should press MATCHES button because (N-2) that is the letter that was shown two letters ago (T) matches the current letter (T).",
-			"line6": "This is called the N=2 back test, because you are comparing the current letter to the letter that was displayed two letters ago.  This test is used all over the world to test working memory.",
-			"note": "Please  click below to start the Assisted Trial. In this trial, you will be shown what N-1 and N-2 are, and how they change. You will also be shown how to compare N-2 with N in your memory and decide whether both letters MATCH. If they do, you should press the MATCHES button. After completing the guided trial, please take a short trial without assistance, followed by a final test. "
+			"line1": "You will be presented with a sequence of letters, one by one. You have to see the current letter shown (let us call it as N) by keeping the previous letter (let us call it N-1) and one before that (N-2) in your memory. Your task is to press the MATCHES button if the current letter (that is N) matches the one that was presented 2 trials ago (that is N-2). If it does not match, do not press the button.",
+			"line2": "For example, let's say the current letter is P and the last two letters, that is (N-2) and (N-1) were B and T respectively. Since the (N-2) letter (B) does not match with the current letter (P), you should NOT press MATCHES.",
+			"line3": "If the next letter is shown as T, then this time P becomes (N-1) and T becomes (N-2). Here you should press MATCHES button because (N-2) that is (T) matches the current letter (T).",
+			"line4": "This is called the N=2 back test, because you are comparing the current letter to the letter that was displayed two letters ago. This test is used all over the world to test working memory.",
+			"note": "Please click below to start the Assisted Trial. In this trial, you will be shown what N-1 and N-2 are, and how they change. You will also be shown how to compare N-2 with N in your memory and decide whether both letters MATCH. If they do, you should press the MATCHES button. After completing the guided trial, please take a short trial without assistance, followed by a final test. "
 		},
 		"completed": {
 			"title": "Test Completed",
 			"note_title": "Note: ",
 			"note": "This is a computerized analysis and not a medical diagnosis.",
 			"line1": "The expected scores of N=2 back test of working memory vary depending on the age and education level of the individual. However, as a general guide, the following can be expected:",
-			"line2": "Children: 60-80% accuracy",
-			"line3": "Adults: 80-90% accuracy",
-			"line4": "Older Adults: 70-80% accuracy",
+			"line2": "Age group 12 to 20: 60-80% accuracy",
+			"line3": "Age group 20 to 60: 80-90% accuracy",
+			"line4": "Age group 60+: 70-80% accuracy",
 			"line5": "It is important to note that these are just general guidelines, and there is a wide range of normal scores. If your score is less than above numbers, please do not panic. Your score could be lower than expected values if you are not well, have anxiety or are not in a sound state of mind. You may take the test again after a few days. If you consistently find your score much lower than above values and experience difficulties in concentrating on the task or processing the information mentally then you may consult the experts."
 		}
 	},
 	"shapedigitcode": {
 		"instructions": {
 			"line1": "A set of shapes and their corresponding digits will be displayed in a TABLE. This TABLE will be constantly shown to you on the screen, and is to be refered for each entry. This TABLE is as shown below:",
-			"line2": "A shape will be displayed one at a time in a window. You must find the corresponding digit for this shape using the TABLE displayed at the top of the screen. You do not need to memorize the TABLE. Simply search for the shape visually and enter the corresponding digit.",
+			"line2": "A shape will be displayed one at a time in a window. You must find the corresponding digit for this shape using the TABLE displayed. You should not memorize the shapes and their corresponding digits. Simply search for the shape visually in the table, identify the corresponding digit and click on that number on numpad.",
 			"line2_eg1": "eg. If the shape is ",
 			"line2_eg2": "then the code is 1. So click on 1 on the onscreen numpad.",
-			"line3": "Enter the corresponding digit in the space provided. There is no CLEAR button for this test, so if you make a mistake, you must simply move on to the next shape.",
+			"line3": "Enter the corresponding digit in the space provided. There is no CLEAR button for this test, so if you make a mistake, just leave it and move on to the next shape",
 			"line4": "This is a processing speed test, so you must be fast and accurate.",
-			"line5": "The test will last for ONLY 2 minutes. Your score will be the NUMBER OF CORRECT DIGITS you enter. Your score and the timer will be displayed in the right corner of the screen.",
+			"line5": "The test will last for ONLY 2 minutes. Your score will be the NUMBER OF CORRECT DIGITS you enter. Your score and the timer will be displayed on the top of the screen.",
 			"line6": "Take the trial first and then give the test."
 		}
 	},
@@ -153,14 +151,13 @@
 		"note": "",
 		"instructions": {
 			"line1": "Recall the 10 words you were shown previously and enter in following boxes one by one.",
-			"line2": "You can enter in any order (sequence).",
-			"line3": "Try entering them as accurately as possible."
+			"line2": "You can enter in any order (sequence). Try entering them as accurately as possible."
 		},
 		"expected_result": {
 			"line1": "Expected results : On average, people can recall following number of words in this test however the number can vary depending on the age, attention given, overall mind health and memory strategies.",
-			"line2": "Adoloscents : around 7 to 8",
-			"line3": "Adults : around 6-7",
-			"line4": "Senior citizens : around 5 to 6"
+			"line2": "Age group 12 to 20: around 7 to 8",
+			"line3": "Age group 20 to 60: around 6-7",
+			"line4": "Age group 60+: around 5 to 6"
 		}
 	},
 	"consolidatedreport": {}

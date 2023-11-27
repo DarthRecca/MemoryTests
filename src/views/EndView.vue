@@ -9,14 +9,14 @@
 			</p>
 			<br />
 			<p>Please Share this test with your friends and family!</p>
-			<s-whats-app :window-features="whatsappShareOptions.windowFeatures" :share-options="whatsappShareOptions.shareOptions" :use-native-behavior="whatsappShareOptions.useNativeBehavior">
-				<v-icon icon="mdi-whatsapp" color="green"></v-icon>
+			<s-whats-app :window-features="whatsappShareOptions.windowFeatures" :share-options="whatsappShareOptions.shareOptions" :use-native-behavior="whatsappShareOptions.useNativeBehavior" class="link">
+				<v-icon icon="mdi-whatsapp" color="green" size="large"></v-icon>
 			</s-whats-app>
-			<s-twitter :window-features="twitterShareOptions.windowFeatures" :share-options="twitterShareOptions.shareOptions" :use-native-behavior="twitterShareOptions.useNativeBehavior">
-				<v-icon icon="mdi-twitter" color="blue-lighten-1"></v-icon>
+			<s-twitter :window-features="twitterShareOptions.windowFeatures" :share-options="twitterShareOptions.shareOptions" :use-native-behavior="twitterShareOptions.useNativeBehavior" class="link">
+				<v-icon icon="mdi-twitter" color="blue-lighten-1" size="large"></v-icon>
 			</s-twitter>
-			<s-facebook :window-features="windowFeatures" :share-options="shareOptions" :use-native-behavior="useNativeBehavior">
-				<v-icon icon="mdi-facebook" color="blue-darken-1"></v-icon>
+			<s-facebook :window-features="windowFeatures" :share-options="shareOptions" :use-native-behavior="useNativeBehavior" class="link">
+				<v-icon icon="mdi-facebook" color="blue-darken-1" size="large"></v-icon>
 			</s-facebook>
 		</div>
 		<br />
@@ -75,5 +75,10 @@ export default {
 	align-items: center;
 	text-align: center;
 	font-size: 25px;
+}
+
+.link {
+	margin: 10px;
+	padding: 5px;
 }
 </style>

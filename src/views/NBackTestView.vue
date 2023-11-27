@@ -13,8 +13,6 @@
 			{{ $t('nback.instructions.line2') }}<br />
 			{{ $t('nback.instructions.line3') }}<br />
 			{{ $t('nback.instructions.line4') }}<br />
-			{{ $t('nback.instructions.line5') }}<br />
-			{{ $t('nback.instructions.line6') }}<br />
 			{{ $t('nback.instructions.note') }}<br />
 		</p>
 		<br />

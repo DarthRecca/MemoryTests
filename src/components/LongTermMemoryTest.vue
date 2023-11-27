@@ -14,7 +14,6 @@
 			<p>
 				{{ $t('longtermmemory.instructions.line1') }}<br />
 				{{ $t('longtermmemory.instructions.line2') }}<br />
-				{{ $t('longtermmemory.instructions.line3') }}<br />
 			</p>
 			<br />
 			<v-row>
