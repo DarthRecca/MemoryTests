@@ -66,6 +66,15 @@
 			<br />
 			<p><b>Note: </b>This is a computerized analysis and not a medical diagnosis</p>
 			<br />
+			<div class="result-expected">
+				<p>
+					{{ $t('longtermmemory.expected_result.line1') }}<br />
+					{{ $t('longtermmemory.expected_result.line2') }}<br />
+					{{ $t('longtermmemory.expected_result.line3') }}<br />
+					{{ $t('longtermmemory.expected_result.line4') }}<br />
+				</p>
+			</div>
+			<br />
 			<div class="next-button" v-if="this.testType == 'short'">
 				<v-btn to="/digitspantest" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
 			</div>
@@ -172,5 +181,10 @@ export default {
 .next-button {
 	border: solid black 1px;
 	border-radius: 8px;
+}
+
+.result-expected {
+	text-align: left;
+	padding-left: 25px;
 }
 </style>

@@ -29,19 +29,23 @@
 			</div>
 		</div>
 		<div v-if="this.testCompleted" class="result">
-			<h2>Test Completed</h2>
+			<h2>{{ $t('sequencedigitspan.completed.title') }}</h2>
 			<br />
-			<p><b>Note: </b>This is a computerized analysis and not a medical diagnosis</p>
+			<p>
+				<b>{{ $t('sequencedigitspan.completed.note_title') }}</b
+				>{{ $t('sequencedigitspan.completed.note') }}
+			</p>
 			<div>
-				<h3>Maximum length of digits that you can remember and organise in Order(Ascending Order) is: {{ this.sequenceDigitSpanTestData.highestSequenceDigitSpan }}</h3>
+				<h3>{{ $t('sequencedigitspan.completed.result') }}{{ this.sequenceDigitSpanTestData.highestSequenceDigitSpan }}</h3>
 				<br />
 				<div class="expected-outcome">
 					<p>
-						<b>Expected Results for Order Digit-Span Test:</b>
+						<b>{{ $t('sequencedigitspan.completed.line1') }}</b
+						><br />
 					</p>
 					<ul>
-						<li>4 to 8, depending on your age and educational background.</li>
-						<li>If your results are less than 4, don't panic. The results can be affected by many factors, such as your attention level, health, and anxiety. Please repeat the test after a few days. If your results are consistently below 4, please consult with an expert.</li>
+						<li>{{ $t('sequencedigitspan.completed.line2') }}</li>
+						<li>{{ $t('sequencedigitspan.completed.line3') }}</li>
 					</ul>
 					<br />
 				</div>

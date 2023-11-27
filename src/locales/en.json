@@ -4,7 +4,23 @@
 		"start-button": "Start The Test"
 	},
 	"detailsform": {
-		"note": ""
+		"note": "",
+		"instructions": {
+			"line1": "This module is a battery of tests that assess different aspects of memory, such as short-term memory, long-term memory, attention Span, inhibition Control, working memory, Processing Speed etc.",
+			"line2": "The test is developed and validated especially for Indian culture.",
+			"line3": "The test is conducted online and is a fully automated computerised solution to test the memory.",
+			"line4": "No manual intervention in conducting the test nor in analysing the results is involved. Please provide your information below so that we can compare your results to those of other people of your age and education level and let you know where do you stand.",
+			"line5": "You will also have to provide a consent to taking the test."
+		},
+		"consent": {
+			"note": "Please read carefully and give your consent to following:",
+			"line1": "I understand this is a psychological test to test the memory and intelligence related functions and I am voluntarily participating in this assessment.",
+			"line2": "I fully understand that this is an online test and the results are NOT an expert opinion or a medical diagnosis. I understand the results will be produced by the computerized analysis of my own responses and there is no human involved in analysing / preparing the outcome.",
+			"line3": "I have been assured that my answers and results will remain confidential and my individual results will NOT be shared with my institute (school / college), employer or my parents.",
+			"line4": "I understand the results will be used by researchers or Psychology experts without my Name, identity or other personal details. If I give consent, they may give me the counselling service on how to improve my memory function or intelligence.",
+			"line5": "I am aware that the outcome of this exercise entirely depends on how honestly, I answer the questions and give the test. I also understand that the outcome of the test depends on my current state of mind, my freshness and my overall health.",
+			"line6": "I am giving my consent to this assessment by checking in this box"
+		}
 	},
 	"shorttermmemory": {
 		"note": "",
@@ -25,6 +41,15 @@
 			"line4": "Once you have entered all of the digits, press the ENTER button.",
 			"line5": "The length of the digit sequence will start from 2 and will increase until you are no longer able to remember it.",
 			"line6": "If you successfully complete two of the three attempts for a given length, you will move on to the next length. Otherwise, the test will end."
+		},
+		"completed": {
+			"title": "Test Completed",
+			"note_title": "Note: ",
+			"note": "This is a computerized analysis and not a medical diagnosis.",
+			"result": "Maximum length of digits that you can remember (Digit Span) is: ",
+			"line1": "Expected Results for Digit-Span Test:",
+			"line2": "5 to 9, depending on your age and educational background.",
+			"line3": "If your results are less than 5, don't panic. The results can be affected by many factors, such as your attention level, health, and anxiety. Please repeat the test after a few days. If your results are consistently below 5, please consult with an expert."
 		}
 	},
 	"reversedigitspan": {
@@ -36,7 +61,17 @@
 			"line5": "For example if the numbers are shown as 2 6 8 3 then you need to enter 3 8 6 2",
 			"line6": "The length of the digit sequence will start from 2 and will increase until you are no longer able to remember it.",
 			"line7": "You will be given three trials for each length.",
-			"line8": "If you successfully complete two of the three trials for a given length, you will move on to the next length. Otherwise, the test will end."
+			"line8": "If you successfully complete two of the three trials for a given length, you will move on to the next length. Otherwise, the test will end.",
+			"note": "Note:There will not be a trial for this test"
+		},
+		"completed": {
+			"title": "Test Completed",
+			"note_title": "Note: ",
+			"note": "This is a computerized analysis and not a medical diagnosis.",
+			"result": "Maximum length of digits that you can remember in REVERSE order (REVERSE Digit Span) is = ",
+			"line1": "Expected Results for the Test:",
+			"line2": "4 to 8, depending on your age and educational background.",
+			"line3": "If your results are less than 4, don't panic. The results can be affected by many factors, such as your attention level, health, and anxiety. Please repeat the test after a few days. If your results are consistently below 4, please consult with an expert."
 		}
 	},
 	"sequencedigitspan": {
@@ -48,7 +83,17 @@
 			"example2": "If you are shown the following digits:",
 			"example3": "8 3 5 0 9",
 			"example4": "You would enter the following digits in the space provided:",
-			"example5": "0 3 5 8 9"
+			"example5": "0 3 5 8 9",
+			"note": "Note:There will not be a trial for this test"
+		},
+		"completed": {
+			"title": "Test Completed",
+			"note_title": "Note: ",
+			"note": "This is a computerized analysis and not a medical diagnosis.",
+			"result": "Maximum length of digits that you can remember and organise in Order(Ascending Order) is: ",
+			"line1": "Expected Results for the Test:",
+			"line2": "4 to 8, depending on your age and educational background.",
+			"line3": "If your results are less than 4, don't panic. The results can be affected by many factors, such as your attention level, health, and anxiety. Please repeat the test after a few days. If your results are consistently below 4, please consult with an expert."
 		}
 	},
 	"stroop": {
@@ -58,6 +103,17 @@
 			"line3a": "For example, if you see the word 'RED' printed in green ink",
 			"line3b": ", you should press the Green button.",
 			"note": "Note - In this test your response time is measured. It is important therefore that you need to respond to the given tasks as early as possible but without making the mistakes."
+		},
+		"completed": {
+			"title": "Test Completed",
+			"note_title": "Note: ",
+			"note": "This is a computerized analysis and not a medical diagnosis.",
+			"result": "Your Stroop Score (Incongruent Avg Time - Congruent Avg Time): ",
+			"line1": "The expected values of Stroop Test scores vary depending on the individual's age, education level and the device used. However, as a general guide, the following can be expected:",
+			"line2": "Children: 50-100 milliseconds",
+			"line3": "Adults: 75-150 milliseconds",
+			"line4": "Older adults: 100-200 milliseconds",
+			"line5": "It is important to note that these are just general guidelines and you should not panic if your score is higher than above values."
 		}
 	},
 	"nback": {
@@ -69,6 +125,16 @@
 			"line5": "If the next letter is shown as T, then this time P becomes (N-1) and T becomes (N-2). Here you should press MATCHES button because (N-2) that is the letter that was shown two letters ago (T) matches the current letter (T).",
 			"line6": "This is called the N=2 back test, because you are comparing the current letter to the letter that was displayed two letters ago.  This test is used all over the world to test working memory.",
 			"note": "Please  click below to start the Assisted Trial. In this trial, you will be shown what N-1 and N-2 are, and how they change. You will also be shown how to compare N-2 with N in your memory and decide whether both letters MATCH. If they do, you should press the MATCHES button. After completing the guided trial, please take a short trial without assistance, followed by a final test. "
+		},
+		"completed": {
+			"title": "Test Completed",
+			"note_title": "Note: ",
+			"note": "This is a computerized analysis and not a medical diagnosis.",
+			"line1": "The expected scores of N=2 back test of working memory vary depending on the age and education level of the individual. However, as a general guide, the following can be expected:",
+			"line2": "Children: 60-80% accuracy",
+			"line3": "Adults: 80-90% accuracy",
+			"line4": "Older Adults: 70-80% accuracy",
+			"line5": "It is important to note that these are just general guidelines, and there is a wide range of normal scores. If your score is less than above numbers, please do not panic. Your score could be lower than expected values if you are not well, have anxiety or are not in a sound state of mind. You may take the test again after a few days. If you consistently find your score much lower than above values and experience difficulties in concentrating on the task or processing the information mentally then you may consult the experts."
 		}
 	},
 	"shapedigitcode": {
@@ -89,6 +155,12 @@
 			"line1": "Recall the 10 words you were shown previously and enter in following boxes one by one.",
 			"line2": "You can enter in any order (sequence).",
 			"line3": "Try entering them as accurately as possible."
+		},
+		"expected_result": {
+			"line1": "Expected results : On average, people can recall following number of words in this test however the number can vary depending on the age, attention given, overall mind health and memory strategies.",
+			"line2": "Adoloscents : around 7 to 8",
+			"line3": "Adults : around 6-7",
+			"line4": "Senior citizens : around 5 to 6"
 		}
 	},
 	"consolidatedreport": {}

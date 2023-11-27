@@ -29,19 +29,22 @@
 			</div>
 		</div>
 		<div v-if="this.testCompleted" class="result">
-			<h2>Test Completed</h2>
+			<h2>{{ $t('digitspan.completed.title') }}</h2>
 			<br />
-			<p><b>Note: </b>This is a computerized analysis and not a medical diagnosis</p>
+			<p>
+				<b>{{ $t('digitspan.completed.note_title') }}</b
+				>{{ $t('digitspan.completed.note') }}
+			</p>
 			<div>
-				<h3>Maximum length of digits that you can remember (Digit Span) is: {{ this.digitSpanTestData.highestDigitSpan }}</h3>
+				<h3>{{ $t('digitspan.completed.result') }}{{ this.digitSpanTestData.highestDigitSpan }}</h3>
 				<br />
 				<div class="expected-outcome">
 					<p>
-						<b>Expected Results for Digit-Span Test:</b>
+						<b>{{ $t('digitspan.completed.line1') }}</b>
 					</p>
 					<ul>
-						<li>5 to 9, depending on your age and educational background.</li>
-						<li>If your results are less than 5, don't panic. The results can be affected by many factors, such as your attention level, health, and anxiety. Please repeat the test after a few days. If your results are consistently below 5, please consult with an expert.</li>
+						<li>{{ $t('digitspan.completed.line2') }}</li>
+						<li>{{ $t('digitspan.completed.line3') }}</li>
 					</ul>
 					<br />
 				</div>

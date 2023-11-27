@@ -25,7 +25,7 @@
 		<br />
 	</div>
 	<div class="real-test-indicator" v-if="!this.testStartFlag">
-		<p>Note:There will not be a trial for this test</p>
+		<p>{{ $t('sequencedigitspan.instructions.note') }}</p>
 		<div v-if="!this.testStartFlag" class="start-button">
 			<v-btn @click="this.startTest()" size="x-large" block color="red-lighten-3" rounded="lg">Click Here to Start Test</v-btn>
 		</div>

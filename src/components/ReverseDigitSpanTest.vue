@@ -29,17 +29,23 @@
 			</div>
 		</div>
 		<div v-if="this.testCompleted" class="result">
-			<h2>Test Completed</h2>
+			<h2>{{ $t('reversedigitspan.completed.title') }}</h2>
 			<br />
-			<p><b>Note: </b>This is a computerized analysis and not a medical diagnosis</p>
+			<p>
+				<b>{{ $t('reversedigitspan.completed.note_title') }}</b
+				>{{ $t('reversedigitspan.completed.note') }}
+			</p>
 			<div>
-				<h3>Maximum length of digits that you can remember in REVERSE order (REVERSE Digit Span) is = {{ this.reverseDigitSpanTestData.highestReverseDigitSpan }}</h3>
+				<h3>{{ $t('reversedigitspan.completed.result') }}{{ this.reverseDigitSpanTestData.highestReverseDigitSpan }}</h3>
 				<br />
 				<div class="expected-outcome">
-					<p><b>Expected Results for Reverse Digit-Span Test:</b><br /></p>
+					<p>
+						<b>{{ $t('reversedigitspan.completed.line1') }}</b
+						><br />
+					</p>
 					<ul>
-						<li>4 to 8, depending on your age and educational background.</li>
-						<li>If your results are less than 4, don't panic. The results can be affected by many factors, such as your attention level, health, and anxiety. Please repeat the test after a few days. If your results are consistently below 4, please consult with an expert.</li>
+						<li>{{ $t('reversedigitspan.completed.line2') }}</li>
+						<li>{{ $t('reversedigitspan.completed.line3') }}</li>
 					</ul>
 					<br />
 				</div>

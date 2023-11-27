@@ -92,11 +92,17 @@ export default {
 	text-align: center;
 }
 
+.real-test-indicator {
+	text-align: center;
+	border: 5px solid black;
+}
+
 .start-button {
 	text-align: center;
 	align-items: center;
 	border: solid black 1px;
 	border-radius: 8px;
+	margin: 5px;
 }
 
 .example {
