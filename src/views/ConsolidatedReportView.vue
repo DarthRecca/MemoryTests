@@ -4,48 +4,52 @@
 		<br />
 	</div>
 	<div class="report">
-		<table>
-			<thead>
-				<tr>
-					<th>Test</th>
-					<th>Score</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>Short Term Memory Words Recalled Correctly(out of 10)</td>
-					<td>{{ this.data.shortTermMemoryTestData.score }}</td>
-				</tr>
-				<tr>
-					<td>Maximum length of digits that you can remember (Digit Span)</td>
-					<td>{{ this.data.sequenceDigitSpanTestData.highestSequenceDigitSpan }}</td>
-				</tr>
-				<tr>
-					<td>Maximum length of digits that you can remember in Reverse order (Reverse Digit Span)</td>
-					<td>{{ this.data.sequenceDigitSpanTestData.highestSequenceDigitSpan }}</td>
-				</tr>
-				<tr>
-					<td>Maximum length of digits that you can remember and organise in Order(Ascending Order)</td>
-					<td>{{ this.data.sequenceDigitSpanTestData.highestSequenceDigitSpan }}</td>
-				</tr>
-				<tr>
-					<td>Your Stroop Score (Incongruent Avg Time - Congruent Avg Time)</td>
-					<td>{{ this.data.stroopTestData.testScore }} ms</td>
-				</tr>
-				<tr>
-					<td>NBack Test Trials Correct Percentage(for trials that had a match)</td>
-					<td>{{ this.data.nBackTestData.performanceParameters.matchTrialsCorrectPercent }} %</td>
-				</tr>
-				<tr>
-					<td>Shape Digit Coding Test Score</td>
-					<td>{{ this.data.shapeDigitCodeTestData.shapeDigitCodeTestScore }}</td>
-				</tr>
-				<tr>
-					<td>Long Term Memory Test Words Recalled Correctly(out of 10)</td>
-					<td>{{ this.data.longTermMemoryTestData.score }}</td>
-				</tr>
-			</tbody>
-		</table>
+		<br />
+		<center>
+			<table>
+				<thead>
+					<tr>
+						<th>Test</th>
+						<th>Score</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Short Term Memory Words Recalled Correctly(out of 10)</td>
+						<td>{{ this.data.shortTermMemoryTestData.score }}</td>
+					</tr>
+					<tr>
+						<td>Maximum length of digits that you can remember (Digit Span)</td>
+						<td>{{ this.data.sequenceDigitSpanTestData.highestSequenceDigitSpan }}</td>
+					</tr>
+					<tr>
+						<td>Maximum length of digits that you can remember in Reverse order (Reverse Digit Span)</td>
+						<td>{{ this.data.sequenceDigitSpanTestData.highestSequenceDigitSpan }}</td>
+					</tr>
+					<tr>
+						<td>Maximum length of digits that you can remember and organise in Order(Ascending Order)</td>
+						<td>{{ this.data.sequenceDigitSpanTestData.highestSequenceDigitSpan }}</td>
+					</tr>
+					<tr>
+						<td>Your Stroop Score (Incongruent Avg Time - Congruent Avg Time)</td>
+						<td>{{ this.data.stroopTestData.testScore }} ms</td>
+					</tr>
+					<tr>
+						<td>NBack Test Trials Correct Percentage(for trials that had a match)</td>
+						<td>{{ this.data.nBackTestData.performanceParameters.matchTrialsCorrectPercent }} %</td>
+					</tr>
+					<tr>
+						<td>Number of Shapes Digit Coded Correctly</td>
+						<td>{{ this.data.shapeDigitCodeTestData.shapeDigitCodeTestScore }}</td>
+					</tr>
+					<tr>
+						<td>Long Term Memory Test Words Recalled Correctly(out of 10)</td>
+						<td>{{ this.data.longTermMemoryTestData.score }}</td>
+					</tr>
+				</tbody>
+			</table>
+		</center>
+		<br />
 	</div>
 	<br />
 	<div class="next-button">
@@ -170,7 +174,7 @@ export default {
 
 table {
 	border: 3px solid black;
-	background-color: aquamarine;
+	background-color: aqua;
 	border-collapse: collapse;
 	overflow-x: auto;
 }
@@ -182,18 +186,18 @@ tr {
 th {
 	border: 1px solid black;
 	font-weight: bold;
-	background-color: aqua;
-	padding: 0px;
+	padding: 10px;
 	text-align: left;
 }
 
 td {
 	border: 1px solid black;
-	padding: 0px;
+	padding: 10px;
 	text-align: left;
 }
 
 .report {
+	border: 5px black solid;
 	align-items: center;
 	font-size: 20px;
 }

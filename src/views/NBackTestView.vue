@@ -19,6 +19,7 @@
 		</p>
 		<br />
 	</div>
+	<br />
 	<div v-if="this.demoStartFlag && !this.demoCompleted" class="demo">
 		<NBackDemo @demo-completed="this.completedDemo()" />
 	</div>
@@ -92,6 +93,7 @@ export default {
 }
 
 .real-test-indicator {
+	border: 5px black solid;
 	text-align: center;
 	align-items: center;
 }
@@ -101,6 +103,7 @@ export default {
 }
 
 .instructions {
+	border: 5px black solid;
 	align-items: center;
 	font-size: larger;
 	padding: 25px;

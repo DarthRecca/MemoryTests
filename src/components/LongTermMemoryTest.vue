@@ -1,5 +1,5 @@
 <template>
-	<v-container>
+	<v-container class="long-term-test-container">
 		<div v-if="this.testType == 'short'" class="long-term-memory-test-title">
 			<p>Short Term Memory</p>
 			{{ $t('shorttermmemory.note') }}
@@ -163,6 +163,10 @@ export default {
 .long-term-memory-test-title {
 	text-align: left;
 	font-weight: bold;
+}
+
+.long-term-test-container {
+	border: 5px black solid;
 }
 
 .next-button {

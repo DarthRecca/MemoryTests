@@ -268,12 +268,12 @@ export default {
 .performance-table {
 	border: 1px solid;
 	border-collapse: collapse;
-	background-color: teal;
+	background-color: aqua;
 	overflow-x: auto;
 }
 
 caption {
-	background: teal;
+	background-color: aqua;
 	border: solid 1px black;
 	border-left: none;
 	border-right: none;

@@ -73,7 +73,7 @@
 	},
 	"shapedigitcode": {
 		"instructions": {
-			"line1": "A set of shapes and their corresponding digits will be displayed in a TABLE at the top of the screen. This TABLE is as shown below:",
+			"line1": "A set of shapes and their corresponding digits will be displayed in a TABLE. This TABLE will be constantly shown to you on the screen, and is to be refered for each entry. This TABLE is as shown below:",
 			"line2": "A shape will be displayed one at a time in a window. You must find the corresponding digit for this shape using the TABLE displayed at the top of the screen. You do not need to memorize the TABLE. Simply search for the shape visually and enter the corresponding digit.",
 			"line2_eg1": "eg. If the shape is ",
 			"line2_eg2": "then the code is 1. So click on 1 on the onscreen numpad.",

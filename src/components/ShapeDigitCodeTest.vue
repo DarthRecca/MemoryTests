@@ -6,18 +6,18 @@
 					<v-col class="progress-timer" cols="10">
 						<v-progress-linear :model-value="this.progress" color="purple" height="40">{{ this.timer }}</v-progress-linear>
 					</v-col>
-					<v-col class="score-text" cols="auto"> Your Progress </v-col>
+					<v-col class="score-text" cols="auto"> Your Score: </v-col>
 					<v-col class="score-num" cols="auto"> {{ this.correct }} / {{ this.total }} </v-col>
 				</v-row>
 			</v-container>
 		</div>
-		<div class="shape-digit-code-key" v-if="!this.isMobile()">
+		<div class="shape-digit-code-key" v-if="!this.isMobile()" :class="[this.isMobile() ? 'mobile' : 'not-mobile']">
 			<center>
 				<table>
 					<tr>
 						<td>Shapes</td>
 						<td v-for="(shape, idx) in keyShapes" :key="idx">
-							<v-icon size="x-large" color="black" :icon="shape"></v-icon>
+							<v-icon size="large" color="black" :icon="shape"></v-icon>
 						</td>
 					</tr>
 					<tr>
@@ -29,59 +29,28 @@
 				</table>
 			</center>
 		</div>
-
 		<br />
-		<v-container>
+		<v-container class="shape-digit-code-main">
 			<v-row>
-				<v-col cols="8">
-					<div>
-						<p class="shape-digit-code-prompt">
+				<v-col :cols="this.isMobile() ? 0 : 3" v-if="!this.isMobile()"></v-col>
+				<v-col :cols="this.isMobile() ? 8 : 6">
+					<div class="shape-digit-code-prompt">
+						<p>
 							<v-icon size="large" color="black" :icon="this.promptShape"></v-icon>
 						</p>
-						<v-container class="numpad">
-							<v-row>
-								<v-col>
-									<v-btn @click="checkAnswer(9)" class="numpad-button" size="medium"> 9 </v-btn>
-								</v-col>
-								<v-col>
-									<v-btn @click="checkAnswer(6)" class="numpad-button" size="medium"> 6 </v-btn>
-								</v-col>
-								<v-col>
-									<v-btn @click="checkAnswer(3)" class="numpad-button" size="medium"> 3 </v-btn>
-								</v-col>
-							</v-row>
-							<v-row>
-								<v-col>
-									<v-btn @click="checkAnswer(8)" class="numpad-button" size="medium"> 8 </v-btn>
-								</v-col>
-								<v-col>
-									<v-btn @click="checkAnswer(5)" class="numpad-button" size="medium"> 5 </v-btn>
-								</v-col>
-								<v-col>
-									<v-btn @click="checkAnswer(2)" class="numpad-button" size="medium"> 2 </v-btn>
-								</v-col>
-							</v-row>
-							<v-row>
-								<v-col>
-									<v-btn @click="checkAnswer(7)" class="numpad-button" size="medium"> 7 </v-btn>
-								</v-col>
-								<v-col>
-									<v-btn @click="checkAnswer(4)" class="numpad-button" size="medium"> 4 </v-btn>
-								</v-col>
-								<v-col>
-									<v-btn @click="checkAnswer(1)" class="numpad-button" size="medium"> 1 </v-btn>
-								</v-col>
-							</v-row>
-							<v-row>
-								<v-col cols="10">
-									<v-btn @click="checkAnswer(0)" class="numpad-button" size="medium"> 0 </v-btn>
-								</v-col>
-							</v-row>
-						</v-container>
 					</div>
+					<v-container class="numpad" :class="[this.isMobile() ? 'mobile' : 'not-mobile']">
+						<v-row>
+							<v-col v-for="(num, idx) in numpadNumbers" :key="idx" cols="4">
+								<v-btn @click="checkAnswer(num)" class="numpad-button" :size="this.isMobile ? 'medium' : 'large'">
+									{{ num }}
+								</v-btn>
+							</v-col>
+						</v-row>
+					</v-container>
 				</v-col>
-				<v-col cols="2">
-					<div class="shape-digit-code-key" v-if="this.isMobile()">
+				<v-col :cols="this.isMobile() ? 2 : 3" v-if="this.isMobile()">
+					<div class="shape-digit-code-key" :class="[this.isMobile() ? 'mobile' : 'not-mobile']">
 						<table class="shape-digit-key">
 							<thead>
 								<tr>
@@ -107,13 +76,36 @@
 			<center>
 				<table>
 					<tr>
-						<td>%age of Correct Digits Coded</td>
+						<td>Percentage of Correct Digits Coded</td>
 						<td>
 							{{ this.percentScore }}
 						</td>
 					</tr>
+					<tr>
+						<td>Number of Digits Coded Correctly</td>
+						<td>
+							{{ this.correct }}
+						</td>
+					</tr>
 				</table>
 			</center>
+			<br />
+			<div class="expected-results">
+				<p>The expected score of shape digit coding test depends on age, familiariity with comuters, your overall mental health etc. However following are the average expected values:<br /></p>
+				<center>
+					<table>
+						<tr>
+							<td>Percentage of Correct Digits Coded</td>
+							<td>90% +</td>
+						</tr>
+						<tr>
+							<td>Number of Digits Coded Correctly</td>
+							<td>40 +</td>
+						</tr>
+					</table>
+				</center>
+			</div>
+			<br />
 		</div>
 		<br />
 		<p>Click on Next to continue</p>
@@ -167,11 +159,11 @@ export default {
 			}
 		},
 		checkAnswer(num) {
+			this.total += 1;
 			this.selectedDigit = num;
 			if (this.selectedDigit == this.promptDigit) {
 				this.correct += 1;
 			}
-
 			this.generatePrompt();
 		},
 		async updateTimer() {
@@ -197,13 +189,12 @@ export default {
 			}
 			this.promptDigit = this.keyDigits[this.randomIndex];
 			this.promptShape = this.keyShapes[this.randomIndex];
-			this.total += 1;
 		},
 		testCompleted() {
 			useTestStore().addShapeDigitCodeTestData({
-				shapeDigitCodeTestScore: this.percentScore,
+				shapeDigitCodeTestScore: this.correct,
 				shapeDigitCodeTestTotal: this.total,
-				shapeDigitCodeTestCorrect: this.correct
+				shapeDigitCodeTestPercent: this.percentScore
 			});
 			this.completed = true;
 		}
@@ -241,7 +232,6 @@ export default {
 table {
 	border: 1px solid black;
 	border-collapse: collapse;
-	background-color: teal;
 	overflow-x: auto;
 }
 
@@ -250,6 +240,14 @@ tr {
 }
 
 td {
+	background-color: aqua;
+	border: 1px solid black;
+	text-align: center;
+	padding: 5px;
+}
+
+th {
+	background-color: aqua;
 	border: 1px solid black;
 	text-align: center;
 	padding: 5px;
@@ -278,13 +276,20 @@ td {
 	padding: 5px;
 }
 
+.expected-results {
+	text-align: left;
+	margin: 25px;
+}
+
 .completed {
 	align-items: center;
+	border: 5px black solid;
 	font-size: 25px;
 	text-align: center;
 }
 
 .next-button {
+	margin: 5px;
 	border: solid black 1px;
 	border-radius: 8px;
 }

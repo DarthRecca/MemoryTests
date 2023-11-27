@@ -7,7 +7,7 @@
 		<h3 class="instructions-title">Instructions</h3>
 		<p>1. {{ $t('shapedigitcode.instructions.line1') }}</p>
 		<br />
-		<div class="instructions-key-table" v-if="this.isMobile()">
+		<div class="instructions-key-table" v-if="this.isMobile()" :class="[this.isMobile() ? 'mobile' : 'not-mobile']">
 			<center>
 				<table class="shape-digit-key">
 					<thead>
@@ -25,7 +25,7 @@
 				</table>
 			</center>
 		</div>
-		<div class="instructions-key-table" v-else>
+		<div class="instructions-key-table" v-else :class="[this.isMobile() ? 'mobile' : 'not-mobile']">
 			<center>
 				<table class="shape-digit-key">
 					<tr>
@@ -52,6 +52,7 @@
 		</p>
 		<br />
 	</div>
+	<br />
 	<div v-if="!this.testStartFlag && !this.trialStartFlag" class="start-button">
 		<v-btn @click="this.startTrial()" size="x-large" block color="red-lighten-3" rounded="lg"> Start Trial </v-btn>
 	</div>
@@ -129,6 +130,7 @@ export default {
 }
 
 .instructions {
+	border: 5px black solid;
 	font-size: larger;
 	padding: 25px;
 }
@@ -146,7 +148,6 @@ export default {
 table {
 	border: 1px solid black;
 	border-collapse: collapse;
-	background-color: teal;
 	overflow-x: auto;
 }
 
@@ -157,12 +158,14 @@ tr {
 td {
 	border: 1px solid black;
 	text-align: center;
+	background-color: aqua;
 	padding: 5px;
 }
 
 th {
 	border: 1px solid black;
 	text-align: center;
+	background-color: aqua;
 	padding: 5px;
 }
 
@@ -180,5 +183,13 @@ th {
 	align-items: center;
 	border: solid black 1px;
 	border-radius: 8px;
+}
+
+.mobile {
+	font-size: 16px;
+}
+
+.not-mobile {
+	font-size: 22px;
 }
 </style>

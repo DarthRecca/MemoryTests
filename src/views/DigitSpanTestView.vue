@@ -18,6 +18,7 @@
 		</p>
 		<br />
 	</div>
+	<br />
 	<div class="real-test-indicator" v-if="this.trialCompleted && !this.testStartFlag">
 		<h2>
 			<p>Your Real Test Starts Now!</p>
@@ -93,6 +94,7 @@ export default {
 }
 
 .instructions {
+	border: 5px black solid;
 	align-items: center;
 	font-size: larger;
 	padding: 25px;

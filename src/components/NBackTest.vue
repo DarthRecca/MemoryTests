@@ -15,32 +15,30 @@
 		<div v-else class="result"></div>
 	</div>
 	<div v-if="this.completed" class="completed">
-		<p>Test Completed</p>
+		<p align="center">Test Completed</p>
 		<br />
 		<p><b>Note: </b>This is a computerized analysis and not a medical diagnosis</p>
 		<br />
-		<v-table class="performance-table">
-			<caption>
-				Your Performance
-			</caption>
-			<thead>
-				<tr>
-					<th>Parameter</th>
-					<th>%age of correct tasks</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>
-						<b>Trials that had match</b>
-					</td>
-					<td>
-						{{ this.matchTrialsCorrectPercent }}
-					</td>
-				</tr>
-			</tbody>
-		</v-table>
-		<br />
+		<center>
+			<table class="performance-table">
+				<thead>
+					<tr>
+						<th>Parameter</th>
+						<th>%age of correct tasks</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<b>Trials that had match</b>
+						</td>
+						<td>
+							{{ this.matchTrialsCorrectPercent }}
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</center>
 		<br />
 		<div class="expected-results">
 			<p>The expected scores of N=2 back test of working memory vary depending on the age and education level of the individual. However, as a general guide, the following can be expected:<br /></p>
@@ -291,16 +289,18 @@ export default {
 }
 
 .completed {
-	margin: 5px;
+	border: 5px black solid;
+	margin: 25px;
 	align-items: center;
 	font-size: 25px;
-	text-align: center;
+	text-align: left;
 }
 
 .performance-table {
+	margin: 5px;
 	border: 1px solid;
 	border-collapse: collapse;
-	background-color: teal;
+	background-color: aqua;
 	overflow-x: auto;
 }
 
@@ -308,8 +308,34 @@ caption {
 	border-bottom: 1px black solid;
 }
 
-.expected-results {
+table {
+	width: 50%;
 	margin: 5px;
+	border: 3px solid black;
+	background-color: aqua;
+	border-collapse: collapse;
+	overflow-x: auto;
+}
+
+tr {
+	padding: 0px;
+}
+
+th {
+	border: 1px solid black;
+	font-weight: bold;
+	padding: 10px;
+	text-align: left;
+}
+
+td {
+	border: 1px solid black;
+	padding: 10px;
+	text-align: left;
+}
+
+.expected-results {
+	margin: 25px;
 }
 
 ul {

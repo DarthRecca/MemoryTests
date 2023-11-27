@@ -6,12 +6,12 @@
 					<v-col class="progress-timer" cols="10">
 						<v-progress-linear :model-value="this.progress" color="purple" height="40">{{ this.timer }}</v-progress-linear>
 					</v-col>
-					<v-col class="score-text" cols="auto"> Your Progress: </v-col>
+					<v-col class="score-text" cols="auto"> Your Score: </v-col>
 					<v-col class="score-num" cols="auto"> {{ this.correct }} / {{ this.total }} </v-col>
 				</v-row>
 			</v-container>
 		</div>
-		<div class="shape-digit-code-key" v-if="!this.isMobile()">
+		<div class="shape-digit-code-key" v-if="!this.isMobile()" :class="[this.isMobile() ? 'mobile' : 'not-mobile']">
 			<center>
 				<table>
 					<tr>
@@ -30,57 +30,35 @@
 			</center>
 		</div>
 		<br />
-		<v-container>
+		<v-container class="shape-digit-code-main">
 			<v-row>
-				<v-col cols="8">
+				<v-col>
+					<div>
+						<p v-if="this.showResult" class="result">{{ this.result }}</p>
+						<p v-else class="result"></p>
+					</div>
+				</v-col>
+			</v-row>
+			<v-row>
+				<v-col :cols="this.isMobile() ? 0 : 3" v-if="!this.isMobile()"></v-col>
+				<v-col :cols="this.isMobile() ? 8 : 6">
 					<div class="shape-digit-code-prompt">
 						<p>
 							<v-icon size="large" color="black" :icon="this.promptShape"></v-icon>
 						</p>
 					</div>
-					<v-container class="numpad">
+					<v-container class="numpad" :class="[this.isMobile() ? 'mobile' : 'not-mobile']">
 						<v-row>
-							<v-col class="numpad-button-col">
-								<v-btn @click="checkAnswer(9)" class="numpad-button" size="medium"> 9 </v-btn>
-							</v-col>
-							<v-col class="numpad-button-col">
-								<v-btn @click="checkAnswer(6)" class="numpad-button" size="medium"> 6 </v-btn>
-							</v-col>
-							<v-col class="numpad-button-col">
-								<v-btn @click="checkAnswer(3)" class="numpad-button" size="medium"> 3 </v-btn>
-							</v-col>
-						</v-row>
-						<v-row>
-							<v-col class="numpad-button-col">
-								<v-btn @click="checkAnswer(8)" class="numpad-button" size="medium"> 8 </v-btn>
-							</v-col>
-							<v-col class="numpad-button-col">
-								<v-btn @click="checkAnswer(5)" class="numpad-button" size="medium"> 5 </v-btn>
-							</v-col>
-							<v-col class="numpad-button-col">
-								<v-btn @click="checkAnswer(2)" class="numpad-button" size="medium"> 2 </v-btn>
-							</v-col>
-						</v-row>
-						<v-row>
-							<v-col class="numpad-button-col">
-								<v-btn @click="checkAnswer(7)" class="numpad-button" size="medium"> 7 </v-btn>
-							</v-col>
-							<v-col class="numpad-button-col">
-								<v-btn @click="checkAnswer(4)" class="numpad-button" size="medium"> 4 </v-btn>
-							</v-col>
-							<v-col class="numpad-button-col">
-								<v-btn @click="checkAnswer(1)" class="numpad-button" size="medium"> 1 </v-btn>
-							</v-col>
-						</v-row>
-						<v-row>
-							<v-col class="numpad-button-col" cols="12">
-								<v-btn @click="checkAnswer(0)" class="numpad-button" size="medium"> 0 </v-btn>
+							<v-col v-for="(num, idx) in numpadNumbers" :key="idx" cols="4">
+								<v-btn @click="checkAnswer(num)" class="numpad-button" :size="this.isMobile ? 'medium' : 'large'">
+									{{ num }}
+								</v-btn>
 							</v-col>
 						</v-row>
 					</v-container>
 				</v-col>
-				<v-col cols="2">
-					<div class="shape-digit-code-key" v-if="this.isMobile()">
+				<v-col :cols="this.isMobile() ? 2 : 3" v-if="this.isMobile()">
+					<div class="shape-digit-code-key" :class="[this.isMobile() ? 'mobile' : 'not-mobile']">
 						<table class="shape-digit-key">
 							<thead>
 								<tr>
@@ -95,13 +73,6 @@
 								</tr>
 							</tbody>
 						</table>
-					</div>
-				</v-col>
-			</v-row>
-			<v-row>
-				<v-col>
-					<div v-if="this.isMobile()">
-						<p v-if="this.showResult">{{ this.result }}</p>
 					</div>
 				</v-col>
 			</v-row>
@@ -224,7 +195,7 @@ export default {
 	justify-content: center;
 	text-align: center;
 	align-items: center;
-	padding: 10px;
+	padding: 5px;
 	height: 100vh;
 	width: 100%;
 }
@@ -235,18 +206,11 @@ export default {
 	align-items: center;
 	justify-content: center;
 	border: solid 5px black;
-	grid-template:
-		'top'
-		'prompt key'
-		'numpad key'
-		'numpad key'
-		'numpad key';
 }
 
 table {
 	border: 1px solid black;
 	border-collapse: collapse;
-	background-color: teal;
 	overflow-x: auto;
 }
 
@@ -256,6 +220,7 @@ tr {
 
 td {
 	border: 1px solid black;
+	background-color: aqua;
 	text-align: center;
 	padding: 5px;
 }
@@ -270,27 +235,24 @@ td {
 	font-size: 80px;
 	border: 2px solid black;
 	font-weight: bold;
-	grid-area: prompt;
+}
+
+.shape-digit-code-main {
+	align-items: center;
 }
 
 .numpad {
-	grid-template:
-		'button button button'
-		'button button button'
-		'button button button'
-		'		button		  ';
 	align-items: center;
 	text-align: center;
-	grid-area: numpad;
-	flex-wrap: nowrap;
 }
 
 .numpad-button {
-	font-size: 20px;
+	font-size: 18px;
+	margin: 15px;
 }
 
-.numpad-button-col {
-	grid-area: button;
+.result {
+	height: 10px;
 }
 
 .completed {
@@ -308,7 +270,6 @@ td {
 	align-items: center;
 	font-size: 25px;
 	text-align: center;
-	grid-area: top;
 }
 
 .progress-timer {
@@ -331,14 +292,19 @@ td {
 
 .shape-digit-code-key {
 	align-items: center;
-	font-size: 18px;
 	text-align: center;
-	grid-area: key;
 }
 
 .shape-digit-key {
 	align-items: center;
-	font-size: 18px;
 	text-align: center;
+}
+
+.mobile {
+	font-size: 16px;
+}
+
+.not-mobile {
+	font-size: 22px;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
 	<div class="thanks">
 		<h2><b>Thank You!</b></h2>
-		<div class="more-links">
+		<div class="more-info">
 			<br />
 			<p class="more-links">
 				If you want to take Intelligence Test click
@@ -19,6 +19,7 @@
 				<v-icon icon="mdi-facebook" color="blue-darken-1"></v-icon>
 			</s-facebook>
 		</div>
+		<br />
 	</div>
 </template>
 
@@ -68,6 +69,7 @@ export default {
 }
 
 .more-info {
+	border: 5px solid black;
 	margin: 10px;
 	padding: 25px;
 	align-items: center;

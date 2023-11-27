@@ -83,6 +83,7 @@ export default {
 }
 
 .instructions {
+	border: 5px solid black;
 	align-items: center;
 	font-size: larger;
 	padding: 25px;

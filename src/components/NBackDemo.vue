@@ -183,6 +183,7 @@ export default {
 	font-size: 80px;
 	height: 150px;
 	font-weight: bold;
+	border: 2px black solid;
 }
 
 .n-back-input-container {
@@ -201,6 +202,7 @@ export default {
 }
 
 .completed {
+	border: 5px black solid;
 	margin: 5px;
 	align-items: center;
 	font-size: 25px;

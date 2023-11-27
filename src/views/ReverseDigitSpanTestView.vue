@@ -71,6 +71,7 @@ export default {
 }
 
 .instructions {
+	border: 5px black solid;
 	align-items: center;
 	font-size: larger;
 	padding: 25px;
