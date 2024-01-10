@@ -4,6 +4,7 @@
 			<v-btn-toggle v-model="locale" mandatory divided @click="setLocale()" class="locale-picker">
 				<v-btn value="en" class="locale-picker-btn en" color="blue-lighten-1">ENGLISH</v-btn>
 				<v-btn value="mr" class="locale-picker-btn mr" color="blue-lighten-1">मराठी(Marathi)</v-btn>
+				<v-btn value="hi" class="locale-picker-btn hi" color="blue-lighten-1">हिन्दी(Hindi)</v-btn>
 			</v-btn-toggle>
 			<v-responsive>
 				<router-view></router-view>
