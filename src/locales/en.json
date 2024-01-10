@@ -145,6 +145,11 @@
 			"line4": "This is a processing speed test, so you must be fast and accurate.",
 			"line5": "The test will last for ONLY 2 minutes. Your score will be the NUMBER OF CORRECT DIGITS you enter. Your score and the timer will be displayed on the top of the screen.",
 			"line6": "Take the trial first and then give the test."
+		},
+		"results":{
+			"line1":"Your processing speed test is completed",
+			"line2":"Your results are as follows",
+			"note":"The expected score of shape digit coding test depends on age, familiariity with comuters, your overall mental health etc. However following are the average expected values:"
 		}
 	},
 	"longtermmemory": {

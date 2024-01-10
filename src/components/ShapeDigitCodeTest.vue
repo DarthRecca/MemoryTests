@@ -74,6 +74,9 @@
 		<br />
 		<div class="results">
 			<center>
+				<p>{{ $t('shapedigitcode.results.line1') }}</p>
+				<p>{{ $t('shapedigitcode.results.line2') }}</p>
+				<br/>
 				<table>
 					<tr>
 						<td>Percentage of Correct Digits Coded</td>
@@ -91,7 +94,7 @@
 			</center>
 			<br />
 			<div class="expected-results">
-				<p>The expected score of shape digit coding test depends on age, familiariity with comuters, your overall mental health etc. However following are the average expected values:<br /></p>
+				<p>{{ $t('shapedigitcode.results.note') }}<br /></p>
 				<center>
 					<table>
 						<tr>
