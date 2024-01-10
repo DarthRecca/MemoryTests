@@ -120,7 +120,7 @@ export default {
 			const answers = this.answerKeys.map((word) => word.toLowerCase());
 			inputKeyList.push(this.keys.first, this.keys.second, this.keys.third, this.keys.fourth, this.keys.fifth, this.keys.sixth, this.keys.seventh, this.keys.eighth, this.keys.ninth, this.keys.tenth);
 			for (let i = 0; i < inputKeyList.length; i++) {
-				const inp = inputKeyList[i].toLowerCase();
+				const inp = inputKeyList[i].toLowerCase().trim();
 				if (answers.includes(inp) && !this.usedKeys.includes(inp)) {
 					this.keysMatched += 1;
 					this.usedKeys.push(inputKeyList[i]);
