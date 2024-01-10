@@ -63,14 +63,14 @@
 						<td class="type-field">Stroop Test(for Inhibition Control)</td>
 						<td class="value-field">Your Stroop Score (Incongruent Avg Time - Congruent Avg Time) is {{ this.data.stroopTestData.testScore }} ms</td>
 						<td class="value-field">
-							Age group 12 to 20: 50-100 ms<br/>
-  							Age group 20 to 60: 75-150 ms<br/>
-  							Age group 60+: 100-200 ms
+							Age group 12 to 20: 150-200 ms<br/>
+  							Age group 20 to 60: 175-250 ms<br/>
+  							Age group 60+: 200-300 ms
 						</td>
 					</tr>
 					<tr class="nback-results">
 						<td class="type-field">N-2 Back test(for Working Memory)</td>
-						<td class="value-field">Your Percentage of correct tasks in trials that had match was {{ this.data.nBackTestData.nBackTestScore }}%</td>
+						<td class="value-field">Your Percentage of correct tasks in trials that had match was {{ this.data.nBackTestData.performanceParameters.matchTrialsCorrectPercent }}%</td>
 						<td class="value-field">
 							Age group 12 to 20: 60-80 % <br/>
   							Age group 20 to 60: 80-90 %<br/>
