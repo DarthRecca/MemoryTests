@@ -110,9 +110,9 @@
 			"note": "This is a computerized analysis and not a medical diagnosis.",
 			"result": "Your Stroop Score (Incongruent Avg Time - Congruent Avg Time): ",
 			"line1": "The expected values of Stroop Test scores vary depending on the individual's age, education level and the device used. However, as a general guide, the following can be expected:",
-			"line2": "Age group 12 to 20: 150-200 milliseconds",
-			"line3": "Age group 20 to 60: 175-250 milliseconds",
-			"line4": "Age group 60+: 200-300 milliseconds",
+			"line2": "Age group 12 to 20: 50-200 milliseconds",
+			"line3": "Age group 20 to 60: 75-250 milliseconds",
+			"line4": "Age group 60+: 100-300 milliseconds",
 			"line5": "It is important to note that these are just general guidelines and you should not panic if your score is higher than above values."
 		}
 	},

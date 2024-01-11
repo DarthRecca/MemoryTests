@@ -8,20 +8,21 @@
 	</div>
 	<div class="report" ref="report" id="report">
 		<center>
+			<img src="/src/assets/header_consolidated_reults.png" class="img-header">
 			<p><span>Result of the memory test based on computer analysis</span></p>
 			<br />
 			<table class="user-details">
 				<tr>
-					<td class="type-field">Name</td>
-					<td class="value-field">{{ this.data.userDetailsData.name }}</td>
+					<td class="type-field" colspan="1">Name</td>
+					<td class="value-field" colspan="2">{{ this.data.userDetailsData.name }}</td>
 				</tr>
 				<tr>
-					<td class="type-field">Email ID</td>
-					<td class="value-field">{{ this.data.userDetailsData.emailID }}</td>
+					<td class="type-field" colspan="1">Email ID</td>
+					<td class="value-field" colspan="2">{{ this.data.userDetailsData.emailID }}</td>
 				</tr>
 				<tr>
-					<td class="type-field">Gender</td>
-					<td class="value-field">{{ this.data.userDetailsData.gender }}</td>
+					<td class="type-field" colspan="1">Gender</td>
+					<td class="value-field" colspan="2">{{ this.data.userDetailsData.gender }}</td>
 				</tr>
 			</table>
 			<br/>
@@ -63,8 +64,8 @@
 						<td class="type-field">Stroop Test(for Inhibition Control)</td>
 						<td class="value-field">Your Stroop Score (Incongruent Avg Time - Congruent Avg Time) is {{ this.data.stroopTestData.testScore }} ms</td>
 						<td class="value-field">
-							Age group 12 to 20: 150-200 ms<br/>
-  							Age group 20 to 60: 175-250 ms<br/>
+							Age group 12 to 20: 50-200 ms<br/>
+  							Age group 20 to 60: 75-250 ms<br/>
   							Age group 60+: 200-300 ms
 						</td>
 					</tr>
@@ -107,6 +108,18 @@
 						<td class="value-field"><b>Do you have less score than expected results?</b><br/>Do not be panic. The number can vary depending on the age, attention, overall mind health and memory strategies. You can take the test many times. Consult the expert if your results are consistently low.</td>
 						<td class="value-field"><b>तुमचा निकाल अपेक्षित निकालापेक्षा कमी आहे का?</b><br/>काळजी नको. तुमचा निकाल तुमचे वय, दिलेले लक्ष, एकूणच मनाचे आरोग्य आणि स्मरण करण्याचे धोरण यानुसार संख्या बदलू शकतात. परत टेस्ट द्या आणि जर निकाल नेहमीच कमी असतील तर तज्ज्ञांचा सल्ला घ्या.</td>
 						<td class="value-field"><b>क्या आपका परिणाम अपेक्षित परिणाम से कम है?</b><br/>चिंता मत करो. आपके परिणाम आपकी उम्र, दिया हुआ ध्यान, समग्र दिमागी स्वास्थ्य और स्मृति रणनीतियों के आधार पर भिन्न हो सकती है। दोबारा परीक्षण करे और यदी परिणाम लगातार कम आ रहे हैं, तो किसी विशेषज्ञ से परामर्श लें।</td>
+					</tr>
+					<tr class="blank-row">
+						<td colspan="3"></td>
+					</tr>
+					<tr>
+						<td class="value-field">
+							<img src="/src/assets/footer_consolidated_results.png">
+						</td>
+						<td colspan="2" class="value-field">
+							<p>Want to test your intelligence? Save the link below and take the test when you have time. (40 min)</p>
+							<a href="https://forms.gle/TVUcM3dNiFLZA85B8">https://forms.gle/TVUcM3dNiFLZA85B8</a>
+						</td>
 					</tr>
 				</tfoot>
 			</table>
@@ -220,8 +233,7 @@ export default {
 						margin:       1,
 						filename:     'Report_'+ this.data.userDetailsData.name +'.pdf',
 						pagebreak:{
-							before:'.nback-results',
-							after:['.footer-1']
+							before:['.stroop-results','.footer-1']
 						},
 						image:{
 							quality:1,
@@ -250,10 +262,15 @@ export default {
 	font-size: 30px;
 }
 
+.img-header{
+	border: 3px solid black;
+}
+
 table {
 	border: 3px solid black;
 	border-collapse: collapse;
 	overflow-x: auto;
+	width: 95%;
 }
 
 tr {
@@ -278,6 +295,16 @@ td {
 	margin-right: 15px;
 }
 
+.user-details{
+	margin-left: 15px;
+	margin-right: 15px;
+}
+
+.info{
+	margin-left: 15px;
+	margin-right: 15px;
+}
+
 .head-field{
 	background-color: #339499;
 }
@@ -292,6 +319,11 @@ td {
 }
 
 .value-field{
+	background-color: white;
+}
+
+.blank-row{
+	height:10px;
 	background-color: white;
 }
 
