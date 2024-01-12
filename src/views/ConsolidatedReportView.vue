@@ -9,9 +9,9 @@
 	<div class="report" ref="report" id="report">
 		<center>
 			<img src="/src/assets/header_consolidated_reults.png" class="img-header">
-			<p><span>Result of the memory test based on computer analysis</span></p>
+			<p><span class="title">Result of the memory test based on computer analysis</span></p>
 			<br />
-			<table class="user-details">
+			<table>
 				<tr>
 					<td class="type-field" colspan="1">Name</td>
 					<td class="value-field" colspan="2">{{ this.data.userDetailsData.name }}</td>
@@ -24,28 +24,26 @@
 					<td class="type-field" colspan="1">Gender</td>
 					<td class="value-field" colspan="2">{{ this.data.userDetailsData.gender }}</td>
 				</tr>
-			</table>
-			<br/>
-			<table class="info">
-				<tr>
-					<td class="type-field">Please note this is a result of a computerized memory test. This is NOT a medical diagnosis</td>
+				<tr class="divider-1">
+					<td colspan="3"></td>
 				</tr>
 				<tr>
-					<td class="type-field">कृपया लक्षात घ्या की हा संगणकीकृत मेमरी चाचणीचा निकाल आहे. हा निकाल म्हणजे वैद्यकीय निदान नाही</td>
+					<td class="type-field" colspan="3">Please note this is a result of a computerized memory test. This is NOT a medical diagnosis</td>
 				</tr>
 				<tr>
-					<td class="type-field">कृपया ध्यान दें कि यह आपके संगणक द्वारे किया हुआ मेमरी टेस्ट का परिणाम है। यह परिणाम वैद्यकीय निदान नहीं है।</td>
+					<td class="type-field" colspan="3">कृपया लक्षात घ्या की हा संगणकीकृत मेमरी चाचणीचा निकाल आहे. हा निकाल म्हणजे वैद्यकीय निदान नाही</td>
 				</tr>
-			</table>
-			<br/>
-			<table class="results-table">
-				<thead>
-					<tr>
-						<th class="head-field">Assessment</th>
-						<th class="head-field">Observations Based on Computer Analysis of your responses</th>
-						<th class="head-field">Expected Results</th>
-					</tr>
-				</thead>
+				<tr>
+					<td class="type-field" colspan="3">कृपया ध्यान दें कि यह आपके संगणक द्वारे किया हुआ मेमरी टेस्ट का परिणाम है। यह परिणाम वैद्यकीय निदान नहीं है।</td>
+				</tr>
+				<tr class="divider-2">
+					<td colspan="3"></td>
+				</tr>
+				<tr>
+					<td class="head-field">Assessment</td>
+					<td class="head-field">Observations Based on Computer Analysis of your responses</td>
+					<td class="head-field">Expected Results</td>
+				</tr>
 				<tbody>
 					<tr>
 						<td class="type-field">Short Term Memory Test</td>
@@ -105,18 +103,22 @@
 							Practice the test every alternate day to improve your score and brain function.</td>
 					</tr>
 					<tr>
-						<td class="value-field"><b>Do you have less score than expected results?</b><br/>Do not be panic. The number can vary depending on the age, attention, overall mind health and memory strategies. You can take the test many times. Consult the expert if your results are consistently low.</td>
-						<td class="value-field"><b>तुमचा निकाल अपेक्षित निकालापेक्षा कमी आहे का?</b><br/>काळजी नको. तुमचा निकाल तुमचे वय, दिलेले लक्ष, एकूणच मनाचे आरोग्य आणि स्मरण करण्याचे धोरण यानुसार संख्या बदलू शकतात. परत टेस्ट द्या आणि जर निकाल नेहमीच कमी असतील तर तज्ज्ञांचा सल्ला घ्या.</td>
-						<td class="value-field"><b>क्या आपका परिणाम अपेक्षित परिणाम से कम है?</b><br/>चिंता मत करो. आपके परिणाम आपकी उम्र, दिया हुआ ध्यान, समग्र दिमागी स्वास्थ्य और स्मृति रणनीतियों के आधार पर भिन्न हो सकती है। दोबारा परीक्षण करे और यदी परिणाम लगातार कम आ रहे हैं, तो किसी विशेषज्ञ से परामर्श लें।</td>
+						<td class="value-field" colspan="3"><b>Do you have less score than expected results?</b><br/>Do not be panic. The number can vary depending on the age, attention, overall mind health and memory strategies. You can take the test many times. Consult the expert if your results are consistently low.</td>
 					</tr>
-					<tr class="blank-row">
-						<td colspan="3"></td>
+					<tr>
+						<td class="value-field" colspan="3"><b>तुमचा निकाल अपेक्षित निकालापेक्षा कमी आहे का?</b><br/>काळजी नको. तुमचा निकाल तुमचे वय, दिलेले लक्ष, एकूणच मनाचे आरोग्य आणि स्मरण करण्याचे धोरण यानुसार संख्या बदलू शकतात. परत टेस्ट द्या आणि जर निकाल नेहमीच कमी असतील तर तज्ज्ञांचा सल्ला घ्या.</td>
+					</tr>
+					<tr>
+						<td class="value-field" colspan="3"><b>क्या आपका परिणाम अपेक्षित परिणाम से कम है?</b><br/>चिंता मत करो. आपके परिणाम आपकी उम्र, दिया हुआ ध्यान, समग्र दिमागी स्वास्थ्य और स्मृति रणनीतियों के आधार पर भिन्न हो सकती है। दोबारा परीक्षण करे और यदी परिणाम लगातार कम आ रहे हैं, तो किसी विशेषज्ञ से परामर्श लें।</td>
+					</tr>
+					<tr class="divider-3">
+						<td colspan="3" class="value-field"></td>
 					</tr>
 					<tr>
 						<td class="value-field">
-							<img src="/src/assets/footer_consolidated_results.png">
+							<img src="/src/assets/footer_consolidated_results.png" :class="[this.isMobile()?'mobile-img':'not-mobile-img']">
 						</td>
-						<td colspan="2" class="value-field">
+						<td  class="value-field" colspan="2">
 							<p>Want to test your intelligence? Save the link below and take the test when you have time. (40 min)</p>
 							<a href="https://forms.gle/TVUcM3dNiFLZA85B8">https://forms.gle/TVUcM3dNiFLZA85B8</a>
 						</td>
@@ -225,6 +227,13 @@ export default {
 		};
 	},
 	methods: {
+		isMobile() {
+			if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+				return true;
+			} else {
+				return false;
+			}
+		},
 		getData() {
 			this.data = useTestStore().getData();
 		},
@@ -260,53 +269,36 @@ export default {
 	align-items: center;
 	text-align: center;
 	font-size: 30px;
+	font-weight: bold;
 }
 
 .img-header{
 	border: 3px solid black;
+	max-width: 95%;
+
 }
 
 table {
 	border: 3px solid black;
 	border-collapse: collapse;
-	overflow-x: auto;
-	width: 95%;
+	overflow-x:auto;
+	max-width: 95%;
+	width: auto;
 }
 
 tr {
 	padding: 0px;
 }
 
-th {
-	border: 1px solid black;
-	font-weight: bold;
-	padding: 10px;
-	text-align: left;
-}
-
 td {
-	border: 1px solid black;
 	padding: 10px;
 	text-align: left;
-}
-
-.results-table{
-	margin-left: 15px;
-	margin-right: 15px;
-}
-
-.user-details{
-	margin-left: 15px;
-	margin-right: 15px;
-}
-
-.info{
-	margin-left: 15px;
-	margin-right: 15px;
+	border: 1px solid black;
 }
 
 .head-field{
 	background-color: #339499;
+	font-weight: bold;
 }
 
 .foot-field{
@@ -316,6 +308,7 @@ td {
 
 .type-field{
 	background-color: #05C7B0;
+	width: 25%;
 }
 
 .value-field{
@@ -324,7 +317,20 @@ td {
 
 .blank-row{
 	height:10px;
+}
+
+.blank-cell{
 	background-color: white;
+}
+
+.mobile-img{
+	width: 120px;
+	height: 120px;
+}
+
+.not-mobile-img{
+	width: fit-content;
+	height: fit-content;
 }
 
 .report {
