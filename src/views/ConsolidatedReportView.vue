@@ -115,10 +115,7 @@
 						<td colspan="3" class="value-field"></td>
 					</tr>
 					<tr>
-						<td class="value-field">
-							<img src="/src/assets/footer_consolidated_results.png" :class="[this.isMobile()?'mobile-img':'not-mobile-img']">
-						</td>
-						<td  class="value-field" colspan="2">
+						<td  class="value-field" colspan="3">
 							<p>Want to test your intelligence? Save the link below and take the test when you have time. (40 min)</p>
 							<a href="https://forms.gle/TVUcM3dNiFLZA85B8">https://forms.gle/TVUcM3dNiFLZA85B8</a>
 						</td>
