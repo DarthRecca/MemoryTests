@@ -2,8 +2,6 @@ import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth'; // Import other Firebase services as needed
 
-console.log(process.env)
-
 const FirebasePlugin = {
 	install(app) {
 		const firebaseConfig = {
