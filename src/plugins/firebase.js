@@ -5,14 +5,14 @@ import { getAuth } from 'firebase/auth'; // Import other Firebase services as ne
 const FirebasePlugin = {
 	install(app) {
 		const firebaseConfig = {
-			apiKey: process.env.firebase_api_key,
-			authDomain: process.env.firebase_auth_domain,
-			databaseURL: process.env.firebase_database_URL,
-			projectId: process.env.firebase_project_id,
-			storageBucket: process.env.firebase_storage_bucket,
-			messagingSenderId: process.env.firebase_messaging_sender_id,
-			appId: process.env.firebase_app_id,
-			measurementId: process.env.firebase_measurement_id
+			apiKey: 'AIzaSyDaiNAm8P2kssBmqHQrYbZXfmAvZPjF6iQ',
+			authDomain: 'memorytests-2788d.firebaseapp.com',
+			databaseURL: 'https://memorytests-2788d-default-rtdb.firebaseio.com',
+			projectId: 'memorytests-2788d',
+			storageBucket: 'buckets/memorytests-2788d.appspot.com',
+			messagingSenderId: '843804225888',
+			appId: '1:843804225888:web:5d755d447c43a782edae05',
+			measurementId: 'G-8KK4E4E1RE'
 		};
 
 		const firebaseApp = initializeApp(firebaseConfig);
