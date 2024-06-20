@@ -76,7 +76,7 @@
 			<center>
 				<p>{{ $t('shapedigitcode.results.line1') }}</p>
 				<p>{{ $t('shapedigitcode.results.line2') }}</p>
-				<br/>
+				<br />
 				<table>
 					<tr>
 						<td>Percentage of Correct Digits Coded</td>

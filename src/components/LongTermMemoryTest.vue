@@ -86,7 +86,7 @@
 
 <script>
 import { useTestStore } from '@/store/tests';
-import { collection, addDoc } from 'firebase/firestore';
+import axios from 'axios';
 
 export default {
 	name: 'LongTermMemoryTest',
@@ -139,27 +139,82 @@ export default {
 			}
 		},
 		async pushDataToDB() {
+			const token = sessionStorage.getItem('jwtToken');
+			if (!token) {
+				console.error('User is not authenticated.');
+				return;
+			}
+
 			const data = useTestStore().getData();
-			const fireStore = this.$fireStore;
 			const dataPacket = {
-				userDetails: data.userDetailsData,
-				testData: {
-					longTermMemoryTestData: data.longTermMemoryTestData,
-					shortTermMemoryTestData: data.shortTermMemoryTestData,
-					digitSpanTestData: data.digitSpanTestData,
-					reverseDigitSpanTestData: data.reverseDigitSpanTestData,
-					sequenceDigitSpanTestData: data.sequenceDigitSpanTestData,
-					stroopTestData: data.stroopTestData,
-					nBackTestData: data.nBackTestData,
-					shapeDigitCodeTestData: data.shapeDigitCodeTestData
-				},
-				timestamp: data.userDetailsData.date
+				userID: sessionStorage.getItem('userID'),
+				timestamp: data.userDetailsData.date,
+				device: data.userDetailsData.device,
+				education: data.userDetailsData.education,
+				emailID: data.userDetailsData.emailID,
+				language: data.userDetailsData.language,
+				locationOfExam: data.userDetailsData.locationOfExam,
+				monthOfBirth: data.userDetailsData.monthOfBirth,
+				yearOfBirth: data.userDetailsData.yearOfBirth,
+				name: data.userDetailsData.name,
+				consent: data.userDetailsData.consent,
+				stroopTestScore: data.stroopTestData.stroopTestScore,
+				stroopTestTime: data.stroopTestData.stroopTestTime,
+				stroopCongruentAvgTime: data.stroopTestData.stroopCongruentAvgTime,
+				stroopCongruentCorrect: data.stroopTestData.stroopCongruentCorrect,
+				stroopCongruentIncorrect: data.stroopTestData.stroopCongruentIncorrect,
+				stroopCongruentCorrectPercent: data.stroopTestData.stroopCongruentCorrectPercent,
+				stroopCongruentIncorrectPercent: data.stroopTestData.stroopCongruentIncorrectPercent,
+				stroopCongruentTotal: data.stroopTestData.stroopCongruentTotal,
+				stroopIncongruentAvgTime: data.stroopTestData.stroopIncongruentAvgTime,
+				stroopIncongruentCorrect: data.stroopTestData.stroopIncongruentCorrect,
+				stroopIncongruentIncorrect: data.stroopTestData.stroopIncongruentIncorrect,
+				stroopIncongruentCorrectPercent: data.stroopTestData.stroopIncongruentCorrectPercent,
+				stroopIncongruentIncorrectPercent: data.stroopTestData.stroopIncongruentIncorrectPercent,
+				stroopIncongruentTotal: data.stroopTestData.stroopIncongruentTotal,
+				shortTermMemoryTestScore: data.shortTermMemoryTestData.score,
+				longTermMemoryTestScore: data.longTermMemoryTestData.score,
+				highestDigitSpan: data.digitSpanTestData.highestDigitSpan,
+				digitSpanAveragePromptResponseTime: data.digitSpanTestData.performanceParameters.averagePromptResponseTime,
+				highestReverseDigitSpan: data.reverseDigitSpanTestData.highestReverseDigitSpan,
+				reverseDigitSpanAveragePromptResponseTime: data.reverseDigitSpanTestData.performanceParameters.averagePromptResponseTime,
+				highestSequenceDigitSpan: data.sequenceDigitSpanData.highestSequenceDigitSpan,
+				sequenceDigitSpanAveragePromptResponseTime: data.sequenceDigitSpanData.performanceParameters.averagePromptResponseTime,
+				nBackTestScore: data.nBackTestData.nBackTestScore,
+				nBackTestMatchTrialsAvgTime: data.nBackTestData.performanceParameters.matchTrialsAvgTime,
+				nBackTestMatchTrialsCorrect: data.nBackTestData.performanceParameters.matchTrialsCorrect,
+				nBackTestMatchTrialsIncorrect: data.nBackTestData.performanceParameters.matchTrialsIncorrect,
+				nBackTestMatchTrialsCorrectPercent: data.nBackTestData.performanceParameters.matchTiralsCorrectPercent,
+				nBackTestMatchTrialsIncorrectPercent: data.nBackTestData.performanceParameters.matchTrialsIncorrectPercent,
+				nBackTestMatchTrialsTotal: data.nBackTestData.performanceParameters.macthTiralsTotal,
+				nBackTestNonMatchTrialsAvgTime: data.nBackTestData.performanceParameters.nonMatchTrialsAvgTime,
+				nBackTestNonMatchTrialsCorrect: data.nBackTestData.performanceParameters.nonMatchTrialsCorrect,
+				nBackTestNonMatchTrialsIncorrect: data.nBackTestData.performanceParameters.nonMatchTrialsIncorrect,
+				nBackTestNonMatchTrialsCorrectPercent: data.nBackTestData.performanceParameters.nonMatchTrialsCorrectPercent,
+				nBackTestNonMatchTrialsIncorrectPercent: data.nBackTestData.performanceParameters.nonMatchTrialsIncorrectPercent,
+				nBackTestNonMatchTrialsTotal: data.nBackTestData.performanceParameters.nonMatchTrialsTotal,
+				nBackTestTotalAvgTime: data.nBackTestData.performanceParameters.totalAvgTime,
+				nBackTestTotalCorrect: data.nBackTestData.performanceParameters.totalCorrect,
+				nBackTestTotalIncorrect: data.nBackTestData.performanceParameters.totalIncorrect,
+				nBackTestTotalCorrectPercent: data.nBackTestData.performanceParameters.totalCorrectPercent,
+				nBackTestTotalIncorrectPercent: data.nBackTestData.performanceParameters.totalIncorrectPercent,
+				nBackTestTotalTasks: data.nBackTestData.performanceParameters.totalTasks
 			};
 			try {
-				const docRef = await addDoc(collection(fireStore, 'testData'), dataPacket);
-				console.log('Document written with ID: ', docRef.id);
-			} catch (e) {
-				console.error('Error adding document: ', e);
+				const response = await axios.post(
+					'https://learningwithiqplus.com/wp-json/custom/v1/memoryTestScore',
+					{
+						dataPacket: dataPacket
+					},
+					{
+						headers: {
+							Authorization: `Bearer ${token}`
+						}
+					}
+				);
+				console.log('Score saved:', response.data);
+			} catch (error) {
+				console.error('Failed to save score:', error);
 			}
 		}
 	},

@@ -3,12 +3,12 @@
 		<h3>Consolidated Report</h3>
 		<br />
 	</div>
-	<div >
+	<div>
 		<v-btn @click="exportToPDF()" color="black" rounded="0" prepend-icon="mdi-download">Download PDF Report</v-btn>
 	</div>
 	<div class="report" ref="report" id="report">
 		<center>
-			<img src="/src/assets/header_consolidated_reults.png" class="img-header">
+			<img src="/src/assets/header_consolidated_reults.png" class="img-header" />
 			<p><span class="title">Result of the memory test based on computer analysis</span></p>
 			<br />
 			<table>
@@ -49,9 +49,9 @@
 						<td class="type-field">Short Term Memory Test</td>
 						<td class="value-field">You recalled {{ this.data.shortTermMemoryTestData.score }} words correctly out of 10</td>
 						<td class="value-field" rowspan="2">
-							Age group 12 to 20: around 7 to 8<br/>
-  							Age group 20 to 60: around 6-7<br/>
-  							Age group 60+: around 5 to 6
+							Age group 12 to 20: around 7 to 8<br />
+							Age group 20 to 60: around 6-7<br />
+							Age group 60+: around 5 to 6
 						</td>
 					</tr>
 					<tr>
@@ -62,18 +62,18 @@
 						<td class="type-field">Stroop Test(for Inhibition Control)</td>
 						<td class="value-field">Your Stroop Score (Incongruent Avg Time - Congruent Avg Time) is {{ this.data.stroopTestData.testScore }} ms</td>
 						<td class="value-field">
-							Age group 12 to 20: 50-200 ms<br/>
-  							Age group 20 to 60: 75-250 ms<br/>
-  							Age group 60+: 200-300 ms
+							Age group 12 to 20: 50-200 ms<br />
+							Age group 20 to 60: 75-250 ms<br />
+							Age group 60+: 200-300 ms
 						</td>
 					</tr>
 					<tr class="nback-results">
 						<td class="type-field">N-2 Back test(for Working Memory)</td>
 						<td class="value-field">Your Percentage of correct tasks in trials that had match was {{ this.data.nBackTestData.performanceParameters.matchTrialsCorrectPercent }}%</td>
 						<td class="value-field">
-							Age group 12 to 20: 60-80 % <br/>
-  							Age group 20 to 60: 80-90 %<br/>
-  							Age group 60+: 70-80 %
+							Age group 12 to 20: 60-80 % <br />
+							Age group 20 to 60: 80-90 %<br />
+							Age group 60+: 70-80 %
 						</td>
 					</tr>
 					<tr>
@@ -98,24 +98,26 @@
 				</tbody>
 				<tfoot class="footer">
 					<tr class="footer-1">
-						<td class="foot-field" colspan="3">It is well-known that you can improve your memory and other brain functions by training the brain.<br/>
-							The best part of this memory test is, it also serves as a <b>Brain Trainer</b>.<br/>
-							Practice the test every alternate day to improve your score and brain function.</td>
+						<td class="foot-field" colspan="3">
+							It is well-known that you can improve your memory and other brain functions by training the brain.<br />
+							The best part of this memory test is, it also serves as a <b>Brain Trainer</b>.<br />
+							Practice the test every alternate day to improve your score and brain function.
+						</td>
 					</tr>
 					<tr>
-						<td class="value-field" colspan="3"><b>Do you have less score than expected results?</b><br/>Do not be panic. The number can vary depending on the age, attention, overall mind health and memory strategies. You can take the test many times. Consult the expert if your results are consistently low.</td>
+						<td class="value-field" colspan="3"><b>Do you have less score than expected results?</b><br />Do not be panic. The number can vary depending on the age, attention, overall mind health and memory strategies. You can take the test many times. Consult the expert if your results are consistently low.</td>
 					</tr>
 					<tr>
-						<td class="value-field" colspan="3"><b>तुमचा निकाल अपेक्षित निकालापेक्षा कमी आहे का?</b><br/>काळजी नको. तुमचा निकाल तुमचे वय, दिलेले लक्ष, एकूणच मनाचे आरोग्य आणि स्मरण करण्याचे धोरण यानुसार संख्या बदलू शकतात. परत टेस्ट द्या आणि जर निकाल नेहमीच कमी असतील तर तज्ज्ञांचा सल्ला घ्या.</td>
+						<td class="value-field" colspan="3"><b>तुमचा निकाल अपेक्षित निकालापेक्षा कमी आहे का?</b><br />काळजी नको. तुमचा निकाल तुमचे वय, दिलेले लक्ष, एकूणच मनाचे आरोग्य आणि स्मरण करण्याचे धोरण यानुसार संख्या बदलू शकतात. परत टेस्ट द्या आणि जर निकाल नेहमीच कमी असतील तर तज्ज्ञांचा सल्ला घ्या.</td>
 					</tr>
 					<tr>
-						<td class="value-field" colspan="3"><b>क्या आपका परिणाम अपेक्षित परिणाम से कम है?</b><br/>चिंता मत करो. आपके परिणाम आपकी उम्र, दिया हुआ ध्यान, समग्र दिमागी स्वास्थ्य और स्मृति रणनीतियों के आधार पर भिन्न हो सकती है। दोबारा परीक्षण करे और यदी परिणाम लगातार कम आ रहे हैं, तो किसी विशेषज्ञ से परामर्श लें।</td>
+						<td class="value-field" colspan="3"><b>क्या आपका परिणाम अपेक्षित परिणाम से कम है?</b><br />चिंता मत करो. आपके परिणाम आपकी उम्र, दिया हुआ ध्यान, समग्र दिमागी स्वास्थ्य और स्मृति रणनीतियों के आधार पर भिन्न हो सकती है। दोबारा परीक्षण करे और यदी परिणाम लगातार कम आ रहे हैं, तो किसी विशेषज्ञ से परामर्श लें।</td>
 					</tr>
 					<tr class="divider-3">
 						<td colspan="3" class="value-field"></td>
 					</tr>
 					<tr>
-						<td  class="value-field" colspan="3">
+						<td class="value-field" colspan="3">
 							<p>Want to test your intelligence? Save the link below and take the test when you have time. (40 min)</p>
 							<a href="https://forms.gle/TVUcM3dNiFLZA85B8">https://forms.gle/TVUcM3dNiFLZA85B8</a>
 						</td>
@@ -125,7 +127,7 @@
 		</center>
 		<br />
 	</div>
-	<br/>
+	<br />
 	<div class="next-button">
 		<v-btn to="/endscreen" size="x-large" block color="red-lighten-3" rounded="lg">Next</v-btn>
 	</div>
@@ -133,7 +135,7 @@
 
 <script>
 import { useTestStore } from '@/store/tests';
-import html2pdf from 'html2pdf.js'
+import html2pdf from 'html2pdf.js';
 export default {
 	name: 'ConsolidatedReportView',
 	data() {
@@ -234,18 +236,18 @@ export default {
 		getData() {
 			this.data = useTestStore().getData();
 		},
-		exportToPDF(){
+		exportToPDF() {
 			var opt = {
-						margin:       1,
-						filename:     'Report_'+ this.data.userDetailsData.name +'.pdf',
-						pagebreak:{
-							before:['.stroop-results','.footer-1']
-						},
-						image:{
-							quality:1,
-							type:'png'
-						}
-			}
+				margin: 1,
+				filename: 'Report_' + this.data.userDetailsData.name + '.pdf',
+				pagebreak: {
+					before: ['.stroop-results', '.footer-1']
+				},
+				image: {
+					quality: 1,
+					type: 'png'
+				}
+			};
 			html2pdf().set(opt).from(document.getElementById('report')).save();
 		}
 	},
@@ -269,16 +271,15 @@ export default {
 	font-weight: bold;
 }
 
-.img-header{
+.img-header {
 	border: 3px solid black;
 	max-width: 95%;
-
 }
 
 table {
 	border: 3px solid black;
 	border-collapse: collapse;
-	overflow-x:auto;
+	overflow-x: auto;
 	max-width: 95%;
 	width: auto;
 }
@@ -293,39 +294,39 @@ td {
 	border: 1px solid black;
 }
 
-.head-field{
+.head-field {
 	background-color: #339499;
 	font-weight: bold;
 }
 
-.foot-field{
+.foot-field {
 	background-color: #339499;
 	text-align: center;
 }
 
-.type-field{
-	background-color: #05C7B0;
+.type-field {
+	background-color: #05c7b0;
 	width: 25%;
 }
 
-.value-field{
+.value-field {
 	background-color: white;
 }
 
-.blank-row{
-	height:10px;
+.blank-row {
+	height: 10px;
 }
 
-.blank-cell{
+.blank-cell {
 	background-color: white;
 }
 
-.mobile-img{
+.mobile-img {
 	width: 120px;
 	height: 120px;
 }
 
-.not-mobile-img{
+.not-mobile-img {
 	width: fit-content;
 	height: fit-content;
 }
