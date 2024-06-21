@@ -30,5 +30,15 @@ export default defineConfig({
 	},
 	server: {
 		port: 3000
-	}
+	},
+	build: {
+		outDir: 'dist',
+		rollupOptions: {
+		  output: {
+			chunkFileNames: 'assets/[name]-[hash].js',
+			entryFileNames: 'assets/[name]-[hash].js',
+			assetFileNames: 'assets/[name]-[hash][extname]'
+		  }
+		}
+	  }
 });
